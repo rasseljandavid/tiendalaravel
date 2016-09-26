@@ -165,7 +165,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
             <li><a class="home_link" title="Home" href="/">Home</a></li>
-            <li class="dropdown"><a href="category.html">Fashion</a>
+            <li class="dropdown"><a href="/category/snacks">Fashion</a>
               <div class="dropdown-menu">
               <ul>
                       <li><a href="category.html">Men <span>&rsaquo;</span></a>
@@ -434,7 +434,7 @@
             <ul>
               <li><a href="/how-it-works">How It Works</a></li>
               <li><a href="/faq">FAQ</a></li>
-              <li><a href="sitemap.html">Contact Us</a></li>
+              <li><a href="/contact-us">Contact Us</a></li>
             </ul>
           </div>
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">

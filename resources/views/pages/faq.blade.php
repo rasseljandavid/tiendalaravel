@@ -6,231 +6,281 @@
 @endsection
 
 @section('content')
+    
     <div class="container">
+      <!-- Breadcrumb Start-->
       <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i></a></li>
         <li><a href="/faq">FAQ</a></li>
       </ul>
+      <!-- Breadcrumb End-->
       <div class="row">
         <!--Middle Part Start-->
-        <div id="content" class="col-xs-12">
-            <h1 class="title">FAQ</h1>
-            
-            <div id="text-exprandom52f923a265564" class="panel-group">
-                    <div id="item10" class="panel panel-default item">
-                <div class="panel-heading" id="yui_3_18_1_1_1474919209484_199">
-                    <div class="panel-title" id="yui_3_18_1_1_1474919209484_198"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-0" title="Collapse/Expand" id="yui_3_18_1_1_1474919209484_197"><h2>How much is the delivery fee?</h2></a></div>
+        <div id="content" class="col-sm-12">
+          <h1 class="title">Help &amp; FAQ</h1>
+          <div class="row">
+            <div class="col-sm-3">
+              <h3>My Account &amp; My Orders</h3>
+            </div>
+            <div class="col-sm-9">
+              <div class="faq">
+                <div> <a href="#faq1" data-parent="#accordion" data-toggle="collapse" class="panel-title">What is 'My Account'? How do I update my information ? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq1" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
-                <div id="collapse-0" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>All deliveries are free within the following serviceable locations: Angeles City, Mabalacat City, and Bamban.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
+                <div> <a href="#faq2" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I merge my accounts linked to different email ids? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis.</p>
+                      <ul>
+                        <li>Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</li>
+                        <li>Consectetuer adipiscing elit. Donec eros tellus.</li>
+                        <li>Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est.</li>
+                        <li>Morbi id tellus. Nullam ac nisi non eros gravida venenatis.</li>
+                      </ul>
                     </div>
+                  </div>
                 </div>
-            </div>
-            
-                    <div id="item11" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-1" title="Collapse/Expand"><h2>Is there any hidden cost when I receive my order?</h2></a></div>
+                <div> <a href="#faq3" data-parent="#accordion" data-toggle="collapse" class="panel-title"> How do I know my order has been confirmed? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq3" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
-                <div id="collapse-1" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>What you buy is what you pay for. There are no delivery fees or hidden charges. We want to make our service awesome and transparency is very important to us.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
+                <div> <a href="#faq4" data-parent="#accordion" data-toggle="collapse" class="panel-title">Can I order a product that is 'Out of Stock'? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis.</p>
+                      <ul>
+                        <li>Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</li>
+                        <li>Consectetuer adipiscing elit. Donec eros tellus.</li>
+                        <li>Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est.</li>
+                        <li>Morbi id tellus. Nullam ac nisi non eros gravida venenatis.</li>
+                      </ul>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-            
-                    <div id="item12" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-2" title="Collapse/Expand"><h2>Do you deliver in Manila?</h2></a></div>
-                </div>
-                <div id="collapse-2" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>As of the moment we only deliver within Angeles City, Mabalacat City, and Bamban. But rest assured that we will roll out Tienda to your place soon!</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h3>Shopping</h3>
             </div>
-            
-                    <div id="item13" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-3" title="Collapse/Expand"><h2>Who are the people behind Tienda? </h2></a></div>
+            <div class="col-sm-9">
+              <div class="faq">
+                <div> <a href="#faq5" data-parent="#accordion" data-toggle="collapse" class="panel-title">I see different prices with the same title. Why? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq5" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
-                <div id="collapse-3" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>We are a group of people who believe in the virtue that time is one of the most important things in life, and helping people manage their time outside of work is our main goal, so that our clients can spend more time on things that truly matter. That is the main reason why we created Tienda, an online grocery store.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
+                <div> <a href="#faq6" data-parent="#accordion" data-toggle="collapse" class="panel-title">Why do I see different prices for the same product? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq6" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
+                <div> <a href="#faq7" data-parent="#accordion" data-toggle="collapse" class="panel-title">Is it necessary to have an account to shop on Marketshop? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq7" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq8" data-parent="#accordion" data-toggle="collapse" class="panel-title">What do I need to know before getting an order gift wrapped? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq8" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq9" data-parent="#accordion" data-toggle="collapse" class="panel-title">What is Advantage? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq9" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-                    <div id="item14" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-4" title="Collapse/Expand"><h2>What is your mode of payment?</h2></a></div>
-                </div>
-                <div id="collapse-4" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>As of the moment, our only mode of payment is <em>Cash on Delivery</em>. You will only pay once the goods have been delivered right at your doorstep.</p>
-
-<p>Soon we will introduce more payment options.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h3>Payments</h3>
             </div>
-            
-                    <div id="item15" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-5" title="Collapse/Expand"><h2>How can I order?</h2></a></div>
+            <div class="col-sm-9">
+              <div class="faq">
+                <div> <a href="#faq10" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I pay for a purchase? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq10" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
-                <div id="collapse-5" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>Check out this <a href="/how-it-works" target="_blank" style="text-decoration: underline;">simple guide!</a></p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
+                <div> <a href="#faq11" data-parent="#accordion" data-toggle="collapse" class="panel-title">Are there any hidden charges (Octroi or Sales Tax) when I make a purchase? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq11" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
+                <div> <a href="#faq12" data-parent="#accordion" data-toggle="collapse" class="panel-title">What is Cash on Delivery? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq12" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq13" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I pay using a credit/debit card? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq13" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq14" data-parent="#accordion" data-toggle="collapse" class="panel-title">Is it safe to use my credit/debit card on this store? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq14" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq15" data-parent="#accordion" data-toggle="collapse" class="panel-title">What is a 3D Secure password? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq15" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq16" data-parent="#accordion" data-toggle="collapse" class="panel-title">How can I get the 3D Secure password for my credit/debit card? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq16" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq17" data-parent="#accordion" data-toggle="collapse" class="panel-title">Can I use my bank's Internet Banking feature to make a payment? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq17" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq18" data-parent="#accordion" data-toggle="collapse" class="panel-title">Can I make a credit/debit card or Internet Banking payment through my mobile? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq18" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq19" data-parent="#accordion" data-toggle="collapse" class="panel-title">How does 'Instant Cashback' work? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq19" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq20" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I place a Cash on Delivery (COD) order? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq20" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-                    <div id="item16" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-6" title="Collapse/Expand"><h2>Are your products in pristine condition?</h2></a></div>
-                </div>
-                <div id="collapse-6" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>Yes. Our products are as fresh as with any supermarkets out there. In fact, you may decline any product that you deem to be in bad condition. Satisfaction guarantee from Tienda!</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h3>Gift Voucher</h3>
             </div>
-            
-                    <div id="item17" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-7" title="Collapse/Expand"><h2>When will I receive my order?</h2></a></div>
+            <div class="col-sm-9">
+              <div class="faq">
+                <div> <a href="#faq21" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I buy/gift an e-Gift Voucher? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq21" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
-                <div id="collapse-7" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>We offer within the day delivery or you can choose any date&nbsp;except during Sundays or special holidays. You may choose a delivery time during the checkout.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
+                <div> <a href="#faq22" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I make a purchase with an e-Gift Voucher? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq22" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
+                <div> <a href="#faq23" data-parent="#accordion" data-toggle="collapse" class="panel-title">Does an e-Gift Voucher expire? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq23" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq24" data-parent="#accordion" data-toggle="collapse" class="panel-title">Can I use promotional codes with e-Gift Vouchers? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq24" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq25" data-parent="#accordion" data-toggle="collapse" class="panel-title">Is there a limit on how many e-Gift vouchers I can use on a single order? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq25" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq26" data-parent="#accordion" data-toggle="collapse" class="panel-title">What Terms & Conditions apply to e-Gift Vouchers? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq26" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-                    <div id="item18" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-8" title="Collapse/Expand"><h2>How do you make profit when you offer great deals we can’t find elsewhere?</h2></a></div>
-                </div>
-                <div id="collapse-8" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>Same way as any supermarket, sari-sari store, or any convenience store out there. We add a certain percentage in every item we take from our suppliers. We constantly seek for the best suppliers out there so that we can provide you with the cheapest price, both online and offline store.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h3>Order Status</h3>
             </div>
-            
-                    <div id="item19" class="panel panel-default item">
-                <div class="panel-heading">
-                    <div class="panel-title"><a data-toggle="collapse" data-parent="#text-exprandom52f923a265564" href="#collapse-9" title="Collapse/Expand"><h2>How many products do you have?</h2></a></div>
+            <div class="col-sm-9">
+              <div class="faq">
+                <div> <a href="#faq27" data-parent="#accordion" data-toggle="collapse" class="panel-title">How do I check the current status of my orders? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq27" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
-                <div id="collapse-9" class="panel-collapse collapse">
-                    <div class="piece panel-body">
-                        <ul>
-                            <li>
-                                
-                                <div class="bodycopy">
-                                                                            
-                                                                        <p>We currently have over a thousand products in our database and we will keep on adding hundreds of products weekly, since our goal is to make the largest selection of grocery items accessible to you within just a click of a mouse.</p>
-
-                                                                    </div>
-                                <div style="clear:both"></div>
-                            </li>
-                        </ul>
-                    </div>
+                <div> <a href="#faq28" data-parent="#accordion" data-toggle="collapse" class="panel-title">What do the different order status mean? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq28" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
                 </div>
+                <div> <a href="#faq29" data-parent="#accordion" data-toggle="collapse" class="panel-title">When and how can I cancel an order? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq29" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h3>Shipping</h3>
             </div>
+            <div class="col-sm-9">
+              <div class="faq">
+                <div> <a href="#faq30" data-parent="#accordion" data-toggle="collapse" class="panel-title">What are the delivery charges? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq30" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq31" data-parent="#accordion" data-toggle="collapse" class="panel-title">Are there any hidden costs (sales tax, octroi etc) on items sold by sellers? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq31" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq32" data-parent="#accordion" data-toggle="collapse" class="panel-title">What is the estimated delivery time? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq32" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq33" data-parent="#accordion" data-toggle="collapse" class="panel-title">Why does the estimated delivery time vary from seller to seller? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq33" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq34" data-parent="#accordion" data-toggle="collapse" class="panel-title">Why does the delivery date not correspond to the delivery timeline mentioned? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq34" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq35" data-parent="#accordion" data-toggle="collapse" class="panel-title">Seller does not/cannot ship to my area. Why? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq35" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq36" data-parent="#accordion" data-toggle="collapse" class="panel-title">I need to return an item, how do I arrange for a pick-up? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq36" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+                <div> <a href="#faq37" data-parent="#accordion" data-toggle="collapse" class="panel-title">Does deliver internationally? <i class="fa fa-caret-down"></i></a>
+                  <div id="faq37" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Nullam ac nisi non eros gravida venenatis. Ut euismod, turpis sollicitudin lobortis pellentesque, libero massa dapibus dui, eu.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
         </div>
+        <!--Middle Part End -->
       </div>
     </div>
 @endsection

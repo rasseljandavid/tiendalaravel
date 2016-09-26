@@ -17,11 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/category/{category}', 'CategoriesController@show');
 
+// Static Pages
 Route::get('/about-us', 'PagesController@about');
 Route::get('/privacy-policy', 'PagesController@privacy');
 Route::get('/terms-and-conditions', 'PagesController@terms');
 Route::get('/how-it-works', 'PagesController@how');
 Route::get('/faq', 'PagesController@faq');
+Route::get('/contact-us', 'PagesController@contact');
+
+// Cart
 Route::get('/cart/show', 'CartController@show');
 Route::get('/cart/checkout', 'CartController@checkout');
+Route::get('/cart/compare', 'CartController@compare');

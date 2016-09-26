@@ -16,4 +16,8 @@ class CartController extends Controller
     	return view('cart.checkout');
     }
 
+    public function compare() {
+    	return view('cart.compare');
+    }
+
 }
