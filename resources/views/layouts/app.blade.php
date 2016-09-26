@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="image/favicon.png" rel="icon" />
+<link href="image/favicon.ico" rel="icon" />
 @yield('metainfo')
 <!-- CSS Part Start-->
 <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css" />
@@ -164,7 +164,7 @@
         <div class="container">
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-            <li><a class="home_link" title="Home" href="index.html">Home</a></li>
+            <li><a class="home_link" title="Home" href="/">Home</a></li>
             <li class="dropdown"><a href="category.html">Fashion</a>
               <div class="dropdown-menu">
               <ul>
