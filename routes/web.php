@@ -23,3 +23,5 @@ Route::get('/privacy-policy', 'PagesController@privacy');
 Route::get('/terms-and-conditions', 'PagesController@terms');
 Route::get('/how-it-works', 'PagesController@how');
 Route::get('/faq', 'PagesController@faq');
+Route::get('/cart/show', 'CartController@show');
+Route::get('/cart/checkout', 'CartController@checkout');

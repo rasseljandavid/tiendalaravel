@@ -7,14 +7,14 @@
 <link href="image/favicon.ico" rel="icon" />
 @yield('metainfo')
 <!-- CSS Part Start-->
-<link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
-<link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
-<link rel="stylesheet" type="text/css" href="css/owl.transitions.css" />
-<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-<link rel="stylesheet" type="text/css" href="css/stylesheet-skin2.css" />
-<link rel="stylesheet" type="text/css" href="css/custom.css" />
+<link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
+<link rel="stylesheet" type="text/css" href="/css/owl.transitions.css" />
+<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+<link rel="stylesheet" type="text/css" href="/css/stylesheet-skin2.css" />
+<link rel="stylesheet" type="text/css" href="/css/custom.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
 <!-- CSS Part End-->
 </head>
@@ -62,7 +62,7 @@
               </ul>
             </div>
             <div id="language" class="btn-group">
-              <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> <img src="image/flags/ph.png" alt="English" title="English">Philippines</button>
+              <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> <img src="/image/flags/ph.png" alt="English" title="English">Philippines</button>
             </div>
             <div id="currency" class="btn-group">
               <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> &#8369; Peso</span></button>
@@ -84,7 +84,7 @@
         <div class="table-container">
           <!-- Logo Start -->
           <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-            <div id="logo"><a href="/"><img class="img-responsive" src="image/logo.png" title="Tienda" alt="Tienda" /></a></div>
+            <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
           </div>
           <!-- Logo End -->
           <!-- Mini Cart Start-->
@@ -100,14 +100,14 @@
                   <table class="table">
                     <tbody>
                       <tr>
-                        <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="Xitefun Causal Wear Fancy Shoes" alt="Xitefun Causal Wear Fancy Shoes" src="image/product/sony_vaio_1-50x75.jpg"></a></td>
+                        <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="Xitefun Causal Wear Fancy Shoes" alt="Xitefun Causal Wear Fancy Shoes" src="/image/product/sony_vaio_1-50x75.jpg"></a></td>
                         <td class="text-left"><a href="product.html">Xitefun Causal Wear Fancy Shoes</a></td>
                         <td class="text-right">x 1</td>
                         <td class="text-right">$902.00</td>
                         <td class="text-center"><button class="btn btn-danger btn-xs remove" title="Remove" onClick="" type="button"><i class="fa fa-times"></i></button></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="Aspire Ultrabook Laptop" alt="Aspire Ultrabook Laptop" src="image/product/samsung_tab_1-50x75.jpg"></a></td>
+                        <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="Aspire Ultrabook Laptop" alt="Aspire Ultrabook Laptop" src="/image/product/samsung_tab_1-50x75.jpg"></a></td>
                         <td class="text-left"><a href="product.html">Aspire Ultrabook Laptop</a></td>
                         <td class="text-right">x 1</td>
                         <td class="text-right">$230.00</td>
@@ -138,7 +138,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p class="checkout"><a href="cart.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> View Cart</a>&nbsp;&nbsp;&nbsp;<a href="checkout.html" class="btn btn-primary"><i class="fa fa-share"></i> Checkout</a></p>
+                    <p class="checkout"><a href="/cart/show" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> View Cart</a>&nbsp;&nbsp;&nbsp;<a href="/cart/checkout" class="btn btn-primary"><i class="fa fa-share"></i> Checkout</a></p>
                   </div>
                 </li>
               </ul>
@@ -419,7 +419,7 @@
           <div class="contact col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <h5>About Tienda</h5>
             <p>Say goodbye to long queues in supermarkets, wave your farewell to heavy plastic bags, and most importantly, say hi to low prices. Tienda is an online grocery that delivers convenience into your life.</p>
-            <a href="/"><img alt="" src="image/logo-small.png"></a>
+            <a href="/"><img alt="" src="/image/logo-small.png"></a>
           </div>
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
             <h5>Information</h5>
@@ -466,7 +466,7 @@
           </div>
           <div class="social pull-right flip"> 
                 <a href="https://www.facebook.com/tiendadotph" target="_blank"> 
-                    <img data-toggle="tooltip" src="image/socialicons/facebook.png" alt="Facebook" title="Facebook">
+                    <img data-toggle="tooltip" src="/image/socialicons/facebook.png" alt="Facebook" title="Facebook">
                 </a> 
               <!--   <a href="#" target="_blank"> 
                     <img data-toggle="tooltip" src="image/socialicons/twitter.png" alt="Twitter" title="Twitter"> 
@@ -478,7 +478,7 @@
                     <img data-toggle="tooltip" src="image/socialicons/pinterest.png" alt="Pinterest" title="Pinterest"> 
                 </a>  -->
                 <a href="#" target="_blank"> 
-                    <img data-toggle="tooltip" src="image/socialicons/rss.png" alt="RSS" title="RSS"> 
+                    <img data-toggle="tooltip" src="/image/socialicons/rss.png" alt="RSS" title="RSS"> 
                 </a> 
             </div>
         </div>
@@ -486,7 +486,7 @@
           <div class="custom-text text-center">
             <p>If you are not 100% satisfied with your purchase, you can call us at +63 9258166813 for a full refund. <br />We believe that in order to have the best possible online shopping experience, our customers should not be bothered returning the product, <br />so you can just contact us and we will get your purchase and deliver your refund to your doorstep.</p>
           </div>
-          <div class="payments_types"> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/payment/payment_paypal.png" alt="paypal" title="PayPal"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/payment/payment_american.png" alt="american-express" title="American Express"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/payment/payment_2checkout.png" alt="2checkout" title="2checkout"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/payment/payment_maestro.png" alt="maestro" title="Maestro"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/payment/payment_discover.png" alt="discover" title="Discover"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/payment/payment_mastercard.png" alt="mastercard" title="MasterCard"></a> </div>
+          <div class="payments_types"> <a href="#" target="_blank"> <img data-toggle="tooltip" src="/image/payment/payment_paypal.png" alt="paypal" title="PayPal"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="/image/payment/payment_american.png" alt="american-express" title="American Express"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="/image/payment/payment_2checkout.png" alt="2checkout" title="2checkout"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="/image/payment/payment_maestro.png" alt="maestro" title="Maestro"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="/image/payment/payment_discover.png" alt="discover" title="Discover"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="/image/payment/payment_mastercard.png" alt="mastercard" title="MasterCard"></a> </div>
         </div>
       </div>
     </div>
@@ -520,12 +520,12 @@
   <!-- Facebook Side Block End -->
 </div>
 <!-- JS Part Start-->
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.dcjqaccordion.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.dcjqaccordion.min.js"></script>
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
 <!-- JS Part End-->
 
 </body>
