@@ -1,68 +1,68 @@
 @extends('layouts.app')
 
+@section('metainfo')
+    <title>Login: Tienda -Your First Online Grocery in the Philippines</title>
+    <meta name="description" content="Login : Tienda -Your First Online Grocery in the Philippines">
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+    <div class="container">
+      <!-- Breadcrumb Start-->
+      <ul class="breadcrumb">
+        <li><a href="/"><i class="fa fa-home"></i></a></li>
+        <li><a href="login.html">Account</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <!-- Breadcrumb End-->
+      <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-9">
+          <h1 class="title">Account Login</h1>
+          <div class="row">
+            <div class="col-sm-6">
+              <h2 class="subtitle">New Customer</h2>
+              <p><strong>Register Account</strong></p>
+              <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+              <a href="/register" class="btn btn-primary">Continue</a> </div>
+            <div class="col-sm-6">
+              <h2 class="subtitle">Returning Customer</h2>
+              <p><strong>I am a returning customer</strong></p>
+                <div class="form-group">
+                  <label class="control-label" for="input-email">E-Mail Address</label>
+                  <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" />
                 </div>
+                <div class="form-group">
+                  <label class="control-label" for="input-password">Password</label>
+                  <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" />
+                  <br />
+                  <a href="#">Forgotten Password</a></div>
+                <input type="submit" value="Login" class="btn btn-primary" />
             </div>
+          </div>
         </div>
+        <!--Middle Part End -->
+        <!--Right Part Start -->
+        <aside id="column-right" class="col-sm-3 hidden-xs">
+          <h3 class="subtitle">Account</h3>
+          <div class="list-group">
+            <ul class="list-item">
+              <li><a href="login.html">Login</a></li>
+              <li><a href="/register">Register</a></li>
+              <li><a href="#">Forgotten Password</a></li>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Address Books</a></li>
+              <li><a href="wishlist.html">Wish List</a></li>
+              <li><a href="#">Order History</a></li>
+              <li><a href="#">Downloads</a></li>
+              <li><a href="#">Reward Points</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Transactions</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Recurring payments</a></li>
+            </ul>
+          </div>
+        </aside>
+        <!--Right Part End -->
+      </div>
     </div>
-</div>
 @endsection
