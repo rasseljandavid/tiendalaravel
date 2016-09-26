@@ -15,5 +15,16 @@ require('laravel-elixir-vue');
 
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .scripts([
+       		'jquery.js',
+                  'jqueryui.js',
+                  'bootstrap.js',
+       		'jquery.datetimepicker.full.min.js',
+       		'app.js'
+       	], './public/js/app.js')
+       .version([
+       		'/css/app.css',
+       		'/js/app.js'
+       	]);
+
 });
