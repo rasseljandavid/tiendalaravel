@@ -1,3 +1,14 @@
+a, a b, .articleHeader span a, .pagination > li > a {
+	color: #ae242a;
+}
+
+h1.title {
+	color: #333;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
 #header .htop, #header .left-top {
 	background: #fedf15;
 	color: #ae242a;
@@ -36,4 +47,30 @@
 	background: #fff;
     color: #333;
     border-color: #ccc;
+}
+
+
+#footer .fpart-first {
+    background-color: #ffec6d;
+    color: #333;
+}
+
+#footer .fpart-second {
+	background-color: #fedf15;
+	color: #333;
+}
+#footer .fpart-first a {
+	color: #ae242a;
+}
+
+#footer #powered a {
+	color: #ae242a;
+}
+
+#footer #powered {
+	border-bottom: 1px solid #ae242a;
+}
+
+#footer h5 {
+	color: #333;
 }

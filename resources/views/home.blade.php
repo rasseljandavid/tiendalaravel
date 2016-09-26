@@ -3,6 +3,7 @@
 @section('metainfo')
 	<link href="image/favicon.png" rel="icon" />
 	<title>Tienda - Your First Online Grocery in the Philippines</title>
+	<meta name="description" content="Tienda - Your First Online Grocery in the Philippines">
 @endsection
 
 @section('content')

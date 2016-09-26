@@ -17,3 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::get('/about-us', 'PagesController@about');
+Route::get('/privacy-policy', 'PagesController@privacy');
+Route::get('/terms-and-conditions', 'PagesController@terms');
+Route::get('/how-it-works', 'PagesController@how');
+Route::get('/faq', 'PagesController@faq');
