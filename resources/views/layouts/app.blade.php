@@ -179,6 +179,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
             <li><a class="home_link" title="Home" href="/">Home</a></li>
+            
             <li class="dropdown"><a href="/category/snacks">Fashion</a>
               <div class="dropdown-menu">
               <ul>
@@ -378,13 +379,13 @@
                   <li><a href="about-us.html">About Us</a></li>
                   <li><a href="404.html">404</a></li>
                   <li><a href="elements.html">Elements</a></li>
-                  <li><a href="faq.html">Faq</a></li>
+                  <li><a hrexf="faq.html">Faq</a></li>
                   <li><a href="sitemap.html">Sitemap</a></li>
                   <li><a href="contact-us.html">Contact Us</a></li>
                 </ul>
               </div>
             </li>
-            <li class="custom-link-right"><a href="/cart/checkout"> Checkout Now!</a></li>
+            <li class="custom-link-right"><a href="/cart/checkoutx"> Checkout Now!</a></li>
           </ul>
         </div>
         </div>

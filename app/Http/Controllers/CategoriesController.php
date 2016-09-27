@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Category;
+
 class CategoriesController extends Controller
 {
     function show() {
-    	return view('category.show');
+    	$categories = Category::all();
+
+    	return view('category.show', compact('categories'));
     }
 }
