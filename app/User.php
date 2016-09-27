@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Address;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname', 'lastname', 'email', 'password', 'contact', 'newsletter'
     ];
 
     /**
@@ -26,4 +28,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function setPasswordAttribute( $password ){
+        
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function getFullname(  ){
+        
+        return $this->attributes['firstname'].' '.$this->attributes['lastname'];
+    }
+
+    public function addresses( ){
+        
+        return $this->hasMany(Address::class);
+    }
 }

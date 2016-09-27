@@ -70,8 +70,22 @@
           </div>
           <div id="top-links" class="nav pull-right flip">
             <ul>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/register">Register</a></li>
+              @if(Auth::user())
+              <li><a href="#">{{ Auth::user()->getFullname() }}</a></li>
+              <li>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                <a href="{{ url('/logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+              </li>
+              @else
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+              @endif
             </ul>
           </div>
         </div>
@@ -527,7 +541,15 @@
 <script type="text/javascript" src="/js/jquery.dcjqaccordion.min.js"></script>
 <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#error-close').click(function(){
+    $(this).parents('.error-container').slideToggle(300);
+  });
+});
+</script>
 <!-- JS Part End-->
+@yield('script')
 
 </body>
 </html>
