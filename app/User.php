@@ -44,4 +44,14 @@ class User extends Authenticatable
         
         return $this->hasMany(Address::class);
     }
+
+    public function getShippingAddress(  ){
+        
+        return $this->addresses->where('is_shipping','1')->first();
+    }
+
+    public function getBillingAddress(  ){
+        
+        return $this->addresses->where('is_billing','1')->first();
+    }
 }

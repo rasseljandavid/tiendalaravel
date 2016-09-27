@@ -63,7 +63,6 @@
             <fieldset id="address">
               <legend>Your Address</legend>
               <div class="form-group required">
-                <input type="hidden" name="is_shipping" value="1">
                 <label for="input-address-1" class="col-sm-2 control-label">Street #, Village, Apartment Bldg.</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="input-address-1" placeholder="Street #, Village, Apartment Bldg." value="" name="address_one">

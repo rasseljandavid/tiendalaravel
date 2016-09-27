@@ -71,12 +71,13 @@ class RegisterController extends Controller
     {
         $user = User::create($data);
         $data['user_id'] = $user->id;
+        // shipping
+        $data['is_shipping'] = 1;
+        $address = Address::create($data);
+        // billing
+        $data['is_shipping'] = 0;
+        $data['is_billing'] = 1;
         $address = Address::create($data);
         return $user;
-        // return User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => bcrypt($data['password']),
-        // ]);
     }
 }

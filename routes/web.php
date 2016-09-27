@@ -25,6 +25,9 @@ Route::get('/faq', 'PagesController@faq');
 Route::get('/contact-us', 'PagesController@contact');
 Route::get('/sitemap', 'PagesController@sitemap');
 
+// User
+Route::get('/account', 'UsersController@show');
+
 // Cart
 Route::get('/cart/show', 'CartController@show');
 Route::get('/cart/checkout', 'CartController@checkout');

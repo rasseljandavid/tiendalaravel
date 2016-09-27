@@ -71,7 +71,7 @@
           <div id="top-links" class="nav pull-right flip">
             <ul>
               @if(Auth::user())
-              <li><a href="#">{{ Auth::user()->getFullname() }}</a></li>
+              <li><a href="{{ url('/account') }}">{{ Auth::user()->getFullname() }}</a></li>
               <li>
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
