@@ -31,4 +31,8 @@ class PagesController extends Controller
     public function contact() {
     	return view('pages.contact');
     }
+
+    public function sitemap() {
+    	return view('pages.sitemap');
+    }
 }

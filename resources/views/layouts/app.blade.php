@@ -70,8 +70,8 @@
           </div>
           <div id="top-links" class="nav pull-right flip">
             <ul>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="register.html">Register</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/register">Register</a></li>
             </ul>
           </div>
         </div>
@@ -350,8 +350,8 @@
             <li class="dropdown information-link"><a>Pages</a>
               <div class="dropdown-menu">
                 <ul>
-                  <li><a href="login.html">Login</a></li>
-                  <li><a href="register.html">Register</a></li>
+                  <li><a href="/login">Login</a></li>
+                  <li><a href="/register">Register</a></li>
                   <li><a href="category.html">Category (Grid/List)</a></li>
                   <li><a href="product.html">Product</a></li>
                   <li><a href="cart.html">Shopping Cart</a></li>
@@ -370,7 +370,7 @@
                 </ul>
               </div>
             </li>
-            <li class="custom-link-right"><a href="#" target="_blank"> Buy Now!</a></li>
+            <li class="custom-link-right"><a href="/cart/checkout"> Checkout Now!</a></li>
           </ul>
         </div>
         </div>
@@ -435,6 +435,7 @@
               <li><a href="/how-it-works">How It Works</a></li>
               <li><a href="/faq">FAQ</a></li>
               <li><a href="/contact-us">Contact Us</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
             </ul>
           </div>
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
@@ -451,7 +452,7 @@
             <ul>
               <li><a href="#">My Account</a></li>
               <li><a href="#">Order History</a></li>
-              <li><a href="#">Wish List</a></li>
+              <li><a href="/cart/wishlist">Wish List</a></li>
               <li><a href="#">Newsletter</a></li>
             </ul>
           </div>

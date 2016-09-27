@@ -20,4 +20,8 @@ class CartController extends Controller
     	return view('cart.compare');
     }
 
+    public function wishlist() {
+    	return view('cart.wishlist');
+    }
+
 }
