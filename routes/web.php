@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Auth::routes();
 
 // Static Pages
+Route::get('/', 'HomeController@index');
 Route::get('/about-us', 'PagesController@about');
 Route::get('/privacy-policy', 'PagesController@privacy');
 Route::get('/terms-and-conditions', 'PagesController@terms');
