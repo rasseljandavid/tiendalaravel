@@ -9,6 +9,6 @@ use App\Http\Requests;
 class ProductsController extends Controller
 {
     public function show() {
-    	return view('product.show');
+    	return view('products.show');
     }
 }
