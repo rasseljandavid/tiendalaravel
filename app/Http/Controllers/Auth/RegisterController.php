@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Address;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,9 +49,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'firstname'     => 'required|max:255',
+            'lastname'      => 'required|max:255',
+            'email'         => 'required|email|max:255|unique:users',
+            'password'      => 'required|min:6|confirmed',
+            'contact'       => 'required|numeric|min:9',
+            'address_one'   => 'required|max:255',
+            'city'          => 'required|max:255',
+            'zipcode'       => 'required|max:255',
+            'country'       => 'required|max:255',
         ]);
     }
 
@@ -62,10 +69,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $user = User::create($data);
+        $data['user_id'] = $user->id;
+        $address = Address::create($data);
+        return $user;
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password']),
+        // ]);
     }
 }

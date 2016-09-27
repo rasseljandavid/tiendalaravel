@@ -7,6 +7,7 @@
 
 @section('content')
     <div class="container">
+      @include('errors.validation')
       <!-- Breadcrumb Start-->
       <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i></a></li>
@@ -26,7 +27,9 @@
               <a href="/register" class="btn btn-primary">Continue</a> </div>
             <div class="col-sm-6">
               <h2 class="subtitle">Returning Customer</h2>
-              <p><strong>I am a returning customer</strong></p>
+              <form method="POST" action="{{ url('/login') }}" class="form">
+                {{ csrf_field() }}
+                <p><strong>I am a returning customer</strong></p>
                 <div class="form-group">
                   <label class="control-label" for="input-email">E-Mail Address</label>
                   <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" />
@@ -35,8 +38,10 @@
                   <label class="control-label" for="input-password">Password</label>
                   <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" />
                   <br />
-                  <a href="#">Forgotten Password</a></div>
-                <input type="submit" value="Login" class="btn btn-primary" />
+                  <a href="{{url('/password/reset')}}">Forgotten Password</a></div>
+                <!-- <input type="submit" value="Login" class="btn btn-primary" /> -->
+                <input type="submit" name="submit" value="Login" class="btn btn-primary">
+              </form>
             </div>
           </div>
         </div>
