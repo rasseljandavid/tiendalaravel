@@ -16,12 +16,13 @@
       @endif
     </p>
     <div class="rating"> 
+      <?php $rate = $product->rating ?>
       @for( $i=1 ; $i <= 5; $i++)
         <span class="fa fa-stack">
           <i class="fa fa-star-o fa-stack-2x"></i>
-          @if($product->rating)
+          @if($rate)
             <i class="fa fa-star fa-stack-2x"></i>
-            {{ $product->rating-- }}
+            {{ $rate-- }}
           @endif
         </span> 
       @endfor
