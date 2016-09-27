@@ -201,7 +201,7 @@
             <div class="col-md-4 col-sm-6">
               <ul class="sitemap">
                 <li><a href="#">Special Offers</a></li>
-                <li><a href="login.html">My Account</a>
+                <li><a href="/login">My Account</a>
                   <ul>
                     <li><a href="#">Account Information</a></li>
                     <li><a href="#">Password</a></li>
