@@ -25,9 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        //$megaventory = new \Megaventory();
-
         $featured = [];
 
         for ($i=0; $i < 4; $i++) { 

@@ -19,6 +19,10 @@
           <h3 class="subtitle">Categories</h3>
           <div class="box-category">
             <ul id="cat_accordion">
+
+              @foreach($categories as $category)
+                <li><a href="#">{{ $category->title }}</a></li>
+             @endforeach<!-- 
               <li><a href="category.html">Fashion</a> <span class="down"></span>
                 <ul>
                   <li><a href="category.html">Men</a> <span class="down"></span>
@@ -121,7 +125,7 @@
                   <li><a href="category.html">Eye Care</a></li>
                   <li><a href="category.html">Hair Care</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
           </div>
           <h3 class="subtitle">Bestsellers</h3>

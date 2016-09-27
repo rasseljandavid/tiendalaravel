@@ -2,14 +2,18 @@
 
 class Megaventory {
 	
-	const APIKEY 	 = "c8c3ec7f1b65dc9d@m11394";
+	private $apikey;
 	const TIENDA_ID  = "492";
 	const LOCATION   = "2";
+
+	public function __construct() {
+		$this->apikey = env('MEGAVENTORY_API');
+	}
 
 	public	function getCategories() {
 
 		return $this->megaventoryRequest('ProductCategoryGet', [
-				'APIKEY' => Megaventory::APIKEY,
+				'APIKEY' => $this->apikey,
 				'query'  => "mv.ProductCategoryID != 0 ORDER BY mv.ProductCategoryName"
 			]);
 	}
@@ -17,7 +21,7 @@ class Megaventory {
 	public function getProducts($includeReferencedObjects = false) {
 
 		return $this->megaventoryRequest('ProductGet', [
-				'APIKEY' => Megaventory::APIKEY, 
+				'APIKEY' => $this->apikey, 
 				'includeReferencedObjects'  => $includeReferencedObjects
 			]);
 	} 
@@ -40,7 +44,7 @@ class Megaventory {
 
 	private function megaventoryRequest($apiMethod, $params = array(), $jsonRequest = false) {
 		//Insert the apikey
-		$params['APIKEY'] = Megaventory::APIKEY;
+		$params['APIKEY'] = $this->apikey;
 
 		//Build the URL
 		$url = $this->buildUrl($apiMethod);
