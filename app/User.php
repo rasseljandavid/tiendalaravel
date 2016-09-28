@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Address;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -53,5 +54,13 @@ class User extends Authenticatable
     public function getBillingAddress(  ){
         
         return $this->addresses->where('is_billing','1')->first();
+    }
+
+    public function isAdmin(  ){
+        
+        if(Auth::user()->id != 1)
+            return false;
+
+        return true;
     }
 }

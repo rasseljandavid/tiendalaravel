@@ -49,30 +49,30 @@
 			  	<thead>
 			  		<tr>
 			  			<th>&nbsp</th>
-			  			<th>Shipping Address</th>
-			  			<th>Billing Address</th>
+			  			<th>Shipping Address</th><?php $shipping = Auth::user()->getShippingAddress(); ?>
+			  			<th>Billing Address</th><?php $billing = Auth::user()->getBillingAddress(); ?>
 			  		</tr>
 			  	</thead>
 			  	<tbody>
 				    <tr>
 				      	<td>Address</td>
-				      	<td>{{ Auth::user()->getShippingAddress()->address_one }}</td>
-				      	<td>{{ Auth::user()->getBillingAddress()->address_one }}</td>
+				      	<td>@if($shipping){{ $shipping->address_one }}@endif</td>
+				      	<td>@if($billing){{ $billing->address_one }}@endif</td>
 				    </tr>
 				    <tr>
 				      	<td>City / Municipality</td>
-				      	<td>{{ Auth::user()->getShippingAddress()->city }}</td>
-				      	<td>{{ Auth::user()->getBillingAddress()->city }}</td>
+				      	<td>@if($shipping){{ $shipping->city }}@endif</td>
+				      	<td>@if($billing){{ $billing->city }}@endif</td>
 				    </tr>
 				    <tr>
 				      	<td>Zip Code</td>
-				      	<td>{{ Auth::user()->getShippingAddress()->zipcode }}</td>
-				      	<td>{{ Auth::user()->getBillingAddress()->zipcode }}</td>
+				      	<td>@if($shipping){{ $shipping->zipcode }}@endif</td>
+				      	<td>@if($billing){{ $billing->zipcode }}@endif</td>
 				    </tr>
 				    <tr>
 				      	<td>Country</td>
-				      	<td>{{ Auth::user()->getShippingAddress()->country }}</td>
-				      	<td>{{ Auth::user()->getBillingAddress()->country }}</td>
+				      	<td>@if($shipping){{ $shipping->country }}@endif</td>
+				      	<td>@if($billing){{ $billing->country }}@endif</td>
 				    </tr>
 			  	</tbody>
 			</table>

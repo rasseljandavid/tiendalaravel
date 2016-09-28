@@ -36,7 +36,8 @@ Route::get('/cart/wishlist', 'CartController@wishlist');
 
 //Store Pages
 Route::get('/category/{category}', 'CategoriesController@show');
-Route::get('{product}', 'productsController@show');
+// Route::get('{product}', 'productsController@show');
+Route::resource('/products', 'ProductsController');
 
 
 //Search Pages
