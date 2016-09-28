@@ -22,7 +22,10 @@ class Category extends Model
 	public function scopeFromSlug( $query, $slug ){
 		
 		$pieces = explode('-', $slug);
-		$query->where('id', end($pieces));
+		$query->where([
+				['id', '=', end($pieces)], 
+				['slug', '=', str_replace('-'.end($pieces), '', $slug)],
+			]);
 	}
 
 	public function slugLink( ){
