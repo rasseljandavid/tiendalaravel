@@ -1,7 +1,7 @@
 <div class="product-thumb clearfix">
   <div class="image">
     <a href="{{ $product->slugLink() }}">
-      <img src="image/product/{{ $product->image }}" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" />
+      <img src="image/product/canon_eos_5d_1-220x330.jpg" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" />
     </a>
   </div>
   <div class="caption">
