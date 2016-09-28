@@ -38,26 +38,14 @@
                   </li>
                 </ul>
                 <ul class="price-box">
-                  <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">${{ $product->price }}</span> <span itemprop="price">${{ $product->salePrice }}<span itemprop="availability" content="In Stock"></span></span></li>
-                  <li></li>
-                  <li>Ex Tax: $950.00</li>
+                  <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">{{ $product->price }}</span> <span itemprop="price">{{ $product->salePrice }}<span itemprop="availability" content="In Stock"></span></span></li>
                 </ul>
                 <div id="product">
-                  <h3 class="subtitle">Available Options</h3>
-                  <div class="form-group required">
-                    <label class="control-label">Color</label>
-                    <select class="form-control" id="input-option200" name="option[200]">
-                      <option value=""> --- Please Select --- </option>
-                      <option value="4">Black </option>
-                      <option value="3">Silver </option>
-                      <option value="1">Green </option>
-                      <option value="2">Blue </option>
-                    </select>
-                  </div>
+                 
                   <div class="cart">
                     <div>
                       <div class="qty">
-                        <label class="control-label" for="input-quantity">{{ $product->quantity }}</label>
+                        <label class="control-label" for="input-quantity">Qty</label>
                         <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
                         <a class="qtyBtn plus" href="javascript:void(0);">+</a><br />
                         <a class="qtyBtn mines" href="javascript:void(0);">-</a>

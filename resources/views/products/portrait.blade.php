@@ -1,15 +1,15 @@
 <div class="product-thumb clearfix">
   <div class="image">
     <a href="{{ $product->slugLink() }}">
-      <img src="image/product/canon_eos_5d_1-220x330.jpg" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" />
+      <img src="/image/products/Champi.jpg" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" />
     </a>
   </div>
   <div class="caption">
     <h4><a href="product.html">{{ $product->title }}</a></h4>
     <p class="price">
       @if($product->salePrice)
-        <span class="price-new">${{ $product->salePrice }}</span> 
-        <span class="price-old">${{ $product->price }}</span>
+        <span class="price-new">{{ $product->salePrice }}</span> 
+        <span class="price-old">{{ $product->price }}</span>
         <span class="saving">-{{ $product->getSavings() }}%</span>
       @else
         {{ $product->price }}
