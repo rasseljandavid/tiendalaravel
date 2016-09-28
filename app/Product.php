@@ -33,8 +33,15 @@ class Product extends Model
 		return '/products/'.$this->attributes['slug'].'-'.$this->attributes['id'];
 	}
 
-    public function categories()
-    {
+    public function categories(){
+
         return $this->belongsToMany(Category::class);
+    }
+
+    public function getSavings(){
+
+    	$discount = $this->attributes['price'] - $this->attributes['salePrice'];
+    	$percent = round(($discount / $this->attributes['price']) * 100);
+    	return $percent;
     }
 }

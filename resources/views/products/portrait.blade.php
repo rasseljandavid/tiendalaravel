@@ -1,18 +1,18 @@
 <div class="product-thumb clearfix">
   <div class="image">
-    <a href="product.html">
+    <a href="{{ $product->slugLink() }}">
       <img src="image/product/{{ $product->image }}" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" />
     </a>
   </div>
   <div class="caption">
     <h4><a href="product.html">{{ $product->title }}</a></h4>
     <p class="price">
-      @if($product->savings)
-        <span class="price-new">${{ $product->new_price }}</span> 
-        <span class="price-old">${{ $product->base_price }}</span>
-        <span class="saving">-{{ $product->savings }}</span>
+      @if($product->salePrice)
+        <span class="price-new">${{ $product->salePrice }}</span> 
+        <span class="price-old">${{ $product->price }}</span>
+        <span class="saving">-{{ $product->getSavings() }}%</span>
       @else
-        {{ $product->base_price }}
+        {{ $product->price }}
       @endif
     </p>
     <div class="rating"> 
@@ -22,7 +22,7 @@
           <i class="fa fa-star-o fa-stack-2x"></i>
           @if($rate)
             <i class="fa fa-star fa-stack-2x"></i>
-            {{ $rate-- }}
+            <?php $rate-- ?>
           @endif
         </span> 
       @endfor

@@ -68,7 +68,6 @@ class ProductsController extends Controller
             return 'product do not exists';
         }
 
-        return $product;
         return view('products.show', compact('product'));
     }
 

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('metainfo')
-	<title>Laptop Silver Black : Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="Laptop Silver Black: Tienda - Your First Online Grocery in the Philippines">
+	<title>{{ $product->title }}: Tienda -Your First Online Grocery in the Philippines</title>
+  <meta name="description" content="{{ $product->title }} - Your First Online Grocery in the Philippines">
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
         <!--Middle Part Start-->
         <div id="content" class="col-sm-9">
           <div itemscope itemtype="http://schema.org/Product">
-            <h1 class="title" itemprop="name">Laptop Silver black</h1>
+            <h1 class="title" itemprop="name">{{ $product->title }}</h1>
             <div class="row product-info">
               <div class="col-sm-6">
                 <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="/image/product/macbook_air_1-350x525.jpg" title="Laptop Silver black" alt="Laptop Silver black" data-zoom-image="image/product/macbook_air_1-600x900.jpg" /> </div>
@@ -29,12 +29,16 @@
               <div class="col-sm-6">
                 <ul class="list-unstyled description">
                   <li><b>Brand:</b> <a href="#"><span itemprop="brand">Apple</span></a></li>
-                  <li><b>Product Code:</b> <span itemprop="mpn">Product 17</span></li>
-                  <li><b>Reward Points:</b> 700</li>
-                  <li><b>Availability:</b> <span class="instock">In Stock</span></li>
+                  <li><b>Product Code:</b> <span itemprop="mpn">{{ $product->sku }}</span></li>
+                  <li><b>Reward Points:</b> {{ $product->rewardPoints }}</li>
+                  <li><b>Availability:</b> 
+                    @if($product->quantity) <span class="instock">In Stock </span>
+                    @else <span class="nostock">Out of Stock </span>
+                    @endif
+                  </li>
                 </ul>
                 <ul class="price-box">
-                  <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">$1,202.00</span> <span itemprop="price">$1,142.00<span itemprop="availability" content="In Stock"></span></span></li>
+                  <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">${{ $product->price }}</span> <span itemprop="price">${{ $product->salePrice }}<span itemprop="availability" content="In Stock"></span></span></li>
                   <li></li>
                   <li>Ex Tax: $950.00</li>
                 </ul>
@@ -53,7 +57,7 @@
                   <div class="cart">
                     <div>
                       <div class="qty">
-                        <label class="control-label" for="input-quantity">Qty</label>
+                        <label class="control-label" for="input-quantity">{{ $product->quantity }}</label>
                         <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
                         <a class="qtyBtn plus" href="javascript:void(0);">+</a><br />
                         <a class="qtyBtn mines" href="javascript:void(0);">-</a>
@@ -70,7 +74,19 @@
                 </div>
                 <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                   <meta itemprop="ratingValue" content="0" />
-                  <p><span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span> <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href=""><span itemprop="reviewCount">1 reviews</span></a> / <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href="">Write a review</a></p>
+                  <p>
+                    <?php $rate = $product->rating ?>
+                    @for( $i=1 ; $i <= 5; $i++)
+                      <span class="fa fa-stack">
+                        <i class="fa fa-star-o fa-stack-2x"></i>
+                        @if($rate)
+                          <i class="fa fa-star fa-stack-2x"></i>
+                          <?php $rate-- ?>
+                        @endif
+                      </span> 
+                    @endfor
+                    <span itemprop="reviewCount">1 reviews</span></a> / <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href="">Write a review</a>
+                  </p>
                 </div>
                 <hr>
                 <!-- AddThis Button BEGIN -->
