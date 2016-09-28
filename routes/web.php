@@ -35,6 +35,7 @@ Route::get('/cart/compare', 'CartController@compare');
 Route::get('/cart/wishlist', 'CartController@wishlist');
 
 //Store Pages
+Route::get('/category', 'CategoriesController@index');
 Route::get('/category/{category}', 'CategoriesController@show');
 // Route::get('{product}', 'productsController@show');
 Route::resource('/products', 'ProductsController');

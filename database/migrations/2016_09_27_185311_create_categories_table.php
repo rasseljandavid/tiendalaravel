@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug');
             $table->integer('rank')->default(0);
             $table->string('bannerImage')->nullable();
             $table->integer('parent_id')->default(0);
@@ -32,6 +33,7 @@ class CreateCategoriesTable extends Migration
                 $newCategories = new Category();
                 $newCategories->id = $category->ProductCategoryID;
                 $newCategories->title = $category->ProductCategoryName;
+                $newCategories->slug = $category->ProductCategoryName;
                 $newCategories->save();
             }
         }

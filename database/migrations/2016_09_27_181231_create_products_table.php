@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('sku');
             $table->string('title');
+            $table->string('slug');
             $table->text('body')->nullable();
             $table->integer('quantity')->default(0);
             $table->boolean('is_featured')->default(0);
@@ -40,6 +41,7 @@ class CreateProductsTable extends Migration
             $newProduct->id = $product->ProductID;
             $newProduct->sku = $product->ProductSKU;
             $newProduct->title = $product->ProductDescription;
+            $newProduct->slug = $product->ProductDescription;
             $newProduct->price = $product->ProductSellingPrice * 1.1;
             $newProduct->salePrice = $product->ProductSellingPrice;
             $newProduct->save();

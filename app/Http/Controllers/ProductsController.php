@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use App\Product;
 
 class ProductsController extends Controller
 {
@@ -14,9 +15,14 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+
+        if(!Auth::check() || !Auth::user()->isAdmin()){
+            return redirect(url('/'));
+        }
+
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -41,7 +47,11 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!Auth::check() || !Auth::user()->isAdmin()){
+            return redirect(url('/'));
+        }
+
+        return 'store';
     }
 
     /**
@@ -50,9 +60,16 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $slug )
     {
-        //
+        $product = Product::fromSlug($slug)->first();
+
+        if(!$product){
+            return 'product do not exists';
+        }
+
+        return $product;
+        return view('products.show', compact('product'));
     }
 
     /**
