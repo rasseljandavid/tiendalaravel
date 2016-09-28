@@ -30,7 +30,7 @@ class CategoriesController extends Controller
             return 'category do not exists';
         }
 
-        return $category;
-        return view('category.show', compact('category'));
+        $products = $category->getProductByCategory();
+        return view('category.show', compact('products'));
     }
 }
