@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
+	protected $fillable = [
+			'title', 'slug', 'rank', 'bannerImage', 'parent_id'
+		];
+
 	public function setSlugAttribute( $slug ){
 
 		$text = preg_replace('~[^\pL\d]+~u', '-', $slug);

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+	protected $fillable = [
+			'sku', 'title', 'slug', 'body', 'quantity', 'is_featured', 'is_special', 'is_bestSeller', 'price', 'salePrice', 'rating', 'rank', 'rewardPoints', 'supplier_id'
+		];
+
 	public function setSlugAttribute( $slug ){
 		
 		$text = preg_replace('~[^\pL\d]+~u', '-', $slug);
