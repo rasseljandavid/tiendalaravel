@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -25,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $products = [];
+        $beverages = Category::fromSlug('beverages-2')->first();
+        $products['Beverages'] = $beverages->getProductByCategory();
+        $beverages = Category::fromSlug('beverages-2')->first();
+        $products['Snacks']    = $beverages->getProductByCategory();
+
         $featured = [];
 
         for ($i=0; $i < 4; $i++) { 
@@ -79,7 +85,8 @@ class HomeController extends Controller
 
         return view('home', [
             'featured'=>$featured,
-            'latest'=>$latest
+            'latest'=>$latest,
+            'products'=>$products
             ]);
     }
 }
