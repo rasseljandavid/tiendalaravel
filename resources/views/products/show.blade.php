@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-    
     <div class="container">
       <!-- Breadcrumb Start-->
       <ul class="breadcrumb">

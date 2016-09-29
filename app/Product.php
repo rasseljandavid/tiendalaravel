@@ -7,21 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+	/*---------- PROTECTED VARAIBLES ----------*/
+
 	protected $fillable = [
 			'sku', 'title', 'slug', 'body', 'quantity', 'is_featured', 'is_special', 'is_bestSeller', 'price', 'salePrice', 'rating', 'rank', 'rewardPoints', 'supplier_id'
 		];
 
-	public function setSlugAttribute( $slug ){
-		
-		$text = preg_replace('~[^\pL\d]+~u', '-', $slug);
-		$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-		$text = preg_replace('~[^-\w]+~', '', $text);
-		$text = trim($text, '-');
-		$text = preg_replace('~-+~', '-', $text);
-		$text = strtolower($text);
 
-		$this->attributes['slug'] = $text;
+	/*---------- SET<>ATTRIBUTE ----------*/
+
+	public function setSlugAttribute( $slug ){
+	
+		$this->attributes['slug'] = setSlug($slug);
 	}
+
+
+	/*---------- GET<>ATTRIBUTE ----------*/
+
+	public function getPriceAttribute($price) {
+   		return $this->attributes['price']     = number_format((double)$price, 2);
+	}
+
+	public function getSalePriceAttribute($salePrice) {
+   		return $this->attributes['salePrice'] = number_format((double)$salePrice, 2);
+	}
+
+
+	/*---------- SCOPES ----------*/
 
 	public function scopeFromSlug( $query, $slug ){
 		
@@ -32,15 +44,20 @@ class Product extends Model
 			]);
 	}
 
+	/*---------- RELATIONS ----------*/
+
+	public function categories(){
+
+        return $this->belongsToMany(Category::class);
+    }
+
+
+    /*---------- CUSTOM METHODS ----------*/
+
 	public function slugLink( ){
 		
 		return '/products/'.$this->attributes['slug'].'-'.$this->attributes['id'];
 	}
-
-    public function categories(){
-
-        return $this->belongsToMany(Category::class);
-    }
 
     public function getSavings(){
 
@@ -54,11 +71,5 @@ class Product extends Model
     	return;
     }
 
-    public function getPriceAttribute($price) {
-   		return $this->attributes['price']     = number_format((double)$price, 2);
-	}
 
-	public function getSalePriceAttribute($salePrice) {
-   		return $this->attributes['salePrice'] = number_format((double)$salePrice, 2);
-	}
 }

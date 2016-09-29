@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /*---------- PROTECTED VARAIBLES ----------*/
+
     /**
      * The attributes that are mass assignable.
      *
@@ -31,20 +33,36 @@ class User extends Authenticatable
     ];
 
 
+
+    /*---------- SET<>ATTRIBUTE ----------*/
+
     public function setPasswordAttribute( $password ){
         
         $this->attributes['password'] = bcrypt($password);
     }
+
+
+
+    /*---------- GET<>ATTRIBUTE ----------*/
 
     public function getFullname(  ){
         
         return $this->attributes['firstname'].' '.$this->attributes['lastname'];
     }
 
+
+
+    /*---------- SCOPES ----------*/
+    /*---------- RELATIONS ----------*/
+
     public function addresses( ){
         
         return $this->hasMany(Address::class);
     }
+
+
+
+    /*---------- CUSTOM METHODS ----------*/
 
     public function getShippingAddress(  ){
         
