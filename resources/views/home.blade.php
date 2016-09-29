@@ -57,15 +57,18 @@
           
           <!-- Brand Logo Carousel Start-->
           <div id="carousel" class="owl-carousel nxt">
-            <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="Palm" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="Sony" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="Canon" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="Apple" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="HTC" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="Hewlett-Packard" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="brand" class="img-responsive" /></a> </div>
-            <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="brand1" class="img-responsive" /></a> </div>
-          </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner11.jpg" alt="Coca-cola" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner1.jpg" alt="Nutri Snack" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner2.jpg" alt="Monde Nissin" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner3psd.jpg" alt="Columbia's" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner4.jpg" alt="Zesto" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner5.jpg" alt="URC" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner6.jpg" alt="ECCO" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner7.jpg" alt="Mondelez" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner8.jpg" alt="Del Monte" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner9.jpg" alt="Nutri Asia" class="img-responsive" /></a> </div>
+            <div class="item text-center"> <a href="#"><img src="image/products/tienda-partner10.jpg" alt="Pepsi" class="img-responsive" /></a> </div>
+            
           <!-- Brand Logo Carousel End -->
         </div>
         <!--Middle Part End-->
