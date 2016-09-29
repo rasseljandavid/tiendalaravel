@@ -31,7 +31,7 @@
       <!-- Banner End-->
 
       <!-- Product Tab Start -->
-      {{-- @include('tabulars.simple', ['featured'=>$featured, 'latest'=>$latest]) --}}
+      @include('tabulars.simple', ['featured'=>$products['featured'], 'bestseller'=>$products['bestseller'], 'special'=>$products['special']])
       <!-- Product Tab End -->
 
 
@@ -47,11 +47,12 @@
 
 
       <!-- Categories Product Slider Start-->
-      {{-- @include('tabulars.singletab', ['subtitle'=>'Snacks','products'=>$products['Snacks'], 'latest'=>$latest]) --}}
+      <h3 class="subtitle">Snacks - <a class="viewall" href="/category/snacks-3">view all</a></h3>
+      @include('tabulars.singletab', ['subtitle'=>'Snacks','products'=>$products['Snacks']])
       <!-- Categories Product Slider End-->
           
       <!-- Categories Product Slider Start -->
-      <h3 class="subtitle">Beverages - <a class="viewall" href="category.html">view all</a></h3>
+      <h3 class="subtitle">Beverages - <a class="viewall" href="/category/beverages-2">view all</a></h3>
       @include('tabulars.singletab', ['subtitle'=>'Beverages','products'=>$products['Beverages']])
       <!-- Categories Product Slider End -->
           

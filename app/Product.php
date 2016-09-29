@@ -71,5 +71,21 @@ class Product extends Model
     	return;
     }
 
+    public function getFeaturedProduct() {
+    	return $this->where('is_featured', true)->get();
+    }
+    public function getBestSellerProduct() {
+    	return $this->where('is_bestSeller', true)->get();	
+    }
+    public function getSpecialProduct() {
+    	return $this->where('is_special', true)->get();
+    }
+    public function getLatestProduct() {
+    	
+    }
+    		
+    		
+    		
+
 
 }

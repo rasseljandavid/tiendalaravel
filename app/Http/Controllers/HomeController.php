@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Category;
 
+use App\Product;
+
 class HomeController extends Controller
 {
     /**
@@ -28,9 +30,16 @@ class HomeController extends Controller
         $products = [];
         $beverages = Category::fromSlug('beverages-2')->first();
         $products['Beverages'] = $beverages->getProductByCategory();
-        $beverages = Category::fromSlug('beverages-2')->first();
+        $beverages = Category::fromSlug('snacks-3')->first();
         $products['Snacks']    = $beverages->getProductByCategory();
 
+        $p = new product;
+
+        $products['featured'] = $p->getFeaturedProduct();
+        $products['bestseller'] = $p->getBestSellerProduct();
+        $products['special'] = $p->getSpecialProduct();
+
+        $category = Category::all();
         // $featured = [];
 
         // for ($i=0; $i < 4; $i++) { 
@@ -86,6 +95,7 @@ class HomeController extends Controller
         return view('home', [
             // 'featured'=>$featured,
             // 'latest'=>$latest,
+            'category'=>$category,
             'products'=>$products
             ]);
     }

@@ -9,54 +9,79 @@
 
     <div id="tab-featured" class="tab_content">
       <div class="owl-carousel product_carousel_tab">
+      @if(count($featured))
         @foreach( $featured as $product )
           @include('products.portrait', ['product'=>$product])
         @endforeach
+      @else 
+        <div>
+          <h1>No Product</h2>
+        </div>
+      @endif
       </div>
     </div>
     
     <div id="tab-latest" class="tab_content">
       <div class="owl-carousel product_carousel_tab">
-        @foreach( $latest as $product )
-          @include('products.portrait', ['product'=>$product])
-        @endforeach
+        <div class="product-thumb">
+          <div class="image"><a href="product.html"><img src="image/product/FinePix-Long-Zoom-Camera-220x330.jpg" alt="FinePix S8400W Long Zoom Camera" title="FinePix S8400W Long Zoom Camera" class="img-responsive" /></a></div>
+          <div class="caption">
+            <h4><a href="product.html">FinePix S8400W Long Zoom Camera</a></h4>
+            <p class="price"> $122.00 </p>
+          </div>
+          <div class="button-group">
+            <button class="btn-primary" type="button" onClick=""><span>Add to Cart</span></button>
+            <div class="add-to-links">
+              <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
+              <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="product-thumb">
+          <div class="image"><a href="product.html"><img src="image/product/nikon_d300_1-220x330.jpg" alt="Digital Camera for Elderly" title="Digital Camera for Elderly" class="img-responsive" /></a></div>
+          <div class="caption">
+            <h4><a href="product.html">Digital Camera for Elderly</a></h4>
+            <p class="price"> <span class="price-new">$92.00</span> <span class="price-old">$98.00</span> <span class="saving">-6%</span> </p>
+          </div>
+          <div class="button-group">
+            <button class="btn-primary" type="button" onClick=""><span>Add to Cart</span></button>
+            <div class="add-to-links">
+              <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
+              <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div id="tab-bestseller" class="tab_content">
-      <div class="owl-carousel product_carousel_tab">
-                    <div class="product-thumb">
-                      <div class="image"><a href="product.html"><img src="image/product/FinePix-Long-Zoom-Camera-220x330.jpg" alt="FinePix S8400W Long Zoom Camera" title="FinePix S8400W Long Zoom Camera" class="img-responsive" /></a></div>
-                      <div class="caption">
-                        <h4><a href="product.html">FinePix S8400W Long Zoom Camera</a></h4>
-                        <p class="price"> $122.00 </p>
-                      </div>
-                      <div class="button-group">
-                        <button class="btn-primary" type="button" onClick=""><span>Add to Cart</span></button>
-                        <div class="add-to-links">
-                          <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-                          <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="product-thumb">
-                      <div class="image"><a href="product.html"><img src="image/product/nikon_d300_1-220x330.jpg" alt="Digital Camera for Elderly" title="Digital Camera for Elderly" class="img-responsive" /></a></div>
-                      <div class="caption">
-                        <h4><a href="product.html">Digital Camera for Elderly</a></h4>
-                        <p class="price"> <span class="price-new">$92.00</span> <span class="price-old">$98.00</span> <span class="saving">-6%</span> </p>
-                      </div>
-                      <div class="button-group">
-                        <button class="btn-primary" type="button" onClick=""><span>Add to Cart</span></button>
-                        <div class="add-to-links">
-                          <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-                          <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div class="owl-carousel product_carousel_tab">         
+        @if(count($bestseller)) 
+          @foreach( $bestseller as $product )
+            @include('products.portrait', ['product'=>$product])
+          @endforeach
+        @else 
+        <div>
+          <h1>No Product</h2>
+        </div>
+      @endif
+      </div>
     </div>
 
     <div id="tab-special" class="tab_content">
+      <div class="owl-carousel product_carousel_tab"> 
+      @if(count($special))        
+        @foreach( $special as $product )
+          @include('products.portrait', ['product'=>$product])
+        @endforeach
+      @else 
+        <div>
+          <h1>No Product</h2>
+        </div>
+      @endif 
+      </div>
+    </div>
+    <!-- <div id="tab-special" class="tab_content">
       <div class="owl-carousel product_carousel_tab">
                     <div class="product-thumb">
                       <div class="image"><a href="product.html"><img src="image/product/ipod_touch_1-220x330.jpg" alt="Samsung Galaxy S4" title="Samsung Galaxy S4" class="img-responsive" /></a></div>
@@ -144,6 +169,6 @@
                       </div>
                     </div>
                   </div>
-    </div>
+    </div> -->
 
   </div> 
