@@ -33,6 +33,7 @@ Route::get('/cart/show', 'CartController@show');
 Route::get('/cart/checkout', 'CartController@checkout');
 Route::get('/cart/compare', 'CartController@compare');
 Route::get('/cart/wishlist', 'CartController@wishlist');
+Route::post('/cart/addItem', 'CartController@addItem');
 
 //Store Pages
 Route::get('/category', 'CategoriesController@index');

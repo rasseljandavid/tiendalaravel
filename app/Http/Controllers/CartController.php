@@ -24,4 +24,13 @@ class CartController extends Controller
     	return view('cart.wishlist');
     }
 
+    public function addItem( Request $request ){
+        
+        $this->validate($request, [
+                'cart_item_quantity' => "required|numeric|min:1",
+                'product_id' => "required|numeric"
+            ]);
+
+        return $request->all();
+    }
 }
