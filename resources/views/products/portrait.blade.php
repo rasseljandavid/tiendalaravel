@@ -29,7 +29,8 @@
     </div>
   </div>
   <div class="button-group">
-    <button class="btn-primary" type="button" onClick="cart.add({{ $product->id }});"><span>Add to Cart</span></button>
+    @include('cart._addtocart', ['id'=>$product->id,  'input'=>1, 'class'=>'btn-primary'])
+    <!-- <button class="btn-primary" type="button" onClick="cart.add({{ $product->id }});"><span>Add to Cart</span></button> -->
     <div class="add-to-links">
       <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
       <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>

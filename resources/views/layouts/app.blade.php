@@ -17,6 +17,9 @@
 <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
 <!-- CSS Part End-->
+<!-- JS Essential Start-->
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<!-- JS Essential End -->
 </head>
 <body>
 <div class="wrapper-wide">
@@ -394,7 +397,9 @@
     <!-- Main Menu End-->
   </div>
   <div id="container">
+        @include('errors.validation')
         @yield('content')
+
   </div>
   <!-- Feature Box Start-->
     <div class="container">
@@ -536,7 +541,7 @@
   <!-- Facebook Side Block End -->
 </div>
 <!-- JS Part Start-->
-<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script> -->
 <script type="text/javascript" src="/js/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/jquery.easing-1.3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.dcjqaccordion.min.js"></script>
