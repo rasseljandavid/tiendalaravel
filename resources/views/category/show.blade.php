@@ -287,7 +287,17 @@
             </div>
           </div>
           <br />
+
+          <!-- Showing of Products per Category -->
           <div class="row products-category">
+            @foreach( $products as $product )
+            <div class="product-layout product-list col-xs-12">
+              @include('products.portrait', ['product'=>$product])
+            </div>
+            @endforeach
+          </div>
+          <!-- End -->
+          <!-- <div class="row products-category">
             <div class="product-layout product-list col-xs-12">
               <div class="product-thumb">
                 <div class="image"><a href="product.html"><img src="/image/product/macbook_pro_1-220x330.jpg" alt=" Strategies for Acquiring Your Own Laptop " title=" Strategies for Acquiring Your Own Laptop " class="img-responsive" /></a></div>
@@ -530,7 +540,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="col-sm-6 text-left">
               <ul class="pagination">
