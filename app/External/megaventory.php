@@ -18,6 +18,23 @@ class Megaventory {
 			]);
 	}
 
+	public	function getSuppliers() {
+
+		$supplierClients = $this->megaventoryRequest('SupplierClientGet', [
+				'APIKEY' => $this->apikey,
+				'query'  => "mv.SupplierClientComments != ''"
+			]);
+		
+		$suppliers = array();
+		foreach($supplierClients as $item) {
+			if($item->SupplierClientType == 'Supplier') {
+				$suppliers[] = $item;
+			}
+		}
+
+		return $suppliers;
+	}
+
 	public function getProducts($includeReferencedObjects = false) {
 
 		return $this->megaventoryRequest('ProductGet', [
@@ -89,6 +106,9 @@ class Megaventory {
 				break;
 			case 'SalesOrderUpdate':
 				return 'mvSalesOrder';
+				break;
+			case 'SupplierClientGet':
+				return 'mvSupplierClients';
 				break;
 
 		}

@@ -39,6 +39,7 @@ class CreateProductsTable extends Migration
         foreach($products as $product) {
             $newProduct = new Product();
             $newProduct->id = $product->ProductID;
+            $newProduct->supplier_id = $product->ProductMainSupplierID;
             $newProduct->sku = $product->ProductSKU;
             $newProduct->title = $product->ProductDescription;
             $newProduct->slug = $product->ProductDescription;
