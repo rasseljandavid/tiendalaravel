@@ -4,6 +4,7 @@
 	<input type="hidden" name="product_id" value="{{ $id }}">
 	<button type="submit" class="{{ $class }}" ><span>Add to Cart</span></button>
 </form>
+@section('script')
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".form-addtocart").each(function(){
@@ -18,3 +19,4 @@
 		});
 	});
 </script>
+@endsection
