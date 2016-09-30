@@ -24,7 +24,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/External/megaventory.php",
+            "app/Helpers/Megaventory.php",
             "app/Helpers/Slugger.php"
         ]
     },
