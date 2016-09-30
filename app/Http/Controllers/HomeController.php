@@ -28,9 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = [];
-        $beverages = Category::fromSlug('beverages-2')->first();
+        $beverages = Category::fromSlug('beverages')->first();
         $products['Beverages'] = $beverages->getProductByCategory()->take(20);
-        $beverages = Category::fromSlug('snacks-3')->first();
+        $beverages = Category::fromSlug('snacks')->first();
         $products['Snacks']    = $beverages->getProductByCategory()->take(20);
 
         $p = new product;
