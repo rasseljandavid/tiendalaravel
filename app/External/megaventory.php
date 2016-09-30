@@ -22,17 +22,10 @@ class Megaventory {
 
 		$supplierClients = $this->megaventoryRequest('SupplierClientGet', [
 				'APIKEY' => $this->apikey,
-				'query'  => "mv.SupplierClientComments != ''"
+				'query'  => "mv.SupplierClientComments != '' AND mv.SupplierClientType = 1"
 			]);
-		
-		$suppliers = array();
-		foreach($supplierClients as $item) {
-			if($item->SupplierClientType == 'Supplier') {
-				$suppliers[] = $item;
-			}
-		}
 
-		return $suppliers;
+		return $supplierClients;
 	}
 
 	public function getProducts($includeReferencedObjects = false) {
