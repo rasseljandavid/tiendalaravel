@@ -17,10 +17,12 @@
 
             @include('home.featured_products')
 
-            @include('home.banner', ['size'=>'big']);
+            @include('home.banner', ['size'=>'big'])
           
-            <!--   nclude('tabulars.singleta -->
+            @include('home.featured_categories')
+
             @include('home.suppliers');
+
         </div>
     </div>
 </div>

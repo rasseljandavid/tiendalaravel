@@ -28,12 +28,12 @@ class HomeController extends Controller
     public function index()
     {
        
-        $category = [];
+        $categories = [];
 
-        // $beverages = (Category::fromSlug('beverages')->first())->getProductByCategory()->take(20);
-        // $category['Beverages'] = $beverages;
-        // $beverages = Category::fromSlug('snacks')->first();
-        // $products['Snacks']    = $beverages->getProductByCategory()->take(20);
+        $beverages = Category::fromSlug('beverages')->first();
+        $categories['Beverages'] = $beverages->getProductByCategory()->take(10);
+        $beverages = Category::fromSlug('snacks')->first();
+        $categories['Snacks']    = $beverages->getProductByCategory()->take(10);
 
         $p = new product;
         $featured = [];
@@ -41,6 +41,6 @@ class HomeController extends Controller
         $featured['bestseller'] = $p->getBestSellerProduct()->take(10);
         $featured['special'] = $p->getSpecialProduct()->take(10);
         
-        return view('home.index', compact('featured'));
+        return view('home.index', compact('featured', 'categories'));
     }
 }
