@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('metainfo')
-	<title>Snacks Category : Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="Snacks Category : Tienda - Your First Online Grocery in the Philippines">
+	<title>{{ $category->title }} Category : Tienda -Your First Online Grocery in the Philippines</title>
+  <meta name="description" content="{{ $category->title }} Category : Tienda - Your First Online Grocery in the Philippines">
 @endsection
 
 @section('content')
