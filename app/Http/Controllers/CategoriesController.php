@@ -31,6 +31,6 @@ class CategoriesController extends Controller
         }
 
         $products = $category->getProductByCategory();
-        return view('category.show', compact('categories', 'products'));
+        return view('category.show', compact('categories', 'products', 'category'));
     }
 }
