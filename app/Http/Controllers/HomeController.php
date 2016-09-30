@@ -42,7 +42,7 @@ class HomeController extends Controller
         $category = Category::all();
         
 
-        return view('home', [
+        return view('home.index', [
             'category'=>$category,
             'products'=>$products
             ]);

@@ -38,7 +38,7 @@ Route::post('/cart/addItem', 'CartController@addItem');
 //Store Pages
 Route::get('/category', 'CategoriesController@index');
 Route::get('/category/{category}', 'CategoriesController@show');
-// Route::get('{product}', 'productsController@show');
+Route::get('{product}', 'productsController@show');
 Route::resource('/products', 'ProductsController');
 
 
