@@ -21,7 +21,7 @@
             <h1 class="title" itemprop="name">{{ $product->title }}</h1>
             <div class="row product-info">
               <div class="col-sm-6">
-                <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="/image/product/{{ $product->id .'jpg' }}" title="{{ $product->title }}" alt="{{ $product->title }}" data-zoom-image="image/product/macbook_air_1-600x900.jpg" /> </div>
+                <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="/image/product/{{ $product->id .'.jpg' }}" title="{{ $product->title }}" alt="{{ $product->title }}" data-zoom-image="image/product/macbook_air_1-600x900.jpg" /> </div>
                 <div class="center-block text-center"><span class="zoom-gallery"><i class="fa fa-search"></i> Click image for Gallery</span></div>
                 <div class="image-additional" id="gallery_01"> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_1-600x900.jpg" data-image="image/product/macbook_air_1-350x525.jpg" title="Laptop Silver black"> <img src="/image/product/macbook_air_1-66x99.jpg" title="Laptop Silver black" alt = "Laptop Silver black"/></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_4-600x900.jpg" data-image="image/product/macbook_air_4-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_4-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_2-600x900.jpg" data-image="image/product/macbook_air_2-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_2-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_3-600x900.jpg" data-image="image/product/macbook_air_3-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_3-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> </div>
               </div>
@@ -43,14 +43,8 @@
                  
                   <div class="cart">
                     <div>
-                      <div class="qty">
-                        <label class="control-label" for="input-quantity">Qty</label>
-                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
-                        <a class="qtyBtn plus" href="javascript:void(0);">+</a><br />
-                        <a class="qtyBtn mines" href="javascript:void(0);">-</a>
-                        <div class="clear"></div>
-                      </div>
-                      @include('cart._addtocart', ['id'=>$product->id, 'input'=>'input-quantity', 'class'=>'btn btn-primary btn-lg'])
+                      
+                      @include('cart._addtocart', ['id'=>$product->id, 'quantifier'=>true, 'btnclass'=>'btn btn-primary btn-lg'])
                     </div>
                     <div>
                       <button type="button" class="wishlist" onClick=""><i class="fa fa-heart"></i> Add to Wish List</button>

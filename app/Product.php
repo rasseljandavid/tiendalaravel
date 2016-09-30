@@ -38,9 +38,10 @@ class Product extends Model
 	public function scopeFromSlug( $query, $slug ){
 		
 		$pieces = explode('-', $slug);
+		$slug = substr_replace($slug, '', strrpos($slug, '-'.end($pieces)), strlen('-'.end($pieces)));
 		$query->where([
 				['id', '=', end($pieces)], 
-				['slug', '=', str_replace('-'.end($pieces), '', $slug)],
+				['slug', '=', $slug],
 			]);
 	}
 

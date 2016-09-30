@@ -26,11 +26,7 @@ class Category extends Model
 
 	public function scopeFromSlug( $query, $slug ){
 		
-		$pieces = explode('-', $slug);
-		$query->where([
-				['id', '=', end($pieces)], 
-				['slug', '=', str_replace('-'.end($pieces), '', $slug)],
-			]);
+		$query->where('slug', $slug);
 	}
 
 
@@ -47,7 +43,7 @@ class Category extends Model
 
 	public function slugLink( ){
 		
-		return '/category/'.$this->attributes['slug'].'-'.$this->attributes['id'];
+		return '/category/'.$this->attributes['slug'];
 	}
 
 	public function getProductByCategory() {
