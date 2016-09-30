@@ -1,22 +1,16 @@
 <form method="POST" action="{{ url('/cart/addItem') }}" class="form form-addtocart">
 	{{ csrf_field() }}
-	<input type="hidden" id="cart-item-quantity" name="cart_item_quantity" value>
+	@if( $quantifier )
+	<div class="qty">
+		<label class="control-label" for="input-quantity">Qty</label>
+		<input type="text" name="cart_item_quantity" value="1" size="2" id="input-quantity" class="form-control" />
+		<a class="qtyBtn plus" href="javascript:void(0);">+</a><br />
+		<a class="qtyBtn mines" href="javascript:void(0);">-</a>
+		<div class="clear"></div>
+	</div>
+	@else
+		<input type="hidden" id="cart-item-quantity" name="cart_item_quantity" value="1">
+	@endif
 	<input type="hidden" name="product_id" value="{{ $id }}">
-	<button type="submit" class="{{ $class }}" ><span>Add to Cart</span></button>
+	<button type="submit" class="{{ $btnclass }}" ><span>Add to Cart</span></button>
 </form>
-@section('script')
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".form-addtocart").each(function(){
-			var form = $(this);
-			form.submit(function(e){
-				@if( is_numeric($input) )
-					form.children("#cart-item-quantity").val({{ $input }});
-				@else
-					form.children("#cart-item-quantity").val($("#{{ $input }}").val());
-				@endif
-			});
-		});
-	});
-</script>
-@endsection

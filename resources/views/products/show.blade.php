@@ -43,14 +43,8 @@
                  
                   <div class="cart">
                     <div>
-                      <div class="qty">
-                        <label class="control-label" for="input-quantity">Qty</label>
-                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
-                        <a class="qtyBtn plus" href="javascript:void(0);">+</a><br />
-                        <a class="qtyBtn mines" href="javascript:void(0);">-</a>
-                        <div class="clear"></div>
-                      </div>
-                      @include('cart._addtocart', ['id'=>$product->id, 'input'=>'input-quantity', 'class'=>'btn btn-primary btn-lg'])
+                      
+                      @include('cart._addtocart', ['id'=>$product->id, 'quantifier'=>true, 'btnclass'=>'btn btn-primary btn-lg'])
                     </div>
                     <div>
                       <button type="button" class="wishlist" onClick=""><i class="fa fa-heart"></i> Add to Wish List</button>
