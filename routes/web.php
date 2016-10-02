@@ -26,7 +26,7 @@ Route::get('/contact-us', 'PagesController@contact');
 Route::get('/sitemap', 'PagesController@sitemap');
 
 // User
-Route::get('/account', 'UsersController@[show]');
+Route::get('/account', 'UsersController@show');
 
 // Cart
 Route::get('/cart/show', 'CartController@show');
@@ -38,8 +38,10 @@ Route::post('/cart/addItem', 'CartController@addItem');
 //Store Pages
 Route::get('/category', 'CategoriesController@index');
 Route::get('/category/{category}', 'CategoriesController@show');
-Route::get('{product}', 'productsController@show');
-Route::resource('/products', 'ProductsController');
+// Route::get('{product}', 'productsController@show');
+
+Route::get('/products', 'ProductsController@index');
+Route::get('/products/{slug}', 'ProductsController@show');
 
 
 //Search Pages

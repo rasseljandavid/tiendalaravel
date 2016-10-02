@@ -74,6 +74,13 @@ class User extends Authenticatable
         return $this->addresses->where('is_billing','1')->first();
     }
 
+    public static function getUserId(){
+        if(!Auth::check())
+            return 0;
+
+        return Auth::user()->id;
+    }
+
     public function isAdmin(  ){
         
         if(Auth::user()->id != 1)

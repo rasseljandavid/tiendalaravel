@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
 
 class Orderitem extends Model
 {
@@ -17,6 +18,15 @@ class Orderitem extends Model
 	/*---------- SET<>ATTRIBUTE ----------*/
 	/*---------- GET<>ATTRIBUTE ----------*/
 	/*---------- SCOPES ----------*/
+
 	/*---------- RELATIONS ----------*/
+	
+	public function order(  ){
+		
+		return $this->belongsTo(Order::class);
+	}
+
+
+
 	/*---------- CUSTOM METHODS ----------*/
 }

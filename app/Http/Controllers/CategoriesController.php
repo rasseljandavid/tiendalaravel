@@ -11,11 +11,12 @@ use App\Category;
 class CategoriesController extends Controller
 {
 
-	public function index(  ){
+    public function __construct(  ){
+        
+        $this->middleware('admin', ['only'=> ['index']]);
+    }
 
-		if(!Auth::check() || !Auth::user()->isAdmin()){
-            return redirect(url('/'));
-        }
+	public function index(  ){
 
         $categories = Category::all();
 

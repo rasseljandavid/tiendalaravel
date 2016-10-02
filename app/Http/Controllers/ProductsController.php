@@ -10,16 +10,18 @@ use App\Product;
 
 class ProductsController extends Controller
 {
+
+    public function __construct(  ){
+        
+        $this->middleware('admin', ['only'=> ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(){
-
-        if(!Auth::check() || !Auth::user()->isAdmin()){
-            return redirect(url('/'));
-        }
 
         $products = Product::all();
         return view('products.index', compact('products'));

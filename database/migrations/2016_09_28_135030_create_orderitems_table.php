@@ -19,7 +19,7 @@ class CreateOrderitemsTable extends Migration
             $table->integer('quantity')->default(1);
             $table->double('price', 10, 4);
             $table->integer('product_id')->unsigned();
-            $table->string('title');
+            $table->string('title')->default('');
             $table->timestamps();
         });
     }

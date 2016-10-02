@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Category;
-
 use App\Product;
+use App\Http\Controllers\CartController as Cart;
 
 class HomeController extends Controller
 {
@@ -27,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
+        
+        // return session()->flush();
+
         $categories = [];
 
         $beverages = Category::fromSlug('beverages')->first();
