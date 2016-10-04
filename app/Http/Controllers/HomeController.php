@@ -28,7 +28,11 @@ class HomeController extends Controller
     public function index()
     {
         
-        // return session()->flush();
+        $cart = Cart::getCart();
+        $session = session()->get('tienda-cart');
+        // return $session;
+        // return $cart;
+
 
         $categories = [];
 

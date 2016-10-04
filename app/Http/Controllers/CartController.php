@@ -9,12 +9,25 @@ use App\User;
 use App\Order;
 use App\Orderitem;
 use App\Product;
+use Auth;
 
 
 class CartController extends Controller
 {
-    // this is generally an order
-    private static $cart = null;
+    // this is an instace of an order
+    public $cart = null;
+
+    public function __construct(  ){
+        $this->middleware('admin', ['only' => ['index']]);
+    }
+
+    public function index(  ){
+        $cart = self::getCart();
+        if(!$cart)
+            return 'no cart';
+        $cart['orderitems'] = $cart->orderitems;
+        return $cart;
+    }
 
     public function show() {
     	return view('cart.show');
@@ -39,7 +52,7 @@ class CartController extends Controller
                 'product_id' => "required|numeric"
             ]);
 
-        if(!self::$cart){
+        if(!$this->cart){
             $this->makeCart();
         }
 
@@ -53,23 +66,39 @@ class CartController extends Controller
         $request['quantity'] = $request['cart_item_quantity'];
         $request['price'] = ($product->salePrice ? $product->salePrice : $product->price);
 
-        self::$cart->addOrderitem($request->all());
+        $this->cart->addOrderitem($request->all());
 
-        $cart = self::$cart;
+        $cart = $this->cart;
+        $cart['orderitems'] = $cart->orderitems;
+        return $cart;
         return redirect()->back();
+    }
+
+    public static function getCart(  ){
+        
+        if(Auth::check()){
+            $order = Order::where([
+                ['user_id', '=', User::getUserId()],
+                ['purchased_at', '=', null],
+            ])->first();
+            return $order;
+        }
+
+        if(self::getCartSession()){
+            $order = Order::where([
+                ['user_id', '=', User::getUserId()],
+                ['session', '=', self::getCartSession()], 
+                ['purchased_at', '=', null],
+            ])->first();
+            return $order;
+        }
+    
+        return null;
     }
 
     private function makeCart(  ){
 
-        $order = null;
-
-        if(session()->get('tienda-cart')){
-             $order = Order::where([
-                ['user_id', '=', User::getUserId()],
-                ['session', '=', session()->get('tienda-cart')], 
-                ['purchased_at', '=', null],
-            ])->first();
-        }
+        $order = self::getCart();
         
         if(!$order){
             $session = $this->setCartSession();
@@ -80,16 +109,26 @@ class CartController extends Controller
             $order->save();
         }
 
-        self::$cart = $order;
+        $this->cart = $order;
         unset($order);
     }
 
+    public function combine(){
+
+        Order::mergeWithPrevious();
+
+        return self::getCart();
+    }
 
     private function setCartSession(){
 
         $session = hash('ripemd160', $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
         session()->set('tienda-cart', $session);
         return session()->get('tienda-cart');
+    }
+
+    public static function getCartSession(  ){
+        return (session()->get('tienda-cart') ? session()->get('tienda-cart') : null);
     }
 
     
