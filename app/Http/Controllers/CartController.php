@@ -60,17 +60,22 @@ class CartController extends Controller
 
         // check product quantity
         if($request['cart_item_quantity'] > $product->quantity){
+            flash('warning', 'Please add a valid quantity for '.$product->title);
             redirect(url('/'));
         }
 
         $request['quantity'] = $request['cart_item_quantity'];
         $request['price'] = ($product->salePrice ? $product->salePrice : $product->price);
 
-        $this->cart->addOrderitem($request->all());
 
         $cart = $this->cart;
-        $cart['orderitems'] = $cart->orderitems;
-        return $cart;
+        try{
+            $cart->addOrderitem($request->all());
+            $cart['orderitems'] = $cart->orderitems;
+            flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
+        }catch(Exception $e){
+            flash('error', 'Error occured: Please try again');
+        }
         return redirect()->back();
     }
 
@@ -116,8 +121,8 @@ class CartController extends Controller
     public function combine(){
 
         Order::mergeWithPrevious();
-
-        return self::getCart();
+        flash('success', 'Welcome back '.Auth::user()->getFullname());
+        return redirect('/');
     }
 
     private function setCartSession(){

@@ -15,7 +15,9 @@
 <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
 <link rel="stylesheet" type="text/css" href="/css/stylesheet-skin2.css" />
 <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+<link rel="stylesheet" type="text/css" href="/css/helpers/flasher.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
+
 <!-- CSS Part End-->
 </head>
 <body>
@@ -397,6 +399,7 @@
     <!-- Main Menu End-->
   </div>
   <div id="container">
+        @include('helpers.flasher')
         @include('errors.validation')
         @yield('content')
 
@@ -549,8 +552,11 @@
 <script type="text/javascript" src="/js/custom.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-  $('#error-close').click(function(){
-    $(this).parents('.error-container').slideToggle(300);
+
+  $('.message-close').each(function(){
+    $(this).click(function(){
+      $(this).parents('div .alert').slideToggle(300);
+    });
   });
 });
 </script>

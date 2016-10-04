@@ -44,8 +44,6 @@ class Order extends Model
 			$oi->price = $request->price;
 			$oi->save(); 
 
-			return $oi;
-
     	}else{
 
     		$oi = $this->orderitems()->where('product_id', $request['product_id'])->first();

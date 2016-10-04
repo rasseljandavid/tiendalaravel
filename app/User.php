@@ -44,14 +44,6 @@ class User extends Authenticatable
 
 
     /*---------- GET<>ATTRIBUTE ----------*/
-
-    public function getFullname(  ){
-        
-        return $this->attributes['firstname'].' '.$this->attributes['lastname'];
-    }
-
-
-
     /*---------- SCOPES ----------*/
     /*---------- RELATIONS ----------*/
 
@@ -72,6 +64,11 @@ class User extends Authenticatable
     public function getBillingAddress(  ){
         
         return $this->addresses->where('is_billing','1')->first();
+    }
+
+    public function getFullname(  ){
+        
+        return $this->attributes['firstname'].' '.$this->attributes['lastname'];
     }
 
     public static function getUserId(){

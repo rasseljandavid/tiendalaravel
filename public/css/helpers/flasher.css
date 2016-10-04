@@ -1,0 +1,19 @@
+.flash{
+	color: white;
+}
+
+.flash.alert-success{
+	background-color: green;
+}
+
+.flash.alert-error{
+	background-color: red;
+}
+
+.flash.alert-warning{
+	background-color: yellow;
+}
+
+.flash.alert-info{
+	background-color: gray;
+}
