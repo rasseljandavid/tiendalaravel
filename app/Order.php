@@ -23,7 +23,6 @@ class Order extends Model
 	/*---------- RELATIONS ----------*/
 
 	public function orderitems(  ){
-		
 		return $this->hasMany(Orderitem::class);
 	}
 
@@ -32,6 +31,7 @@ class Order extends Model
 
     public function addOrderitem( $request ){
 		
+        // is it object coming from combime cart
     	if(is_object($request)){
     		$oi = $this->orderitems()->where('product_id', $request->product_id)->first();
 
@@ -57,10 +57,18 @@ class Order extends Model
 			$oi->price = $request['price'];
 			$oi->save();   
     	}
+
+        
+    }
+
+    public function removeOrderitem( Orderitem $oi ){
+        $oi->delete();
+        $this->compute();
     }
 
     public static function mergeWithPrevious(  ){
 
+        // get current cart if any
     	if(Cart::getCartSession()){
 	    	$cart = Order::where([
 	            ['user_id', '=', 0],
@@ -72,11 +80,11 @@ class Order extends Model
 		// retrieves the previous unpurchased order of the user
     	$previous = Cart::getCart();
     	
-    	// both are empty
+    	// exit when both are empty
     	if(!$cart && !$previous)
     		return false;
 
-    	// current cart is empty or no session
+    	// when current cart is empty or no session
     	if(!$cart){
     		if(Cart::getCartSession()){
     			$previous->session = Cart::getCartSession();
@@ -85,25 +93,37 @@ class Order extends Model
     		return false;
     	}
 
-    	// no previous cart
+    	// no previous cart ? use the current cart
     	if(!$previous){
     		$cart->user_id = Auth::user()->id;
     		$cart->save();
     		return false;
     	}
 
-    	foreach ($cart->orderitems as $value) {
-    		$previous->addOrderitem($value);
+        // update previous cart items with the current cart items
+    	foreach ($cart->orderitems as $oi) {
+    		$previous->addOrderitem($oi);
     	}
-
     	// update session
     	$previous->session = $cart->session;
     	$previous->save();
 
+
     	// delete temporary/current cart and items within
-    	// Note: this approach for faster deletion
+    	// Note: this approach for single query deletion
     	Orderitem::where('order_id', $cart->id)->delete();
     	$cart->delete();
 
+    }
+
+    public function compute(  ){
+        // relaod orderitems
+        $this->load('orderitems');
+        $this->attributes['total'] = 0;
+        foreach ($this->orderitems as $oi) {
+            $this->attributes['total'] += ($oi->quantity * $oi->price);
+        }
+
+        $this->save();
     }
 }

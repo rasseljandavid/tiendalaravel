@@ -32,35 +32,6 @@
               <ul>
                 <li class="mobile"><i class="fa fa-phone"></i>+63 9258166813</li>
                 <li class="email"><a href="mailto:hello@tienda.ph"><i class="fa fa-envelope"></i>hello@tienda.ph</a></li>
-
-                <!-- <li class="wrap_custom_block hidden-sm hidden-xs"><a>Custom Block<b></b></a>
-                  <div class="dropdown-menu custom_block">
-                    <ul>
-                      <li>
-                        <table>
-                          <tbody>
-                            <tr>
-                              <td><img alt="" src="image/banner/cms-block.jpg"></td>
-                              <td><img alt="" src="image/banner/responsive.jpg"></td>
-                            </tr>
-                            <tr>
-                              <td><h4>CMS Blocks</h4></td>
-                              <td><h4>Responsive Template</h4></td>
-                            </tr>
-                            <tr>
-                              <td>This is a CMS block. You can insert any content (HTML, Text, Images) Here.</td>
-                              <td>This is a CMS block. You can insert any content (HTML, Text, Images) Here.</td>
-                            </tr>
-                            <tr>
-                              <td><strong><a class="btn btn-default btn-sm" href="#">Read More</a></strong></td>
-                              <td><strong><a class="btn btn-default btn-sm" href="#">Read More</a></strong></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </li>
-                    </ul>
-                  </div>
-                </li> -->
               </ul>
             </div>
             <div id="language" class="btn-group">
@@ -103,64 +74,8 @@
             <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
           </div>
           <!-- Logo End -->
-          <!-- Mini Cart Start-->
-          <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div id="cart">
-              <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="heading dropdown-toggle">
-              
-              <span id="cart-total">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-              2 item(s) - $1,132.00</span></button>
-              <ul class="dropdown-menu">
-                <li>
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="Xitefun Causal Wear Fancy Shoes" alt="Xitefun Causal Wear Fancy Shoes" src="/image/product/sony_vaio_1-50x75.jpg"></a></td>
-                        <td class="text-left"><a href="product.html">Xitefun Causal Wear Fancy Shoes</a></td>
-                        <td class="text-right">x 1</td>
-                        <td class="text-right">$902.00</td>
-                        <td class="text-center"><button class="btn btn-danger btn-xs remove" title="Remove" onClick="" type="button"><i class="fa fa-times"></i></button></td>
-                      </tr>
-                      <tr>
-                        <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="Aspire Ultrabook Laptop" alt="Aspire Ultrabook Laptop" src="/image/product/samsung_tab_1-50x75.jpg"></a></td>
-                        <td class="text-left"><a href="product.html">Aspire Ultrabook Laptop</a></td>
-                        <td class="text-right">x 1</td>
-                        <td class="text-right">$230.00</td>
-                        <td class="text-center"><button class="btn btn-danger btn-xs remove" title="Remove" onClick="" type="button"><i class="fa fa-times"></i></button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </li>
-                <li>
-                  <div>
-                    <table class="table table-bordered">
-                      <tbody>
-                        <tr>
-                          <td class="text-right"><strong>Sub-Total</strong></td>
-                          <td class="text-right">$940.00</td>
-                        </tr>
-                        <tr>
-                          <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                          <td class="text-right">$4.00</td>
-                        </tr>
-                        <tr>
-                          <td class="text-right"><strong>VAT (20%)</strong></td>
-                          <td class="text-right">$188.00</td>
-                        </tr>
-                        <tr>
-                          <td class="text-right"><strong>Total</strong></td>
-                          <td class="text-right">$1,132.00</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <p class="checkout"><a href="/cart/show" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> View Cart</a>&nbsp;&nbsp;&nbsp;<a href="/cart/checkout" class="btn btn-primary"><i class="fa fa-share"></i> Checkout</a></p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Mini Cart End-->
+          <?php $minicart=App\Http\Controllers\CartController::getCart() ?>
+          @include('cart.minicart')
           <!-- Search Start-->
           <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
             <div id="search" class="input-group">

@@ -30,7 +30,8 @@ class CartController extends Controller
     }
 
     public function show() {
-    	return view('cart.show');
+        $cart = self::getCart(true);
+    	return view('cart.show', compact('cart'));
     }
 
     public function checkout() {
@@ -48,9 +49,9 @@ class CartController extends Controller
     public function addItem( Request $request ){
         
         $this->validate($request, [
-                'cart_item_quantity' => "required|numeric|min:1",
-                'product_id' => "required|numeric"
-            ]);
+            'cart_item_quantity' => "required|numeric|min:1",
+            'product_id' => "required|numeric"
+        ]);
 
         if(!$this->cart){
             $this->makeCart();
@@ -61,7 +62,7 @@ class CartController extends Controller
         // check product quantity
         if($request['cart_item_quantity'] > $product->quantity){
             flash('warning', 'Please add a valid quantity for '.$product->title);
-            redirect(url('/'));
+            return redirect()->back();
         }
 
         $request['quantity'] = $request['cart_item_quantity'];
@@ -71,22 +72,42 @@ class CartController extends Controller
         $cart = $this->cart;
         try{
             $cart->addOrderitem($request->all());
+            $cart->compute();
             $cart['orderitems'] = $cart->orderitems;
             flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
         }catch(Exception $e){
             flash('error', 'Error occured: Please try again');
         }
+        
         return redirect()->back();
     }
 
-    public static function getCart(  ){
+    public function removeItem( Request $request ){
+        
+        $cart = self::getCart();
+        $oi = $cart->orderitems()->where('id', $request['item-id'])->first();
+
+        // do not delete when orderitem doesn't belong to current cart
+        if(!$oi){
+            flash('error', 'You cannot delete the item');
+            return redirect()->back();
+        }
+     
+        $prod = $oi->getProduct();
+        $cart->removeOrderitem($oi);
+
+        flash('success', 'Removed '.$oi->quantity.' '. $prod->title .'from your cart');
+        return redirect()->back();
+    }
+
+    public static function getCart( $oi=false ){
         
         if(Auth::check()){
             $order = Order::where([
                 ['user_id', '=', User::getUserId()],
                 ['purchased_at', '=', null],
             ])->first();
-            return $order;
+            return ( $oi ? $order->load('orderitems') : $order);
         }
 
         if(self::getCartSession()){
@@ -95,9 +116,9 @@ class CartController extends Controller
                 ['session', '=', self::getCartSession()], 
                 ['purchased_at', '=', null],
             ])->first();
-            return $order;
+            return ( $oi ? $order->load('orderitems') : $order);
         }
-    
+        
         return null;
     }
 
@@ -133,7 +154,7 @@ class CartController extends Controller
     }
 
     public static function getCartSession(  ){
-        return (session()->get('tienda-cart') ? session()->get('tienda-cart') : null);
+        return session()->get('tienda-cart', null);
     }
 
     

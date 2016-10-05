@@ -21,7 +21,7 @@
           
             @include('home.featured_categories')
 
-            @include('home.suppliers');
+            @include('home.suppliers')
 
         </div>
     </div>

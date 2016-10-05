@@ -25,7 +25,7 @@ class Product extends Model
 	/*---------- GET<>ATTRIBUTE ----------*/
 
 	public function getPriceAttribute($price) {
-   		return $this->attributes['price']     = number_format((double)$price, 2);
+   		return $this->attributes['price'] = number_format((double)$price, 2);
 	}
 
 	public function getSalePriceAttribute($salePrice) {
@@ -48,19 +48,17 @@ class Product extends Model
 	/*---------- RELATIONS ----------*/
 
 	public function categories(){
-
         return $this->belongsToMany(Category::class);
     }
 
     public function supplier() {
 		return $this->belongsTo(Supplier::class);
 	}
-
+	
 
     /*---------- CUSTOM METHODS ----------*/
 
 	public function slugLink( ){
-		
 		return '/products/'.$this->attributes['slug'].'-'.$this->attributes['id'];
 	}
 

@@ -30,7 +30,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  @if($cart && count($cart->orderitems))
+                    @foreach($cart->orderitems as $oi)
+                        <?php $oiProd =  $oi->getProduct(); ?>
+                        <tr>
+                            <td class="text-center"><a href="{{$oiProd->slugLink()}}"><img style="max-width:50px;max-height:75px;width:100%;height:auto;" src="/image/product/{{ $oiProd->id.'.jpg' }}" alt="{{ $oiProd->title }}" title="{{ $oiProd->title }}" class="img-thumbnail" /></a></td>
+                            <td class="text-left"><a href="{{$oiProd->slugLink()}}">{{$oiProd->title}}</a><br />
+                              <small>{{$oiProd->reward}}</small></td>
+                            <td class="text-left">{{$oiProd->sku}}</td>
+                            <td class="text-left"><div class="input-group btn-block quantity">
+                                <input type="text" name="quantity" value="1" size="1" class="form-control" />
+                                <span class="input-group-btn">
+                                <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>
+                                </span></div></td>
+                            <td class="text-right">₱{{$oi->price}}</td>
+                            <td class="text-right">₱{{ ($oi->quantity * $oi->price) }}</td>
+                          </tr>
+                    @endforeach
+                  @else
+                    Your Cart is empty
+                  @endif
+                  <!-- <tr>
                     <td class="text-center"><a href="product.html"><img src="/image/product/samsung_tab_1-50x75.jpg" alt="Aspire Ultrabook Laptop" title="Aspire Ultrabook Laptop" class="img-thumbnail" /></a></td>
                     <td class="text-left"><a href="product.html">Aspire Ultrabook Laptop</a><br />
                       <small>Reward Points: 1000</small></td>
@@ -43,20 +64,7 @@
                         </span></div></td>
                     <td class="text-right">$230.00</td>
                     <td class="text-right">$230.00</td>
-                  </tr>
-                  <tr>
-                    <td class="text-center"><a href="product.html"><img src="/image/product/sony_vaio_1-50x75.jpg" alt="Xitefun Causal Wear Fancy Shoes" title="Xitefun Causal Wear Fancy Shoes" class="img-thumbnail" /></a></td>
-                    <td class="text-left"><a href="product.html">Xitefun Causal Wear Fancy Shoes</a></td>
-                    <td class="text-left">Product 114</td>
-                    <td class="text-left"><div class="input-group btn-block quantity">
-                        <input type="text" name="quantity" value="1" size="1" class="form-control" />
-                        <span class="input-group-btn">
-                        <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
-                        <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>
-                        </span></div></td>
-                    <td class="text-right">$902.00</td>
-                    <td class="text-right">$902.00</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>

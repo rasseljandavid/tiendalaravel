@@ -36,6 +36,7 @@ Route::get('/cart/wishlist', 'CartController@wishlist');
 Route::post('/cart/addItem', 'CartController@addItem');
 Route::get('/cart/index', 'CartController@index');//admin only
 Route::get('/cart/combine', 'CartController@combine')->middleware('auth');
+Route::delete('/cart/removeItem', 'CartController@removeItem');
 
 //Store Pages
 Route::get('/category', 'CategoriesController@index');
