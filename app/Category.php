@@ -48,6 +48,6 @@ class Category extends Model
 
 	public function getProductByCategory() {
 
-    	return $this->products()->orderBy('rank', 'desc')->get();
+    	return $this->products()->orderBy('rank', 'desc')->paginate(20);
     }
 }

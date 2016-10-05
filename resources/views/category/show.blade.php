@@ -196,14 +196,10 @@
           
           <div class="row">
             <div class="col-sm-6 text-left">
-              <ul class="pagination">
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">&gt;</a></li>
-                <li><a href="#">&gt;|</a></li>
-              </ul>
+              {{$products->appends(Request::except('page'))->links()}}
             </div>
-            <div class="col-sm-6 text-right">Showing 1 to 12 of 15 (2 Pages)</div>
+            <div class="col-sm-6 text-right">Showing {{ $products->toArray()['from'] }} to {{ $products->toArray()['to'] }} of {{ $products->total() }} ({{ $products->currentPage() }} Pages)
+            </div>
           </div>
         </div>
         <!--Middle Part End -->
