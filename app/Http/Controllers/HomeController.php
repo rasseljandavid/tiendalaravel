@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         
+        
         // $cart = Cart::getCart();
         // if($cart)
         //     $cart->orderitems = $cart->orderitems()->orderBy('updated_at', 'desc')->take(2)->get();

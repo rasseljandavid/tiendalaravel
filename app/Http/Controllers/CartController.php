@@ -106,7 +106,7 @@ class CartController extends Controller
                 ['user_id', '=', User::getUserId()],
                 ['purchased_at', '=', null],
             ])->first();
-            return ( $oi ? $order->load(['orderitems' => 
+            return ( ($oi && $order) ? $order->load(['orderitems' => 
                 function($query){$query->orderBy('updated_at','desc');}]) : $order);
         }
 
@@ -116,7 +116,7 @@ class CartController extends Controller
                 ['session', '=', self::getCartSession()], 
                 ['purchased_at', '=', null],
             ])->first();
-            return ( $oi ? $order->load(['orderitems' => 
+            return ( ($oi && $order) ? $order->load(['orderitems' => 
                 function($query){$query->orderBy('updated_at','desc');}]) : $order);
         }
         

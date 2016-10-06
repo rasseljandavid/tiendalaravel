@@ -74,6 +74,7 @@
             <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
           </div>
           <!-- Logo End -->
+          {{-- session()->flush() --}}
           <?php 
             $minicart=App\Http\Controllers\CartController::getCart(true);
           ?>
@@ -319,7 +320,6 @@
         @include('helpers.flasher')
         @include('errors.validation')
         @yield('content')
-
   </div>
   <!-- Feature Box Start-->
     <div class="container">
