@@ -41,6 +41,7 @@ Route::get('/cart/combine', 'CartController@combine')->middleware('auth');
 //Store Pages
 Route::get('/category', 'CategoriesController@index');
 Route::get('/category/{category}', 'CategoriesController@show');
+Route::get('/ajax/category', 'CategoriesController@loadProducts');
 // Route::get('{product}', 'productsController@show');
 
 Route::get('/products', 'ProductsController@index');

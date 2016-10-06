@@ -25,7 +25,8 @@
         },
         "files": [
             "app/Helpers/Megaventory.php",
-            "app/Helpers/Slugger.php"
+            "app/Helpers/Slugger.php",
+            "app/Helpers/Flasher.php"
         ]
     },
     "autoload-dev": {

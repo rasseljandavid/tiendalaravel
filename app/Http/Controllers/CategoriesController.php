@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
+use Response;
+use View;
 use App\Category;
 
 
@@ -16,7 +18,7 @@ class CategoriesController extends Controller
         $this->middleware('admin', ['only'=> ['index']]);
     }
 
-	public function index(  ){
+	public function index(){
 
         $categories = Category::all();
 
@@ -30,8 +32,15 @@ class CategoriesController extends Controller
         if(!$category){
             return 'category do not exists';
         }
-
-        $products = $category->getProductByCategory();
-        return view('category.show', compact('categories', 'products', 'category'));
+        return view('category.show', compact('categories', 'category', 'slug'));
     }
+
+    public function loadProducts(Request $request) {
+        $request = $request->all();
+        $category = Category::fromSlug($request['category'])->first();
+        $products = $category->getProductByCategory();
+
+        return Response::json(View::make('category.pagination', array('products' => $products))->render());
+    }
+            
 }

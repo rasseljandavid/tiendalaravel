@@ -9,8 +9,8 @@
   <div class="container">
       <!-- Breadcrumb Start-->
       <ul class="breadcrumb">
-        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-        <li><a href="category.html">Electronics</a></li>
+        <li><a href="/"><i class="fa fa-home"></i></a></li>
+        <li><a href="category.html">{{ $category->title }}</a></li>
       </ul>
       <!-- Breadcrumb End-->
       <div class="row">
@@ -20,8 +20,8 @@
           <div class="box-category">
             <ul id="cat_accordion">
 
-              @foreach($categories as $category)
-                <li><a href="#">{{ $category->title }}</a></li>
+              @foreach($categories as $categorys)
+                <li><a href="#">{{ $categorys->title }}</a></li>
              @endforeach
             </ul>
           </div>
@@ -121,29 +121,29 @@
         <!--Left Part End -->
         <!--Middle Part Start-->
         <div id="content" class="col-sm-9">
-          <h1 class="title">Electronics</h1>
+          <h1 class="title">{{ $category->title }}</h1>
           
-          <h3 class="subtitle">Refine Search</h3>
+          <!-- <h3 class="subtitle">Refine Search</h3>
           <div class="category-list row">
-                        <div class="col-sm-3">
-          <ul class="list-item">
-                        <li><a href="category.html">TV &amp; Home Audio (3)</a></li>
-                        <li><a href="category.html">MP3 Players (2)</a></li>
-                      </ul>
-        </div>
-                <div class="col-sm-3">
-          <ul class="list-item">
-                        <li><a href="category.html">Mobile Phones (2)</a></li>
-                        <li><a href="category.html">Laptops (3)</a></li>
-                      </ul>
-        </div>
-                <div class="col-sm-3">
-          <ul class="list-item">
-                        <li><a href="category.html">Desktops (0)</a></li>
-                        <li><a href="category.html">Cameras (0)</a></li>
-                      </ul>
-        </div>
-                      </div>
+            <div class="col-sm-3">
+              <ul class="list-item">
+                <li><a href="category.html">TV &amp; Home Audio (3)</a></li>
+                <li><a href="category.html">MP3 Players (2)</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3">
+              <ul class="list-item">
+                <li><a href="category.html">Mobile Phones (2)</a></li>
+                <li><a href="category.html">Laptops (3)</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3">
+              <ul class="list-item">
+                <li><a href="category.html">Desktops (0)</a></li>
+                <li><a href="category.html">Cameras (0)</a></li>
+              </ul>
+            </div>
+          </div> -->
           
           <div class="product-filter">
             <div class="row">
@@ -174,11 +174,11 @@
               </div>
               <div class="col-sm-2 text-right">
                 <select id="input-limit" class="form-control">
-                  <option value="" selected="selected">20</option>
-                  <option value="">25</option>
-                  <option value="">50</option>
-                  <option value="">75</option>
-                  <option value="">100</option>
+                  <option value="20" selected="selected">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="75">75</option>
+                  <option value="100">100</option>
                 </select>
               </div>
             </div>
@@ -187,22 +187,43 @@
 
           <!-- Showing of Products per Category -->
           <div class="row products-category">
-            @foreach( $products as $product )
-            <div class="product-layout product-list col-xs-12">
-              @include('products.portrait', ['product'=>$product])
-            </div>
-            @endforeach
-          </div>
-          
-          <div class="row">
-            <div class="col-sm-6 text-left">
-              {{$products->appends(Request::except('page'))->links()}}
-            </div>
-            <div class="col-sm-6 text-right">Showing {{ $products->toArray()['from'] }} to {{ $products->toArray()['to'] }} of {{ $products->total() }} ({{ $products->currentPage() }} Pages)
-            </div>
           </div>
         </div>
         <!--Middle Part End -->
       </div>
     </div>
+@endsection
+
+
+@section('script')
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        var category = '{{ $slug }}';
+        var page = window.location.hash.replace('#', '');
+        
+        getProducts(page);
+
+        $(document).on('click', '.pagination a', function (e) {
+            getProducts($(this).attr('href').split('page=')[1]);
+            e.preventDefault();
+        });
+
+        function getProducts(page = 1) {
+          $.ajax({
+              url : '/ajax/category?page=' + page + '&category='+ category,
+              dataType: 'json',
+          }).done(function (data) {
+              $('.row.products-category').html(data);
+              $('#grid-view').trigger('click');
+              location.hash = page;
+          }).fail(function () {
+              alert('Products could not be loaded.');
+          });
+        }
+    });
+
+  </script>
+
+
 @endsection
