@@ -17,7 +17,6 @@
 <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 <link rel="stylesheet" type="text/css" href="/css/helpers/flasher.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
-
 <!-- CSS Part End-->
 </head>
 <body>

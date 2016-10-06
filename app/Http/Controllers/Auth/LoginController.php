@@ -43,7 +43,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user){
         
-        flash('success', 'Hello '.Auth::user()->getFullname());
+        flash('info', 'Hello '.Auth::user()->getFullname());
 
         if(Cart::getCartSession())
             return redirect('/cart/combine');

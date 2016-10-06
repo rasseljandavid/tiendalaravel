@@ -35,7 +35,12 @@ class CartController extends Controller
     }
 
     public function checkout() {
-    	return view('cart.checkout');
+        $cart = self::getCart(true);
+        if(!count($cart->orderitems)){
+            flash('danger', 'You cannot checkout with an empty cart');
+            return redirect('/');
+        }
+    	return view('cart.checkout', compact('cart'));
     }
 
     public function compare() {
@@ -88,7 +93,7 @@ class CartController extends Controller
 
         // do not delete when orderitem doesn't belong to current cart
         if(!$oi){
-            flash('error', 'You cannot delete the item');
+            flash('danger', 'You cannot delete the item');
             return redirect()->back();
         }
      
@@ -143,7 +148,7 @@ class CartController extends Controller
     public function combine(){
 
         Order::mergeWithPrevious();
-        flash('success', 'Welcome back '.Auth::user()->getFullname());
+        flash('info', 'Welcome back '.Auth::user()->getFullname());
         return redirect('/');
     }
 

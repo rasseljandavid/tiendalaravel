@@ -1,19 +1,21 @@
+/*
+We instead use the default classes from bootstrap
 .flash{
 	color: white;
 }
 
-.flash.alert-success{
+.flash.alert--success{
 	background-color: green;
 }
 
-.flash.alert-error{
+.flash.alert--error{
 	background-color: red;
 }
 
-.flash.alert-warning{
+.flash.alert--warning{
 	background-color: yellow;
 }
 
-.flash.alert-info{
+.flash.alert--info{
 	background-color: gray;
-}
+}*/
