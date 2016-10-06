@@ -20,8 +20,8 @@
           <div class="box-category">
             <ul id="cat_accordion">
 
-              @foreach($categories as $categorys)
-                <li><a href="#">{{ $categorys->title }}</a></li>
+              @foreach($categories as $cat)
+                <li><a href="{{$cat->slugLink()}}">{{ $cat->title }}</a></li>
              @endforeach
             </ul>
           </div>
