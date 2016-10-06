@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Product;
+use App\Supplier;
 use App\Http\Controllers\CartController as Cart;
 
 class HomeController extends Controller
@@ -45,7 +46,9 @@ class HomeController extends Controller
         $featured['featured'] = $p->getFeaturedProduct()->take(10);
         $featured['bestseller'] = $p->getBestSellerProduct()->take(10);
         $featured['special'] = $p->getSpecialProduct()->take(10);
+
+        $suppliers = Supplier::all();
         
-        return view('home.index', compact('featured', 'categories'));
+        return view('home.index', compact('featured', 'categories', 'suppliers'));
     }
 }
