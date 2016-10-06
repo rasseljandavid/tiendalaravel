@@ -38,12 +38,11 @@
                             <td class="text-left"><a href="{{$oiProd->slugLink()}}">{{$oiProd->title}}</a><br />
                               <small>{{$oiProd->reward}}</small></td>
                             <td class="text-left">{{$oiProd->sku}}</td>
-                            <td class="text-left"><div class="input-group btn-block quantity">
-                                <input type="text" name="quantity" value="1" size="1" class="form-control" />
-                                <span class="input-group-btn">
-                                <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
-                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>
-                                </span></div></td>
+                            <td class="text-left">
+                                <div class="input-group btn-block quantity">
+                                @include('cart._itemaction')
+                                </div>
+                            </td>
                             <td class="text-right">₱{{$oi->price}}</td>
                             <td class="text-right">₱{{ ($oi->quantity * $oi->price) }}</td>
                           </tr>
@@ -503,24 +502,25 @@
           </div>
           <div class="row">
             <div class="col-sm-4 col-sm-offset-8">
-              <table class="table table-bordered">
+                @include('cart._total', ['minicart'=>$cart])
+              <!-- <table class="table table-bordered">
                 <tr>
                   <td class="text-right"><strong>Sub-Total:</strong></td>
-                  <td class="text-right">$940.00</td>
+                  <td class="text-right">₱940.00</td>
                 </tr>
                 <tr>
                   <td class="text-right"><strong>Eco Tax (-2.00):</strong></td>
-                  <td class="text-right">$4.00</td>
+                  <td class="text-right">₱4.00</td>
                 </tr>
                 <tr>
                   <td class="text-right"><strong>VAT (20%):</strong></td>
-                  <td class="text-right">$188.00</td>
+                  <td class="text-right">₱188.00</td>
                 </tr>
                 <tr>
                   <td class="text-right"><strong>Total:</strong></td>
-                  <td class="text-right">$1,132.00</td>
+                  <td class="text-right">₱1,132.00</td>
                 </tr>
-              </table>
+              </table> -->
             </div>
           </div>
           <div class="buttons">

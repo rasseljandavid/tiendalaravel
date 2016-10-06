@@ -74,7 +74,9 @@
             <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
           </div>
           <!-- Logo End -->
-          <?php $minicart=App\Http\Controllers\CartController::getCart() ?>
+          <?php 
+            $minicart=App\Http\Controllers\CartController::getCart(true);
+          ?>
           @include('cart.minicart')
           <!-- Search Start-->
           <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">

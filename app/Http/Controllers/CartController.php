@@ -61,7 +61,7 @@ class CartController extends Controller
 
         // check product quantity
         if($request['cart_item_quantity'] > $product->quantity){
-            flash('warning', 'Please add a valid quantity for '.$product->title);
+            flash('warning', 'Insufficient stock for '.$product->title);
             return redirect()->back();
         }
 
@@ -74,7 +74,6 @@ class CartController extends Controller
             $cart->addOrderitem($request->all());
             $cart->compute();
             $cart['orderitems'] = $cart->orderitems;
-            flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
         }catch(Exception $e){
             flash('error', 'Error occured: Please try again');
         }
@@ -107,7 +106,8 @@ class CartController extends Controller
                 ['user_id', '=', User::getUserId()],
                 ['purchased_at', '=', null],
             ])->first();
-            return ( $oi ? $order->load('orderitems') : $order);
+            return ( $oi ? $order->load(['orderitems' => 
+                function($query){$query->orderBy('updated_at','desc');}]) : $order);
         }
 
         if(self::getCartSession()){
@@ -116,7 +116,8 @@ class CartController extends Controller
                 ['session', '=', self::getCartSession()], 
                 ['purchased_at', '=', null],
             ])->first();
-            return ( $oi ? $order->load('orderitems') : $order);
+            return ( $oi ? $order->load(['orderitems' => 
+                function($query){$query->orderBy('updated_at','desc');}]) : $order);
         }
         
         return null;

@@ -40,6 +40,7 @@ class Order extends Model
 				return true;
 			}
 
+            // if mass update? for checkout? how...
 			$oi->quantity = $oi->quantity+$request->quantity;
 			$oi->price = $request->price;
 			$oi->save(); 
@@ -49,16 +50,22 @@ class Order extends Model
     		$oi = $this->orderitems()->where('product_id', $request['product_id'])->first();
 
 			if(!$oi){
-				$this->orderitems()->save(new Orderitem($request));
+				$oi = $this->orderitems()->save(new Orderitem($request));
+                $product = $oi->getProduct();
+                flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
 				return true;
 			}
 
-			$oi->quantity = $oi->quantity+$request['quantity'];
-			$oi->price = $request['price'];
-			$oi->save();   
-    	}
+            if(isset($request['update']))
+                $oi->quantity = $request['quantity'];
+            else
+                $oi->quantity = $oi->quantity+$request['quantity'];
 
-        
+			$oi->price = $request['price'];
+			$oi->save();
+            $product = $oi->getProduct();
+            flash('success', 'Updated the quantity of '.$product->title. ' to '.$oi->quantity);   
+    	}
     }
 
     public function removeOrderitem( Orderitem $oi ){

@@ -33,10 +33,10 @@ Route::get('/cart/show', 'CartController@show');
 Route::get('/cart/checkout', 'CartController@checkout');
 Route::get('/cart/compare', 'CartController@compare');
 Route::get('/cart/wishlist', 'CartController@wishlist');
-Route::post('/cart/addItem', 'CartController@addItem');
 Route::get('/cart/index', 'CartController@index');//admin only
-Route::get('/cart/combine', 'CartController@combine')->middleware('auth');
+Route::post('/cart/addItem', 'CartController@addItem');
 Route::delete('/cart/removeItem', 'CartController@removeItem');
+Route::get('/cart/combine', 'CartController@combine')->middleware('auth');
 
 //Store Pages
 Route::get('/category', 'CategoriesController@index');
