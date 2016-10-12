@@ -6,7 +6,7 @@
     <span id="cart-total">
     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
     @if($minicart){{count($minicart->orderitems)}} item(s) - {{$minicart->total}}
-    @else 0 item(s) - ₱00.00
+    @else 0 item(s) - ₱0.00
     @endif
     </span></button>
     <ul class="dropdown-menu">
