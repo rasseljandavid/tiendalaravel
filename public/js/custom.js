@@ -5,8 +5,8 @@
     Slideshow
 ------------------------------ */
 $('.slideshow').owlCarousel({
-	items: 6,
-	autoPlay: 3000,
+	items: 5,
+	autoPlay: 10000,
 	singleItem: true,
 	navigation: true,
 	navigationText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
