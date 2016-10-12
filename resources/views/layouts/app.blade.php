@@ -29,15 +29,9 @@
           <div class="pull-left flip left-top">
             <div class="links">
               <ul>
-                <li class="mobile"><i class="fa fa-phone"></i>+63 9258166813</li>
+                <li class="mobile"><a href="tel:+639258166813"><img style="height: 16px; position: relative; top: 3px;" src="/image/socialicons/viber-icon.png" /> +63 9258166813</a></li>
                 <li class="email"><a href="mailto:hello@tienda.ph"><i class="fa fa-envelope"></i>hello@tienda.ph</a></li>
               </ul>
-            </div>
-            <div id="language" class="btn-group">
-              <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> <img src="/image/flags/ph.png" alt="English" title="English">Philippines</button>
-            </div>
-            <div id="currency" class="btn-group">
-              <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> &#8369; Peso</span></button>
             </div>
           </div>
           <div id="top-links" class="nav pull-right flip">
