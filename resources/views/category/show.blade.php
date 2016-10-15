@@ -10,7 +10,7 @@
       <!-- Breadcrumb Start-->
       <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i></a></li>
-        <li><a href="category.html">{{ $category->title }}</a></li>
+        <li><a href="{{ $category->slugLink() }}">{{ $category->title }}</a></li>
       </ul>
       <!-- Breadcrumb End-->
       <div class="row">
@@ -21,7 +21,11 @@
             <ul id="cat_accordion">
 
               @foreach($categories as $cat)
-                <li><a href="{{$cat->slugLink()}}">{{ $cat->title }}</a></li>
+                @if($cat->title == $category->title)
+                  <li><a class="active" href="{{$cat->slugLink()}}" style="margin-bottom: 0px;">{{ $cat->title }}</a></li>
+                @else 
+                  <li><a href="{{$cat->slugLink()}}">{{ $cat->title }}</a></li>
+                @endif
              @endforeach
             </ul>
           </div>
