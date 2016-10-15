@@ -37,7 +37,7 @@ class CategoriesController extends Controller
 
     public function loadProducts(Request $request) {
         $request = $request->all();
-        $sort = explode(':', $request['sort']);
+        $sort = explode('_', $request['sort']);
         $category = Category::fromSlug($request['category'])->first();
         $products = $category->getProductByCategory($request['perpage'], $sort[0], $sort[1]);
 

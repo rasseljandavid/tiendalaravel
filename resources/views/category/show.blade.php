@@ -158,15 +158,15 @@
               </div>
               <div class="col-md-3 col-sm-2 text-right">
                 <select id="input-sort" class="form-control col-sm-3"">
-                  <option value="rank:asc" selected="selected">Default</option>
-                  <option value="title:asc">Name (A - Z)</option>
-                  <option value="title:desc">Name (Z - A)</option>
-                  <option value="salePrice:asc">Price (Low &gt; High)</option>
-                  <option value="salePrice:desc">Price (High &gt; Low)</option>
-                  <option value="rating:asc">Rating (Highest)</option>
-                  <option value="rating:desc">Rating (Lowest)</option>
-                  <option value="sku:asc">Model (A - Z)</option>
-                  <option value="sku:desc">Model (Z - A)</option>
+                  <option value="rank_asc" selected="selected">Default</option>
+                  <option value="title_asc">Name (A - Z)</option>
+                  <option value="title_desc">Name (Z - A)</option>
+                  <option value="salePrice_asc">Price (Low &gt; High)</option>
+                  <option value="salePrice_desc">Price (High &gt; Low)</option>
+                  <option value="rating_asc">Rating (Highest)</option>
+                  <option value="rating_desc">Rating (Lowest)</option>
+                  <option value="sku_asc">Model (A - Z)</option>
+                  <option value="sku_desc">Model (Z - A)</option>
                 </select>
               </div>
               <div class="col-sm-1 text-right">
@@ -207,7 +207,8 @@
         getProducts();
 
         $(document).on('click', '.pagination a', function (e) {
-            page = $(this).attr('href').split('page=')[1];
+            page = $(this).attr('href').split('&')[3];
+            getProducts();
             e.preventDefault();
         });
 
@@ -223,7 +224,7 @@
 
         function getProducts() {
           $.ajax({
-              url : '/ajax/category?page=' + page + '&category='+ category + '&perpage=' + perPage + '&sort=' + sort,
+              url : '/ajax/category?page=' + page.split('=')[1] + '&category='+ category + '&perpage=' + perPage + '&sort=' + sort,
               dataType: 'json',
           }).done(function (data) {
               $('.row.products-category').html(data);
