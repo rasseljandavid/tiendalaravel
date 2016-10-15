@@ -157,16 +157,16 @@
                 <label class="control-label" for="input-sort">Sort By:</label>
               </div>
               <div class="col-md-3 col-sm-2 text-right">
-                <select id="input-sort" class="form-control col-sm-3">
-                  <option value="" selected="selected">Default</option>
-                  <option value="">Name (A - Z)</option>
-                  <option value="">Name (Z - A)</option>
-                  <option value="">Price (Low &gt; High)</option>
-                  <option value="">Price (High &gt; Low)</option>
-                  <option value="">Rating (Highest)</option>
-                  <option value="">Rating (Lowest)</option>
-                  <option value="">Model (A - Z)</option>
-                  <option value="">Model (Z - A)</option>
+                <select id="input-sort" class="form-control col-sm-3"">
+                  <option value="rank:asc" selected="selected">Default</option>
+                  <option value="title:asc">Name (A - Z)</option>
+                  <option value="title:desc">Name (Z - A)</option>
+                  <option value="salePrice:asc">Price (Low &gt; High)</option>
+                  <option value="salePrice:desc">Price (High &gt; Low)</option>
+                  <option value="rating:asc">Rating (Highest)</option>
+                  <option value="rating:desc">Rating (Lowest)</option>
+                  <option value="sku:asc">Model (A - Z)</option>
+                  <option value="sku:desc">Model (Z - A)</option>
                 </select>
               </div>
               <div class="col-sm-1 text-right">
@@ -201,17 +201,29 @@
     $(document).ready(function() {
         var category = '{{ $slug }}';
         var page = window.location.hash.replace('#', '');
+        var perPage = $('#input-limit').val();
+        var sort = $('#input-sort').val();
         
-        getProducts(page);
+        getProducts();
 
         $(document).on('click', '.pagination a', function (e) {
-            getProducts($(this).attr('href').split('page=')[1]);
+            page = $(this).attr('href').split('page=')[1];
             e.preventDefault();
         });
 
-        function getProducts(page = 1) {
+        $(document).on('change', '#input-limit', function(e) {
+            perPage = $(this).val();
+            getProducts();
+        });
+
+        $(document).on('change', '#input-sort', function(e) {
+            sort = $(this).val();
+            getProducts();
+        });
+
+        function getProducts() {
           $.ajax({
-              url : '/ajax/category?page=' + page + '&category='+ category,
+              url : '/ajax/category?page=' + page + '&category='+ category + '&perpage=' + perPage + '&sort=' + sort,
               dataType: 'json',
           }).done(function (data) {
               $('.row.products-category').html(data);

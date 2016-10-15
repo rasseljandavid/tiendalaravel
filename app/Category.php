@@ -46,8 +46,8 @@ class Category extends Model
 		return '/category/'.$this->attributes['slug'];
 	}
 
-	public function getProductByCategory() {
+	public function getProductByCategory($perpage = 20, $sort = 'rank', $aod = 'asc') {
 
-    	return $this->products()->orderBy('rank', 'desc')->paginate(20);
+    	return $this->products()->orderBy($sort, $aod)->paginate($perpage);
     }
 }

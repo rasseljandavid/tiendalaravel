@@ -37,8 +37,9 @@ class CategoriesController extends Controller
 
     public function loadProducts(Request $request) {
         $request = $request->all();
+        $sort = explode(':', $request['sort']);
         $category = Category::fromSlug($request['category'])->first();
-        $products = $category->getProductByCategory();
+        $products = $category->getProductByCategory($request['perpage'], $sort[0], $sort[1]);
 
         return Response::json(View::make('category.pagination', array('products' => $products))->render());
     }
