@@ -227,7 +227,9 @@
               dataType: 'json',
           }).done(function (data) {
               $('.row.products-category').html(data);
-              $('#grid-view').trigger('click');
+              if(!$('#list-view').hasClass('selected')) {
+                $('#grid-view').trigger('click');
+              }
               location.hash = page;
           }).fail(function () {
               alert('Products could not be loaded.');

@@ -260,10 +260,10 @@ $(".qtyBtn").on("click", function() {
 /*---------------------------------------------------
     Product List
 ----------------------------------------------------- */
-$('#list-view').on("click", function() {
-	$(".products-category > .clearfix.visible-lg-block").remove();
+$(document).on("click", '#list-view', function() {
+	$(".products-category .clearfix.visible-lg-block").remove();
 	$('#content .product-layout').attr('class', 'product-layout product-list col-xs-12');
-  localStorage.setItem('display', 'list');		
+  //localStorage.setItem('display', 'list');		
 	$('.btn-group').find('#list-view').addClass('selected');
 	$('.btn-group').find('#grid-view').removeClass('selected');
 	return false;
@@ -277,44 +277,51 @@ $(document).on('click', '#grid-view', function(e){
 		
 $screensize = $(window).width();
     if ($screensize > 1199) {
-		$(".products-category > .clearfix").remove();
+		//$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block"></span>');
     }
     if ($screensize < 1199) {
-		$(".products-category > .clearfix").remove();
+		//$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block visible-md-block"></span>');
     }
 	if ($screensize < 991) {
-		$(".products-category > .clearfix").remove();
+		//$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
         $('.product-grid:nth-child(3n)').after('<span class="clearfix visible-lg-block visible-sm-block"></span>');
     }
 $( window ).resize(function() {
     $screensize = $(window).width();
     if ($screensize > 1199) {
-        $(".products-category > .clearfix").remove();
+        //$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block"></span>');
     } 
     if ($screensize < 1199) {
-        $(".products-category > .clearfix").remove();
+        //$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block visible-md-block"></span>');
     }
 	if ($screensize < 991) {
-        $(".products-category > .clearfix").remove();
+        //$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
         $('.product-grid:nth-child(3n)').after('<span class="clearfix visible-lg-block visible-sm-block"></span>');
     }
 	if ($screensize < 767) {
-        $(".products-category > .clearfix").remove();
+        //$(".products-category > .clearfix").remove();
+        $(".products-category .clearfix.visible-lg-block").remove();
     }
 });
-localStorage.setItem('display', 'grid');
+//localStorage.setItem('display', 'grid');
 $('.btn-group').find('#grid-view').addClass('selected');
 $('.btn-group').find('#list-view').removeClass('selected');
 	});
-if (localStorage.getItem('display') == 'list') {
-		$('#list-view').trigger('click');
-	} else {
-		$('#grid-view').trigger('click');
-	}
+// if (localStorage.getItem('display') == 'list') {
+// 		$('#list-view').trigger('click');
+// 	} else {
+// 		$('#grid-view').trigger('click');
+// 	}
 
 /*---------------------------------------------------
    tooltips
