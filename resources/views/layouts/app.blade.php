@@ -299,6 +299,7 @@ $(document).ready(function(){
       inputQty.val(qty);
       send = false;
       setTimeout(function(){
+        // send here if quantity is changed
         if(qty == inputQty.val()){
           var bar = atc.children('#loading-btn');
           bar.addClass('bar');

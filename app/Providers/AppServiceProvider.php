@@ -24,10 +24,12 @@ class AppServiceProvider extends ServiceProvider
 
         // NEED FIX, we dont want to query the cart 2 or more times in a single page if possible
         view()->composer(
-            ['layouts.app',
-            'home.index',
-            'products.show',
-            'category.show'], 
+            [   'layouts.app',
+                'home.index',
+                'products.show',
+                'category.show',
+                'category.pagination'
+            ], 
             function($view) {
                 $minicart = CartController::getCart(true);
                 $view->with('minicart', $minicart);

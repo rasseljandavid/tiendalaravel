@@ -207,7 +207,7 @@
         var page = window.location.hash.replace('#', '');
         var perPage = $('#input-limit').val();
         var sort = $('#input-sort').val();
-        
+
         getProducts();
 
         $(document).on('click', '.pagination a', function (e) {
