@@ -23,9 +23,14 @@ class AppServiceProvider extends ServiceProvider
         View::share('menus', $categories);
 
         // NEED FIX, we dont want to query the cart 2 or more times in a single page if possible
-        view()->composer(['layouts.app', 'home.index', 'products.show'], function($view) {
-            $minicart = CartController::getCart(true);
-            $view->with('minicart', $minicart);
+        view()->composer(
+            ['layouts.app',
+            'home.index',
+            'products.show',
+            'category.show'], 
+            function($view) {
+                $minicart = CartController::getCart(true);
+                $view->with('minicart', $minicart);
         });
 
         /* QUeRY DEBBUGER */
