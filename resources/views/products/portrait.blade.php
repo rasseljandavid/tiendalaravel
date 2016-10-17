@@ -27,12 +27,21 @@
         </span> 
       @endfor
     </div>
+    <div class="add-to-links">
+      <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
+      <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>
+    </div><br>
   </div>
-  <div class="button-group">
-    @include('cart._addtocart', ['id'=>$product->id,  'quantifier'=>false, 'btnclass'=>'btn-primary'])
+  <!-- <div class="button-group">
+    {{-- @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg']) --}}
     <div class="add-to-links">
       <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
       <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>
     </div>
+  </div> -->
+  <div class="product">
+    @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
+    <div class="clearer"></div>
+    
   </div>
 </div>

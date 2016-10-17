@@ -10,7 +10,6 @@
 <div class="container">
     <div class="row">
         <div id="content" class="col-xs-12">
-
             @include('home.slideshow')
 
             @include('home.banner', ['size'=>'small'])

@@ -20,6 +20,11 @@ class Orderitem extends Model
 	/*---------- GET<>ATTRIBUTE ----------*/
 	/*---------- SCOPES ----------*/
 
+	public function scopeFromProduct( $query, $id ){
+		
+		$query->where('product_id', $id);
+	}
+
 	/*---------- RELATIONS ----------*/
 	
 	public function order(  ){

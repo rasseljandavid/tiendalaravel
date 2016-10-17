@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Response;
 
 use App\Http\Requests;
 use App\User;
@@ -51,7 +52,7 @@ class CartController extends Controller
     	return view('cart.wishlist');
     }
 
-    public function addItem( Request $request ){
+    public function addItem( Request $request){
         
         $this->validate($request, [
             'cart_item_quantity' => "required|numeric|min:1",
@@ -61,13 +62,13 @@ class CartController extends Controller
         if(!$this->cart){
             $this->makeCart();
         }
-
+        
         $product = Product::find($request['product_id']);
 
         // check product quantity
         if($request['cart_item_quantity'] > $product->quantity){
-            flash('warning', 'Insufficient stock for '.$product->title);
-            return redirect()->back();
+            // flash('warning', 'Insufficient stock for '.$product->title);
+            return Response::json(['success'=>false]);
         }
 
         $request['quantity'] = $request['cart_item_quantity'];
@@ -79,11 +80,13 @@ class CartController extends Controller
             $cart->addOrderitem($request->all());
             $cart->compute();
             $cart['orderitems'] = $cart->orderitems;
+            return Response::json(['success'=>true,'quantity'=>$request['quantity']]);
         }catch(Exception $e){
-            flash('error', 'Error occured: Please try again');
+            // flash('error', 'Error occured: Please try again');
+            $item = self::getCart()->getItemFromProduct($product->id);
+            return Response::json(['success'=>false,'quantity'=>$item->quantity]);
         }
-        
-        return redirect()->back();
+
     }
 
     public function removeItem( Request $request ){

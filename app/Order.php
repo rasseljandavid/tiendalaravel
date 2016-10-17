@@ -51,8 +51,8 @@ class Order extends Model
 
 			if(!$oi){
 				$oi = $this->orderitems()->save(new Orderitem($request));
-                $product = $oi->getProduct();
-                flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
+                // $product = $oi->getProduct();
+                // flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
 				return true;
 			}
 
@@ -63,8 +63,8 @@ class Order extends Model
 
 			$oi->price = $request['price'];
 			$oi->save();
-            $product = $oi->getProduct();
-            flash('success', 'Updated the quantity of '.$product->title. ' to '.$oi->quantity);   
+            // $product = $oi->getProduct();
+            // flash('success', 'Updated the quantity of '.$product->title. ' to '.$oi->quantity);   
     	}
     }
 
@@ -132,5 +132,10 @@ class Order extends Model
         }
 
         $this->save();
+    }
+
+    public function getItemFromProduct( $id ){
+        
+        return $this->orderitems()->fromProduct($id)->first();
     }
 }

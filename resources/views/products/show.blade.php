@@ -43,8 +43,7 @@
                  
                   <div class="cart">
                     <div>
-                      
-                      @include('cart._addtocart', ['id'=>$product->id, 'quantifier'=>true, 'btnclass'=>'btn btn-primary btn-lg'])
+                      @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
                     </div>
                     <div>
                       <button type="button" class="wishlist" onClick=""><i class="fa fa-heart"></i> Add to Wish List</button>

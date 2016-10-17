@@ -5,6 +5,7 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="image/favicon.ico" rel="icon" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('metainfo')
 <!-- CSS Part Start-->
 <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css" />
@@ -17,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 <link rel="stylesheet" type="text/css" href="/css/helpers/flasher.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/loader.css" />
 <!-- CSS Part End-->
 </head>
 <body>
@@ -261,9 +264,69 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+  // add the csrf_token to all ajax request
+  $.ajaxSetup({
+      headers:
+      { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+  });
+
+  // flash message close
   $('.message-close').each(function(){
     $(this).click(function(){
       $(this).parents('div .alert').slideToggle(300);
+    });
+  });
+
+  // remove loading bar on addtocart
+  function removebar(elem){
+    elem.removeClass('bar');
+  }
+
+  $('div.add-to-cart').each(function(){
+    removebar($(this).children('.bar'));
+  });
+
+  // add to cart submit button
+  $('div.add-to-cart').each(function(){
+    var atc = $(this);
+    var send = false;
+    var form = atc.find('.form-addtocart');
+    atc.find('#submit').on('click', function(){
+      var qtyHolder = atc.find('#quantity-holder');
+      var inputQty = atc.find('#input-quantity');
+      var qty = inputQty.val();
+      qty++;
+      inputQty.val(qty);
+      send = false;
+      setTimeout(function(){
+        if(qty == inputQty.val()){
+          var bar = atc.children('#loading-btn');
+          bar.addClass('bar');
+          var data = form.serialize();
+          $.ajax({
+            url  : form.attr('action'),
+            type : form.attr('method'),
+            data : data,
+            dataType : 'json',
+          }).done(function (data) {
+            
+            if(data.success == true){
+              qtyHolder.val(inputQty.val());
+              console.log('successful');
+            }else if(data.success == false){
+              inputQty.val(qtyHolder.val());
+              console.log("insufficient");
+            }
+            removebar(bar);
+          }).fail(function (data){
+            var errors = data.responseJSON;
+            removebar(bar);
+            console.log(data);
+          });
+          $(this).blur();
+          return false;
+        }
+      }, 400);
     });
   });
 });
