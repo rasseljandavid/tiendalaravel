@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models\Ecommerce;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
-	/*---------- PROTECTED VARAIBLES ----------*/
+	/*---------- VARAIBLES ----------*/
 	/*---------- SET<>ATTRIBUTE ----------*/
 	/*---------- GET<>ATTRIBUTE ----------*/
 	/*---------- SCOPES ----------*/

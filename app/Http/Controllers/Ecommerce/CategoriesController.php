@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ecommerce;
 
+// dependencies
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Auth;
 use Response;
+use Auth;
 use View;
-use App\Category;
+// models
+use App\Models\Ecommerce\Category;
 
 
 class CategoriesController extends Controller

@@ -1,15 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models\Address;
 
+// dependencies
 use Illuminate\Database\Eloquent\Model;
-
+// models
 use App\User;
 
 class Address extends Model
 {
 	
-	/*---------- PROTECTED VARAIBLES ----------*/
+	/*---------- VARAIBLES ----------*/
 
 	protected $fillable = [
 		'user_id','address_one','city','zipcode','country','is_shipping','is_billing',

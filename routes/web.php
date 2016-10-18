@@ -29,24 +29,24 @@ Route::get('/sitemap', 'PagesController@sitemap');
 Route::get('/account', 'UsersController@show');
 
 // Cart
-Route::get('/cart/show', 'CartController@show');
-Route::get('/cart/checkout', 'CartController@checkout');
-Route::get('/cart/compare', 'CartController@compare');
-Route::get('/cart/wishlist', 'CartController@wishlist');
-Route::get('/cart/index', 'CartController@index');//admin only
-Route::post('/cart/addItem', 'CartController@addItem');
-Route::delete('/cart/removeItem', 'CartController@removeItem');
-Route::get('/cart/combine', 'CartController@combine')->middleware('auth');
+Route::get('/cart/show', 'Ecommerce\CartController@show');
+Route::get('/cart/checkout', 'Ecommerce\CartController@checkout');
+Route::get('/cart/compare', 'Ecommerce\CartController@compare');
+Route::get('/cart/wishlist', 'Ecommerce\CartController@wishlist');
+Route::get('/cart/index', 'Ecommerce\CartController@index');//admin only
+Route::post('/cart/addItem', 'Ecommerce\CartController@addItem');
+Route::delete('/cart/removeItem', 'Ecommerce\CartController@removeItem');
+Route::get('/cart/combine', 'Ecommerce\CartController@combine')->middleware('auth');
 
 
 //Store Pages
-Route::get('/category', 'CategoriesController@index');
-Route::get('/category/{category}', 'CategoriesController@show');
-Route::get('/ajax/category', 'CategoriesController@loadProducts');
+Route::get('/category', 'Ecommerce\CategoriesController@index');
+Route::get('/category/{category}', 'Ecommerce\CategoriesController@show');
+Route::get('/ajax/category', 'Ecommerce\CategoriesController@loadProducts');
 // Route::get('{product}', 'productsController@show');
 
-Route::get('/products', 'ProductsController@index');
-Route::get('/products/{slug}', 'ProductsController@show');
+Route::get('/products', 'Ecommerce\ProductsController@index');
+Route::get('/products/{slug}', 'Ecommerce\ProductsController@show');
 
 
 //Search Pages

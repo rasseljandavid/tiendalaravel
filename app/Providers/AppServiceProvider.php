@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
 use Illuminate\Support\Facades\View;
 
-use App\Category;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Ecommerce\CartController;
+use App\Models\Ecommerce\Category;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
+        // ENCOUNTERING ERROR?
+        // when making migrate:refresh,install comment all lines that request data. why?
+        // http://stackoverflow.com/questions/25315325/laravel-base-table-or-view-not-found-1146-table-database-pages-doesnt-exist
+
         $categories = Category::limit(8)->get();
         View::share('menus', $categories);
 

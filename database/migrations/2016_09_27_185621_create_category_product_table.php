@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-use App\Product;
-use App\Category;
+use App\Models\Ecommerce\Product;
+use App\Models\Ecommerce\Category;
 
 class CreateCategoryProductTable extends Migration
 {

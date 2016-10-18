@@ -2,17 +2,18 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+// dependencies
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use App\Address;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Address\Address;
 use Auth;
+// models
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-    /*---------- PROTECTED VARAIBLES ----------*/
+    /*---------- VARAIBLES ----------*/
 
     /**
      * The attributes that are mass assignable.

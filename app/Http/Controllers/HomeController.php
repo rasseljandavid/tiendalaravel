@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+// dependencies
 use Illuminate\Http\Request;
-
-use App\Category;
-use App\Product;
-use App\Supplier;
-use App\Http\Controllers\CartController as Cart;
+use App\Http\Controllers\Ecommerce\CartController as Cart;
+// models
+use App\Models\Ecommerce\Category;
+use App\Models\Ecommerce\Product;
+use App\Models\Ecommerce\Supplier;
 
 class HomeController extends Controller
 {

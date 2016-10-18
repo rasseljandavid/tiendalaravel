@@ -1,13 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models\Ecommerce;
 
+// dependencies
 use Illuminate\Database\Eloquent\Model;
+// models
 
 class Product extends Model
 {
 
-	/*---------- PROTECTED VARAIBLES ----------*/
+	/*---------- VARAIBLES ----------*/
 
 	protected $fillable = [
 			'sku', 'title', 'slug', 'body', 'quantity', 'is_featured', 'is_special', 'is_bestSeller', 'price', 'salePrice', 'rating', 'rank', 'rewardPoints', 'supplier_id'

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+// dependencies
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
+// models
 use App\User;
 
 class UsersController extends Controller

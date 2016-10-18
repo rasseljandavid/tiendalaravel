@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ecommerce;
 
+// dependencies
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
-use App\Order;
+// models
+use App\Models\Ecommerce\Order;
 
 class OrdersController extends Controller
 {

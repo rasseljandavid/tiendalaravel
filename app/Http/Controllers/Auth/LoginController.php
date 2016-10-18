@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
-use App\Http\Controllers\CartController as Cart;
+use App\Http\Controllers\Ecommerce\CartController as Cart;
 
 class LoginController extends Controller
 {

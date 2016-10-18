@@ -1,15 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models\Ecommerce;
 
+// dependencies
+use App\Http\Controllers\Ecommerce\CartController as Cart;
 use Illuminate\Database\Eloquent\Model;
-use App\Orderitem;
 use Auth;
-use App\Http\Controllers\CartController as Cart;
+// models
+use App\Models\Ecommerce\OrderItem;
 
 class Order extends Model
 {	
-	/*---------- PROTECTED VARAIBLES ----------*/
+	/*---------- VARAIBLES ----------*/
 
     protected $fillable = [
     		'user_id', 'comment', 'session', 'purchased_at', 'discount_id', 'total', 'discount'
@@ -23,8 +25,12 @@ class Order extends Model
 	/*---------- RELATIONS ----------*/
 
 	public function orderitems(  ){
-		return $this->hasMany(Orderitem::class);
+		return $this->hasMany(OrderItem::class);
 	}
+
+    public function orderstatus(  ){
+        return $this->hasOne(OrderStatus::class);    
+    }
 
 
 	/*---------- CUSTOM METHODS ----------*/
@@ -50,7 +56,7 @@ class Order extends Model
     		$oi = $this->orderitems()->where('product_id', $request['product_id'])->first();
 
 			if(!$oi){
-				$oi = $this->orderitems()->save(new Orderitem($request));
+				$oi = $this->orderitems()->save(new OrderItem($request));
                 // $product = $oi->getProduct();
                 // flash('success', 'Added '.$request['quantity'].' '.$product->title.' to your cart');
 				return true;
@@ -68,7 +74,7 @@ class Order extends Model
     	}
     }
 
-    public function removeOrderitem( Orderitem $oi ){
+    public function removeOrderitem( OrderItem $oi ){
         $oi->delete();
         $this->compute();
     }
@@ -118,13 +124,13 @@ class Order extends Model
 
     	// delete temporary/current cart and items within
     	// Note: this approach for single query deletion
-    	Orderitem::where('order_id', $cart->id)->delete();
+    	OrderItem::where('order_id', $cart->id)->delete();
     	$cart->delete();
 
     }
 
     public function compute(  ){
-        // relaod orderitems
+        // reload orderitems
         $this->load('orderitems');
         $this->attributes['total'] = 0;
         foreach ($this->orderitems as $oi) {

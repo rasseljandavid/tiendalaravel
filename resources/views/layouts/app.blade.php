@@ -23,6 +23,17 @@
 <!-- CSS Part End-->
 </head>
 <body>
+  <!-- 
+    back button refresh hack!!! 
+    do we need to find a better cross browser solution here?
+  -->
+  <input id="alwaysFetch" type="hidden" />
+  <script>
+    setTimeout(function () {
+        var el = document.getElementById('alwaysFetch');
+        el.value = el.value ? location.reload() : true;
+    }, 0);
+  </script>
 <div class="wrapper-wide">
   <div id="header">
     <!-- Top Bar Start-->
@@ -70,10 +81,6 @@
             <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
           </div>
           <!-- Logo End -->
-          {{-- session()->flush() --}}
-          <?php 
-            $minicart=App\Http\Controllers\CartController::getCart(true);
-          ?>
           @include('cart.minicart')
           <!-- Search Start-->
           <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
@@ -244,15 +251,17 @@
       </div>
     </div>
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
   </div>
   <!-- Facebook Side Block End -->
+
 </div>
 <!-- JS Part Start-->
 <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
@@ -263,6 +272,8 @@
 <script type="text/javascript" src="/js/custom.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+
+
 
   // add the csrf_token to all ajax request
   $.ajaxSetup({

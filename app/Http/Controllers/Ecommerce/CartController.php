@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ecommerce;
 
+// dependencies
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Response;
-
 use App\Http\Requests;
-use App\User;
-use App\Order;
-use App\Orderitem;
-use App\Product;
+use Response;
 use Auth;
+// models
+use App\Models\Ecommerce\OrderItem;
+use App\Models\Ecommerce\Product;
+use App\Models\Ecommerce\Order;
+use App\User;
 
 
 class CartController extends Controller

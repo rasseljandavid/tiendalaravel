@@ -1,13 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models\Ecommerce;
 
+// dependencies
 use Illuminate\Database\Eloquent\Model;
+// moels
 
 class Category extends Model
 {
 
-	/*---------- PROTECTED VARAIBLES ----------*/
+	/*---------- VARAIBLES ----------*/
 
 	protected $fillable = [
 			'title', 'slug', 'rank', 'bannerImage', 'parent_id'

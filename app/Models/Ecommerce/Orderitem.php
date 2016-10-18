@@ -1,15 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models\Ecommerce;
 
+// dependencies
 use Illuminate\Database\Eloquent\Model;
-use App\Order;
-use App\Product;
+// models
+use App\Models\Ecommerce\Order;
+use App\Models\Ecommerce\Product;
 
 class Orderitem extends Model
 {
 
-	/*---------- PROTECTED VARAIBLES ----------*/
+	/*---------- VARAIBLES ----------*/
 	
     protected $fillable = [
     		'order_id', 'quantity', 'price', 'product_id', 'title'
