@@ -44,7 +44,7 @@
                                 </div>
                             </td>
                             <td class="text-right">₱{{$oi->price}}</td>
-                            <td class="text-right">₱{{ ($oi->quantity * $oi->price) }}</td>
+                            <td class="text-right">₱{{ number_format(($oi->quantity * $oi->price), 2) }}</td>
                           </tr>
                     @endforeach
                   @else
@@ -55,7 +55,7 @@
             </div>
           <div class="row">
             <div class="col-sm-4 col-sm-offset-8">
-                @include('cart._total', ['minicart'=>$cart])
+                @include('cart._total')
             </div>
           </div>
           <div class="buttons">
@@ -67,3 +67,9 @@
       </div>
     </div>
 @endsection
+
+
+
+
+
+

@@ -20,6 +20,12 @@ class Order extends Model
 
 	/*---------- SET<>ATTRIBUTE ----------*/
 	/*---------- GET<>ATTRIBUTE ----------*/
+
+    public function getTotalAttribute( $total ){
+        
+        return $this->attributes['total'] = number_format($total, 2);
+    }
+
 	/*---------- SCOPES ----------*/
 
 	/*---------- RELATIONS ----------*/

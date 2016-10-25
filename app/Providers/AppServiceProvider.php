@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {   
         // ENCOUNTERING ERROR?
-        // when making migrate:refresh,install comment all lines that request data. why?
+        // when making migrate:refresh,install... comment all lines that request data. why?
         // http://stackoverflow.com/questions/25315325/laravel-base-table-or-view-not-found-1146-table-database-pages-doesnt-exist
 
         $categories = Category::limit(8)->get();
@@ -27,15 +27,16 @@ class AppServiceProvider extends ServiceProvider
 
         // NEED FIX, we dont want to query the cart 2 or more times in a single page if possible
         view()->composer(
-            [   'layouts.app',
+            [
+                'cart.minicart',
                 'home.index',
                 'products.show',
-                'category.show',
+                // 'category.show',
                 'category.pagination'
             ], 
             function($view) {
-                $minicart = CartController::getCart(true);
-                $view->with('minicart', $minicart);
+                $cart = CartController::getCart(true);
+                $view->with('cart', $cart);
         });
 
         /* QUeRY DEBBUGER */

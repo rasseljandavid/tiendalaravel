@@ -29,14 +29,14 @@
     /*margin-top: -100%;*/
     /*margin-left: -100%;*/
     /*border-radius: 20px;*/
-    background-image: -webkit-linear-gradient(-45deg, #ff9a1a 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #ff9a1a 50%, #ff9a1a 75%, rgba(255, 154, 26, 0) 75%);
-    background-image: -moz-linear-gradient(-45deg, #ff9a1a 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #ff9a1a 50%, #ff9a1a 75%, rgba(255, 154, 26, 0) 75%);
-    background-image: -o-linear-gradient(-45deg, #ff9a1a 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #ff9a1a 50%, #ff9a1a 75%, rgba(255, 154, 26, 0) 75%);
-    background-image: linear-gradient(-45deg, #ff9a1a 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #ff9a1a 50%, #ff9a1a 75%, rgba(255, 154, 26, 0) 75%);
-    background-color: #fff;
+    background-image: -webkit-linear-gradient(-45deg, #fedf15 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #fedf15 50%, #fedf15 75%, rgba(255, 154, 26, 0) 75%);
+    background-image: -moz-linear-gradient(-45deg, #fedf15 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #fedf15 50%, #fedf15 75%, rgba(255, 154, 26, 0) 75%);
+    background-image: -o-linear-gradient(-45deg, #fedf15 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #fedf15 50%, #fedf15 75%, rgba(255, 154, 26, 0) 75%);
+    background-image: linear-gradient(-45deg, #fedf15 25%, rgba(255, 154, 26, 0) 25%, rgba(255, 154, 26, 0) 50%, #fedf15 50%, #fedf15 75%, rgba(255, 154, 26, 0) 75%);
+    background-color: #ffffff;
     background-size: 50px 50px;
-    border: 1px solid #ff9a1a;
-    border-bottom-color: #e68100;
+    border: 1px solid #be4d37;
+    border-bottom-color: #be4d37;
     -webkit-box-shadow: inset 0 10px 0 rgba(255, 255, 255, 0.2);
     box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.2);
     -webkit-animation: move 2s linear infinite;

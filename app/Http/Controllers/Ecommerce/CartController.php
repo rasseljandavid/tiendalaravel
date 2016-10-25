@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Response;
 use Auth;
+use View;
 // models
 use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
@@ -30,6 +31,10 @@ class CartController extends Controller
             return 'no cart';
         $cart['orderitems'] = $cart->orderitems;
         return $cart;
+    }
+
+    public function loadMinicart(){
+        return Response::json(View::make('cart.minicart')->render());
     }
 
     public function show() {

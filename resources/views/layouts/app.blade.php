@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 <link rel="stylesheet" type="text/css" href="/css/helpers/flasher.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/tienda.css" />
 <link rel="stylesheet" type="text/css" href="/css/loader.css" />
 <!-- CSS Part End-->
 </head>
@@ -81,7 +81,11 @@
             <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
           </div>
           <!-- Logo End -->
-          @include('cart.minicart')
+          <!-- Mini Cart Start-->
+          <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12" id="minicart-container">
+            @include('cart.minicart')
+          </div>
+          <!-- Mini Cart End-->
           <!-- Search Start-->
           <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
             <div id="search" class="input-group">
@@ -271,78 +275,31 @@
 <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-
-
-
-  // add the csrf_token to all ajax request
-  $.ajaxSetup({
-      headers:
-      { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-  });
-
-  // flash message close
-  $('.message-close').each(function(){
-    $(this).click(function(){
-      $(this).parents('div .alert').slideToggle(300);
+  $(document).ready(function(){
+    // add the csrf_token to all ajax request
+    $.ajaxSetup({
+        headers:
+        { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     });
-  });
 
-  // remove loading bar on addtocart
-  function removebar(elem){
-    elem.removeClass('bar');
-  }
+    // flash message close
+    $('.message-close').each(function(){
+      $(this).click(function(){
+        $(this).parents('div .alert').slideToggle(300);
+      });
+    });
 
-  $('div.add-to-cart').each(function(){
-    removebar($(this).children('.bar'));
-  });
-
-  // add to cart submit button
-  $('div.add-to-cart').each(function(){
-    var atc = $(this);
-    var send = false;
-    var form = atc.find('.form-addtocart');
-    atc.find('#submit').on('click', function(){
-      var qtyHolder = atc.find('#quantity-holder');
-      var inputQty = atc.find('#input-quantity');
-      var qty = inputQty.val();
-      qty++;
-      inputQty.val(qty);
-      send = false;
-      setTimeout(function(){
-        // send here if quantity is changed
-        if(qty == inputQty.val()){
-          var bar = atc.children('#loading-btn');
-          bar.addClass('bar');
-          var data = form.serialize();
-          $.ajax({
-            url  : form.attr('action'),
-            type : form.attr('method'),
-            data : data,
-            dataType : 'json',
-          }).done(function (data) {
-            
-            if(data.success == true){
-              qtyHolder.val(inputQty.val());
-              console.log('successful');
-            }else if(data.success == false){
-              inputQty.val(qtyHolder.val());
-              console.log("insufficient");
-            }
-            removebar(bar);
-          }).fail(function (data){
-            var errors = data.responseJSON;
-            removebar(bar);
-            console.log(data);
-          });
-          $(this).blur();
-          return false;
+    // delete item confirmation
+    $('.delete-cart-item').each(function(){
+      $(this).on('submit', function(event){
+        if( !confirm('Are you sure that you want to remove '+$(this).attr("data-itemtitle")) ) {
+            event.preventDefault();
         }
-      }, 400);
+      });
     });
   });
-});
 </script>
+<script type="text/javascript" src="/js/tienda-cart.js"></script>
 <!-- JS Part End-->
 @yield('script')
 

@@ -31,6 +31,7 @@
       <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
       <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>
     </div><br>
+    <div class="clearer"></div>
   </div>
   <!-- <div class="button-group">
     {{-- @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg']) --}}

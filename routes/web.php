@@ -30,6 +30,7 @@ Route::get('/account', 'UsersController@show');
 
 // Cart
 Route::get('/cart/show', 'Ecommerce\CartController@show');
+Route::get('/cart/minicart', 'Ecommerce\CartController@loadMinicart');
 Route::get('/cart/checkout', 'Ecommerce\CartController@checkout');
 Route::get('/cart/compare', 'Ecommerce\CartController@compare');
 Route::get('/cart/wishlist', 'Ecommerce\CartController@wishlist');
