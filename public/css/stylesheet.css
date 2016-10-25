@@ -801,7 +801,7 @@ a:focus { outline:none; }
 	padding:7px;
 	margin:0px 3px 0px 0px;
 	position:relative;
-	/*text-align: center;*/
+	text-align: center;
 	border:3px solid transparent;
 }
 @media only screen and (min-width:1025px) {
@@ -1972,4 +1972,9 @@ div.required .control-label:before {
 	content: '* ';
 	color: #F00;
 	font-weight: bold;
+}
+
+.btn-addtocart{
+	float: left;
+	display: inline-block;
 }
