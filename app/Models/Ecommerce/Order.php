@@ -87,6 +87,7 @@ class Order extends Model
 
     public static function mergeWithPrevious(  ){
 
+        $cart = null;
         // get current cart if any
     	if(Cart::getCartSession()){
 	    	$cart = Order::where([

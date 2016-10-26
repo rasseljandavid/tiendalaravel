@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/cart/combine';
 
     /**
      * Create a new controller instance.
@@ -45,8 +45,8 @@ class LoginController extends Controller
         
         flash('info', 'Hello '.Auth::user()->getFullname());
 
-        if(Cart::getCartSession())
-            return redirect('/cart/combine');
+        // if(Cart::getCartSession())
+        //     return redirect('/cart/combine');
     }
 
     
