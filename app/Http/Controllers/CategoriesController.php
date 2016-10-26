@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Ecommerce;
+namespace App\Http\Controllers;
 
-// dependencies
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Response;
 use Auth;
+use Response;
 use View;
-// models
-use App\Models\Ecommerce\Category;
-use App\Models\Ecommerce\Product;
+use App\Category;
+
 
 class CategoriesController extends Controller
 {
@@ -32,7 +29,7 @@ class CategoriesController extends Controller
 
     	$category = Category::fromSlug($slug)->first();
         $categories = Category::all();
-        $p = new Product;
+        $p = new product;
         $featured = [];
         $featured['bestseller'] = $p->getBestSellerProduct()->random(5);
         $featured['special'] = $p->getSpecialProduct()->random(5);
