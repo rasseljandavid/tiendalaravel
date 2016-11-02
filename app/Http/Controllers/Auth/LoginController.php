@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Ecommerce\CartController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-use App\Http\Controllers\Ecommerce\CartController as Cart;
 
 class LoginController extends Controller
 {
@@ -42,8 +42,11 @@ class LoginController extends Controller
 
 
     protected function authenticated(Request $request, $user){
-        
-        flash('info', 'Hello '.Auth::user()->getFullname());
+
+        if(isset($request['checkout'])){
+            return (new CartController)->combine($request);
+        }
+        flash('info', 'Welcome back '.Auth::user()->getFullname());
 
         // if(Cart::getCartSession())
         //     return redirect('/cart/combine');

@@ -38,6 +38,7 @@ Route::get('/cart/index', 'Ecommerce\CartController@index');//admin only
 Route::post('/cart/addItem', 'Ecommerce\CartController@addItem');
 Route::delete('/cart/removeItem', 'Ecommerce\CartController@removeItem');
 Route::get('/cart/combine', 'Ecommerce\CartController@combine')->middleware('auth');
+Route::post('/cart/preprocess', 'Ecommerce\CartController@preprocess');
 
 
 //Store Pages

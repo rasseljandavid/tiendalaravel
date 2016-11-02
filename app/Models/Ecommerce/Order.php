@@ -13,9 +13,11 @@ class Order extends Model
 {	
 	/*---------- VARAIBLES ----------*/
 
-    protected $fillable = [
-    		'user_id', 'comment', 'session', 'purchased_at', 'discount_id', 'total', 'discount'
-    	];
+    // protected $fillable = [
+    // 		'user_id', 'comment', 'session', 'purchased_at', 'discount_id', 'total', 'discount', 'status'
+    // 	];
+
+    protected $guarded = [ 'id' ];
 
 
 	/*---------- SET<>ATTRIBUTE ----------*/
@@ -133,7 +135,6 @@ class Order extends Model
     	// Note: this approach for single query deletion
     	OrderItem::where('order_id', $cart->id)->delete();
     	$cart->delete();
-
     }
 
     public function compute(  ){

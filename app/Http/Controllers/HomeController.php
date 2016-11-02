@@ -9,6 +9,7 @@ use App\Http\Controllers\Ecommerce\CartController as Cart;
 use App\Models\Ecommerce\Category;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Supplier;
+use App\Models\Ecommerce\Status;
 
 class HomeController extends Controller
 {
@@ -29,8 +30,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        
         // $cart = Cart::getCart();
         // if($cart)
         //     $cart->orderitems = $cart->orderitems()->orderBy('updated_at', 'desc')->take(2)->get();

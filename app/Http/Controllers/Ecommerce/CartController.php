@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Ecommerce;
 
 // dependencies
+use App\Http\Controllers\Auth\RegisterController as Register;
+use App\Http\Controllers\Auth\LoginController as Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Response;
+use Redirect;
 use Auth;
 use View;
 // models
@@ -21,10 +24,27 @@ class CartController extends Controller
     // this is an instace of an order
     public $cart = null;
 
+
     public function __construct(  ){
+
         $this->middleware('admin', ['only' => ['index']]);
     }
 
+    /*--  SESSION  --*/
+    private function setCartSession(){
+        $session = hash('ripemd160', $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+        session()->set('tienda-cart', $session);
+        return session()->get('tienda-cart');
+    }
+
+    public static function getCartSession(  ){
+
+        return session()->get('tienda-cart', null);
+    }
+    /*--  END SESSION  --*/
+
+
+    /*-- DISPLAY --*/
     public function index(  ){
         $cart = self::getCart();
         if(!$cart)
@@ -33,31 +53,38 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function loadMinicart(){
-        return Response::json(View::make('cart.minicart')->render());
-    }
-
     public function show() {
         $cart = self::getCart(true);
+        $cart->comput();
     	return view('cart.show', compact('cart'));
     }
 
     public function checkout() {
         $cart = self::getCart(true);
-        if(!count($cart->orderitems)){
-            flash('danger', 'You cannot checkout with an empty cart');
+        // empty cart. redirect to home
+        if($cart == null || !$cart->orderitems->count()){
+            flash('danger', 'You\'re cart is empty! Add an item to continue checkout');
             return redirect('/');
         }
+        $cart->compute();
     	return view('cart.checkout', compact('cart'));
     }
 
+    public function loadMinicart(){
+
+        return Response::json(View::make('cart.minicart')->render());
+    }
+
     public function compare() {
+
     	return view('cart.compare');
     }
 
     public function wishlist() {
+
     	return view('cart.wishlist');
     }
+
 
     public function addItem( Request $request){
         
@@ -93,7 +120,6 @@ class CartController extends Controller
             $item = self::getCart()->getItemFromProduct($product->id);
             return Response::json(['success'=>false,'quantity'=>$item->quantity]);
         }
-
     }
 
     public function removeItem( Request $request ){
@@ -155,23 +181,37 @@ class CartController extends Controller
         unset($order);
     }
 
-    public function combine(){
+    public function combine( Request $request ){
 
         Order::mergeWithPrevious();
-        flash('info', 'Welcome back '.Auth::user()->getFullname());
+
+        if(isset($request['checkout'])){
+            return $this->preprocess($request);
+        }
+        
         return redirect('/');
     }
 
-    private function setCartSession(){
+    public function preprocess( Request $request ){
+            
+        if( !Auth::check() ){
+            $request['checkout'] = 'checkout';
+            if($request['account'] == 'returning'){
+                $request['email'] = $request['login-email'];
+                $request['password'] = $request['login-password'];
+                return (new Login)->login($request);
+            }else if($request['account'] == 'register'){
+                return (new Register)->register($request); 
+            }else{
+                flash('danger', 'Invalid Checkout!');
+                return redirect('/'); 
+            }
+            
+        }
 
-        $session = hash('ripemd160', $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-        session()->set('tienda-cart', $session);
-        return session()->get('tienda-cart');
-    }
 
-    public static function getCartSession(  ){
-        return session()->get('tienda-cart', null);
-    }
+        return self::getCart(true);
+    }   
 
     
 }

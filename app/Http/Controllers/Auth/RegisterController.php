@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 // dependencies
-use Validator;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Ecommerce\CartController;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Validator;
 // models
-use App\User;
 use App\Models\Address\Address;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -81,5 +85,26 @@ class RegisterController extends Controller
         $data['is_billing'] = 1;
         $address = Address::create($data);
         return $user;
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if(isset($request['checkout'])){
+            return (new CartController)->combine($request);
+        }
+        flash('info', 'Hello '.Auth::user()->getFullname());
+        return redirect($this->redirectPath());
     }
 }
