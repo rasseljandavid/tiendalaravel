@@ -17,6 +17,7 @@ use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Order;
 use App\User;
+use Megaventory;
 
 
 class CartController extends Controller
@@ -55,7 +56,7 @@ class CartController extends Controller
 
     public function show() {
         $cart = self::getCart(true);
-        $cart->comput();
+        $cart->compute();   
     	return view('cart.show', compact('cart'));
     }
 
@@ -210,7 +211,15 @@ class CartController extends Controller
         }
 
 
-        return self::getCart(true);
+        $order = self::getCart();
+        $order->comment = $request['comment'];
+        // return $order->matchMegaventoryStructure();
+
+        $megaventory = new \Megaventory();
+        $myOrder = $megaventory->createSalesOrder($order->matchMegaventoryStructure());
+
+
+        return $myOrder;
     }   
 
     

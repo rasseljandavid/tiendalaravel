@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Auth;
 // models
 use App\Models\Ecommerce\OrderItem;
+use App\User;
 
 class Order extends Model
 {	
@@ -35,6 +36,10 @@ class Order extends Model
 	public function orderitems(  ){
 		return $this->hasMany(OrderItem::class);
 	}
+
+    public function user(  ){
+        return $this->belongsTo(User::class);
+    }
 
     public function orderstatus(  ){
         return $this->hasOne(OrderStatus::class);    
@@ -140,6 +145,7 @@ class Order extends Model
     public function compute(  ){
         // reload orderitems
         $this->load('orderitems');
+
         $this->attributes['total'] = 0;
         foreach ($this->orderitems as $oi) {
             $this->attributes['total'] += ($oi->quantity * $oi->price);
@@ -151,5 +157,104 @@ class Order extends Model
     public function getItemFromProduct( $id ){
         
         return $this->orderitems()->fromProduct($id)->first();
+    }
+
+    public function setTotalQuantity(  ){
+        
+        $this->totalQuantity = 0;
+        foreach ($this->orderitems as $oi) {
+            $this->totalQuantity += $oi->quantity;
+        }
+    }
+
+    public function matchMegaventoryStructure(  ){
+        // "mvSalesOrder":{
+        //     "SalesOrderId":0,
+        //     "SalesOrderNo":"String",
+        //     "SalesOrderReferenceNo":"String",
+        //     "SalesOrderReferenceApplication":"String",
+        //     "SalesOrderDate":"\/Date(-62135596800000-0000)\/",
+        //     "SalesOrderCustomOrderDate1":"\/Date(-62135596800000-0000)\/",
+        //     "SalesOrderCustomOrderDate2":"\/Date(-62135596800000-0000)\/",
+        //     "SalesOrderCurrencyCode":"String",
+        //     "SalesOrderClientID":0,
+        //     "SalesOrderBillingAddress":"String",
+        //     "SalesOrderShippingAddress":"String",
+        //     "SalesOrderContactPerson":"String",
+        //     "SalesOrderInventoryLocationID":0,
+        //     "SalesOrderComments":"String",
+        //     "SalesOrderTags":"String",
+        //     "SalesOrderTotalQuantity":0,
+        //     "SalesOrderAmountSubtotalWithoutTaxAndDiscount":0.00,
+        //     "SalesOrderAmountShipping":0.00,
+        //     "SalesOrderAmountTotalDiscount":0.00,
+        //     "SalesOrderAmountTotalTax":0.00,
+        //     "SalesOrderAmountGrandTotal":0.00,
+        //     "SalesOrderDetails":[
+        //         {
+        //             "SalesOrderRowProductSKU":"String",
+        //             "SalesOrderRowProductDescription":"String",
+        //             "SalesOrderRowQuantity":0,
+        //             "SalesOrderRowShippedQuantity":0,
+        //             "SalesOrderRowInvoicedQuantity":0,
+        //             "SalesOrderRowUnitPriceWithoutTaxOrDiscount":0,
+        //             "SalesOrderRowTaxID":0,
+        //             "SalesOrderTotalTaxAmount":0,
+        //             "SalesOrderRowDiscountID":0,
+        //             "SalesOrderRowTotalDiscountAmount":0,
+        //             "SalesOrderRowTotalAmount":0
+        //         }
+        //     ],
+        //     "SalesOrderStatus":"ValidStatus"
+        // }
+
+        $this->load('user');
+        $this->setTotalQuantity();
+        // salesItem is equivalent to orderitem
+        $salesItem = array();
+        foreach ($this->orderitems as $key => $oi) {
+            // $this->orderitems[$key]->product = $oi->getProduct(); 
+            $product = $oi->getProduct();
+            $salesItem[] = array(
+                    "SalesOrderRowProductSKU"=>$product->sku,
+                    "SalesOrderRowProductDescription"=>$product->body,
+                    "SalesOrderRowQuantity"=>$oi->quantity,
+                    "SalesOrderRowShippedQuantity"=>0,
+                    "SalesOrderRowInvoicedQuantity"=>0,
+                    "SalesOrderRowUnitPriceWithoutTaxOrDiscount"=>0,
+                    "SalesOrderRowTaxID"=>0,
+                    "SalesOrderTotalTaxAmount"=>0,
+                    "SalesOrderRowDiscountID"=>0,
+                    "SalesOrderRowTotalDiscountAmount"=>0,
+                    "SalesOrderRowTotalAmount"=>($oi->quantity * $oi->price)
+                );
+        }
+
+        $sales = array(
+                "SalesOrderId"=>$this->id,
+                "SalesOrderNo"=>(string)$this->id,
+                "SalesOrderReferenceNo"=>(string)$this->id,
+                "SalesOrderReferenceApplication"=>"tienda",
+                "SalesOrderDate"=>(string)$this->purchased_at,
+                "SalesOrderCustomOrderDate1"=>(string)$this->created_at,
+                "SalesOrderCustomOrderDate2"=>(string)$this->updated_at,
+                "SalesOrderCurrencyCode"=>"Peso",
+                "SalesOrderClientID"=>$this->user_id,
+                "SalesOrderBillingAddress"=>$this->user->getBillingAddress()->onelineString(),
+                "SalesOrderShippingAddress"=>$this->user->getShippingAddress()->onelineString(),
+                "SalesOrderContactPerson"=>$this->user->getFullname(),
+                "SalesOrderInventoryLocationID"=>0,
+                "SalesOrderComments"=>$this->comment,
+                "SalesOrderTags"=>"String",
+                "SalesOrderTotalQuantity"=>$this->totalQuantity,
+                "SalesOrderAmountSubtotalWithoutTaxAndDiscount"=>0.00,
+                "SalesOrderAmountShipping"=>0.00,
+                "SalesOrderAmountTotalDiscount"=>0.00,
+                "SalesOrderAmountTotalTax"=>0.00,
+                "SalesOrderAmountGrandTotal"=>$this->total,
+                "SalesOrderDetails"=>$salesItem,
+                "SalesOrderStatus"=>(string)$this->status
+            );
+        return $sales;
     }
 }

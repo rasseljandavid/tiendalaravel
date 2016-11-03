@@ -5,9 +5,11 @@ namespace App;
 // dependencies
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Address\Address;
 use Auth;
 // models
+use App\Models\Address\Address;
+use App\Models\Ecommerce\Order;
+
 
 class User extends Authenticatable
 {
@@ -53,18 +55,21 @@ class User extends Authenticatable
         return $this->hasMany(Address::class);
     }
 
-
+    public function orders(  ){
+        
+        return $this->hasMany(Order::class);
+    }
 
     /*---------- CUSTOM METHODS ----------*/
 
     public function getShippingAddress(  ){
         
-        return $this->addresses->where('is_shipping','1')->first();
+        return $this->addresses()->shipping()->first();
     }
 
     public function getBillingAddress(  ){
         
-        return $this->addresses->where('is_billing','1')->first();
+        return $this->addresses()->billing()->first();
     }
 
     public function getFullname(  ){

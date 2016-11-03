@@ -21,6 +21,17 @@ class Address extends Model
 	/*---------- SET<>ATTRIBUTE ----------*/
 	/*---------- GET<>ATTRIBUTE ----------*/
 	/*---------- SCOPES ----------*/
+
+	public function scopeShipping( $query ){
+		
+		$query->where('is_shipping', '1');
+	}
+
+	public function scopeBilling( $query ){
+		
+		$query->where('is_billing', '1');
+	}
+
 	/*---------- RELATIONS ----------*/
 
 	public function user(  ){
@@ -32,8 +43,9 @@ class Address extends Model
 
 	/*---------- CUSTOM METHODS ----------*/
 
-
-   
-   
+	public function onelineString(  ){
+		
+		return $this->address_one . ' ' . $this->city . ' zipcode[' . $this->zipcode .'] '. $this->country;
+	}
 
 }
