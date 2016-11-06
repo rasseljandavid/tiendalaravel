@@ -47,8 +47,13 @@ class Megaventory {
 
 	public function createSalesOrder($order) {
 
+
+		$order['SalesOrderStatus'] = '10';
+		$order['SalesOrderClientID'] = '492';
+		$order['SalesOrderCurrencyCode'] = 'PHP';
 		return  $this->megaventoryRequest('SalesOrderUpdate', [
-					'mvSalesOrder'  => $order	
+					'mvSalesOrder'  => $order,
+					'mvRecordAction' => 'Insert'	
 				], true);
 	}
 
