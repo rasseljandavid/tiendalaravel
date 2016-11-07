@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 // models
+use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
 
 class OrdersController extends Controller
 {
+
+    public function __construct(  ){
+        
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +58,15 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id)->load('orderitems');
+        if( (!$order || $order->user_id != Auth::user()->id) && !Auth::user()->isAdmin() ){
+            flash('info', 'Order doesn\'t exist');
+            return redirect('/');
+        }
+        $order->shippingAddress = $order->user->getShippingAddress();
+        $order->billingAddress = $order->user->getBillingAddress();
+        $order->status = Status::asString('order', $order->status);
+        return view('orders.show', compact('order'));
     }
 
     /**

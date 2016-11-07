@@ -9,7 +9,7 @@ class Status extends Model
     
     /*---------- VARAIBLES ----------*/
 
-    protected $type = array(
+    protected static $type = array(
     		'product'	=> [ 
     				0 => 'active',
     				1 => 'inactive' 
@@ -38,9 +38,22 @@ class Status extends Model
     	return;
     }
 
-    public function setProductStatus( $id ){
+    public function setOrderStatus( $id ){
     	
     	return;
+    }
+
+    public static function asString( $type, $index ){
+        
+        switch (strtolower($type)) {
+            case 'product':
+                return self::$type['product'][$index];
+                break;
+            
+            default:
+                return self::$type['order'][$index];
+                break;
+        }
     }
 
     public function getStatus(  ){

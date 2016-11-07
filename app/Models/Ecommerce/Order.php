@@ -18,7 +18,11 @@ class Order extends Model
     // 		'user_id', 'comment', 'session', 'purchased_at', 'discount_id', 'total', 'discount', 'status'
     // 	];
 
+    protected $dates = [ 'created_at', 'updated_at', 'purchased_at' ];
+
     protected $guarded = [ 'id' ];
+
+    protected $totalQuantity = 0;
 
 
 	/*---------- SET<>ATTRIBUTE ----------*/
@@ -27,6 +31,16 @@ class Order extends Model
     public function getTotalAttribute( $total ){
         
         return $this->attributes['total'] = number_format($total, 2);
+    }
+
+    public function getShippingFeeAttribute( $shipping_fee ){
+        
+        return $this->attributes['shipping_fee'] = number_format($shipping_fee, 2);
+    }
+
+    public function getGrandTotalAttribute( $grand_total ){
+        
+        return $this->attributes['grand_total'] = number_format($grand_total, 2);
     }
 
 	/*---------- SCOPES ----------*/
@@ -151,6 +165,16 @@ class Order extends Model
             $this->attributes['total'] += ($oi->quantity * $oi->price);
         }
 
+        if($this->attributes['total'] >= 100){
+            $this->attributes['shipping_fee'] = 0;
+        }else{
+            $this->attributes['shipping_fee'] = 50.00;
+        }
+
+        $grand_total = $this->attributes['total'];
+        $grand_total += $this->attributes['shipping_fee'];
+        $this->attributes['grand_total'] = $grand_total;
+
         $this->save();
     }
 
@@ -221,7 +245,7 @@ class Order extends Model
                     "SalesOrderRowQuantity"=>$oi->quantity,
                     "SalesOrderRowShippedQuantity"=>0,
                     "SalesOrderRowInvoicedQuantity"=>0,
-                    "SalesOrderRowUnitPriceWithoutTaxOrDiscount"=>0,
+                    "SalesOrderRowUnitPriceWithoutTaxOrDiscount"=>$oi->price,
                     "SalesOrderRowTaxID"=>0,
                     "SalesOrderTotalTaxAmount"=>0,
                     "SalesOrderRowDiscountID"=>0,
@@ -229,6 +253,8 @@ class Order extends Model
                     "SalesOrderRowTotalAmount"=>($oi->quantity * $oi->price)
                 );
         }
+
+
 
         $sales = array(
                 "SalesOrderId"=>$this->id,
@@ -248,13 +274,16 @@ class Order extends Model
                 "SalesOrderTags"=>"String",
                 "SalesOrderTotalQuantity"=>$this->totalQuantity,
                 "SalesOrderAmountSubtotalWithoutTaxAndDiscount"=>0.00,
-                "SalesOrderAmountShipping"=>0.00,
+                "SalesOrderAmountShipping"=>$this->shipping_fee,
                 "SalesOrderAmountTotalDiscount"=>0.00,
                 "SalesOrderAmountTotalTax"=>0.00,
-                "SalesOrderAmountGrandTotal"=>$this->total,
+                "SalesOrderAmountGrandTotal"=>$this->grand_total,
                 "SalesOrderDetails"=>$salesItem,
                 "SalesOrderStatus"=>(string)$this->status
             );
+
+        // dd($sales);
+
         return $sales;
     }
 }

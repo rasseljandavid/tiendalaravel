@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use App\Models\Address\Address;
+
 class CreateAddressesTable extends Migration
 {
     /**
@@ -24,6 +26,24 @@ class CreateAddressesTable extends Migration
             $table->boolean('is_billing')->default(0);
             $table->timestamps();
         });
+
+        $address1 = new Address;
+        $address1->user_id = 1;
+        $address1->address_one = 'Street address of admin';
+        $address1->city = 'Mabalacat';
+        $address1->zipcode = '2010';
+        $address1->country = 'Philippines';
+        $address1->is_shipping = 1;
+        $address1->save();
+
+        $address2 = new Address;
+        $address2->user_id = 1;
+        $address2->address_one = 'Street address of admin';
+        $address2->city = 'Mabalacat';
+        $address2->zipcode = '2010';
+        $address2->country = 'Philippines';
+        $address2->is_billing = 1;
+        $address2->save(); 
     }
 
     /**

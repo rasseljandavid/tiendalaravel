@@ -16,8 +16,9 @@ use View;
 use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Order;
-use App\User;
+use Carbon\Carbon;
 use Megaventory;
+use App\User;
 
 
 class CartController extends Controller
@@ -56,7 +57,9 @@ class CartController extends Controller
 
     public function show() {
         $cart = self::getCart(true);
-        $cart->compute();   
+        if($cart){
+            $cart->compute();   
+        }
     	return view('cart.show', compact('cart'));
     }
 
@@ -210,16 +213,27 @@ class CartController extends Controller
             
         }
 
-
-        $order = self::getCart();
+        $order = self::getCart(true);
+        $order->compute();
         $order->comment = $request['comment'];
+        $order->purchased_at = Carbon::now();
         // return $order->matchMegaventoryStructure();
-
         $megaventory = new \Megaventory();
-        $myOrder = $megaventory->createSalesOrder($order->matchMegaventoryStructure());
 
+        try{
 
-        return $myOrder;
+            $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
+            $myOrder["SalesOrderStatus"] = 0;
+            $order->status = 1;
+            $order->save();
+            return redirect('/order/'.$order->id);
+            //save here
+        }catch(Exception $e){
+            flash('danger', 'An error has occured. Please submit the orther again');
+            return redirect('/cart/checkout');
+        }
+        
+        return $order;
     }   
 
     

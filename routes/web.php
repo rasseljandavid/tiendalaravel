@@ -40,12 +40,16 @@ Route::delete('/cart/removeItem', 'Ecommerce\CartController@removeItem');
 Route::get('/cart/combine', 'Ecommerce\CartController@combine')->middleware('auth');
 Route::post('/cart/preprocess', 'Ecommerce\CartController@preprocess');
 
+// Order
+Route::get('/order/{id}', 'Ecommerce\OrdersController@show');
 
-//Store Pages
+// Store Pages
 Route::get('/category', 'Ecommerce\CategoriesController@index');
 Route::get('/category/{category}', 'Ecommerce\CategoriesController@show');
 Route::get('/ajax/category', 'Ecommerce\CategoriesController@loadProducts');
 // Route::get('{product}', 'productsController@show');
+
+
 
 Route::get('/products', 'Ecommerce\ProductsController@index');
 Route::get('/products/{slug}', 'Ecommerce\ProductsController@show');

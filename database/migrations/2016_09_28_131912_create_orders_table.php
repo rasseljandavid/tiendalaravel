@@ -22,6 +22,8 @@ class CreateOrdersTable extends Migration
             $table->integer('discount_id')->unsigned()->default(0);
             $table->double('total', 10, 4)->default(0);
             $table->double('discount', 10, 4)->default(0);
+            $table->double('shipping_fee')->default(50.00);
+            $table->double('grand_total')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();
         });
