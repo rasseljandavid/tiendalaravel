@@ -224,7 +224,7 @@ class CartController extends Controller
 
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
             $myOrder["SalesOrderStatus"] = 0;
-            $order->status = 1;
+            $order->status = 0;
             $order->save();
             return redirect('/order/'.$order->id);
             //save here

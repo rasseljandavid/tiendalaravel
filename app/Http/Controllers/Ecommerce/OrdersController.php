@@ -10,6 +10,7 @@ use Auth;
 // models
 use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
+use App\Models\Address\Address;
 
 class OrdersController extends Controller
 {
@@ -58,15 +59,27 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $order = Order::find($id)->load('orderitems');
-        if( (!$order || $order->user_id != Auth::user()->id) && !Auth::user()->isAdmin() ){
+
+        $order = Order::find($id);
+        if( (Auth::user()->isAdmin() || ($order->user_id == Auth::user()->id)) && $order !=null ){
+            // continue
+        }else{
             flash('info', 'Order doesn\'t exist');
             return redirect('/');
         }
+        
+
+        $order->load('orderitems');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
         $order->status = Status::asString('order', $order->status);
-        return view('orders.show', compact('order'));
+
+        $admin = array();
+        $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
+        $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
+        $admin = (object)$admin;
+
+        return view('orders.show', compact('order', 'admin'));
     }
 
     /**

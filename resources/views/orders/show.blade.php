@@ -23,8 +23,8 @@
         </div>
         <div class="mgbt-xs-20"><img alt="logo" src="/image/logo.png"></div>
         <address>
-        795 Folsom Ave, Suite 600<br>
-        San Francisco, CA 94107<br>
+        {{ $admin->shippingAddress->address_one }} <br>
+        {{ $admin->shippingAddress->city }} {{ $admin->shippingAddress->zipcode }}, {{ $admin->shippingAddress->country }} <br>
         <abbr title="Phone">P:</abbr> (123) 456-7890<br>
         <br>
         info@venmond.com

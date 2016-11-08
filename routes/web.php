@@ -25,6 +25,9 @@ Route::get('/faq', 'PagesController@faq');
 Route::get('/contact-us', 'PagesController@contact');
 Route::get('/sitemap', 'PagesController@sitemap');
 
+// Admin
+Route::get('/dashboard', 'Admin\AdminController@dashboard');
+
 // User
 Route::get('/account', 'UsersController@show');
 

@@ -47,7 +47,6 @@ class LoginController extends Controller
             return (new CartController)->combine($request);
         }
         flash('info', 'Welcome back '.Auth::user()->getFullname());
-
         // if(Cart::getCartSession())
         //     return redirect('/cart/combine');
     }

@@ -45,6 +45,40 @@ class Order extends Model
 
 	/*---------- SCOPES ----------*/
 
+    public function scopeReceived( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 0]
+            ]);
+    }
+
+
+    public function scopeOnProcess( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 1]
+            ]);
+    }
+
+    public function scopeOnTransit( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 2]
+            ]);
+    }
+
+    public function scopeShipped( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 3]
+            ]);
+    }
+
+    
 	/*---------- RELATIONS ----------*/
 
 	public function orderitems(  ){

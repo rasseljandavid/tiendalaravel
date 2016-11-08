@@ -50,7 +50,19 @@
           </div>
           <div id="top-links" class="nav pull-right flip">
             <ul>
-              @if(Auth::user())
+              @if(Auth::check() && Auth::user()->isAdmin())
+              <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+              <li>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                <a href="{{ url('/logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+              </li>
+              @elseif(Auth::user())
               <li><a href="{{ url('/account') }}">{{ Auth::user()->getFullname() }}</a></li>
               <li>
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

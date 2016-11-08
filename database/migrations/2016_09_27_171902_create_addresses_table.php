@@ -44,6 +44,24 @@ class CreateAddressesTable extends Migration
         $address2->country = 'Philippines';
         $address2->is_billing = 1;
         $address2->save(); 
+
+        $address3 = new Address;
+        $address3->user_id = 0;
+        $address3->address_one = 'Local address of tienda(shipping)';
+        $address3->city = 'Mabalacat';
+        $address3->zipcode = '2010';
+        $address3->country = 'Philippines';
+        $address3->is_shipping = 1;
+        $address3->save(); 
+
+        $address3 = new Address;
+        $address3->user_id = 0;
+        $address3->address_one = 'Local address of tienda(billing)';
+        $address3->city = 'Mabalacat';
+        $address3->zipcode = '2010';
+        $address3->country = 'Philippines';
+        $address3->is_billing = 1;
+        $address3->save(); 
     }
 
     /**
