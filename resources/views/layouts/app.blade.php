@@ -288,11 +288,14 @@
 <script type="text/javascript" src="/js/custom.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-    // add the csrf_token to all ajax request
-    $.ajaxSetup({
-        headers:
-        { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+        options.async = true;
     });
+    // add the csrf_token to all ajax request
+    // $.ajaxSetup({
+    //     headers:
+    //     { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    // });
 
     // flash message close
     $('.message-close').each(function(){
