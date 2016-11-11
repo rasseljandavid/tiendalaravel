@@ -99,15 +99,16 @@ class PagesController extends Controller
             }
 
             if (empty($returnVal->messages)) {                         // Enable encryption, 'ssl' also accepted
+                $name = stripslashes(safe($fields['name']));
                 $email = stripslashes(safe($fields['email']));
                 $body = stripslashes(safe($fields['message']));
-                $content = $email . " sent you a message from your contact form:<br><br>";
+                $content = $name . " sent you a message from your contact form:<br><br>";
                 $content .= "-------<br>" . $body . "<br><br><br><br>Email: " . $email;      
 
-                Mail::send('emails.send', ['title' => "Email from tienda contact form", 'content' => $content], function ($message) 
+                Mail::send('emails.send',['content' => $content], function ($message) 
                 {
-                    $message->subject("Hello from tienda contact");
-                    $message->to('hello@tienda.ph');
+                    $message->subject("Message from Tienda.ph Contact Form");
+                    $message->to('rasseljandavid@gmail.com');
 
                 });
 
