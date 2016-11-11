@@ -22,18 +22,18 @@
 <link rel="stylesheet" type="text/css" href="/css/loader.css" />
 <!-- CSS Part End-->
 </head>
-<body>
+<body onunload="">
   <!-- 
     back button refresh hack!!! 
     do we need to find a better cross browser solution here?
   -->
-  <input id="alwaysFetch" type="hidden" />
+  <!-- <input id="alwaysFetch" type="hidden" />
   <script>
     setTimeout(function () {
         var el = document.getElementById('alwaysFetch');
         el.value = el.value ? location.reload() : true;
     }, 0);
-  </script>
+  </script> -->
 <div class="wrapper-wide">
   <div id="header">
     <!-- Top Bar Start-->
