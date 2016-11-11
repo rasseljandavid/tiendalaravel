@@ -49,15 +49,19 @@ class PagesController extends Controller
 
         })) {
 
-            $returnVal->messages[] = "Thank you! Your message has been sent. We will contact you shortly.";
-            $returnVal->status = 'ok';
+            
 
-        } else {
             $error = new \stdClass();
             $error->message = "Whoops, looks like something went wrong. Please try again.";
 
             $returnVal->messages[] = $error;
             $returnVal->status   = 'error';
+        } else {
+
+            $msg = new \stdClass();
+            $msg->message = "Thank you! Your message has been sent. We will contact you shortly.";
+            $returnVal->messages[] = $msg;
+            $returnVal->status = 'ok';
         }
 
         return response()->json($returnVal, 200);

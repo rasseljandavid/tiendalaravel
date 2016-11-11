@@ -5,6 +5,6 @@
 <p><strong>Email:</strong></p>
 <p>{{ $email }}</p>
 <p><strong>Enquiry:</strong></p>
-<p>{{ nl2br($enquiry) }}</p>
+<p>{{ $enquiry }}</p>
 </body>
 </html>
