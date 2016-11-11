@@ -142,7 +142,7 @@ class CartController extends Controller
 
         if(count($cart->orderitems) == 0){
             $cart->delete();
-            $this->cart = null;
+            $this->cart = null; 
         }
 
         flash('success', 'Removed '.$oi->quantity.' '. $prod->title .'from your cart');
