@@ -140,6 +140,11 @@ class CartController extends Controller
         $prod = $oi->getProduct();
         $cart->removeOrderitem($oi);
 
+        if(count($cart->orderitems) == 0){
+            $cart->delete();
+            $this->cart = null;
+        }
+
         flash('success', 'Removed '.$oi->quantity.' '. $prod->title .'from your cart');
         return redirect()->back();
     }

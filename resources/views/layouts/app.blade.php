@@ -125,7 +125,7 @@
             @foreach($menus as $menu) 
               <li><a title="{{ $menu->title }}" href="/category/{{ $menu->slug }}">{{ $menu->title }}</a></li>
             @endforeach
-            <li class="custom-link-right"><a href="/cart/checkoutx"> Checkout Now!</a></li>
+            <li class="custom-link-right"><a href="/cart/checkout"> Checkout Now!</a></li>
           </ul>
         </div>
         </div>
