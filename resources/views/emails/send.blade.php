@@ -1,6 +1,10 @@
 <html>
-<head></head>
-<body style="background: black; color: white">
-<p>{{$content}}</p>
+<body>
+<p><strong>Name:</strong></p>
+<p>{{ $name }}</p>
+<p><strong>Email:</strong></p>
+<p>{{ $email }}</p>
+<p><strong>Enquiry:</strong></p>
+<p>{{ $enquiry }}</p>
 </body>
 </html>
