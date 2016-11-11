@@ -39,31 +39,32 @@
               <strong>Note</strong><br />
               You can always contact us via this contact form. We will require 1 business day to reply (at worst). </div>
           </div>
-          <form class="form-horizontal">
+          <form id="contact_form" method="POST" class="contact-form">
+            {{ csrf_field() }}
             <fieldset>
               <h3 class="subtitle">Send us an Email</h3>
               <div class="form-group required">
                 <label class="col-md-2 col-sm-3 control-label" for="input-name">Your Name</label>
                 <div class="col-md-10 col-sm-9">
-                  <input type="text" name="name" value="" id="input-name" class="form-control" />
+                  <input required type="text" name="name" value="" id="input-name" class="form-control" />
                 </div>
               </div>
               <div class="form-group required">
                 <label class="col-md-2 col-sm-3 control-label" for="input-email">E-Mail Address</label>
                 <div class="col-md-10 col-sm-9">
-                  <input type="text" name="email" value="" id="input-email" class="form-control" />
+                  <input required type="email" name="email" value="" id="input-email" class="form-control" />
                 </div>
               </div>
               <div class="form-group required">
                 <label class="col-md-2 col-sm-3 control-label" for="input-enquiry">Enquiry</label>
                 <div class="col-md-10 col-sm-9">
-                  <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+                  <textarea required name="message" rows="10" id="input-enquiry" class="form-control"></textarea>
                 </div>
               </div>
             </fieldset>
             <div class="buttons">
               <div class="pull-right">
-                <input class="btn btn-primary" type="submit" value="Submit" />
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </form>
