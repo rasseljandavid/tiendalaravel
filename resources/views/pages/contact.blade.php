@@ -20,25 +20,25 @@
           <h1 class="title">Contact Us</h1>
           <h3 class="subtitle">Our Location</h3>
           <div class="row">
-            <div class="col-sm-3"><img src="image/product/store_location-275x180.jpg" alt="MarketShop Template" title="MarketShop Template" class="img-thumbnail" /></div>
-            <div class="col-sm-3"><strong>MarketShop Template</strong><br />
+            <div class="col-sm-3"><img src="/image/logo.png" alt="MarketShop Template" title="MarketShop Template" class="img-thumbnail" /></div>
+            <div class="col-sm-3"><strong>TIENDA ENTERPRISES</strong><br />
               <address>
-              Central Square,<br />
-              22 Hoi Wing Road,<br />
-              New Delhi,<br />
-              India
+              Lot 1 Blk 20 Mauaque Resettlement,<br />
+              Mabalacat City,<br />
+              Pampanga,<br />
+              Philippines
               </address>
             </div>
-            <div class="col-sm-3"><strong>Telephone</strong><br>
-              +91 9898989898<br />
+            <div class="col-sm-3"><strong>Mobile</strong><br>
+              +63 9258166813<br />
               <br />
-              <strong>Fax</strong><br>
-              +91 9898989898 </div>
-            <div class="col-sm-3"> <strong>Opening Times</strong><br />
-              24X7 Customer Care<br />
+              <strong>Phone</strong><br>
+              +63 045 3085345</div>
+            <div class="col-sm-3"> <strong>Email</strong><br />
+              hello@tienda.ph<br />
               <br />
-              <strong>Comments</strong><br />
-              This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques. </div>
+              <strong>Note</strong><br />
+              You can always contact us via this contact form. We will require 1 business day to reply (at worst). </div>
           </div>
           <form class="form-horizontal">
             <fieldset>
@@ -71,10 +71,8 @@
         </div>
         <aside id="column-right" class="col-sm-3 hidden-xs">
           <div class="list-group">
-            <h2 class="subtitle">Custom Content</h2>
-            <p>This is a CMS block edited from admin. You can insert any content (HTML, Text, Images) Here. </p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <h2 class="subtitle">Map</h2>
+            <p> You're free to come to our office from Monday to Saturday at 8:00am to 5:00pm.</p>
           </div>
           <div class="banner owl-carousel">
             <div class="item"> <a href="#"><img src="image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive" /></a> </div>
