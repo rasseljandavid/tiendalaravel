@@ -107,6 +107,7 @@ class PagesController extends Controller
                 $res = Mail::send('emails.send', ['title' => "Email from contact from", 'content' => $content], function ($message) 
                 {
                     $message->subject("Hello from tienda contact");
+                    $message->to('hello@tienda.ph');
 
                 });
 
