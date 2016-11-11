@@ -10,8 +10,8 @@
       <!-- Breadcrumb Start-->
       <ul class="breadcrumb">
         <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a></li>
-        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/category/snacks" itemprop="url"><span itemprop="title">Electronics</span></a></li>
-        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/c2green" itemprop="url"><span itemprop="title">Laptop Silver black</span></a></li>
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ url('/category/'.$product->categories[0]->slug) }}" itemprop="url"><span itemprop="title">{{$product->categories[0]->title}}</span></a></li>
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="#" itemprop="url"><span itemprop="title">{{$product->title}}</span></a></li>
       </ul>
       <!-- Breadcrumb End-->
       <div class="row">
@@ -21,9 +21,9 @@
             <h1 class="title" itemprop="name">{{ $product->title }}</h1>
             <div class="row product-info">
               <div class="col-sm-6">
-                <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="/image/product/{{ $product->id .'.jpg' }}" title="{{ $product->title }}" alt="{{ $product->title }}" data-zoom-image="image/product/macbook_air_1-600x900.jpg" /> </div>
+                <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="/image/product/{{ $product->id .'.jpg' }}" title="{{ $product->title }}" alt="{{ $product->title }}" data-zoom-image="/image/product/{{ $product->id .'.jpg' }}"  onerror="this.src='/image/default.jpg'"/> </div>
                 <div class="center-block text-center"><span class="zoom-gallery"><i class="fa fa-search"></i> Click image for Gallery</span></div>
-                <div class="image-additional" id="gallery_01"> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_1-600x900.jpg" data-image="image/product/macbook_air_1-350x525.jpg" title="Laptop Silver black"> <img src="/image/product/macbook_air_1-66x99.jpg" title="Laptop Silver black" alt = "Laptop Silver black"/></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_4-600x900.jpg" data-image="image/product/macbook_air_4-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_4-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_2-600x900.jpg" data-image="image/product/macbook_air_2-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_2-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_3-600x900.jpg" data-image="image/product/macbook_air_3-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_3-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> </div>
+                <!-- <div class="image-additional" id="gallery_01"> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_1-600x900.jpg" data-image="image/product/macbook_air_1-350x525.jpg" title="Laptop Silver black"> <img src="/image/product/macbook_air_1-66x99.jpg" title="Laptop Silver black" alt = "Laptop Silver black"/></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_4-600x900.jpg" data-image="image/product/macbook_air_4-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_4-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_2-600x900.jpg" data-image="image/product/macbook_air_2-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_2-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_3-600x900.jpg" data-image="image/product/macbook_air_3-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_3-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> </div> -->
               </div>
               <div class="col-sm-6">
                 <ul class="list-unstyled description">
