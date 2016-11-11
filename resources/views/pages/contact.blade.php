@@ -67,6 +67,7 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
+            <div id="messages" class="col-md-12"></div>
           </form>
         </div>
         <aside id="column-right" class="col-sm-3 hidden-xs">

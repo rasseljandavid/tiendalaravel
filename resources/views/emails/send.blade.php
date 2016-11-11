@@ -1,7 +1,7 @@
 <html>
 <head></head>
 <body style="background: black; color: white">
-<h1>Title Here</h1>
-<p>Content here</p>
+<h1>{{$title}}</h1>
+<p>{{$content}}</p>
 </body>
 </html>
