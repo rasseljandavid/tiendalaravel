@@ -1,7 +1,7 @@
 <div class="product-thumb clearfix">
   <div class="image">
     <a href="{{ $product->slugLink() }}">
-      <img src="/image/product/{{ $product->id }}.jpg" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" />
+      <img src="/image/product/{{ $product->id }}.jpg" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" onerror="this.src='/image/default.jpg'"/>
     </a>
   </div>
   <div class="caption">

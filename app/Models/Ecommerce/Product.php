@@ -50,10 +50,10 @@ class Product extends Model
 	/*---------- RELATIONS ----------*/
 
 	public function categories(){
-        return $this->belongsToMany(Category::class);
-    }
+    return $this->belongsToMany(Category::class);
+  }
 
-    public function supplier() {
+  public function supplier() {
 		return $this->belongsTo(Supplier::class);
 	}
 	
@@ -64,30 +64,30 @@ class Product extends Model
 		return '/products/'.$this->attributes['slug'].'-'.$this->attributes['id'];
 	}
 
-    public function getSavings(){
+  public function getSavings(){
 
-    	$discount = $this->attributes['price'] - $this->attributes['salePrice'];
-    	
-    	if($this->attributes['price'] != 0) {
-    	$percent = round(($discount / $this->attributes['price']) * 100);
-    		return $percent;
-    	}
+  	$discount = $this->attributes['price'] - $this->attributes['salePrice'];
+  	
+  	if($this->attributes['price'] != 0) {
+  	$percent = round(($discount / $this->attributes['price']) * 100);
+  		return $percent;
+  	}
 
-    	return;
-    }
+  	return;
+  }
 
-    public function getFeaturedProduct() {
-    	return $this->where('is_featured', false)->get();
-    }
-    public function getBestSellerProduct() {
-    	return $this->where('is_bestSeller', false)->get();	
-    }
-    public function getSpecialProduct() {
-    	return $this->where('is_special', false)->get();
-    }
-    public function getLatestProduct() {
-    	
-    }
+  public function getFeaturedProduct() {
+  	return $this->where('is_featured', false)->get();
+  }
+  public function getBestSellerProduct() {
+  	return $this->where('is_bestSeller', false)->get();	
+  }
+  public function getSpecialProduct() {
+  	return $this->where('is_special', false)->get();
+  }
+  public function getLatestProduct() {
+  	
+  }
     		
     		
     		

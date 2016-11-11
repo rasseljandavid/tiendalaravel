@@ -66,12 +66,13 @@ class ProductsController extends Controller
      */
     public function show( $slug )
     {
-        $product = Product::with('supplier')->fromSlug($slug)->first();
+        $product = Product::with('supplier','categories')->fromSlug($slug)->first();
         
         if(!$product){
             return 'product do not exists';
         }
 
+        // return $product;
         return view('products.show', compact('product'));
     }
 
