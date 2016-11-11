@@ -220,7 +220,7 @@
       <div class="container">
         <div id="powered" class="clearfix">
           <div class="powered_text pull-left flip">
-            <p>Tienda - Your First Online Grocery in the Philippines © {{ date('Y') }} | Developed By <a href="http://nextvation.com" target="_blank">Nextvation</a></p>
+            <p>Tienda - Your First Online Grocery in the Philippines © {{ date('Y') }}</p>
           </div>
           <div class="social pull-right flip"> 
                 <a href="https://www.facebook.com/tiendadotph" target="_blank"> 
