@@ -58,13 +58,14 @@ $(document).ready(function(){
             if(data.success == true){
               qtyHolder.val(inputQty.val());
               console.log('successful');
+              loadMinicart();
             }else if(data.success == false){
               inputQty.val(qtyHolder.val());
               console.log("insufficient");
+              loadMinicart();
             }
             removebar(bar);
             // reload minicart
-            loadMinicart();
           }).fail(function (data){
             var errors = data.responseJSON;
             removebar(bar);
