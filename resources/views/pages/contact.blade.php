@@ -59,10 +59,11 @@
                 <label class="col-md-2 col-sm-3 control-label" for="input-enquiry">Enquiry</label>
                 <div class="col-md-10 col-sm-9">
                   <textarea required name="message" rows="10" id="input-enquiry" class="form-control"></textarea>
-                  <div id="messages" class="col-md-12" style="margin-top: 20px;"></div>
+
                 </div>
               </div>
             </fieldset>
+             <div id="messages" class="col-md-12" style="margin-top: 20px; text-align: center;"></div>
             <div class="buttons">
               <div class="pull-right">
                 <button type="submit" class="btn btn-primary">Submit</button>

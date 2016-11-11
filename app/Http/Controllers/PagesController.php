@@ -38,84 +38,29 @@ class PagesController extends Controller
     	return view('pages.sitemap');
     }
 
-    public function sendemail() {
-        $field_rules = array(
-        'name' => 'required',
-        'email'   => 'required|valid_email',
-        'message' => 'required'
-        );
+    public function sendemail( Request $request ) {
 
-        // change your error messages here
-        $error_messages = array(
-            'required'    => 'This field is required',
-            'valid_email' => 'Please enter a valid email address'
-        );
+        if(Mail::send('emails.send',['name' => $request['name'], 
+                                  'email' => $request['email'], 
+                                  'enquiry' => $request['message']], function ($message) 
+            {
+                $message->subject("Message from Tienda.ph contact form");
+                $message->to('rasseljandavid@gmail.com');
 
-        $error_placements = array();
+        })) {
 
-        // success message
-        $success_message            = new \stdClass();
-        $success_message->message   = 'Thank you! Your message has been sent.';
-        $success_message->field     = 'submitButton';
+            $returnVal->messages[] = "Thank you! Your message has been sent. We will contact you shortly.";
+            $returnVal->status = 'ok';
 
-        // mail failure message
-        $mail_error_message            = new \stdClass();
-        $mail_error_message->message   = 'Sorry your mail was not sent - please try again later';
-        $mail_error_message->field     = 'submitButton';
+        } else {
+            $error = new \stdClass();
+            $error->message = "Whoops, looks like something went wrong. Please try again.";
 
-        $fields = $_POST;
-
-        $returnVal           = new \stdClass();
-        $returnVal->status   = 'error';
-        $returnVal->messages = array();
-
-        if (!empty($fields)) {
-            //Validate each of the fields
-            foreach ($field_rules as $field => $rules) {
-                $rules = explode('|', $rules);
-
-                foreach ($rules as $rule) {
-                    $result = null;
-
-                    if (isset($fields[$field])) {
-                        if (!empty($rule)) {
-                            $result = $rule($fields[$field]);
-                        }
-
-                        if ($result === false) {
-                            $error = new \stdClass();
-                            $error->field = $field;
-                            $error->message = $error_messages[$rule];
-                            $error->placement = $error_placements[$field];
-
-                            $returnVal->messages[] = $error;
-                            // break from the rule loop so we only get 1 error at a time
-                            break;
-                        }
-                    } else {
-                        $returnVal->messages[] =  $field . ' ' . $error_messages['required'];
-                    }
-                }
-            }
-
-            if (empty($returnVal->messages)) {                         // Enable encryption, 'ssl' also 
-                $name = stripslashes(safe($fields['name']));
-                $email = stripslashes(safe($fields['email']));
-                $enquiry = stripslashes(safe($fields['message']));   
-
-                Mail::send('emails.send',['name' => $name, 
-                                          'email' => $email, 
-                                          'enquiry' => $enquiry], function ($message) 
-                {
-                    $message->subject("Message from Tienda.ph contact form");
-                    $message->to('rasseljandavid@gmail.com');
-
-                });
-
-                $returnVal->messages[] = $success_message;
-                $returnVal->status = 'ok';
-            }
-            return response()->json($returnVal, 200);
+            $returnVal->messages[] = $error;
+            $returnVal->status   = 'error';
         }
+
+        return response()->json($returnVal, 200);
+     
     }
 }
