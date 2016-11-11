@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'contact@tienda.com',
-        'name' => 'Contact Form Tienda.ph',
+        'address' => env('MAIL_USERNAME'),
+        'name' => 'Rassel Jan David',
     ],
 
     /*
