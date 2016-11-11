@@ -23,9 +23,8 @@
             <div class="col-sm-3"><img src="/image/logo.png" alt="MarketShop Template" title="MarketShop Template" class="img-thumbnail" /></div>
             <div class="col-sm-3"><strong>TIENDA ENTERPRISES</strong><br />
               <address>
-              Lot 1 Blk 20 Mauaque Resettlement,<br />
-              Mabalacat City,<br />
-              Pampanga,<br />
+              Lot 2 Blk 20 18th Street <br /> Mauaque Resettlement,<br />
+              Mabalacat Pampanga,<br />
               Philippines
               </address>
             </div>
@@ -74,13 +73,12 @@
             <h2 class="subtitle">Map</h2>
             <p> You're free to come to our office from Monday to Saturday at 8:00am to 5:00pm.</p>
           </div>
-          <div class="banner owl-carousel">
-            <div class="item"> <a href="#"><img src="image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive" /></a> </div>
-            <div class="item"> <a href="#"><img src="image/banner/small-banner-265x350.jpg" alt="small banner1" class="img-responsive" /></a> </div>
+
+           <div id="map" style="height: 350px" class="google-map"> </div>
           </div>
         </aside>
         <!--Middle Part End -->
       </div>
     </div>
-    
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAXBWuKV-9XMaG-GmZVVnAeItXgcAoK-ds"></script>
 @endsection
