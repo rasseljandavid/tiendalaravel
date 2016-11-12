@@ -31,8 +31,8 @@ class AppServiceProvider extends ServiceProvider
                 'cart.minicart',
                 'home.index',
                 'products.show',
-                // 'category.show',
-                'category.pagination'
+                'category.pagination',
+                'search.index',
             ], 
             function($view) {
                 $cart = CartController::getCart(true);

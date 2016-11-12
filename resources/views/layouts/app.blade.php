@@ -101,13 +101,7 @@
           <!-- Mini Cart End-->
           <!-- Search Start-->
           <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
-            <div id="search" class="input-group">
-              <form method="GET" action="/search/">
-                  {{ csrf_field() }}
-                  <input id="filter_name" type="text" name="search" value="" placeholder="Search" class="form-control input-lg" />
-                  <button type="submit" class="button-search"><i class="fa fa-search"></i></button>
-              </form>
-            </div>
+            @include('search._input')
           </div>
           <!-- Search End-->
         </div>
@@ -295,11 +289,6 @@
     $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
         options.async = true;
     });
-    // add the csrf_token to all ajax request
-    // $.ajaxSetup({
-    //     headers:
-    //     { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-    // });
 
     // flash message close
     $('.message-close').each(function(){

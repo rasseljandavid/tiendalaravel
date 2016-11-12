@@ -65,7 +65,7 @@ Route::get('/products/{slug}', 'Ecommerce\ProductsController@show');
 
 
 //Search Pages
-Route::get('/search/{term}', 'SearchController@search');
+Route::get('/search/', 'SearchController@index');
 
 //Send contact 
 Route::post('/contact', 'PagesController@sendemail');

@@ -40,18 +40,14 @@
                   <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">{{ $product->price }}</span> <span itemprop="price">{{ $product->salePrice }}<span itemprop="availability" content="In Stock"></span></span></li>
                 </ul>
                 <div id="product">
-                 
                   <div class="cart">
                     <div>
                       @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
                     </div>
-                    <div>
-                      <button type="button" class="wishlist" onClick=""><i class="fa fa-heart"></i> Add to Wish List</button>
-                      <br />
-                      <button type="button" class="wishlist" onClick=""><i class="fa fa-exchange"></i> Compare this Product</button>
-                    </div>
+                    @include('products._options', ['type'=>'vertical'])
                   </div>
                 </div>
+                
                 <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                   <meta itemprop="ratingValue" content="0" />
                   <p>

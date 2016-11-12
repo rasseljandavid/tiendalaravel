@@ -16,7 +16,7 @@
               @if($loop->index == 2) @break @endif
               <?php $oiProd =  $oi->getProduct(); ?>
               <tr>
-                  <td class="text-center"><a href="{{$oiProd->slugLink()}}"><img style="max-width:50px;max-height:75px;width:100%;height:auto;" class="img-thumbnail" title="{{ $oiProd->title }}" alt="{{ $oiProd->title }}" src="/image/product/{{ $oiProd->id.'.jpg' }}"></a></td>
+                  <td class="text-center"><a href="{{$oiProd->slugLink()}}"><img style="max-width:50px;max-height:75px;width:100%;height:auto;" class="img-thumbnail" title="{{ $oiProd->title }}" alt="{{ $oiProd->title }}" src="/image/product/{{ $oiProd->id.'.jpg' }}" onerror="this.src='/image/default.jpg'"></a></td>
                   <td class="text-left"><a href="{{$oiProd->slugLink()}}">{{ $oiProd->title }}</a></td>
                   <td class="text-right">x{{ $oi->quantity }}</td>
                   <td class="text-right">₱{{ ($oi->quantity * $oi->price) }}</td>

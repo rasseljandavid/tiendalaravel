@@ -47,6 +47,11 @@ class Product extends Model
 			]);
 	}
 
+	public function scopeSearchCategory( $query, $category_id ){
+
+		$query->with('categories')->where('id', $category_id);
+	}
+
 	/*---------- RELATIONS ----------*/
 
 	public function categories(){
