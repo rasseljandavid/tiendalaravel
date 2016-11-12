@@ -142,29 +142,17 @@
     <div class="container">
       <div class="custom-feature-box row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="feature-box fbox_1">
-            <div class="title">Free Shipping</div>
-            <p>Free shipping on order over &#8369;500.00</p>
-          </div>
+           <img src="/image/featurebox/1-rectangular.jpg" style="margin-bottom: 20px;">
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="feature-box fbox_2">
-            <div class="title">Free Return</div>
-            <p>Free return in 24 hour after purchasing</p>
-          </div>
+           <img src="/image/featurebox/2-rectangular.jpg" style="margin-bottom: 20px;">
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="feature-box fbox_3">
-            <div class="title">Gift Cards</div>
-            <p>Give the special perfect gift</p>
-          </div>
+           <img src="/image/featurebox/3-rectangular.jpg" style="margin-bottom: 20px;">
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="feature-box fbox_4">
-            <div class="title">Reward Points</div>
-            <p>Earn and spend with ease</p>
-          </div>
-        </div>
+           <img src="/image/featurebox/4-rectangular.jpg" style="margin-bottom: 20px;">
+        </div>                
       </div>
     </div>
     <!-- Feature Box End-->

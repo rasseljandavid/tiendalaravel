@@ -97,7 +97,7 @@
             </div>
           </div> -->
           
-          <div class="product-filter">
+          <div class="product-filter" style="border: 0px; border-bottom: 5px solid #ffec6d; background: #ffffff; padding: 6px 5px; line-height: 25px; padding-top: 20px;">
             <div class="row">
               <div class="col-md-4 col-sm-5">
                 <div class="btn-group">
