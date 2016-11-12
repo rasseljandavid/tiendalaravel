@@ -199,7 +199,7 @@ class Order extends Model
             $this->attributes['total'] += ($oi->quantity * $oi->price);
         }
 
-        if($this->attributes['total'] >= 100){
+        if($this->attributes['total'] >= 500){
             $this->attributes['shipping_fee'] = 0;
         }else{
             $this->attributes['shipping_fee'] = 50.00;

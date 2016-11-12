@@ -10,16 +10,16 @@
     <div class="container">
     <!-- Breadcrumb Start-->
     <ul class="breadcrumb">
-        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-        <li><a href="login.html">Account</a></li>
-        <li><a href="register.html">Register</a></li>
+        <li><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+        <li><a href="{{ url('/login') }}">Account</a></li>
+        <li><a href="{{ url('/register') }}">Register</a></li>
     </ul>
     <!-- Breadcrumb End-->
     <div class="row">
         <!--Middle Part Start-->
         <div class="col-sm-9" id="content">
         <h1 class="title">Register Account</h1>
-        <p>If you already have an account with us, please login at the <a href="login.html">Login Page</a>.</p>
+        <p>If you already have an account with us, please login at the <a href="{{ url('/login') }}">Login Page</a>.</p>
         <form class="form-horizontal" role="form" action="{{ url('/register') }}" method="POST">
             {{ csrf_field() }}
             <fieldset id="account">
@@ -135,28 +135,7 @@
           </form>
         </div>
         <!--Middle Part End -->
-        <!--Right Part Start -->
-        <aside id="column-right" class="col-sm-3 hidden-xs">
-          <h3 class="subtitle">Account</h3>
-          <div class="list-group">
-            <ul class="list-item">
-              <li><a href="login.html">Login</a></li>
-              <li><a href="register.html">Register</a></li>
-              <li><a href="#">Forgotten Password</a></li>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Address Books</a></li>
-              <li><a href="wishlist.html">Wish List</a></li>
-              <li><a href="#">Order History</a></li>
-              <li><a href="#">Downloads</a></li>
-              <li><a href="#">Reward Points</a></li>
-              <li><a href="#">Returns</a></li>
-              <li><a href="#">Transactions</a></li>
-              <li><a href="#">Newsletter</a></li>
-              <li><a href="#">Recurring payments</a></li>
-            </ul>
-          </div>
-        </aside>
-        <!--Right Part End -->
+        @include('account.links')
       </div>
     </div>
 @endsection
