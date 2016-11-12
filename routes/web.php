@@ -16,6 +16,7 @@ Auth::routes();
 
 // Static Pages
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/about-us', 'PagesController@about');
 Route::get('/privacy-policy', 'PagesController@privacy');
 Route::get('/terms-and-conditions', 'PagesController@terms');
@@ -29,7 +30,7 @@ Route::get('/dashboard', 'Admin\AdminController@dashboard');
 
 // User
 Route::get('/account', 'UsersController@show');
-Route::get('/account/edit/{id}', 'UsersController@edit');
+Route::get('/account/edit', 'UsersController@edit');
 Route::post('/account/update', 'UsersController@update');
 
 // Route::get('/shipping-address/edit/{id}', 'Address\AddressesController@edit');

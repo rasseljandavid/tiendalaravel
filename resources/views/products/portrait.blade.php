@@ -40,7 +40,7 @@
       <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>
     </div>
   </div> -->
-  <div class="product">
+  <div class="">
     @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
     <div class="clearer"></div>
     

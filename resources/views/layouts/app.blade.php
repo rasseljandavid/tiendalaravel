@@ -43,8 +43,9 @@
           <div class="pull-left flip left-top">
             <div class="links">
               <ul>
-                <li class="mobile"><a href="tel:+639258166813"><img style="height: 16px; position: relative; top: 3px;" src="/image/socialicons/viber-icon.png" /> +63 9258166813</a></li>
-                <li class="email"><a href="mailto:hello@tienda.ph"><i class="fa fa-envelope"></i>hello@tienda.ph</a></li>
+                <!-- <li class="mobile"><a href="tel:+639258166813"><img style="height: 16px; position: relative; top: 3px;" src="/image/socialicons/viber-icon.png" /> +63 9258166813</a></li>
+                <li class="email"><a href="mailto:hello@tienda.ph"><i class="fa fa-envelope"></i>hello@tienda.ph</a></li> -->
+                <li class="email"><a href="{{ url('/contact-us') }}"><i class="fa fa-envelope"></i>Contact Us</a></li>
               </ul>
             </div>
           </div>

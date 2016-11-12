@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
   	<div class="col-sm-9">
-		<h1>My Account&nbsp;<small><a href="{{url('/account/edit/'.Auth::user()->id)}}" class="ju">edit</a></small></h1>
+		<h1>My Account&nbsp;<small><a href="{{url('/account/edit')}}" class="ju">edit</a></small></h1>
 		<hr>
   		<div class="col-md-6">
 			<div class="table-responsive">

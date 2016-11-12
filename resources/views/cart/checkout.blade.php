@@ -22,7 +22,43 @@
             <div class="row">
               <div class="col-sm-4">
                 @if( Auth::check() )
-                  Display Infos Here
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-user"></i> {{ Auth::user()->getFullname() }}
+                            <span class="pull-right"><a href="{{ url('/account/edit') }}">edit</a></span>
+                        </h4>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <td>Email</td>
+                                <td>{{ Auth::user()->email }}</td>
+                              </tr>
+                              <tr>
+                                <td>Contact Number</td>
+                                <td>{{ Auth::user()->contact }}</td>
+                              </tr>
+                              <tr>
+                                <td colspan="2"><b>Shipping & Billing Address</b></td>
+                                @php $shipping = Auth::user()->getShippingAddress(); @endphp
+                              </tr>
+                              <tr>
+                                <td>Street Address</td>
+                                <td>{{ $shipping->address_one }}</td>
+                              </tr>
+                              <tr>
+                                <td>City</td>
+                                <td>{{ $shipping->city }}, {{ $shipping->zipcode }}</td>
+                              </tr>
+                              <tr>
+                                <td>Country</td>
+                                <td>{{ $shipping->address_one }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
                 @else
                   <div class="panel panel-default">
                     <div class="panel-heading">

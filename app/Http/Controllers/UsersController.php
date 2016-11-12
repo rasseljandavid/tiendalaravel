@@ -22,15 +22,9 @@ class UsersController extends Controller
   	return view('users.show');
   }
 
-  public function edit( $id ){
-  	
-  	$user = User::find($id);
+  public function edit( ){
 
-  	if(!$user || Auth::user()->id != $id){
-  		flash('danger', 'User doesn\'t exist');
-      return redirect('/');
-	  }
-
+    $user = User::find(Auth::user()->id);
 
     return view('users.edit', compact('user'));
   }
