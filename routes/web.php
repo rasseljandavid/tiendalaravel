@@ -29,6 +29,12 @@ Route::get('/dashboard', 'Admin\AdminController@dashboard');
 
 // User
 Route::get('/account', 'UsersController@show');
+Route::get('/account/edit/{id}', 'UsersController@edit');
+Route::post('/account/update', 'UsersController@update');
+
+// Route::get('/shipping-address/edit/{id}', 'Address\AddressesController@edit');
+// Route::get('/billing-address/edit/{id}', 'Address\AddressesController@edit');
+
 
 // Cart
 Route::get('/cart/show', 'Ecommerce\CartController@show');
