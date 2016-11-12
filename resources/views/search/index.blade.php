@@ -26,7 +26,7 @@
             </div>
             <div class="col-sm-3">
               <select class="form-control" name="category_id">
-                <option value="0">All Categories</option>
+                <option value="0">All Categories</option> 
                 @foreach( $categories as $cat )
                   <option value="{{ $cat->id }}" @if($category_id==$cat->id) selected @endif>{{ $cat->title}}</option>
                 @endforeach
