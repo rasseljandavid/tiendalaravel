@@ -3,6 +3,12 @@
 @section('metainfo')
 	<title>Tienda - Your First Online Grocery in the Philippines</title>
 	<meta name="description" content="Tienda - Your First Online Grocery in the Philippines">
+        <meta property="og:image" content="image/slider/slide1.jpg" />
+        <meta property="og:image" content="image/slider/slide2.jpg" />
+        <meta property="og:image" content="image/slider/slide3.jpg" />
+        <meta property="og:image" content="image/slider/slide4.jpg" />
+        <meta property="og:image" content="image/slider/slide5.jpg" />
+
 @endsection
 
 @section('content')
