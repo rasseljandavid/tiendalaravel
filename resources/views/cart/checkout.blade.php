@@ -266,7 +266,7 @@
                           <br>
                           <label class="control-label" for="confirm_agree">
                             <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">
-                            <span>I have read and agree to the <a class="agree" href="#"><b>Terms &amp; Conditions</b></a></span> </label>
+                            <span>I have read and agree to the <a class="agree" target="_blank" href="/terms-and-conditions"><b>Terms &amp; Conditions</b></a></span> </label>
                           <div class="buttons">
                             <div class="pull-right">
                               <input type="submit" class="btn btn-primary" id="button-confirm" value="Confirm Order">
