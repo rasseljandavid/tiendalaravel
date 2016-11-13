@@ -60,7 +60,7 @@ class AddressesController extends Controller
 		    $shipping->save();
 		    $billing->save();
 		    flash('success', 'Successfully updated your address information');
-		    return redirect('/account');
+		    return redirect('/address');
 		} catch (Exception $e) {
 		    flash('danger', 'An error has encountered. Please try again.');
 		    return redirect()->back();
