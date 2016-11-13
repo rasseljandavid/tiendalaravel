@@ -5,9 +5,11 @@ namespace App\Models\Ecommerce;
 // dependencies
 use App\Http\Controllers\Ecommerce\CartController as Cart;
 use Illuminate\Database\Eloquent\Model;
+use Mail;
 use Auth;
 // models
 use App\Models\Ecommerce\OrderItem;
+use App\Models\Address\Address;
 use App\User;
 
 class Order extends Model
@@ -326,4 +328,33 @@ class Order extends Model
 
         return $sales;
     }
+
+
+    public function emailInvoice( $order=null ){
+
+        if(!$order){
+            $order = $this;
+        }
+
+        $order->load('orderitems');
+        $order->shippingAddress = $order->user->getShippingAddress();
+        $order->billingAddress = $order->user->getBillingAddress();
+        $order->status = Status::asString('order', $order->status);
+
+        $admin = array();
+        $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
+        $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
+        $admin = (object)$admin;
+        
+        Mail::send( 'emails.invoice', 
+                    [
+                     'order'=>$order,
+                     'admin'=>$admin
+                    ], 
+                    function ($message) {
+                        $message->subject("Your order on Tienda.ph was received");
+                        $message->to(Auth::user()->email);
+                    }
+            );   
+    }  
 }

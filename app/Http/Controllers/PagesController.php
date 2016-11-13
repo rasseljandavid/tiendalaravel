@@ -41,17 +41,15 @@ class PagesController extends Controller
 
     public function sendemail( Request $request ) {
 
-        if(Mail::send('emails.send',['name' => $request['name'], 
-                                  'email' => $request['email'], 
-                                  'enquiry' => $request['message']], function ($message) 
-            {
-                $message->subject("Message from Tienda.ph contact form");
-                $message->to('rasseljandavid@gmail.com');
-
-        })) {
-
-            
-
+        if(Mail::send('emails.send',
+                    ['name' =>  $request['name'], 
+                                'email' => $request['email'], 
+                                'enquiry' => $request['message']], 
+                    function ($message) {
+                        $message->subject("Message from Tienda.ph contact form");
+                        $message->to('rasseljandavid@gmail.com');
+                    })) 
+        {
             $error = new \stdClass();
             $error->message = "Whoops, looks like something went wrong. Please try again.";
 

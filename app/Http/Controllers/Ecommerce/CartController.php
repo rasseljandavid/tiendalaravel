@@ -229,8 +229,16 @@ class CartController extends Controller
 
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
             $myOrder["SalesOrderStatus"] = 0;
-            $order->status = 0;
+            $order->status = 1;
             $order->save();
+
+            if($order->emailInvoice()){
+                flash('success', 'You\'re order has been submitted');
+            }else{
+                flash('success', 'You\'re order has been submitted.
+                    Note: Failed Sending Email at '.Auth::user()->email);
+            }
+
             return redirect('/order/'.$order->id);
             //save here
         }catch(Exception $e){

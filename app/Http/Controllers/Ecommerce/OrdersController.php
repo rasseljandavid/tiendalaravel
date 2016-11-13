@@ -79,6 +79,7 @@ class OrdersController extends Controller
         $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
         $admin = (object)$admin;
 
+
         return view('orders.show', compact('order', 'admin'));
     }
 
@@ -116,7 +117,6 @@ class OrdersController extends Controller
         //
     }
 
-
     public function history( ){
         
         $orders = Order::where('user_id', '=', Auth::user()->id)
@@ -131,5 +131,7 @@ class OrdersController extends Controller
         }
         // return $orders;
         return view('orders.history', compact('orders'));
-    }           
+    } 
+
+        
 }
