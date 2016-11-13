@@ -1,3 +1,26 @@
 .clearer{
     clear:both;
 }
+
+#search-result-suggestion{
+	position: absolute;
+	z-index: 10009;
+	background-color: #fff;
+	color: #000;
+	top: 36px;
+	width: 100%;
+	text-align: left;
+
+}
+
+#search-result-suggestion li {
+	border-bottom: 1px solid #eee;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 2px;
+}
+
+#search-result-suggestion li:hover{
+	background-color: #eee;
+	cursor: pointer;
+}

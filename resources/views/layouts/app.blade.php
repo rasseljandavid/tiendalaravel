@@ -294,6 +294,50 @@
         }
       });
     });
+
+    //setup before functions
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 500;  //time in ms (5 seconds)
+
+    $('#search-form').find('input[name=term]').keyup(function(){
+
+      $('#search-result-suggestion li').remove();
+
+      clearTimeout(typingTimer);
+      if ($(this).val() != '') {
+          typingTimer = setTimeout(doneTyping($(this).val()), doneTypingInterval);
+      }
+
+    });
+
+    //user is "finished typing," do something
+    function doneTyping ( txt ) {
+      
+      var ul = $('#search-result-suggestion');
+
+      if(txt == ''){
+        return false;
+      }
+
+      var request = $.ajax({
+          url : '/load-suggestion?term=' + txt,
+          dataType: 'json',
+      }).done(function (data) {
+          if(data['total'] > 0){
+            $('#search-result-suggestion li').remove();
+            ul.append(data['items']);
+            // console.log(data['items']);
+          }
+      }).fail(function () {
+          console.log("failed to send request");
+      });
+      // console.log(getSuggestions($(this).val()));
+    }
+
+    $('#search-form').focusout(function(){
+      $('#search-result-suggestion li').remove();
+    })
+
   });
 </script>
 <script type="text/javascript" src="/js/tienda-cart.js"></script>
