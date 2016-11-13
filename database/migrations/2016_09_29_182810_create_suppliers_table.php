@@ -18,6 +18,7 @@ class CreateSuppliersTable extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug');
             $table->timestamps();
         });
 
@@ -27,6 +28,7 @@ class CreateSuppliersTable extends Migration
             $newSupplier = new Supplier();
             $newSupplier->id    = $supplier->SupplierClientID;
             $newSupplier->title = $supplier->SupplierClientComments;
+            $newSupplier->slug  = $supplier->SupplierClientComments;
             $newSupplier->save();
         }
     }

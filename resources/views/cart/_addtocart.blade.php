@@ -1,4 +1,4 @@
-@php $item=($cart ? $cart->getItemFromProduct($id) : 0) @endphp
+@php $item=(@$cart ? $cart->getItemFromProduct($id) : 0) @endphp
 <div class="qty add-to-cart">
 	<div id="loading-btn" class="bar"></div>
 	<form method="POST" action="{{ url('/cart/addItem') }}" class="form form-addtocart">
