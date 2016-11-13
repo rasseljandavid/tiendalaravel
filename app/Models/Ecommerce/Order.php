@@ -225,6 +225,12 @@ class Order extends Model
         }
     }
 
+    public function getTotalQuantity( ){
+        $this->setTotalQuantity();
+        unset($this->orderitems);
+        return $this->totalQuantity;
+    }
+
     public function matchMegaventoryStructure(  ){
         // "mvSalesOrder":{
         //     "SalesOrderId":0,

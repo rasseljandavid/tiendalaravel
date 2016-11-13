@@ -115,4 +115,21 @@ class OrdersController extends Controller
     {
         //
     }
+
+
+    public function history( ){
+        
+        $orders = Order::where('user_id', '=', Auth::user()->id)
+                        ->where('purchased_at', '!=', '0')
+                        ->orderBy('status', 'desc')
+                        ->orderBy('purchased_at', 'desc')
+                        ->get();
+
+        foreach ($orders as $key => $order) {
+            $order->status = ucfirst(Status::asString('order', $order->status));
+            $order->totalQuantity = $order->getTotalQuantity();
+        }
+        // return $orders;
+        return view('orders.history', compact('orders'));
+    }           
 }

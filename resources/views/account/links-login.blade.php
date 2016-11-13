@@ -7,7 +7,7 @@
       <li><a href="{{ url('/account') }}">My Account</a></li>
       <li><a href="/account/changepassword">Change Password</a></li>
       <li><a href="/address">Address Book</a></li>
-      <li><a href="#">Order History</a></li>
+      <li><a href="/order/history">Order History</a></li>
       <!--<li><a href="{{ url('/account') }}">My Account</a></li>
        <li><a href="">Address Books</a></li> 
       <li><a href="wishlist.html">Wish List</a></li>

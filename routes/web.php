@@ -56,6 +56,7 @@ Route::get('/cart/combine', 'Ecommerce\CartController@combine')->middleware('aut
 Route::post('/cart/preprocess', 'Ecommerce\CartController@preprocess');
 
 // Order
+Route::get('/order/history', 'Ecommerce\OrdersController@history');
 Route::get('/order/{id}', 'Ecommerce\OrdersController@show');
 
 // Store Pages
