@@ -28,11 +28,17 @@ Route::get('/sitemap', 'PagesController@sitemap');
 // Admin
 Route::get('/dashboard', 'Admin\AdminController@dashboard');
 
-// User
+// Account
 Route::get('/account', 'UsersController@show');
+Route::get('/account/changepassword', 'UsersController@changepassword');
+Route::post('/account/changepassword', 'UsersController@updatepassword');
 Route::get('/account/edit', 'UsersController@edit');
 Route::post('/account/update', 'UsersController@update');
 
+//Address
+Route::get('/address', 'Address\AddressesController@show');
+Route::get('/address/edit', 'Address\AddressesController@edit');
+Route::post('/address/update', 'Address\AddressesController@update');
 // Route::get('/shipping-address/edit/{id}', 'Address\AddressesController@edit');
 // Route::get('/billing-address/edit/{id}', 'Address\AddressesController@edit');
 
