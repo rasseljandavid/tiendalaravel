@@ -128,7 +128,7 @@
             <div class="buttons">
               <div class="pull-right">
                 <input type="checkbox" value="1" name="agree">
-                &nbsp;I have read and agree to the <a class="agree" href="#"><b>Privacy Policy</b></a> &nbsp;
+                &nbsp;I have read and agree to the <a class="agree" href="/privacy-policy" target="_blank"><b>Privacy Policy</b></a> &nbsp;
                 <input type="submit" class="btn btn-primary" value="Continue">
               </div>
             </div>
