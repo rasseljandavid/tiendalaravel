@@ -345,9 +345,11 @@ window.smartsupp||(function(d) {
       // console.log(getSuggestions($(this).val()));
     }
 
-    $('#search-form').focusout(function(){
-      $('#search-result-suggestion li').remove();
-    })
+    // $('#search-form').focusout(function(){
+    //   $('#search-result-suggestion li').mouseleave(function(){
+    //     $('#search-result-suggestion li').remove();
+    //   });
+    // });
 
   });
 </script>

@@ -63,7 +63,7 @@ class SearchController extends Controller
 
 		$list = ""; 
 		foreach ($products as $product) {
-			$list .= "<li><a href='".$product->slugLink()."'>".$product->title."</a></li>";
+			$list .= "<li><a href='".$product->slugLink()."'><img src='/image/product/".$product->id.".jpg' style='width:24px;height:32px;vertical-align:middle;'>".$product->title."</a></li>";
 		}
 		$result['items'] = $list;
 
