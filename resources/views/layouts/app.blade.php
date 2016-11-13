@@ -22,6 +22,18 @@
 <link rel="stylesheet" type="text/css" href="/css/loader.css" />
 <link rel="stylesheet" type="text/css" href="/css/mobile.css" />
 <!-- CSS Part End-->
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0b4731d52aed923c8f005f84210e97c00c7506e5';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+
 </head>
 <body onunload="">
   <!-- 
