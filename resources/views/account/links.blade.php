@@ -7,8 +7,8 @@
       <li><a href="{{ url('/login') }}">Login</a></li>
       <li><a href="{{ url('/register') }}">Register</a></li>
       <li><a href="{{ url('/password/reset') }}">Forgotten Password</a></li>
-      <li><a href="{{ url('/account') }}">My Account</a></li>
-      <!-- <li><a href="">Address Books</a></li> 
+      <!--<li><a href="{{ url('/account') }}">My Account</a></li>
+       <li><a href="">Address Books</a></li> 
       <li><a href="wishlist.html">Wish List</a></li>
       <li><a href="#">Order History</a></li>
       <li><a href="#">Downloads</a></li>
