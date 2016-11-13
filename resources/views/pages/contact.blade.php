@@ -20,7 +20,8 @@
           <h1 class="title">Contact Us</h1>
           <h3 class="subtitle">Our Location</h3>
           <div class="row">
-            <div class="col-sm-3"><img src="/image/logo.png" alt="Tienda - Online Grocery" title="Tienda - Online Grocery" class="img-thumbnail" /></div>
+            <div class="col-sm-3">
+            <a href="/"><img src="/image/logo.png" alt="Tienda - Online Grocery" title="Tienda - Online Grocery" class="img-thumbnail" /></a></div>
             <div class="col-sm-3"><strong>TIENDA ENTERPRISES</strong><br />
               <address>
               Lot 2 Blk 20 18th Street <br /> Mauaque Resettlement,<br />
@@ -29,12 +30,12 @@
               </address>
             </div>
             <div class="col-sm-3"><strong>Mobile</strong><br>
-              +63 9258166813<br />
+              <a href="tel:639258166813">+63 9258166813</a><br />
               <br />
               <strong>Phone</strong><br>
-              +63 045 3085345</div>
+              <a href="tel:63453085345">+63 045 3085345</a></div>
             <div class="col-sm-3"> <strong>Email</strong><br />
-              hello@tienda.ph<br />
+              <a href="mailto:hello@tienda.ph">hello@tienda.ph</a><br />
               <br />
               <strong>Note</strong><br />
               You can always contact us via this contact form. We will require 1 business day to reply (at worst). </div>
