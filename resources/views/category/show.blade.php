@@ -45,35 +45,9 @@
         <!--Left Part End -->
         <!--Middle Part Start-->
         <div id="content" class="col-sm-9">
-         <div class="subcat__template" style="
-    background: #fafafa;
-">
-    <div class="subcat__template__image" style="float:right;">
-        <img src="/image/category/tienda-category-{{ $category->title }}.jpg" alt="{{$category->title}}"/>
-    </div>
-    <div class="subcat__template__intro__wrapper" style="
-">
-        <div class="subcat__template__intro">
-            <div class="subcat__template__title" style="
-    font-size: 32px;
-    font-weight: bolder;
-    text-align: center;
-    padding-bottom: 25px;
-    padding-top: 114px;
-    background: #fafafa;
-    color: #333;
-    z-index: 999999;
-">{{ $category->title }}</div>
-            <div class="subcat__template__intro__text" style="
-    font-size: 14px;
-    background: #fafafa;
-    padding-bottom: 31px;
-    padding-top: 21px;
-"></div>
-        
-        </div>
-    </div>
-</div>
+           <div class="row">
+               <img style="margin: auto" class="img-responsive" src="/image/category/header-{{ $category->title }}.jpg" alt="{{$category->title}}"/>
+           </div>
           
           <!-- <h3 class="subtitle">Refine Search</h3>
           <div class="category-list row">
