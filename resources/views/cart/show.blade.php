@@ -18,7 +18,7 @@
         <div id="content" class="col-sm-12">
           <h1 class="title">Shopping Cart</h1>
             <div class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="show-cart-res">
                 <thead>
                   <tr>
                     <td class="text-center">Image</td>

@@ -202,7 +202,7 @@
                       </div>
                         <div class="panel-body">
                           <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="checkout-table-res">
                               <thead>
                                 <tr>
                                   <td class="text-center">Image</td>
