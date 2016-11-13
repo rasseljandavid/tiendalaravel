@@ -314,7 +314,6 @@ window.smartsupp||(function(d) {
     $('#search-form').find('input[name=term]').keyup(function(){
 
       $('#search-result-suggestion li').remove();
-
       clearTimeout(typingTimer);
       if ($(this).val() != '') {
           typingTimer = setTimeout(doneTyping($(this).val()), doneTypingInterval);
