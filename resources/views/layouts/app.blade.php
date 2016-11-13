@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="image/favicon.ico" rel="icon" />
+<link href="/image/favicon.ico" rel="icon" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('metainfo')
 <!-- CSS Part Start-->
