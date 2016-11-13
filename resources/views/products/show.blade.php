@@ -71,7 +71,7 @@
                 <!-- AddThis Button END -->
               </div>
             </div>
-            <!-- <ul class="nav nav-tabs">
+            <!-- <ul class="nav nav-tabs"> 
               <li class="active"><a href="#tab-description" data-toggle="tab">Description</a></li>
               <li><a href="#tab-specification" data-toggle="tab">Specification</a></li>
               <li><a href="#tab-review" data-toggle="tab">Reviews (2)</a></li>
