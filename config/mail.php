@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_USERNAME'),
-        'name' => 'Rassel Jan David',
+        'address' => 'hello@tienda.ph',
+        'name' => 'Tienda Online Grocery',
     ],
 
     /*
