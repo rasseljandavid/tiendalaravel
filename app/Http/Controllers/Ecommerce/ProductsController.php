@@ -68,12 +68,16 @@ class ProductsController extends Controller
     {
         $product = Product::with('supplier','categories')->fromSlug($slug)->first();
         
+        $p = new product;
+        $featured = [];
+        $featured['bestseller'] = $p->getBestSellerProduct()->random(5);
+        $featured['special'] = $p->getSpecialProduct()->random(5);
         if(!$product){
             return 'product do not exists';
         }
 
         // return $product;
-        return view('products.show', compact('product'));
+        return view('products.show', compact('product','featured'));
     }
 
     /**
