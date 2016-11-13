@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         // when making migrate:refresh,install... comment all lines that request data. why?
         // http://stackoverflow.com/questions/25315325/laravel-base-table-or-view-not-found-1146-table-database-pages-doesnt-exist
 
-        $categories = Category::limit(8)->get();
+        $categories = Category::limit(7)->orderBy('rank')->get();
         View::share('menus', $categories);
 
         // NEED FIX, we dont want to query the cart 2 or more times in a single page if possible

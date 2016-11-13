@@ -29,10 +29,11 @@ class CreateCategoriesTable extends Migration
         $categories = $megaventory->getCategories();
 
         foreach($categories as $category) {
-            if($category->ProductCategoryDescription != "inactive") {
+            if($category->ProductCategoryDescription >= 0) {
                 $newCategories = new Category();
                 $newCategories->id = $category->ProductCategoryID;
                 $newCategories->title = $category->ProductCategoryName;
+                $newCategories->rank = $category->ProductCategoryDescription;
                 $newCategories->slug = $category->ProductCategoryName;
                 $newCategories->save();
             }
