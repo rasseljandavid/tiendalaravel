@@ -20,6 +20,7 @@
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
 <link rel="stylesheet" type="text/css" href="/css/tienda.css" />
 <link rel="stylesheet" type="text/css" href="/css/loader.css" />
+<link rel="stylesheet" type="text/css" href="/css/mobile.css" />
 <!-- CSS Part End-->
 </head>
 <body onunload="">
