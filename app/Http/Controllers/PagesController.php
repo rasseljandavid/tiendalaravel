@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Mail;
 
+use App\Models\Ecommerce\Supplier;
+
 class PagesController extends Controller
 {
     public function about() {
@@ -66,5 +68,12 @@ class PagesController extends Controller
 
         return response()->json($returnVal, 200);
      
+    }
+
+
+    public function suppliers() {
+        $suppliers = Supplier::all();
+        
+        return view('pages.suppliers', compact('suppliers')); 
     }
 }

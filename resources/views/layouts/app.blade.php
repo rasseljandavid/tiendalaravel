@@ -181,7 +181,7 @@
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
             <h5>Extras</h5>
             <ul>
-              <li><a href="#">Brands</a></li>
+              <li><a href="/suppliers">Suppliers</a></li>
               <li><a href="#">Gift Vouchers</a></li>
               <li><a href="#">Affiliates</a></li>
               <li><a href="#">Specials</a></li>

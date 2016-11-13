@@ -1,7 +1,10 @@
 $(document).ready(function(){
-
-
-
+  
+  // // add the csrf_token to all ajax request
+  // $.ajaxSetup({
+  //     headers:
+  //     { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+  // });
   // reload minicart
   function loadMinicart(){
     var minicart = $('#minicart-container');
@@ -11,7 +14,7 @@ $(document).ready(function(){
         type: 'GET',
         dataType: 'json',
     }).done(function (data) {
-        console.log(data);
+        // console.log(data);
         minicart.empty();
         minicart.html(data);
         minicart.find('#loading-btn').removeClass('bar');
@@ -64,8 +67,9 @@ $(document).ready(function(){
               console.log("insufficient");
               loadMinicart();
             }
+            
             removebar(bar);
-            // reload minicart
+            
           }).fail(function (data){
             var errors = data.responseJSON;
             removebar(bar);

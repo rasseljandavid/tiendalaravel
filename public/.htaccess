@@ -17,4 +17,8 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect the www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.tienda\.ph$ [NC]
+    RewriteRule ^(.*)$ http://tienda.ph/$1 [L,R=301]
 </IfModule>
