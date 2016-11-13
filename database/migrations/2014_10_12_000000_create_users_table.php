@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
         $user->firstname = 'Tienda';
         $user->lastname = 'Administrator';
         $user->email = 'admin@tienda.ph';
-        $user->password = 'nextvation123';
+        $user->password = 'rassel123';
         $user->contact = '12345678910';
         $user->newsletter = false;
         $user->save();
