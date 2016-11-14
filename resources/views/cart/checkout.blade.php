@@ -238,14 +238,7 @@
                                   <td class="text-right" colspan="4"><strong>Flat Shipping Rate:</strong></td>
                                   <td class="text-right">₱{{$cart->shipping_fee}}</td>
                                 </tr>
-                                <tr>
-                                  <td class="text-right" colspan="4"><strong>Eco Tax <!-- (-2.00) -->:</strong></td>
-                                  <td class="text-right">₱N/A</td>
-                                </tr>
-                                <tr>
-                                  <td class="text-right" colspan="4"><strong>VAT <!-- (20%) -->:</strong></td>
-                                  <td class="text-right">₱N/A</td>
-                                </tr>
+                             
                                 <tr>
                                   <td class="text-right" colspan="4"><strong>Total:</strong></td>
                                   <td class="text-right">₱{{$cart->grand_total}}</td>
