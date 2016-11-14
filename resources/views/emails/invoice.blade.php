@@ -112,11 +112,79 @@
                         ₱{{ ($oi->quantity * $oi->price) }}
                     </td>                   
                 </tr>
-            @foreach
+            @endforeach
             
             </tbody>
         </table>
 
+
+        @if($order->comment)
+            <table style="margin-bottom:1em;" class="order-items" border="0" width="100%" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td style="border:1px solid #DEDEDE;">
+                      <p><strong>Remarks:</strong></p>
+                      <p>{{$order->comment}}</p>
+                    </td>              
+                </tr>
+            </tbody>
+        </table>
+        @endif
+
+        <table style="margin-bottom:1em;" class="totals-info" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="background:none repeat scroll 0 0 #CDCDCD;">
+                    <th colspan=3 style="text-align: left; border:1px solid #DEDEDE;">
+                        Totals
+                    </th>                    
+               </tr>
+            </thead>
+            <tbody>
+                <tr class="{cycle values="odd, even"}">
+                    <td style="border:1px solid #DEDEDE;">
+                        Subtotal
+                    </td>
+                    <td style="border:1px solid #DEDEDE; border-right:0px">
+                        ₱
+                    </td>
+                    <td  style="text-align:right; border:1px solid #DEDEDE; border-left:0px;">
+                        ₱{{ $order->total }}
+                    </td>
+                </tr>
+                 <tr class="{cycle values="odd, even"}">
+                    <td style="border:1px solid #DEDEDE;">
+                        Total Discounts 
+                    </td>
+                    <td style="border:1px solid #DEDEDE; border-right:0px">
+                       ₱
+                    </td>
+                    <td style="text-align:right; border:1px solid #DEDEDE;  border-left:0px;">-0.00
+                    </td>
+                </tr>
+                <tr class="{cycle values="odd, even"}">
+                    <td style="border:1px solid #DEDEDE;">
+                        Total
+                    </td>
+                    <td style="border:1px solid #DEDEDE; border-right:0px">
+                       ₱
+                    </td>
+                    <td style="text-align:right; border:1px solid #DEDEDE;  border-left:0px;">
+                          {{$order->shipping_fee}}
+                    </td>
+                </tr>   
+                <tr class="{cycle values="odd, even"}">
+                    <td style="border:1px solid #DEDEDE;">
+                        Order Total
+                    </td>
+                    <td style="border:1px solid #DEDEDE; border-right:0px;">
+                       ₱
+                    </td>
+                    <td style="text-align:right;border:1px solid #DEDEDE;  border-left:0px;">
+                       {{ $order->grand_total }}
+                    </td>
+                </tr>    
+            </tbody>
+        </table>
     </div>
 
   <div id="store-footer">
