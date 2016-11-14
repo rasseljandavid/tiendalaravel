@@ -22,12 +22,13 @@
           </tbody></table>
         </div>
         <div class="mgbt-xs-20"><img alt="logo" src="/image/logo.png"></div>
-        <address>
-        {{ $admin->shippingAddress->address_one }} <br>
-        {{ $admin->shippingAddress->city }} {{ $admin->shippingAddress->zipcode }}, {{ $admin->shippingAddress->country }} <br>
-        <abbr title="Phone">P:</abbr> (123) 456-7890<br>
-        <br>
-        info@venmond.com
+        <address style="margin-top: 10px;">
+       <strong>TIENDA ENTERPRISES</strong><br>
+Lot 2 Blk 20 18th Street<br>
+Mauaque Resettlement,<br>
+Mabalacat Pampanga,<br>
+Philippines<br>
+
         </address>
         <hr>
         <br>
@@ -36,15 +37,18 @@
             <div class="col-xs-3">
               <address>
               <strong>Bill To:</strong><br>
+              {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+              {{ $order->user->contact }}<br><br>
               {{ $order->billingAddress->address_one }}<br>
               {{ $order->billingAddress->city }} {{ $order->billingAddress->zipcode }},<br>
               {{ $order->billingAddress->country }}<br>
-              Sample - (123) 456-7890
               </address>
             </div>
             <div class="col-xs-4">
               <address>
               <strong>Ship To:</strong><br>
+              {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+              {{ $order->user->contact }}<br><br>
               {{ $order->shippingAddress->address_one }}<br>
               {{ $order->shippingAddress->city }} {{ $order->shippingAddress->zipcode }},<br>
               {{ $order->shippingAddress->country }}<br>
@@ -105,7 +109,7 @@
               <th class="text-right  pd-10 no-bd">₱{{ $order->shipping_fee }}</th>
             </tr>
             <tr>
-              <th colspan="2">Thank you for your business. Please remit the total amount due within 30 days.</th>
+              <th colspan="2">Thank you for your business. Please expect a call from us confirming your order.</th>
               <th class="text-right  pd-10">Total</th>
               <th class="text-right  pd-10 "><span class="vd_green font-sm font-normal">₱{{ $order->grand_total }}</span></th>
             </tr>

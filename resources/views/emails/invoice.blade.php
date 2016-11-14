@@ -23,16 +23,19 @@
 <div style="padding:5px;">
         <div ><img alt="logo" src="/image/logo.png"></div>
         <address>
-        {{ $admin->shippingAddress->address_one }} <br>
-        {{ $admin->shippingAddress->city }} {{ $admin->shippingAddress->zipcode }}, {{ $admin->shippingAddress->country }} <br>
-        <abbr title="Phone">P:</abbr> (123) 456-7890<br>
+         <address style="margin-top: 10px;">
+        <strong>TIENDA ENTERPRISES</strong><br>
+        Lot 2 Blk 20 18th Street<br>
+        Mauaque Resettlement,<br>
+        Mabalacat Pampanga,<br>
+        Philippines<br>
         <br>
-        info@venmond.com
-        </address>
+       
         <hr>
 
         <div >
           <h3 >INVOICE</h3>
+        
           <table id="order-table">
             <tbody>
 	            <tr>
@@ -61,12 +64,16 @@
         	<tbody>
         		<tr>
         			<td>
+                {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+                {{ $order->user->contact }}<br><br>
       					{{ $order->billingAddress->address_one }}<br>
 	              {{ $order->billingAddress->city }} {{ $order->billingAddress->zipcode }},<br>
 	              {{ $order->billingAddress->country }}<br>
 		              Contact - {{ Auth::user()->contact }}
 		          </td>
         			<td>
+                {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+                {{ $order->user->contact }}<br><br>
         				{{ $order->shippingAddress->address_one }}<br>
 	              {{ $order->shippingAddress->city }} {{ $order->shippingAddress->zipcode }},<br>
 	              {{ $order->shippingAddress->country }}
@@ -110,7 +117,7 @@
               <td ><b>₱{{ $order->shipping_fee }}</b></td>
             </tr>
             <tr>
-              <th colspan="2">Thank you for your business. Please remit the total amount due within 30 days.</th>
+              <th colspan="2">Thank you for your business. Please expect a call from us confirming your order.</th>
               <th style="text-align:left;">Total</th>
               <th ><span>₱{{ $order->grand_total }}</span></th>
             </tr>
