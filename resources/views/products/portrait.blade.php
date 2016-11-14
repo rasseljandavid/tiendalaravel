@@ -15,6 +15,7 @@
         {{ $product->price }}
       @endif
     </p>
+    <p>Qty: {{$product->quantity}}</p>
     <div class="rating"> 
       <?php $rate = $product->rating ?>
       @for( $i=1 ; $i <= 5; $i++)
@@ -28,7 +29,8 @@
       @endfor
     </div>
     <div class="add-to-links">
-      @include('products._options', ['type'=>'btnonly'])
+    
+      <!-- @include('products._options', ['type'=>'btnonly']) -->
     </div><br>
     <div class="clearer"></div>
   </div>

@@ -825,10 +825,11 @@ border-color:#eae9e9;
 /* Product Thumb */
 .product-thumb .image { text-align: center; }
 .product-thumb .image a { display: block; }
-.product-thumb .image a img { display:inline-block; }
+.product-thumb .image a img { display:inline-block; max-height: 250px;}
 .product-thumb h4 {
 	margin:0;
 	padding-bottom:0px;
+	height: 36px;
 }
 .product-thumb h4 a {
 	font-size:13px;
@@ -1140,7 +1141,7 @@ visibility:hidden;
 	width:44px;
 	padding-left:2px;
 	padding-right:2px;
-	height:40px;
+	height:39px;
 	text-align:center;
 }
 /*===================================================================================*/
@@ -1291,7 +1292,7 @@ visibility:hidden;
 	color:#fff;
 }
 .btn-primary {
-	background-color:#3e7cb4;
+	background-color:#ae242a !important;
 	color:#ffffff;
 }
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
