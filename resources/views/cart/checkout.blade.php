@@ -40,7 +40,7 @@
                                 <td>{{ Auth::user()->contact }}</td>
                               </tr>
                               <tr>
-                                <td colspan="2"><b>Shipping & Billing Address</b></td>
+                                <td colspan="2"><b>Shipping Address</b></td>
                                 @php $shipping = Auth::user()->getShippingAddress(); @endphp
                               </tr>
                               <tr>
@@ -55,6 +55,24 @@
                                 <td>Country</td>
                                 <td>{{ $shipping->address_one }}</td>
                               </tr>
+
+                              <tr>
+                                <td colspan="2"><b>Billing Address</b></td>
+                                @php $billing = Auth::user()->getBillingAddress(); @endphp
+                              </tr>
+                              <tr>
+                                <td>Street Address</td>
+                                <td>{{ $billing->address_one }}</td>
+                              </tr>
+                              <tr>
+                                <td>City</td>
+                                <td>{{ $billing->city }}, {{ $billing->zipcode }}</td>
+                              </tr>
+                              <tr>
+                                <td>Country</td>
+                                <td>{{ $billing->address_one }}</td>
+                              </tr>
+
                             </tbody>
                           </table>
                         </div>
