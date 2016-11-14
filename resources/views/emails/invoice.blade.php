@@ -22,7 +22,6 @@
                     <td style="border:1px solid #DEDEDE;">
                         
                          <div><img alt="logo" src="http://tienda.ph/image/logo.png"></div>
-                          <p>TIENDA ENTERPRISES</p>
                     </td>
                     <td style="border:1px solid #DEDEDE;">
                          {{$order->id}}
@@ -33,6 +32,47 @@
                     <td style="border:1px solid #DEDEDE;">
                         
                         {{ ucfirst($order->status) }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="payment-info" style="margin-bottom:1em;" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="background:none repeat scroll 0 0 #CDCDCD;">
+                    <th style="border:1px solid #DEDEDE; text-align: left; vertical-align: top; width: 30%;">
+                        Billing Address
+                    </th>
+                    <th style="border:1px solid #DEDEDE; text-align: left; vertical-align: top; width: 30%">
+                        Shipping Address
+                    </th>
+                    <th style="border:1px solid #DEDEDE; text-align: left; vertical-align: top; width: 39%">
+                       Payment Info
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
+                        <address>
+                         {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+                          {{ $order->user->contact }}<br><br>
+                          {{ $order->billingAddress->address_one }}<br>
+                          {{ $order->billingAddress->city }} {{ $order->billingAddress->zipcode }},<br>
+                          {{ $order->billingAddress->country }}<br>
+                          </address>
+                    </td>
+                    <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
+                        <address>
+                             {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+                            {{ $order->user->contact }}<br><br>
+                            {{ $order->shippingAddress->address_one }}<br>
+                            {{ $order->shippingAddress->city }} {{ $order->shippingAddress->zipcode }},<br>
+                            {{ $order->shippingAddress->country }}
+                        </address>
+                    </td>
+                    <td class="div-rows" style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
+                        Cash on Delivery
                     </td>
                 </tr>
             </tbody>
