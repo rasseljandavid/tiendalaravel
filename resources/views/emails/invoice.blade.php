@@ -77,6 +77,46 @@
                 </tr>
             </tbody>
         </table>
+     
+        <table style="margin-bottom:1em;" class="order-items" border="0" width="100%" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="background:none repeat scroll 0 0 #CDCDCD;">
+                    <th style="border:1px solid #DEDEDE;">
+                        QTY
+                    </th>
+                    <th style="border:1px solid #DEDEDE;">
+                        Description
+                    </th>                    
+                    <th style="text-align:right; border:1px solid #DEDEDE;">
+                        Price
+                    </th>
+                    <th style="text-align:right; border:1px solid #DEDEDE;">
+                        Amount
+                    </th>                    
+                </tr>
+            </thead>
+            <tbody>
+
+            @foreach( $order->orderitems as $oi )
+                <tr>
+                    <td style="border:1px solid #DEDEDE;">
+                        {{$oi->quantity}}
+                    </td>
+                    <td style="border:1px solid #DEDEDE;">
+                       {{ $oi->getProduct()->title }}
+                    </td>                 
+                    <td style="text-align:right; border:1px solid #DEDEDE;">
+                        ₱{{ $oi->price }}
+                    </td>
+                    <td style="text-align:right; border:1px solid #DEDEDE;">
+                        ₱{{ ($oi->quantity * $oi->price) }}
+                    </td>                   
+                </tr>
+            @foreach
+            
+            </tbody>
+        </table>
+
     </div>
 
   <div id="store-footer">
