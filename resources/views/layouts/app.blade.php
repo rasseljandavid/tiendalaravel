@@ -131,8 +131,22 @@ window.smartsupp||(function(d) {
             <li><a class="home_link" title="Home" href="/">Home</a></li>
             
             @foreach($menus as $menu) 
-              <li><a title="{{ $menu->title }}" href="/category/{{ $menu->slug }}">{{ $menu->title }}</a></li>
+              <li><a title="{{ $menu['title'] }}" href="/category/{{ $menu['slug'] }}">{{ $menu['title'] }}</a></li>
             @endforeach
+            <li class="dropdown"><a href="#">More</a>
+                  <div class="dropdown-menu">
+                    <ul>
+                      @foreach($moremenus as $more) 
+                        <li>
+                          <a title="{{ $more['title'] }}" href="/category/{{ $more['slug'] }}">
+                            {{ $more['title'] }}
+                          </a>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                </li>
+
             <li class="custom-link-right"><a href="/cart/checkout"> Checkout Now!</a></li>
           </ul>
         </div>
