@@ -96,7 +96,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
+        $request['password'] = bcrypt($request->password);
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
