@@ -150,16 +150,16 @@ window.smartsupp||(function(d) {
     <div class="container">
       <div class="custom-feature-box row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-           <img src="/image/featurebox/1-rectangular.jpg" style="margin-bottom: 20px;">
+           <img src="/image/featurebox/1-rectangular.jpg" style="margin-bottom: 20px;" alt="Free Shipping. Free shipping on order over P500.00" title="Free Shipping. Free shipping on order over P500.00">
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-           <img src="/image/featurebox/2-rectangular.jpg" style="margin-bottom: 20px;">
+           <img src="/image/featurebox/2-rectangular.jpg" style="margin-bottom: 20px;" alt="Free Return. Free return in 24 hour after purchasing." title="Free Return. Free return in 24 hour after purchasing.">
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-           <img src="/image/featurebox/3-rectangular.jpg" style="margin-bottom: 20px;">
+           <img src="/image/featurebox/3-rectangular.jpg" alt="Gift Cards. Give the special perfect gifts." title="Gift Cards. Give the special perfect gifts." style="margin-bottom: 20px;">
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-           <img src="/image/featurebox/4-rectangular.jpg" style="margin-bottom: 20px;">
+           <img src="/image/featurebox/4-rectangular.jpg" alt="Reward Points. Earn and spend with ease." title="Reward Points. Earn and spend with ease." style="margin-bottom: 20px;">
         </div>                
       </div>
     </div>
@@ -186,27 +186,27 @@ window.smartsupp||(function(d) {
             <h5>Customer Service</h5>
             <ul>
               <li><a href="/how-it-works">How It Works</a></li>
-              <li><a href="/faq">FAQ</a></li>
+              <!-- <li><a href="/faq">FAQ</a></li> -->
               <li><a href="/contact-us">Contact Us</a></li>
-              <li><a href="/sitemap">Sitemap</a></li>
+              <!-- <li><a href="/sitemap">Sitemap</a></li> -->
             </ul>
           </div>
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
             <h5>Extras</h5>
             <ul>
               <li><a href="/suppliers">Suppliers</a></li>
-              <li><a href="#">Gift Vouchers</a></li>
+             <!--  <li><a href="#">Gift Vouchers</a></li>
               <li><a href="#">Affiliates</a></li>
-              <li><a href="#">Specials</a></li>
+              <li><a href="#">Specials</a></li> -->
             </ul>
           </div>
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
             <h5>My Account</h5>
             <ul>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Order History</a></li>
-              <li><a href="/cart/wishlist">Wish List</a></li>
-              <li><a href="#">Newsletter</a></li>
+              <li><a href="/account">My Account</a></li>
+              <li><a href="/order/history">Order History</a></li>
+             <!--  <li><a href="javascript:;">Wish List</a></li>
+              <li><a href="javascript:;">Newsletter</a></li> -->
             </ul>
           </div>
         </div>
