@@ -20,6 +20,7 @@ class CreateCategoryProductTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('category_id');
+            $table->boolean('is_featured_category')->default(0);
             $table->integer('rank')->default(0);    
             $table->timestamps();
         });
