@@ -1979,3 +1979,23 @@ div.required .control-label:before {
 	float: left;
 	display: inline-block;
 }
+
+#menu .nav > li > .dropdown-menu li:hover, #menu .nav > li > .dropdown-menu li a:hover {
+	color: #ae242a !important;
+}
+
+#menu .nav > li:hover > a {
+	background-color: #ae242a !important;
+}
+
+#header #menu .nav > li > a:hover {
+	color: #ffec6d !important;
+}
+
+#menu .nav > li > .dropdown-menu, #menu .nav > li > .dropdown-menu li .dropdown-menu {
+	border-top-color: #ffec6d !important;
+}
+
+#menu .nav > li.sub:hover > a:after {
+	border-bottom-color:  #ffec6d !important;
+}
