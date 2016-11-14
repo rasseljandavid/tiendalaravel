@@ -1,10 +1,12 @@
 <div class="product-layout product-list col-xs-12">
   <div class="product-thumb">
+
     <div class="image">
       <a href="{{ $product->slugLink() }}">
         <img src="/image/product/{{ $product->id }}.jpg" alt="{{ $product->title }}" title="{{ $product->title }}" class="img-responsive" onerror="this.src='/image/default.jpg'" style="width: 220px !important; height: 330px !important;"/>
       </a>
     </div>
+
     <div>
       <div class="caption">
         <h4><a href="{{ $product->slugLink() }}">{{$product->title}}</a></h4>
@@ -20,16 +22,15 @@
         </p>
         <!-- <p class="price"> $122.00 <span class="price-tax">Ex Tax: $100.00</span> </p> -->
       </div>
-      <div id="product">
-        @include('products._options', ['type'=>'btnonly'])<br/><br>
-
-        <div class="cart">
-          <div>
-            @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
+      <div id="botton-group">
+          @include('products._options', ['type'=>'btnonly'])<br/><br>
+          <div class="cart">
+            <div>
+              @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
+            </div>
           </div>
         </div>
-      </div>
-
     </div>
+
   </div>
 </div>
