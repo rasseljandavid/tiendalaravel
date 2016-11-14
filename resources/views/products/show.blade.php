@@ -187,7 +187,7 @@
                 </form>
               </div>
             </div> -->
-            <h3 class="subtitle">Related Products</h3>
+            <!-- <h3 class="subtitle">Related Products</h3>
             <div class="owl-carousel related_pro">
               <div class="product-thumb">
                 <div class="image"><a href="product.html"><img src="/image/product/samsung_tab_1-220x330.jpg" alt="Aspire Ultrabook Laptop" title="Aspire Ultrabook Laptop" class="img-responsive" /></a></div>
@@ -275,7 +275,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <!--Middle Part End -->
