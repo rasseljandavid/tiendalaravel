@@ -21,7 +21,7 @@
 </style>
 <body>
 <div style="padding:5px;">
-        <div ><img alt="logo" src="/image/logo.png"></div>
+        <div ><img alt="logo" src="http://tienda.ph/image/logo.png"></div>
         <address>
          <address style="margin-top: 10px;">
         <strong>TIENDA ENTERPRISES</strong><br>
@@ -124,8 +124,8 @@
           </tfoot>
         </table>
         <br>
-        <p>This is an order from <a href="http://tienda.ph" target="blank">tienda</a>. If you did not make this purchase please contact us immediately on the address stated above.</p>
-        <h3>View your <a href="http://tienda.dev/order/{{$order->id}}" target="blank">order</a></h3>
+        <p>This is an order from <a href="http://tienda.ph/" target="blank">tienda</a>. If you did not make this purchase please contact us immediately on the address stated above.</p>
+        <h3>View your <a href="http://tienda.ph/order/{{$order->id}}" target="blank">order</a></h3>
       </div>
 </body>
 </html>

@@ -172,7 +172,7 @@
                             </div>
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" checked="checked" value="1" name="shipping_address" disabled>
+                                <input type="checkbox" checked="checked" value="1" name="shipping_address" >
                                 My delivery and billing addresses are the same.</label>
                             </div>
                           </fieldset>
