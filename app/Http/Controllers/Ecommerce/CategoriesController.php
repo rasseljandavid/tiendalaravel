@@ -31,7 +31,7 @@ class CategoriesController extends Controller
     public function show( $slug ) {
 
     	$category = Category::fromSlug($slug)->first();
-        $categories = Category::all();
+        $categories = Category::orderBy('rank')->get();
         $p = new Product;
         $featured = [];
         $featured['bestseller'] = $p->getBestSellerProduct()->random(5);
