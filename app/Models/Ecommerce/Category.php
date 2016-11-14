@@ -50,6 +50,11 @@ class Category extends Model
 
 	public function getProductByCategory($perpage = 20, $sort = 'rank', $aod = 'asc') {
 
+  		return $this->products()->orderBy($sort, $aod)->paginate($perpage);
+  	}
+
+  	public function getFeaturedProductByCategory($perpage = 20, $sort = 'rank', $aod = 'asc') {
+
   		return $this->products()->where('is_featured_category', 1)->orderBy($sort, $aod)->paginate($perpage);
   	}
 

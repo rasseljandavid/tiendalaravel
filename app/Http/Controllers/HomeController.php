@@ -37,9 +37,9 @@ class HomeController extends Controller
         $categories = [];
 
         $beverages = Category::fromSlug('beverages')->first();
-        $categories['Beverages'] = $beverages->getProductByCategory()->take(10);
+        $categories['Beverages'] = $beverages->getFeaturedProductByCategory()->take(10);
         $beverages = Category::fromSlug('snacks')->first();
-        $categories['Snacks']    = $beverages->getProductByCategory()->take(10);
+        $categories['Snacks']    = $beverages->getFeaturedProductByCategory()->take(10);
 
         $p = new product;
         $featured = [];
