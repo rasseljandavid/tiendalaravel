@@ -66,7 +66,7 @@ class Kernel extends ConsoleKernel
                 $prod->salePrice     = $product->ProductSellingPrice;
                 $prod->update();
             }
-        })->everyHour();
+        })->everyThirtyMinutes();
 
         // Update the information of the products
         //featured
