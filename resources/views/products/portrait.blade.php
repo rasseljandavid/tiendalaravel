@@ -8,7 +8,7 @@
     <h4><a href="{{ $product->slugLink() }}">{{ $product->title }}</a></h4>
     <p class="price">
       @if($product->salePrice)
-        <span class="price-new">{{ $product->salePrice }}</span> 
+        ₱<span class="price-new">{{ $product->salePrice }}</span> 
         <span class="price-old">{{ $product->price }}</span>
         <span class="saving">{{ $product->getSavings() }}</span>
       @else

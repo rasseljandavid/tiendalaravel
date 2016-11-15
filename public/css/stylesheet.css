@@ -839,6 +839,7 @@ border-color:#eae9e9;
 	margin:0 auto;
 	padding:0px;
 	color:#333;
+	font-weight: bold;
 }
 .product-thumb h4 a:hover { text-decoration:underline; }
 .product-thumb .button-group button { border: none; }
@@ -879,8 +880,8 @@ border-color:#eae9e9;
 	font-weight:normal;
 	font-size:12px;
 }
-.price-new { font-weight: bold; }
-.price, .price-new { color:#3e7cb4; }
+.price-new { font-weight: bold;  font-size: 1.2em;}
+.price, .price-new { color:#ae242a !important; }
 .saving {
 	background: #ae242a !important;
 	border-radius: 100% 100% 100% 100%;
