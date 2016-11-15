@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
             }
         })->everyMinute();
 
-     
+        //Update the featured products, rating and prices
         $schedule->call(function () {
             $megaventory = new \Megaventory();
             $products = $megaventory->getProducts();
@@ -66,7 +66,7 @@ class Kernel extends ConsoleKernel
                 $prod->salePrice     = $product->ProductSellingPrice;
                 $prod->update();
             }
-        })->everyMinute();
+        })->everyHour();
 
         // Update the information of the products
         //featured
