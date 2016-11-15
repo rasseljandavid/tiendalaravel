@@ -78,11 +78,10 @@ class Product extends Model
 
   public function getSavings(){
 
-  	$discount = $this->attributes['price'] - $this->attributes['salePrice'];
-  	
-  	if($this->attributes['price'] != 0) {
-  	$percent = round(($discount / $this->attributes['price']) * 100);
-  		return $percent;
+  	if($this->attributes['salePrice'] != 0) {
+
+  		$discount = round((($this->attributes['price'] / $this->attributes['salePrice']) - 1) * 100);
+  		return '-' . $discount . '%';
   	}
 
   	return;
