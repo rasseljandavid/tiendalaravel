@@ -32,17 +32,17 @@ class Order extends Model
 
     public function getTotalAttribute( $total ){
         
-        return $this->attributes['total'] = number_format($total, 2);
+        return $this->attributes['total'] = number_format((double)$total, 2);
     }
 
     public function getShippingFeeAttribute( $shipping_fee ){
         
-        return $this->attributes['shipping_fee'] = number_format($shipping_fee, 2);
+        return $this->attributes['shipping_fee'] = number_format((double)$shipping_fee, 2);
     }
 
     public function getGrandTotalAttribute( $grand_total ){
         
-        return $this->attributes['grand_total'] = number_format($grand_total, 2);
+        return $this->attributes['grand_total'] = number_format((double)$grand_total, 2);
     }
 
 	/*---------- SCOPES ----------*/
