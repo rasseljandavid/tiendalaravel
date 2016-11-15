@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('metainfo')
-	<title>Search : Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="Search : Tienda -Your First Online Grocery in the Philippines">
+	<title>Search : {{ $term }} Tienda -Your First Online Grocery in the Philippines</title>
+  <meta name="description" content="Search : {{ $term }} Tienda -Your First Online Grocery in the Philippines">
 @endsection
 
 @section('content')
@@ -38,15 +38,15 @@
             </form>
           </div>
           <br>
-          <div class="product-filter">
-            <div class="row">
-              <div class="col-md-4 col-sm-5">
+         <!--  <div class="product-filter">
+            <div class="row"> -->
+         <!--      <div class="col-md-4 col-sm-5">
                 <div class="btn-group">
-                  <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i> <small>Show on List</small></button>
                   <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i> <small>Show on Grid</small></button>
+                  <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i> <small>Show on List</small></button>
+                  
                 </div>
-                <!-- <a href="compare.html" id="compare-total">Product Compare (0)</a>  -->
-              </div>
+              </div> -->
               <!-- <div class="col-sm-2 text-right">
                 <label class="control-label" for="input-sort">Sort By:</label>
               </div>
@@ -75,10 +75,11 @@
                   <option value="">100</option>
                 </select>
               </div> -->
-            </div>
+       <!--      </div>
           </div>
-          <br />
-          <div class="row products-category">
+          <br /> -->
+          <hr>
+          <div class="row products-category product-search-result">
             @foreach( $products as $product )
               @include('products.search_result', ['product'=>$product])
             @endforeach

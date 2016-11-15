@@ -1,4 +1,4 @@
-<div class="product-layout product-list col-xs-12">
+<div class="product-layout product-grid col-lg-3 col-md-3 col-sm-4 col-xs-12">
   <div class="product-thumb">
 
     <div class="image">
@@ -15,7 +15,7 @@
           @if($product->salePrice)
             <span class="price-new">{{ $product->salePrice }}</span> 
             <span class="price-old">{{ $product->price }}</span>
-            <span class="saving">-{{ $product->getSavings() }}%</span>
+            <span class="saving">{{ $product->getSavings() }}</span>
           @else
             {{ $product->price }}
           @endif
@@ -25,7 +25,7 @@
       <div id="botton-group">
           @include('products._options', ['type'=>'btnonly'])<br/><br>
           <div class="cart">
-            <div>
+            <div style="position:relative;">
               @include('cart._addtocart', ['id'=>$product->id, 'btnclass'=>'btn btn-primary btn-lg'])
             </div>
           </div>
