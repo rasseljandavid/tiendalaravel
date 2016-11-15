@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('metainfo')
-	<title>{{ $product->title }}: Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="{{ $product->title }} - Your First Online Grocery in the Philippines">
+	<title>{{ $product->title }}: Tienda - Your First Online Grocery in the Philippines</title>
+  <meta name="description" content="{{ $product->title }} - your First Online Grocery in the Philippines">
 @endsection
 
 @section('content')
@@ -22,12 +22,12 @@
             <div class="row product-info">
               <div class="col-sm-6">
                 <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="/image/product/{{ $product->id .'.jpg' }}" title="{{ $product->title }}" alt="{{ $product->title }}" data-zoom-image="/image/product/{{ $product->id .'.jpg' }}"  onerror="this.src='/image/default.jpg'"/> </div>
-                <div class="center-block text-center"><span class="zoom-gallery"><i class="fa fa-search"></i> Click image for Gallery</span></div>
+                <!-- <div class="center-block text-center"><span class="zoom-gallery"><i class="fa fa-search"></i> Click image for Gallery</span></div> -->
                 <!-- <div class="image-additional" id="gallery_01"> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_1-600x900.jpg" data-image="image/product/macbook_air_1-350x525.jpg" title="Laptop Silver black"> <img src="/image/product/macbook_air_1-66x99.jpg" title="Laptop Silver black" alt = "Laptop Silver black"/></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_4-600x900.jpg" data-image="image/product/macbook_air_4-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_4-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_2-600x900.jpg" data-image="image/product/macbook_air_2-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_2-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> <a class="thumbnail" href="#" data-zoom-image="image/product/macbook_air_3-600x900.jpg" data-image="image/product/macbook_air_3-350x525.jpg" title="Laptop Silver black"><img src="/image/product/macbook_air_3-66x99.jpg" title="Laptop Silver black" alt="Laptop Silver black" /></a> </div> -->
               </div>
               <div class="col-sm-6">
                 <ul class="list-unstyled description">
-                  <li><b>Brand:</b> <a href="#"><span itemprop="brand">Apple</span></a></li>
+                  <li><b>Supplier:</b> <a href="{{ $product->supplier->slugLink() }}"><span itemprop="brand">{{ $product->supplier->title }}</span></a></li>
                   <li><b>Product Code:</b> <span itemprop="mpn">{{ $product->sku }}</span></li>
                   <li><b>Reward Points:</b> {{ $product->rewardPoints }}</li>
                   <li><b>Available:</b> 
@@ -37,7 +37,7 @@
                   </li>
                 </ul>
                 <ul class="price-box">
-                  <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">{{ $product->price }}</span> <span itemprop="price">{{ $product->salePrice }}<span itemprop="availability" content="In Stock"></span></span></li>
+                  <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price-old">{{ $product->price }}</span> <span itemprop="price">₱{{ $product->salePrice }}<span itemprop="availability" content="In Stock"></span></span></li>
                 </ul>
                 <div id="product">
                   <div class="cart">
@@ -50,7 +50,7 @@
                 
                 <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                   <meta itemprop="ratingValue" content="0" />
-                  <p>
+                  <p><b>Rating: </b>
                     <?php $rate = $product->rating ?>
                     @for( $i=1 ; $i <= 5; $i++)
                       <span class="fa fa-stack">
@@ -61,7 +61,7 @@
                         @endif
                       </span> 
                     @endfor
-                    <span itemprop="reviewCount">1 reviews</span></a> / <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href="">Write a review</a>
+              <!--       <span itemprop="reviewCount">1 reviews</span></a> / <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href="">Write a review</a> -->
                   </p>
                 </div>
                 <hr>

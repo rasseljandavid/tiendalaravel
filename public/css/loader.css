@@ -17,6 +17,8 @@
     display: none;
 }
 
+.product-info #product .bar { left: 0;}
+
 .bar {
     /**
      * The loading bar is centered both vertically and horizontally using
