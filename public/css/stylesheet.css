@@ -1136,15 +1136,27 @@ visibility:hidden;
 	transition: all 0.3s ease-in-out;
 	background-color:#fff;
 }
+
+.qty.add-to-cart {
+	position: relative;
+}
+
+
 .qty #button-cart, .qty #input-quantity {
-	float:left;
+	display:inline-block;
 	font-size:15px;
 	width:44px;
 	padding-left:2px;
 	padding-right:2px;
-	height:39px;
+	height:40px;
+	padding-top: 2px;
 	text-align:center;
 }
+
+.product-thumb #submit {
+	border-bottom: 1px solid #ae242a;
+}
+
 /*===================================================================================*/
 /*  9. Product Item for Left and Right Panel
 /*===================================================================================*/
@@ -1978,7 +1990,6 @@ div.required .control-label:before {
 }
 
 .btn-addtocart{
-	float: left;
 	display: inline-block;
 }
 
