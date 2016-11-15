@@ -16,7 +16,7 @@
         <!--Middle Part Start-->
         <div id="content" class="col-xs-12">
             <h1 class="title">{{ $supplier->title }}</h1>
-            <div class="row">
+            <div class="row supplier-products">
                   @foreach ($supplier->products->chunk(4) as $chunk)
                       <div class="row">
                           @foreach ($chunk as $product)

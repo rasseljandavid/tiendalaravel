@@ -19,6 +19,7 @@
 
 .product-info #product .bar { left: 0;}
 .product-search-result .bar { left: 18%; }
+.supplier-products .bar { left: 20%; }
 
 .bar {
     /**
