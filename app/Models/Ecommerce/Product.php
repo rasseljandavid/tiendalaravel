@@ -34,6 +34,13 @@ class Product extends Model
    		return $this->attributes['salePrice'] = number_format((double)$salePrice, 2);
 	}
 
+	public function getTitleAttribute($value)
+    {
+    	//Remove the / xx format for display since this is not needed to see by our customer
+    	$titleArray = explode("/", $value);
+        return trim($titleArray[0]);
+    }
+
 
 	/*---------- SCOPES ----------*/
 
