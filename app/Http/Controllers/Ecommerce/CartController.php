@@ -217,9 +217,11 @@ class CartController extends Controller
             }
             
         }
-
+       
         $order = self::getCart(true);
+
         $order->compute();
+
         $order->comment = $request['comment'];
         $order->purchased_at = Carbon::now();
         // return $order->matchMegaventoryStructure();
@@ -230,7 +232,9 @@ class CartController extends Controller
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
             $myOrder["SalesOrderStatus"] = 0;
             $order->status = 1;
-            $order->save();
+         
+            $order->update();
+
 
             if($order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
@@ -242,7 +246,7 @@ class CartController extends Controller
             return redirect('/order/'.$order->id);
             //save here
         }catch(Exception $e){
-            flash('danger', 'An error has occured. Please submit the orther again');
+            flash('danger', 'An error has occured. Please submit the order again');
             return redirect('/cart/checkout');
         }
         

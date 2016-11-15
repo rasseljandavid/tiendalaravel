@@ -280,6 +280,7 @@
                             <span>I have read and agree to the <a class="agree" target="_blank" href="/terms-and-conditions"><b>Terms &amp; Conditions</b></a></span> </label>
                           <div class="buttons">
                             <div class="pull-right">
+                              <div id="confirm-loading-btn" class="bar hide'" style="left: auto; width: 125px;"></div>
                               <input type="submit" class="btn btn-primary" id="button-confirm" value="Confirm Order">
                               <!-- <input type="submit" name="submit" value="Submit"> -->
                             </div>
@@ -303,6 +304,10 @@
   $(document).ready(function(){
     $('#input-city').change(function(){
         $('#input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
+    });
+
+    $('#button-confirm').on('click', function () {
+        $('#confirm-loading-btn').removeAttr('id');
     });
 
     @if( !Auth::check() )

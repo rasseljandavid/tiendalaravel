@@ -27,7 +27,6 @@ class Order extends Model
     protected $totalQuantity = 0;
 
 
-	/*---------- SET<>ATTRIBUTE ----------*/
 	/*---------- GET<>ATTRIBUTE ----------*/
 
     public function getTotalAttribute( $total ){
@@ -40,10 +39,7 @@ class Order extends Model
         return $this->attributes['shipping_fee'] = number_format((double)$shipping_fee, 2);
     }
 
-    public function getGrandTotalAttribute( $grand_total ){
-        
-        return $this->attributes['grand_total'] = number_format((double)$grand_total, 2);
-    }
+    
 
 	/*---------- SCOPES ----------*/
 
@@ -202,14 +198,14 @@ class Order extends Model
         }
 
         if($this->attributes['total'] >= 500){
-            $this->attributes['shipping_fee'] = 0;
+            $this->attributes['shipping_fee'] = 0.00;
         }else{
             $this->attributes['shipping_fee'] = 50.00;
         }
 
-        $grand_total = $this->attributes['total'];
-        $grand_total += $this->attributes['shipping_fee'];
-        $this->attributes['grand_total'] = $grand_total;
+        $grand_total = $this->attributes['total'] + $this->attributes['shipping_fee'];
+
+        $this->attributes['grand_total'] = (double) $grand_total;
 
         $this->save();
     }

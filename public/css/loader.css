@@ -13,7 +13,9 @@
  *
  */
 
-
+#confirm-loading-btn{
+    display: none;
+}
 
 .bar {
     /**
