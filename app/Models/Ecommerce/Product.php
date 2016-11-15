@@ -4,10 +4,18 @@ namespace App\Models\Ecommerce;
 
 // dependencies
 use Illuminate\Database\Eloquent\Model;
-// models
+// global scope
+use App\Scopes\QuantityScope;
 
 class Product extends Model
 {
+	protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new QuantityScope);
+    }
+
 
 	/*---------- VARAIBLES ----------*/
 
