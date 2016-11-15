@@ -882,7 +882,7 @@ border-color:#eae9e9;
 .price-new { font-weight: bold; }
 .price, .price-new { color:#3e7cb4; }
 .saving {
-	background:#f12b63;
+	background: #ae242a !important;
 	border-radius: 100% 100% 100% 100%;
 	color: #FFFFFF;
 	display: block;
