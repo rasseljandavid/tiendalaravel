@@ -111,7 +111,7 @@
                 </div>
               </div>
             </fieldset>
-          <!--   <fieldset>
+            <fieldset>
               <legend>Newsletter</legend>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Subscribe</label>
@@ -124,7 +124,7 @@
                     No</label>
                 </div>
               </div>
-            </fieldset> -->
+            </fieldset>
             <div class="buttons">
               <div class="pull-right">
                 <input type="checkbox" value="1" name="agree" required />
