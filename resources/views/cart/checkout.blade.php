@@ -282,7 +282,7 @@
                             <span>I have read and agree to the <a class="agree" target="_blank" href="/terms-and-conditions"><b>Terms &amp; Conditions</b></a></span> </label>
                           <div class="buttons">
                             <div class="pull-left">
-                              <button class="btn btn-default"><a href="{{ url('/cart/show') }}">Let me edit something</a></button> 
+                              <a href="{{ url('/cart/show') }}" class="btn btn-default">Let me edit something</a>
                             </div>
                             <div class="pull-right">
                               <div id="confirm-loading-btn" class="bar hide'" style="left: auto; width: 125px;"></div>

@@ -1272,6 +1272,11 @@ visibility:hidden;
 	padding:15px 6px 0px 6px;
 	margin-bottom: 20px;
 }
+
+#show-cart-res form button.btn {
+	padding: 7px 12px;
+}
+
 .btn {
 	padding:6.2px 12px;
 	border:0px none;
