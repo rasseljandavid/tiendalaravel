@@ -19,6 +19,7 @@
         <div id="content" class="col-sm-12">
           <h1 class="title">Checkout</h1>
           <form id="submit-order" method="POST" action="{{url('/cart/preprocess')}}" class="form">
+          {{ csrf_field() }}
             <div class="row">
               <div class="col-sm-4">
                 @if( Auth::check() )
@@ -237,9 +238,10 @@
                                     <td class="text-center"><a href="{{$oiProd->slugLink()}}"><img style="max-width:50px;max-height:75px;width:100%;height:auto;" src="/image/product/{{ $oiProd->id.'.jpg' }}" alt="{{ $oiProd->title }}" title="{{ $oiProd->title }}" class="img-thumbnail" /></a></td>
                                     <td class="text-left"><a href="{{$oiProd->slugLink()}}">{{$oiProd->title}}</a><br />
                                       <small>{{$oiProd->reward}}</small></td>
-                                    <td class="text-left">
+                                    <td class="text-center">
                                         <div class="input-group btn-block quantity">
-                                        @include('cart._itemaction')
+                                          x{{$oi->quantity}}
+                                         
                                         </div>
                                     </td>
                                     <td class="text-right">₱{{$oi->price}}</td>

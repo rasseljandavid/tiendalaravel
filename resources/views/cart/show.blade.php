@@ -40,7 +40,7 @@
                             <td class="text-left">{{$oiProd->sku}}</td>
                             <td class="text-left">
                                 <div class="input-group btn-block quantity">
-                                @include('cart._itemaction')
+                                @include('cart._itemaction', ['cartpage'=>'show'])
                                 </div>
                             </td>
                             <td class="text-right">₱{{$oi->price}}</td>

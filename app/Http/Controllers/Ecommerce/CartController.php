@@ -106,6 +106,10 @@ class CartController extends Controller
         // check product quantity
         if($request['cart_item_quantity'] > $product->quantity){
             // flash('warning', 'Insufficient stock for '.$product->title);
+            if(isset($request['cartpage']) && $request['cartpage'] == 'show'){
+                flash('warning', 'Insufficient stock for '.$product->title);
+                return redirect('/cart/show');
+            }
             return Response::json(['success'=>false]);
         }
 
@@ -118,6 +122,9 @@ class CartController extends Controller
             $cart->addOrderitem($request->all());
             $cart->compute();
             $cart['orderitems'] = $cart->orderitems;
+            if(isset($request['cartpage']) && $request['cartpage'] == 'show'){
+                return redirect('/cart/show');
+            }
             return Response::json(['success'=>true,'quantity'=>$request['quantity']]);
         }catch(Exception $e){
             // flash('error', 'Error occured: Please try again');
@@ -202,6 +209,8 @@ class CartController extends Controller
     }
 
     public function preprocess( Request $request ){
+
+        
             
         if( !Auth::check() ){
             $request['checkout'] = 'checkout';
@@ -215,8 +224,9 @@ class CartController extends Controller
                 flash('danger', 'Invalid Checkout!');
                 return redirect('/'); 
             }
-            
         }
+
+
        
         $order = self::getCart(true);
 
@@ -232,7 +242,6 @@ class CartController extends Controller
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
             $myOrder["SalesOrderStatus"] = 0;
             $order->status = 1;
-         
             $order->update();
 
 

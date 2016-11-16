@@ -129,7 +129,11 @@ class Order extends Model
 			$oi->price = $request['price'];
 			$oi->save();
             // $product = $oi->getProduct();
-            // flash('success', 'Updated the quantity of '.$product->title. ' to '.$oi->quantity);   
+            // flash('success', 'Updated the quantity of '.$product->title. ' to '.$oi->quantity);  
+            if(isset($request['cartpage']) && $request['cartpage'] == 'show'){
+                $product = $oi->getProduct();
+                flash('success', 'Updated the quantity of '.$product->title. ' to '.$oi->quantity);  
+            } 
     	}
     }
 
