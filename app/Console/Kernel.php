@@ -46,6 +46,8 @@ class Kernel extends ConsoleKernel
                 $is_featured = 0;
                 $is_special  = 0;
                 $is_bestSeller = 0;
+                $rank = 0;
+               
                 if(strtolower(trim($product->ProductCustomField2)) == 'featured') {
                     $is_featured = 1;
                 }
@@ -57,11 +59,18 @@ class Kernel extends ConsoleKernel
                 if(strtolower(trim($product->ProductCustomField2)) == 'bestseller') {
                     $is_bestSeller = 1;
                 }
+
+                if(!empty($product->ProductCustomField3)) {
+                    $rank = (int)$product->ProductCustomField3;
+                }
+
+
                 $prod = Product::withoutGlobalScopes()->find($product->ProductID);
                 $prod->is_featured   = $is_featured;
                 $prod->is_special    = $is_special;
                 $prod->is_bestSeller = $is_bestSeller;
                 $prod->rating        = rand(3,5);
+                $prod->rank          = $rank;
                 $prod->price         = $product->ProductSellingPrice * 1.1;
                 $prod->salePrice     = $product->ProductSellingPrice;
                 $prod->update();
