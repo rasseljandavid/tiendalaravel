@@ -50,7 +50,7 @@ class CreateProductsTable extends Migration
 
          $invetories = $megaventory->getInventory();
          foreach($invetories as $inventory) {
-            $product = Product::find($inventory->productID);
+            $product = Product::withoutGlobalScopes()->find($inventory->productID);
             $product->quantity = $inventory->StockPhysicalTotal;
             $product->update();
          }

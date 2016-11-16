@@ -29,7 +29,7 @@ class CreateCategoryProductTable extends Migration
         $products = $megaventory->getProducts();
 
         foreach($products as $product) {
-            $prod = Product::find($product->ProductID);
+            $prod = Product::withoutGlobalScopes()->find($product->ProductID);
 
             $prod->categories()->attach($product->ProductCategoryID, ['rank' => 0]);
         }

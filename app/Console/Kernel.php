@@ -57,7 +57,7 @@ class Kernel extends ConsoleKernel
                 if(strtolower(trim($product->ProductCustomField2)) == 'bestseller') {
                     $is_bestSeller = 1;
                 }
-                $prod = Product::find($product->ProductID);
+                $prod = Product::withoutGlobalScopes()->find($product->ProductID);
                 $prod->is_featured   = $is_featured;
                 $prod->is_special    = $is_special;
                 $prod->is_bestSeller = $is_bestSeller;
