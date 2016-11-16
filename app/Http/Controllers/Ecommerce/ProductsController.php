@@ -67,11 +67,13 @@ class ProductsController extends Controller
     public function show( $slug )
     {
         $product = Product::with('supplier','categories')->fromSlug($slug)->first();
-        
+
         $p = new product;
         $featured = [];
         $featured['bestseller'] = $p->getBestSellerProduct()->random(5);
         $featured['special'] = $p->getSpecialProduct()->random(5);
+        $featured['relatedproducts'] = Product::all()->random(10);
+        
         if(!$product){
             return 'product do not exists';
         }
@@ -113,4 +115,17 @@ class ProductsController extends Controller
     {
         //
     }
+
+    // public function relatedProducts() {
+    //     set_time_limit(120); //60 seconds = 1 minute
+    //     $products = Product::withoutGlobalScopes()->get();
+    //     foreach ($products as $key => $value) {
+    //         $p = Product::withoutGlobalScopes()->get()->where('id', '!=' , $value->id)->random(10);
+    //         foreach ($p as $key => $values) {
+    //             \DB::table('related_products')->insert(
+    //                 array('related_products_id' => $values->id, 'product_id' => $value->id, 'dynamic' => 0)
+    //             );
+    //         }
+    //     }
+    // }
 }

@@ -6,7 +6,7 @@
       @if($product->salePrice)
         <span style="font-size: 1.2em">₱</span><span class="price-new">{{ $product->salePrice }}</span> 
         <span class="price-old">{{ $product->price }}</span>
-        <span class="saving">-{{ $product->getSavings() }}</span>
+        <span class="saving">{{ $product->getSavings() }}</span>
       @else
         {{ $product->price }}
       @endif
