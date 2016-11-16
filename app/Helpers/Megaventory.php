@@ -48,8 +48,9 @@ class Megaventory {
 	public function createSalesOrder($order) {
 
 
-		$order['SalesOrderStatus'] = '10';
+		$order['SalesOrderStatus'] = '30';
 		$order['SalesOrderClientID'] = '492';
+		$order['SalesOrderInventoryLocationID'] = '2';
 		$order['SalesOrderCurrencyCode'] = 'PHP';
 		return  $this->megaventoryRequest('SalesOrderUpdate', [
 					'mvSalesOrder'  => $order,
@@ -80,6 +81,7 @@ class Megaventory {
 		}
 		else {
 		    $res = json_decode($curl->response);
+		
 		    $key = $this->getResponseKey($apiMethod);
 
 		  	return $res->$key;
