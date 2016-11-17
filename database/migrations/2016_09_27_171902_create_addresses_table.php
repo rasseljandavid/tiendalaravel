@@ -18,6 +18,7 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('to')->default('');
             $table->string('address_one');
             $table->string('city');
             $table->string('zipcode');
@@ -29,6 +30,7 @@ class CreateAddressesTable extends Migration
 
         $address1 = new Address;
         $address1->user_id = 1;
+        $address1->to = 'shipping person';
         $address1->address_one = 'Street address of admin';
         $address1->city = 'Mabalacat';
         $address1->zipcode = '2010';
@@ -38,6 +40,7 @@ class CreateAddressesTable extends Migration
 
         $address2 = new Address;
         $address2->user_id = 1;
+        $address2->to = 'billing person';
         $address2->address_one = 'Street address of admin';
         $address2->city = 'Mabalacat';
         $address2->zipcode = '2010';
@@ -47,6 +50,7 @@ class CreateAddressesTable extends Migration
 
         $address3 = new Address;
         $address3->user_id = 0;
+        $address3->to = '';
         $address3->address_one = 'Local address of tienda(shipping)';
         $address3->city = 'Mabalacat';
         $address3->zipcode = '2010';
@@ -56,6 +60,7 @@ class CreateAddressesTable extends Migration
 
         $address3 = new Address;
         $address3->user_id = 0;
+        $address3->to = '';
         $address3->address_one = 'Local address of tienda(billing)';
         $address3->city = 'Mabalacat';
         $address3->zipcode = '2010';
