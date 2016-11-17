@@ -395,7 +395,6 @@
           }
           
           if ($('input[type=radio][name=account]:checked').val()  == 'returning') {
-
             registration.slideUp(400, function(){ $(this).remove(); });
             checkout.append(returning);
             returning.slideDown(400);
