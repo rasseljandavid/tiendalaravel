@@ -40,9 +40,24 @@
                                 <td>Contact Number</td>
                                 <td>{{ Auth::user()->contact }}</td>
                               </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-home"></i> Shipping Address
+                            @php $shipping = Auth::user()->getShippingAddress(); @endphp
+                            <span class="pull-right"><a href="{{ url('/address/edit') }}">edit</a></span>
+                        </h4>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table">
+                            <tbody>
                               <tr>
-                                <td colspan="2"><b>Shipping Address</b></td>
-                                @php $shipping = Auth::user()->getShippingAddress(); @endphp
+                                <td>Ship To:</td>
+                                <td>{{ $shipping->to }}</td>
                               </tr>
                               <tr>
                                 <td>Street Address</td>
@@ -56,10 +71,24 @@
                                 <td>Country</td>
                                 <td>{{ $shipping->address_one }}</td>
                               </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
 
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-home"></i> Billing Address
+                            @php $billing = Auth::user()->getBillingAddress(); @endphp
+                            <span class="pull-right"><a href="{{ url('/address/edit') }}">edit</a></span>
+                        </h4>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table">
+                            <tbody>
                               <tr>
-                                <td colspan="2"><b>Billing Address</b></td>
-                                @php $billing = Auth::user()->getBillingAddress(); @endphp
+                                <td>Bill To:</td>
+                                <td>{{ $billing->to }}</td>
                               </tr>
                               <tr>
                                 <td>Street Address</td>

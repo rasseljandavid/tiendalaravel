@@ -37,7 +37,7 @@ Philippines<br>
             <div class="col-xs-3">
               <address>
               <strong>Bill To:</strong><br>
-              {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+              {{ $order->billingAddress->to}}<br>
               {{ $order->user->contact }}<br><br>
               {{ $order->billingAddress->address_one }}<br>
               {{ $order->billingAddress->city }} {{ $order->billingAddress->zipcode }},<br>
@@ -47,7 +47,7 @@ Philippines<br>
             <div class="col-xs-4">
               <address>
               <strong>Ship To:</strong><br>
-              {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+              {{ $order->shippingAddress->to }}<br>
               {{ $order->user->contact }}<br><br>
               {{ $order->shippingAddress->address_one }}<br>
               {{ $order->shippingAddress->city }} {{ $order->shippingAddress->zipcode }},<br>
