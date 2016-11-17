@@ -200,7 +200,7 @@ window.smartsupp||(function(d) {
             <h5>Customer Service</h5>
             <ul>
               <li><a href="/how-it-works">How It Works</a></li>
-              <!-- <li><a href="/faq">FAQ</a></li> -->
+              <li><a href="/faq">FAQ</a></li>
               <li><a href="/contact-us">Contact Us</a></li>
               <!-- <li><a href="/sitemap">Sitemap</a></li> -->
             </ul>
