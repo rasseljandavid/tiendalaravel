@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -43,7 +44,10 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
+    {   
+        if($exception instanceof NotFoundHttpException) {
+            return redirect('/notfound');
+        }
 
         if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
             flash('info', 'You\'re session has expired. Please login to continue');
