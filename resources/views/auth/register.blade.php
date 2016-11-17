@@ -204,29 +204,11 @@
     $(document).ready(function(){
 
       $('.shipping-address #input-city').change(function(){
-        var sel = $(this).val();
         $('.shipping-address #input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
-
-        if($('#checkbox-same-address').is(':checked')){
-          $(".billing-address #input-city").find('option:selected').remove();
-          $(".billing-address #input-city").val(sel).change();
-        }
       });
       
       $('.billing-address #input-city').change(function(){
         $('.billing-address #input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
-      });
-
-      $(".shipping-address input[name='to[ship]']").keyup(function(){
-        if($('#checkbox-same-address').is(':checked')){
-          $(".billing-address input[name='to[bill]']").val($(this).val()); 
-        }
-      }); 
-
-      $(".shipping-address input[name='address_one[ship]']").keyup(function(){
-        if($('#checkbox-same-address').is(':checked')){
-          $(".billing-address input[name='address_one[bill]']").val($(this).val()); 
-        }
       });
 
       $('#checkbox-same-address').change(function(){

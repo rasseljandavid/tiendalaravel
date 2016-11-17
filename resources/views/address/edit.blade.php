@@ -23,9 +23,13 @@
 					  		</tr>
 					  	</thead>
 					  	<tbody>
+					  		<tr>
+						      	<td>To</td>
+						      	<td><input type="text" id="input-ship-to" name="shipping_to" value="{{ $shipping->to or old('shipping_to') }}" class="form-control"></td>
+						    </tr>
 						    <tr>
 						      	<td>Address</td>
-						      	<td><input type="text" id="input-address-one" name="shipping_address_one" value="{{ $shipping->address_one or old('shipping-address_one') }}" class="form-control"></td>
+						      	<td><input type="text" id="input-address-one" name="shipping_address_one" value="{{ $shipping->address_one or old('shipping_address_one') }}" class="form-control"></td>
 						    </tr>
 						    <tr>
 						      	<td>City / Municipality</td>
@@ -42,7 +46,7 @@
 						    <tr>
 						      	<td>Zip Code</td>
 						      	<td>
-						      		<input type="text" class="form-control" id="shipping-zipcode" name="shipping_zipcode" value="{{ $shipping->zipcode or old('shipping-zipcode') }}" >
+						      		<input type="text" class="form-control" id="shipping-zipcode" name="shipping_zipcode" value="{{ $shipping->zipcode or old('shipping_zipcode') }}" >
 						      	</td>
 						    </tr>
 						    <tr>
@@ -66,9 +70,13 @@
 					  		</tr>
 					  	</thead>
 					  	<tbody>
+					  		<tr>
+						      	<td>To</td>
+						      	<td><input type="text" id="input-ship-to" name="billing_to" value="{{ $billing->to or old('billing_to') }}" class="form-control"></td>
+						    </tr>
 						    <tr>
 						      	<td>Address</td>
-						      	<td><input type="text" id="input-address-one" name="billing_address_one" value="{{ $billing->address_one or old('billing-address_one') }}" class="form-control"></td>
+						      	<td><input type="text" id="input-address-one" name="billing_address_one" value="{{ $billing->address_one or old('billing_address_one') }}" class="form-control"></td>
 						    </tr>
 						    <tr>
 						      	<td>City / Municipality</td>
@@ -84,7 +92,7 @@
 						    </tr>
 						    <tr>
 						      	<td>Zip Code</td>
-						      	<td><input type="text" class="form-control" id="billing-zipcode" name="billing_zipcode" value="{{ $billing->zipcode or old('billing-zipcode') }}" ></td>
+						      	<td><input type="text" class="form-control" id="billing-zipcode" name="billing_zipcode" value="{{ $billing->zipcode or old('billing_zipcode') }}" ></td>
 						    </tr>
 						    <tr>
 						      	<td>Country</td>
