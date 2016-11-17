@@ -248,8 +248,9 @@ class CartController extends Controller
             if($order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
             }else{
-                flash('success', 'You\'re order has been submitted.
-                    Note: Failed Sending Email at '.Auth::user()->email);
+                flash('success', 'You\'re order has been submitted');
+                // flash('success', 'You\'re order has been submitted.
+                //     Note: Failed Sending Email at '.Auth::user()->email);
             }
 
             return redirect('/order/'.$order->id);
