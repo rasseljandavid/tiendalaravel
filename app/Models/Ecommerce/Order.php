@@ -346,7 +346,7 @@ class Order extends Model
         $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
         $admin = (object)$admin;
         
-        Mail::send( 'emails.invoice', 
+        return Mail::send( 'emails.invoice', 
                     [
                      'order'=>$order,
                      'admin'=>$admin
