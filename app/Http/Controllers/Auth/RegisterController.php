@@ -54,7 +54,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
         if(isset($data['checkbox-same-address'])){
             return Validator::make($data, [
                 'firstname'     => 'required|max:255',
