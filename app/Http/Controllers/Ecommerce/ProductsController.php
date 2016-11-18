@@ -128,7 +128,10 @@ class ProductsController extends Controller
     //         }
     //     }
     // }
-
+    // public function bestsellerProduct() {
+    //     $product = \DB::table('orderitems')->select('product_id', \DB::raw('COUNT(product_id) as pid_count'))->groupBy('product_id')->havingRaw('COUNT(product_id) > 0')->orderBy('pid_count', 'desc')->get();
+    //     foreach ($product as $key => $value) {
+    //  
     public function bestsellerProduct() {
         $product = \DB::table('orderitems')->select('product_id', \DB::raw('COUNT(product_id) as pid_count'))->groupBy('product_id')->havingRaw('COUNT(product_id) > 0')->orderBy('pid_count', 'desc')->get();
         foreach ($product as $key => $value) {
