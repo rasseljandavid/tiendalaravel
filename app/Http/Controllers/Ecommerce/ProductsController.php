@@ -70,8 +70,8 @@ class ProductsController extends Controller
 
         $p = new product;
         $featured = [];
-        $featured['bestseller'] = $p->getBestSellerProduct()->random(5);
-        $featured['special'] = $p->getSpecialProduct()->random(5);
+        $featured['bestseller'] = $p->getBestSellerProduct();
+        $featured['special'] = $p->getSpecialProduct();
         $featured['relatedproducts'] = Product::all()->random(10);
         
         if(!$product){
@@ -128,13 +128,16 @@ class ProductsController extends Controller
     //         }
     //     }
     // }
-
     // public function bestsellerProduct() {
     //     $product = \DB::table('orderitems')->select('product_id', \DB::raw('COUNT(product_id) as pid_count'))->groupBy('product_id')->havingRaw('COUNT(product_id) > 0')->orderBy('pid_count', 'desc')->get();
     //     foreach ($product as $key => $value) {
-    //         $product =  Product::find($value->product_id);
-    //         $product->is_bestseller = 1;
-    //         $product->save();
-    //     }
-    // }
+    //  
+    public function bestsellerProduct() {
+        $product = \DB::table('orderitems')->select('product_id', \DB::raw('COUNT(product_id) as pid_count'))->groupBy('product_id')->havingRaw('COUNT(product_id) > 0')->orderBy('pid_count', 'desc')->get();
+        foreach ($product as $key => $value) {
+            $product =  Product::find($value->product_id);
+            $product->is_bestseller = 1;
+            $product->save();
+        }
+    }
 }

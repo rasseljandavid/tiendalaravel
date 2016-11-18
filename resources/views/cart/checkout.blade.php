@@ -21,7 +21,7 @@
           <form id="submit-order" method="POST" action="{{url('/cart/preprocess')}}" class="form">
           {{ csrf_field() }}
             <div class="row">
-              <div class="col-sm-4">
+              <div id="checkout-credentials" class="col-sm-4">
                 @if( Auth::check() )
                   <div class="panel panel-default">
                       <div class="panel-heading">
@@ -40,9 +40,24 @@
                                 <td>Contact Number</td>
                                 <td>{{ Auth::user()->contact }}</td>
                               </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-home"></i> Shipping Address
+                            @php $shipping = Auth::user()->getShippingAddress(); @endphp
+                            <span class="pull-right"><a href="{{ url('/address/edit') }}">edit</a></span>
+                        </h4>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table">
+                            <tbody>
                               <tr>
-                                <td colspan="2"><b>Shipping Address</b></td>
-                                @php $shipping = Auth::user()->getShippingAddress(); @endphp
+                                <td>Ship To:</td>
+                                <td>{{ $shipping->to }}</td>
                               </tr>
                               <tr>
                                 <td>Street Address</td>
@@ -56,10 +71,24 @@
                                 <td>Country</td>
                                 <td>{{ $shipping->address_one }}</td>
                               </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
 
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-home"></i> Billing Address
+                            @php $billing = Auth::user()->getBillingAddress(); @endphp
+                            <span class="pull-right"><a href="{{ url('/address/edit') }}">edit</a></span>
+                        </h4>
+                      </div>
+                        <div class="panel-body">
+                          <table class="table">
+                            <tbody>
                               <tr>
-                                <td colspan="2"><b>Billing Address</b></td>
-                                @php $billing = Auth::user()->getBillingAddress(); @endphp
+                                <td>Bill To:</td>
+                                <td>{{ $billing->to }}</td>
                               </tr>
                               <tr>
                                 <td>Street Address</td>
@@ -91,9 +120,9 @@
                         </div>
                         <div class="radio">
                           <label>
-                            <input type="radio" value="returning" name="account" checked="checked">
+                            <input type="radio" value="returning" name="account">
                             Returning Customer</label>
-                        </div>
+                        </div> 
                       </div>
                   </div>
                   <div id="returning">
@@ -102,19 +131,20 @@
                         <h4 class="panel-title"><i class="fa fa-user"></i> Returning Customer</h4>
                       </div>
                         <div class="panel-body">
-                          <p><strong>I am a returning customer</strong></p>
+                          <!-- <p><strong>I am a returning customer</strong></p> -->
                           <div class="form-group">
                             <label class="control-label" for="input-email">E-Mail Address</label>
-                            <input type="text" name="login-email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" />
+                            <input type="text" name="login-email" value="{{old('login-email')}}" placeholder="E-Mail Address" id="input-email" class="form-control" required />
                           </div>
                           <div class="form-group">
                             <label class="control-label" for="input-password">Password</label>
-                            <input type="password" name="login-password" value="" placeholder="Password" id="input-password" class="form-control" />
+                            <input type="password" name="login-password" value="" placeholder="Password" id="input-password" class="form-control" required />
                             <br />
                             <a href="{{url('/password/reset')}}">Forgotten Password</a></div>
                         </div>
                     </div>
                   </div>
+
                   <div id="registration">
                     <div class="panel panel-default">
                       <div class="panel-heading">
@@ -124,19 +154,19 @@
                           <fieldset id="account">
                             <div class="form-group required">
                               <label for="input-payment-firstname" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="input-payment-firstname" placeholder="First Name" value="" name="firstname">
+                              <input type="text" class="form-control" id="input-payment-firstname" placeholder="First Name" value="{{old('firstname')}}" name="firstname" required>
                             </div>
                             <div class="form-group required">
                               <label for="input-payment-lastname" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="input-payment-lastname" placeholder="Last Name" value="" name="lastname">
+                              <input type="text" class="form-control" id="input-payment-lastname" placeholder="Last Name" value="{{old('lastname')}}" name="lastname" required>
                             </div>
                             <div class="form-group required">
                               <label for="input-payment-email" class="control-label">E-Mail</label>
-                              <input type="text" class="form-control" id="input-payment-email" placeholder="E-Mail" value="" name="email">
+                              <input type="text" class="form-control" id="input-payment-email" placeholder="E-Mail" value="{{old('email')}}" name="email" required>
                             </div>
                             <div class="form-group required">
                               <label for="input-payment-telephone" class="control-label">Contact Number</label>
-                              <input type="text" class="form-control" id="input-payment-telephone" placeholder="Telephone" value="" name="contact">
+                              <input type="text" class="form-control" id="input-payment-telephone" placeholder="Telephone" value="{{old('contact')}}" name="contact" required>
                             </div>
                           </fieldset>
                         </div>
@@ -147,34 +177,72 @@
                       </div>
                         <div class="panel-body">
                           <fieldset id="address" class="required">
-                            <div class="form-group required">
-                              <label for="input-payment-address-1" class="control-label">Street #, Village, Apartment Bldg.</label>
-                              <input type="text" class="form-control" id="input-payment-address-1" placeholder="Street #, Village, Apartment Bldg." value="" name="address_one">
-                            </div>
-                            <div class="form-group">
-                              <label for="input-city" class="control-label">City / Municipality</label>
-                              <select class="form-control" id="input-city" name="city">
-                                <option value=""> --- Please Select --- </option>
-                                <option value="Angeles" data-zipcode="2009">Angeles</option>
-                                <option value="Mabalacat" data-zipcode="2010">Mabalacat</option>
-                                <option value="Bamban" data-zipcode="2317">Bamban</option>
-                                <option value="Magalang" data-zipcode="2011">Magalang</option>
-                              </select>
-                            </div>
-                            <div class="form-group required">
-                              <label for="input-zipcode" class="control-label">Zip Code</label>
-                              <input type="text" class="form-control" id="input-zipcode" placeholder="Zip Code" value="" name="zipcode">
-                            </div>
-                            <div class="form-group required">
-                              <label for="input-country" class="control-label">Country</label>
-                              <select class="form-control" id="input-country" name="country">
-                                <option value="Philippines" selected="true" readonly>Philippines</option>
-                              </select>
+                            <div class="shipping-address address-container">
+                              <h4>Shipping Address</h4>
+                              <div class="form-group required">
+                                <label for="input-ship-to" class="control-label">Ship To:</label>
+                                <input type="text" class="form-control" id="input-ship-to" placeholder="Full Name" value="{{old('to.ship')}}" name="to[ship]" required>
+                              </div>
+                              <div class="form-group required">
+                                <label for="input-payment-address-1" class="control-label">Street #, Village, Apartment Bldg.</label>
+                                <input type="text" class="form-control" id="input-payment-address-1" placeholder="Street #, Village, Apartment Bldg." value="{{old('address_one.ship')}}" name="address_one[ship]" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="input-city" class="control-label">City / Municipality</label>
+                                <select class="form-control" id="input-city" name="city[ship]">
+                                  <option value=""> --- Please Select --- </option>
+                                  <option value="Angeles" data-zipcode="2009" @if(old('city.ship') == "Angeles") selected="selected" @endif>Angeles</option>
+                                  <option value="Mabalacat" data-zipcode="2010" @if(old('city.ship') == "Mabalacat") selected="selected" @endif>Mabalacat</option>
+                                  <option value="Bamban" data-zipcode="2317" @if(old('city.ship') == "Bamban") selected="selected" @endif>Bamban</option>
+                                  <option value="Magalang" data-zipcode="2011" @if(old('city.ship') == "Magalang") selected="selected" @endif>Magalang</option>
+                                </select>
+                              </div>
+                              <div class="form-group required">
+                                <label for="input-zipcode" class="control-label">Zip Code</label>
+                                <input type="text" class="form-control" id="input-zipcode" placeholder="Zip Code" value="{{old('zipcode.ship')}}" name="zipcode[ship]" required>
+                              </div>
+                              <div class="form-group required">
+                                <label for="input-country" class="control-label">Country</label>
+                                <select class="form-control" id="input-country" name="country[ship]">
+                                  <option value="Philippines" selected="true" readonly>Philippines</option>
+                                </select>
+                              </div>
                             </div>
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" checked="checked" value="1" name="shipping_address" >
-                                My delivery and billing addresses are the same.</label>
+                                <input type="checkbox" name="checkbox-same-address" value="1" checked="checked" id="checkbox-same-address">
+                                My Shipping and Billing address are the same.</label>
+                            </div>
+                            <div class="billing-address address-container">
+                              <h4>Billing Address</h4>
+                              <div class="form-group required">
+                                <label for="input-ship-to" class="control-label">Ship To:</label>
+                                <input type="text" class="form-control" id="input-ship-to" placeholder="Full Name" value="{{old('to.bill')}}" name="to[bill]">
+                              </div>
+                              <div class="form-group required">
+                                <label for="input-payment-address-1" class="control-label">Street #, Village, Apartment Bldg.</label>
+                                <input type="text" class="form-control" id="input-payment-address-1" placeholder="Street #, Village, Apartment Bldg." value="{{old('address_one.bill')}}" name="address_one[bill]">
+                              </div>
+                              <div class="form-group">
+                                <label for="input-city" class="control-label">City / Municipality</label>
+                                <select class="form-control" id="input-city" name="city[bill]">
+                                  <option value=""> --- Please Select --- </option>
+                                  <option value="Angeles" data-zipcode="2009" @if(old('city.bill') == "Angeles") selected="selected" @endif>Angeles</option>
+                                  <option value="Mabalacat" data-zipcode="2010" @if(old('city.bill') == "Mabalacat") selected="selected" @endif>Mabalacat</option>
+                                  <option value="Bamban" data-zipcode="2317" @if(old('city.bill') == "Bamban") selected="selected" @endif>Bamban</option>
+                                  <option value="Magalang" data-zipcode="2011" @if(old('city.bill') == "Magalang") selected="selected" @endif>Magalang</option>
+                                </select>
+                              </div>
+                              <div class="form-group required">
+                                <label for="input-zipcode" class="control-label">Zip Code</label>
+                                <input type="text" class="form-control" id="input-zipcode" placeholder="Zip Code" value="{{old('zipcode.bill')}}" name="zipcode[bill]">
+                              </div>
+                              <div class="form-group required">
+                                <label for="input-country" class="control-label">Country</label>
+                                <select class="form-control" id="input-country" name="country[bill]">
+                                  <option value="Philippines" selected="true" readonly>Philippines</option>
+                                </select>
+                              </div>
                             </div>
                           </fieldset>
                         </div>
@@ -187,11 +255,11 @@
                         <fieldset id="password-panel" class="required">
                           <div class="form-group required">
                             <label for="input-password-2" class="control-label">Password</label>
-                            <input type="password" class="form-control" id="input-password-2" placeholder="Password" value="" name="password">
+                            <input type="password" class="form-control" id="input-password-2" placeholder="Password" value="" name="password" required>
                           </div>
                           <div class="form-group required">
                             <label for="input-confirm" class="control-label">Password Confirm</label>
-                            <input type="password" class="form-control" id="input-confirm" placeholder="Password Confirm" value="" name="password_confirmation">
+                            <input type="password" class="form-control" id="input-confirm" placeholder="Password Confirm" value="" name="password_confirmation" required>
                           </div>
                           <div class="form-group text-center">
                             <div class="form-group">
@@ -311,52 +379,57 @@
         $('#input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
     });
 
-    $('#button-confirm').on('click', function () {
-        $('#confirm-loading-btn').removeAttr('id');
-    });
+    // $('#button-confirm').on('click', function () {
+    //     $('#confirm-loading-btn').removeAttr('id');
+    // });
 
     @if( !Auth::check() )
+
+      
+
+
+      var checkout = $("#checkout-credentials");
+      var registration = $("#checkout-credentials #registration");
+      var returning = $("#checkout-credentials #returning");
       $('input[type=radio][name=account]').change(function() {
-          if (this.value == 'register') {
+          if ($('input[type=radio][name=account]:checked').val() == 'register') {
 
-            $('#input-email').removeAttr('required');
-            $('#input-password').removeAttr('required');
+            returning.slideUp(400, function(){ $(this).remove(); });
+            checkout.append(registration);
 
-            $('#input-payment-firstname').attr('required', 'required');
-            $('#input-payment-lastname').attr('required', 'required');
-            $('#input-payment-email ').attr('required', 'required');
-            $('#input-payment-telephone').attr('required', 'required');
-            $('#input-payment-address-1').attr('required', 'required');
-            $('#input-city').attr('required', 'required');
-            $('#input-zipcode').attr('required', 'required');
-            $('#input-country').attr('required', 'required');
-            $('#input-password-2').attr('required', 'required');
-            $('#input-confirm').attr('required', 'required');
+            $('.shipping-address #input-city').change(function(){
+              $('.shipping-address #input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
+            });
+            
+            $('.billing-address #input-city').change(function(){
+              $('.billing-address #input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
+            });
 
-            $('#returning').slideUp();
-            $('#registration').slideDown();
+            $('#checkbox-same-address').change(function(){
+              if($(this).is(':checked')){
+                $(".billing-address.address-container").slideUp(300);
+              }else{
+                $(".billing-address.address-container").slideDown(300);
+              }
+            });
+            
+            @if(old('checkbox-same-address'))
+              $('#checkbox-same-address').prop("checked", true);
+            @else
+              $('#checkbox-same-address').prop("checked", false);
+            @endif
+            $('#checkbox-same-address').change();
+
+            registration.slideDown(400);
           }
           
-          if (this.value == 'returning') {
-
-            $('#input-payment-firstname').removeAttr('required');
-            $('#input-payment-lastname').removeAttr('required');
-            $('#input-payment-email ').removeAttr('required');
-            $('#input-payment-telephone').removeAttr('required');
-            $('#input-payment-address-1').removeAttr('required');
-            $('#input-city').removeAttr('required');
-            $('#input-zipcode').removeAttr('required');
-            $('#input-country').removeAttr('required');
-            $('#input-password-2').removeAttr('required');
-            $('#input-confirm').removeAttr('required');
-
-            $('#input-email').attr('required', 'required');
-            $('#input-password').attr('required', 'required');
-
-            $('#registration').slideUp();
-            $('#returning').slideDown();
+          if ($('input[type=radio][name=account]:checked').val()  == 'returning') {
+            registration.slideUp(400, function(){ $(this).remove(); });
+            checkout.append(returning);
+            returning.slideDown(400);
           }
       });
+      $("input[type=radio][name=account][value= {{ ((old('account') && old('account') != 1) ? old('account') : 'returning' )}}]").prop("checked",true);
       $('input[type=radio][name=account]').trigger('change');
     @endif
 

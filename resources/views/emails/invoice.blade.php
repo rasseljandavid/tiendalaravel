@@ -55,7 +55,7 @@
                 <tr>
                     <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
                         <address>
-                         {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+                         {{ $order->billingAddress->to }}<br>
                           {{ $order->user->contact }}<br><br>
                           {{ $order->billingAddress->address_one }}<br>
                           {{ $order->billingAddress->city }} {{ $order->billingAddress->zipcode }},<br>
@@ -64,7 +64,7 @@
                     </td>
                     <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
                         <address>
-                             {{ $order->user->firstname }} {{ $order->user->lastname }}<br>
+                             {{ $order->shippingAddress->to }}<br>
                             {{ $order->user->contact }}<br><br>
                             {{ $order->shippingAddress->address_one }}<br>
                             {{ $order->shippingAddress->city }} {{ $order->shippingAddress->zipcode }},<br>

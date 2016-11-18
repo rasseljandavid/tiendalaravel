@@ -12,10 +12,13 @@ class Address extends Model
 	
 	/*---------- VARAIBLES ----------*/
 
-	protected $fillable = [
-		'user_id','address_one','city','zipcode','country','is_shipping','is_billing',
-	];
+	// protected $fillable = [
+	// 	'user_id','address_one','city','zipcode','country','is_shipping','is_billing',
+	// ];
 
+	protected $guarded = [
+		'id'
+	];
 
 
 	/*---------- SET<>ATTRIBUTE ----------*/

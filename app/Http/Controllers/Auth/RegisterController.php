@@ -54,16 +54,37 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if(isset($data['checkbox-same-address'])){
+            return Validator::make($data, [
+                'firstname'     => 'required|max:255',
+                'lastname'      => 'required|max:255',
+                'email'         => 'required|email|max:255|unique:users',
+                'password'      => 'required|min:6|confirmed',
+                'contact'       => 'required|numeric|min:9',
+                'to.ship'            => 'required|max:255',
+                'address_one.ship'   => 'required|max:255',
+                'city.ship'          => 'required|max:255',
+                'zipcode.ship'       => 'required|max:255',
+                'country.ship'       => 'required|max:255',
+            ]);
+        }
+       
         return Validator::make($data, [
             'firstname'     => 'required|max:255',
             'lastname'      => 'required|max:255',
             'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:6|confirmed',
             'contact'       => 'required|numeric|min:9',
-            'address_one'   => 'required|max:255',
-            'city'          => 'required|max:255',
-            'zipcode'       => 'required|max:255',
-            'country'       => 'required|max:255',
+            'to.ship'            => 'required|max:255',
+            'address_one.ship'   => 'required|max:255',
+            'city.ship'          => 'required|max:255',
+            'zipcode.ship'       => 'required|max:255',
+            'country.ship'       => 'required|max:255',
+            'to.bill'            => 'required|max:255',
+            'address_one.bill'   => 'required|max:255',
+            'city.bill'          => 'required|max:255',
+            'zipcode.bill'       => 'required|max:255',
+            'country.bill'       => 'required|max:255',
         ]);
     }
 
@@ -74,16 +95,36 @@ class RegisterController extends Controller
      * @return User
      */
     protected function create(array $data)
-    {
-        $user = User::create($data);
-        $data['user_id'] = $user->id;
+    {   
+        // user
+        $user = new User;
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
+        $user->email = $data['email'];
+        $user->password = $data['password'];
+        $user->contact = $data['contact'];
+        $user->newsletter = ($data['newsletter'] ? 1 : 0);
+        $user->save();
         // shipping
-        $data['is_shipping'] = 1;
-        $address = Address::create($data);
+        $shipping = new  Address;
+        $shipping->user_id = $user->id;
+        $shipping->to = $data['to']['ship'];
+        $shipping->address_one = $data['address_one']['ship'];
+        $shipping->city = $data['city']['ship'];
+        $shipping->zipcode = $data['zipcode']['ship'];
+        $shipping->country = $data['country']['ship'];
+        $shipping->is_shipping = 1;
+        $shipping->save();
         // billing
-        $data['is_shipping'] = 0;
-        $data['is_billing'] = 1;
-        $address = Address::create($data);
+        $billing = new  Address;
+        $billing->user_id = $user->id;
+        $billing->to = (isset($data['checkbox-same-address']) ? $data['to']['ship'] : $data['to']['bill'] );
+        $billing->address_one = (isset($data['checkbox-same-address']) ? $data['address_one']['ship'] : $data['address_one']['bill'] );
+        $billing->city = (isset($data['checkbox-same-address']) ? $data['city']['ship'] : $data['city']['bill'] );
+        $billing->zipcode = (isset($data['checkbox-same-address']) ? $data['zipcode']['ship'] : $data['zipcode']['bill'] );
+        $billing->country = (isset($data['checkbox-same-address']) ? $data['country']['ship'] : $data['country']['bill'] );
+        $billing->is_billing = 1;
+        $billing->save();
         return $user;
     }
 
@@ -95,6 +136,8 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+
+        // return $request->all();
         $this->validator($request->all())->validate();
         $request['password'] = bcrypt($request->password);
         event(new Registered($user = $this->create($request->all())));

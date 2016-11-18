@@ -210,7 +210,7 @@ class CartController extends Controller
 
     public function preprocess( Request $request ){
 
-        
+        // return $request->all();
             
         if( !Auth::check() ){
             $request['checkout'] = 'checkout';

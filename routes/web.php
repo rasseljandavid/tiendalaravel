@@ -69,7 +69,7 @@ Route::get('/ajax/category', 'Ecommerce\CategoriesController@loadProducts');
 
 Route::get('/products', 'Ecommerce\ProductsController@index');
 Route::get('/products/{slug}', 'Ecommerce\ProductsController@show');
-
+Route::get('/products/bestseller/process', 'Ecommerce\ProductsController@bestsellerProduct');
 
 //Search Pages
 Route::get('/search/', 'SearchController@index');
@@ -81,3 +81,7 @@ Route::post('/contact', 'PagesController@sendemail');
 //Supplier
 Route::get('/suppliers', 'Ecommerce\SuppliersController@suppliers');
 Route::get('/suppliers/{slug}', 'Ecommerce\SuppliersController@show');
+
+//Notfound
+Route::get('/notfound', 'NotfoundController@index');
+		
