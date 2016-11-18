@@ -74,7 +74,7 @@
                   <div id="faq5" class="panel-collapse collapse">
                     <div class="panel-body">
                         <p>
-                            Our products are the same quality as with any supermarkets out there. The reason why we can sell our products at a more affordable price is because we have special arrangements with our suppliers. We also have a NO QUESTIONS ASKED RETURN POLICY, which means that if you are not satisfied with the items you received, you can return the mto us and we will be happy to give you a refund.
+                            Our products are the same quality as with any supermarkets out there. The reason why we can sell our products at a more affordable price is because we have special arrangements with our suppliers. We also have a NO QUESTIONS ASKED RETURN POLICY, which means that if you are not satisfied with the items you received, you can return them to us and we will be happy to give you a refund.
                         </p>
                     </div>
                   </div>
@@ -283,7 +283,7 @@
                     </div>
                   </div>
                 </div>
-                <div> <a href="#faq37" data-parent="#accordion" data-toggle="collapse" class="panel-title">>Do you deliver internationally?? <i class="fa fa-caret-down"></i></a>
+                <div> <a href="#faq37" data-parent="#accordion" data-toggle="collapse" class="panel-title">Do you deliver internationally? <i class="fa fa-caret-down"></i></a>
                   <div id="faq37" class="panel-collapse collapse">
                     <div class="panel-body">
                     <p>
