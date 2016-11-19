@@ -7,6 +7,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 use DB;
 use App\Models\Ecommerce\Product;
+use App\Models\Ecommerce\Supplier;
 
 class Kernel extends ConsoleKernel
 {
@@ -27,60 +28,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Update the quantity of the products
-        $schedule->call(function () {
-            $meg = new \Megaventory();
-            $inv = $meg->getInventory();
-            foreach($inv as $item) {
-                DB::update("UPDATE products SET quantity = $item->StockPhysicalTotal where id = {$item->productID}");
-            }
-        })->everyMinute();
 
         //Update the featured products, rating and prices
         $schedule->call(function () {
-            $megaventory = new \Megaventory();
-            $products = $megaventory->getProducts();
+            \TiendaInventory::updateTiendaSuppliers();
+            \TiendaInventory::updateTiendaProducts();
+        })->everyMinute();
 
-            foreach($products as $product) {
-
-                $is_featured = 0;
-                $is_special  = 0;
-                $is_bestSeller = 0;
-                $rank = 0;
-               
-                if(strtolower(trim($product->ProductCustomField2)) == 'featured') {
-                    $is_featured = 1;
-                }
-
-                if(strtolower(trim($product->ProductCustomField2)) == 'special') {
-                    $is_special = 1;
-                }
-
-                if(strtolower(trim($product->ProductCustomField2)) == 'bestseller') {
-                    $is_bestSeller = 1;
-                }
-
-                if(!empty($product->ProductCustomField3)) {
-                    $rank = (int)$product->ProductCustomField3;
-                }
-
-
-                $prod = Product::withoutGlobalScopes()->find($product->ProductID);
-                $prod->is_featured   = $is_featured;
-                $prod->is_special    = $is_special;
-                $prod->is_bestSeller = $is_bestSeller;
-                $prod->rating        = rand(3,5);
-                $prod->rank          = $rank;
-                $prod->price         = $product->ProductSellingPrice * 1.1;
-                $prod->salePrice     = $product->ProductSellingPrice;
-                $prod->update();
-            }
-        })->everyThirtyMinutes();
-
-        // Update the information of the products
-        //featured
-        //price
-        //rating
+        // Update the quantity of the products
+        $schedule->call(function () {
+            \TiendaInventory::updateTiendaInventory();
+        })->everyMinute();
     }
 
     /**

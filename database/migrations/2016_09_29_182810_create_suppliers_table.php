@@ -22,15 +22,7 @@ class CreateSuppliersTable extends Migration
             $table->timestamps();
         });
 
-        $megaventory = new \Megaventory();
-        $suppliers = $megaventory->getSuppliers();
-        foreach($suppliers as $supplier) {
-            $newSupplier = new Supplier();
-            $newSupplier->id    = $supplier->SupplierClientID;
-            $newSupplier->title = $supplier->SupplierClientComments;
-            $newSupplier->slug  = $supplier->SupplierClientComments;
-            $newSupplier->save();
-        }
+        \TiendaInventory::updateTiendaSuppliers();
     }
 
     /**
