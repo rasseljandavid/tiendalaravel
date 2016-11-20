@@ -36,6 +36,6 @@ class Orderitem extends Model
 	/*---------- CUSTOM METHODS ----------*/
 
 	public function getProduct(  ){
-		return Product::find($this->attributes['product_id']);
+		return Product::withoutGlobalScopes()->find($this->attributes['product_id']);
 	}
 }
