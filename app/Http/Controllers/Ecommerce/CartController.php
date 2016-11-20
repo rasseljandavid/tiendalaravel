@@ -12,6 +12,7 @@ use Response;
 use Redirect;
 use Auth;
 use View;
+
 // models
 use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
@@ -25,10 +26,10 @@ class CartController extends Controller
 {
     // this is an instace of an order
     public $cart = null;
+    private $_apiContext;
 
 
     public function __construct(  ){
-
         $this->middleware('admin', ['only' => ['index']]);
     }
 
@@ -209,7 +210,7 @@ class CartController extends Controller
     }
 
     public function preprocess( Request $request ){
-
+    
         // return $request->all();
             
         if( !Auth::check() ){
@@ -227,17 +228,23 @@ class CartController extends Controller
         }
 
 
+
+
        
         $order = self::getCart(true);
-
-        $order->compute();
-
         $order->comment = $request['comment'];
         $order->purchased_at = Carbon::now();
+        $order->compute();
+
+        if( $request['modeofpayment'] == 'paypal' ) {
+            return redirect()->route('getCheckout', [$order]);
+        }
+       
         // return $order->matchMegaventoryStructure();
         $megaventory = new \Megaventory();
 
         try{
+              
 
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
             $myOrder["SalesOrderStatus"] = 0;

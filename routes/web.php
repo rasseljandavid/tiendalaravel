@@ -84,4 +84,9 @@ Route::get('/suppliers/{slug}', 'Ecommerce\SuppliersController@show');
 
 //Notfound
 Route::get('/notfound', 'NotfoundController@index');
+
+//Paypal
+Route::get('getCheckout/{order}', ['as'=>'getCheckout','uses'=>'PaypalController@getCheckout']);
+Route::get('getDone/{order}', ['as'=>'getDone','uses'=>'PaypalController@getDone']);
+Route::get('getCancel', ['as'=>'getCancel','uses'=>'PaypalController@getCancel']);
 		

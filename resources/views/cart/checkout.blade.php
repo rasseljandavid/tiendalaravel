@@ -337,6 +337,27 @@
                         </div>
                     </div>
                   </div>
+
+                  <div class="col-sm-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-credit-card"></i> Choose Mode of Payment</h4>
+                      </div>
+                       <div class="panel-body">
+                          <div class="radio">
+                          <label>
+                            <input type="radio" value="cod" name="modeofpayment" checked>
+                           Cash on Delivery</label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" value="paypal" name="modeofpayment">
+                              PayPal or Credit/Debit Card</label>
+                          </div> 
+                       </div>
+                    </div>
+                  </div>
+
                   <div class="col-sm-12">
                     <div class="panel panel-default">
                       <div class="panel-heading">

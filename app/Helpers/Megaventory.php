@@ -7,7 +7,7 @@ class Megaventory {
 	const LOCATION   = "2";
 
 	public function __construct() {
-		$this->apikey = env('MEGAVENTORY_API');
+		$this->apikey = config('services.megaventory.key');
 	}
 
 	public	function getCategories() {
@@ -53,6 +53,7 @@ class Megaventory {
 		$order['SalesOrderInventoryLocationID'] = '2';
 		$order['SalesOrderCurrencyCode'] = 'PHP';
 		return  $this->megaventoryRequest('SalesOrderUpdate', [
+					'APIKEY' => $this->apikey, 
 					'mvSalesOrder'  => $order,
 					'mvRecordAction' => 'Insert'	
 				], true);
