@@ -400,7 +400,7 @@
         $('#input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
     });
 
-    $('#button-confirm').on('click', function () {
+    $('#submit-order').on('submit', function (event) {
       $('#confirm-loading-btn').removeAttr('id');
     });
 
