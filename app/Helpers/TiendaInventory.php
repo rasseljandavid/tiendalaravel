@@ -2,6 +2,7 @@
 
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Supplier;
+use App\Models\Ecommerce\Category;
 
 class TiendaInventory {
 
@@ -9,7 +10,7 @@ class TiendaInventory {
 		$megaventory = new \Megaventory();
 
 		$suppliers = $megaventory->getSuppliers();
-        
+
         foreach($suppliers as $supplier) {
 
             $sup = Supplier::find($supplier->SupplierClientID);
@@ -27,7 +28,36 @@ class TiendaInventory {
             }   
         }
         return;
-	}
+	} 
+
+    public static function updateTiendaCategories() {
+
+        $megaventory = new \Megaventory();
+        $categories = $megaventory->getCategories();
+
+        foreach($categories as $category) {
+            if($category->ProductCategoryDescription >= 0) { // < 0 are cat that currently inactive
+                
+                $cat = Category::find($category->ProductCategoryID);
+
+                if(empty($cat)) { 
+                    $newCategories = new Category();
+                    $newCategories->id = $category->ProductCategoryID;
+                    $newCategories->title = $category->ProductCategoryName;
+                    $newCategories->rank = $category->ProductCategoryDescription;
+                    $newCategories->slug = $category->ProductCategoryName;
+                    $newCategories->save();
+                } else {
+                    $cat->title = $category->ProductCategoryName;
+                    $cat->rank  = $category->ProductCategoryDescription;
+                    $cat->slug  = $category->ProductCategoryName;
+                    $cat->update();
+                }
+            }
+        }
+
+        return;
+    } 
 
 	public static function updateTiendaProducts() {
 		$megaventory = new \Megaventory();

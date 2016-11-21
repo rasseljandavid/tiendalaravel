@@ -32,8 +32,10 @@ class Kernel extends ConsoleKernel
         //Update the featured products, rating and prices
         $schedule->call(function () {
             \TiendaInventory::updateTiendaSuppliers();
+            \TiendaInventory::updateTiendaCategories();
             \TiendaInventory::updateTiendaProducts();
-        })->everyMinute();
+            
+        })->everyThirtyMinutes();
 
         // Update the quantity of the products
         $schedule->call(function () {
