@@ -406,8 +406,6 @@
 
     @if( !Auth::check() )
 
-      
-
 
       var checkout = $("#checkout-credentials");
       var registration = $("#checkout-credentials #registration");

@@ -11,6 +11,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Date</th>
           <th>From</th>
           <th># of Items</th>
           <th>Total</th>
@@ -23,6 +24,7 @@
           @if($o)
             <tr>
               <td>{{ $o->id }}</td>
+              <td>{{ $o->created_at->format('M d, Y') }}</td>
               <td>{{ $o->user->getFullname() }}</td>
               <td>{{ count($o->orderitems) }}</td>
               <td>₱{{ $o->total }}</td>
