@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('metainfo')
-	<title>Page Not Found : Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="About Us : Tienda -Your First Online Grocery in the Philippines">
-@endsection
-
 @section('content')
     <div class="container">
       <div class="row">

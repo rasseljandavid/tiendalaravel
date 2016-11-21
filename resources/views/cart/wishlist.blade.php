@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('metainfo')
-	<title>Wishlist : Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="Wishlist : Tienda -Your First Online Grocery in the Philippines">
-@endsection
-
 @section('content')
   
     <div class="container">

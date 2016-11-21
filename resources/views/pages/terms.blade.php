@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('metainfo')
-	<title>Terms &amp; Conditions : Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="Terms &amp; Conditions : Tienda -Your First Online Grocery in the Philippines">
-@endsection
-
 @section('content')
     <div class="container">
       <ul class="breadcrumb">

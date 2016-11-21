@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('metainfo')
-	<title>Search : {{ $term }} Tienda -Your First Online Grocery in the Philippines</title>
-  <meta name="description" content="Search : {{ $term }} Tienda -Your First Online Grocery in the Philippines">
-@endsection
-
 @section('content')
     <div class="container">
       <!-- Breadcrumb Start-->

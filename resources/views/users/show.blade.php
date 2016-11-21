@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('metainfo')
-	<title>{{ Auth::user()->getFullname() }} on Tienda</title>
-	<meta name="description" content="{{ Auth::user()->getFullname() }} Tienda Profile">
-@endsection
-
 @section('content')
     
 <div class="container">

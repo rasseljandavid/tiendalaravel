@@ -6,7 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="/image/favicon.ico" rel="icon" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
-@yield('metainfo')
+
+<meta property="og:site_name" content="Tienda - Online Grocery in Pampanga" />
+<meta property="og:title" content="Tienda - Online shopping in Pampanga" />
+<meta property="og:image" content="image/banner/meta-image.jpg" />
+
+<meta property="og:url" content="http://www.tienda.ph/">
+<meta property="og:description" content="First Online Grocery Shopping in Pampanga & Philippines offering the lowest prices." />
+
+<meta name="description" content="Pampanga online grocery delivery service, Tienda, first in the Philippines. Order now!"/>
+
+
+<title>Tienda - Pampanga Online Grocery, First in the Pilippines</title>
+
 <!-- CSS Part Start-->
 <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css" />
@@ -104,7 +116,7 @@ window.smartsupp||(function(d) {
         <div class="table-container">
           <!-- Logo Start -->
           <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-            <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda" /></a></div>
+            <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda - Online Grocery & Delivery in Pampanga" /></a></div>
           </div>
           <!-- Logo End -->
           <!-- Mini Cart Start-->
@@ -185,8 +197,11 @@ window.smartsupp||(function(d) {
         <div class="row">
           <div class="contact col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <h5>About Tienda</h5>
-            <p>Say goodbye to long queues in supermarkets, wave your farewell to heavy plastic bags, and most importantly, say hi to low prices. Tienda is an online grocery that delivers convenience into your life.</p>
-            <a href="/"><img alt="" src="/image/logo-small.png"></a>
+
+            <p>
+            Your online grocery delivery service in Pampanga is here to help you say good bye to long queues in supermarkets. Say hi to low prices and convenience! Tienda is an online grocery service that also delivers goods straight to your doorsteps.
+            </p>
+            <a href="/"><img alt="Tienda - Online Grocery & Delivery in Pampanga" src="/image/logo-small.png"></a>
           </div>
           <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
             <h5>Information</h5>
