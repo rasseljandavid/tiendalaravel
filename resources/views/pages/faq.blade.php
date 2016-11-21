@@ -121,7 +121,7 @@
                     <div class="panel-body">
                         <ul>
                           <li>Cash on Delivery</li>
-                          <li>Paypal and Credit Cards (Soon)</li>
+                          <li>Paypal and Credit Cards</li>
                           <li>Tienda Points (Soon)</li>
                         </ul>
                     </div>
