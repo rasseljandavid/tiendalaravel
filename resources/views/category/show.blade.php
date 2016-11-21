@@ -84,7 +84,7 @@
               </div>
               <div class="col-md-3 col-sm-2 text-right">
                 <select id="input-sort" class="form-control col-sm-3"">
-                  <option value="rank_desc" selected="selected">Default</option>
+                  <option value="rank_asc" selected="selected">Default</option>
                   <option value="title_asc">Name (A - Z)</option>
                   <option value="title_desc">Name (Z - A)</option>
                   <option value="salePrice_asc">Price (Low &gt; High)</option>

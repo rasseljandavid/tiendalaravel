@@ -82,9 +82,13 @@ class TiendaInventory {
                 $is_bestSeller = 1;
             }
 
-            if(!empty($product->ProductCustomField3)) {
-                $rank = (int)$product->ProductCustomField3;
+
+            if($product->ProductCustomField1 != 'Not Included' && !empty($product->ProductCustomField1)) {
+                $rank    = $product->ProductCustomField1;
+            } else {
+                 $rank   = 'zzzzzzzzzz';
             }
+
 
             
             $prod = Product::withoutGlobalScopes()->find($product->ProductID);

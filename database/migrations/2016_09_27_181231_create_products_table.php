@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->double('price', 10, 4);
             $table->double('salePrice', 10, 4);
             $table->integer('rating')->default(4);
-            $table->integer('rank')->default(0);
+            $table->string('rank')->nullable();
             $table->integer('rewardPoints')->default(100);
             $table->integer('supplier_id')->default(0);
             $table->timestamps();
@@ -45,6 +45,9 @@ class CreateProductsTable extends Migration
             $newProduct->slug = $product->ProductDescription;
             $newProduct->price = $product->ProductSellingPrice * 1.1;
             $newProduct->salePrice = $product->ProductSellingPrice;
+            if($product->ProductCustomField1 != 'Not Included') {
+                $newProduct->rank    = $product->ProductCustomField1;
+            }
             $newProduct->save();
         }
 
