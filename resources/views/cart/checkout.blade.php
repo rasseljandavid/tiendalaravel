@@ -400,9 +400,9 @@
         $('#input-zipcode').val($(this).find(':selected').attr('data-zipcode'));
     });
 
-    // $('#button-confirm').on('click', function () {
-    //     $('#confirm-loading-btn').removeAttr('id');
-    // });
+    $('#button-confirm').on('click', function () {
+      $('#confirm-loading-btn').removeAttr('id');
+    });
 
     @if( !Auth::check() )
 
