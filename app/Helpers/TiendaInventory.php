@@ -9,13 +9,22 @@ class TiendaInventory {
 		$megaventory = new \Megaventory();
 
 		$suppliers = $megaventory->getSuppliers();
-
+        
         foreach($suppliers as $supplier) {
-            $newSupplier = Supplier::find($supplier->SupplierClientID);
-            $newSupplier->id    = $supplier->SupplierClientID;
-            $newSupplier->title = $supplier->SupplierClientComments;
-            $newSupplier->slug  = $supplier->SupplierClientComments;
-            $newSupplier->save();
+
+            $sup = Supplier::find($supplier->SupplierClientID);
+
+            if(empty($sup)) {
+                $newSupplier = new Supplier();
+                $newSupplier->id    = $supplier->SupplierClientID;
+                $newSupplier->title = $supplier->SupplierClientComments;
+                $newSupplier->slug  = $supplier->SupplierClientComments;
+                $newSupplier->save();
+            } else {
+                $sup->title = $supplier->SupplierClientComments;
+                $sup->slug  = $supplier->SupplierClientComments;
+                $sup->update();
+            }   
         }
         return;
 	}
