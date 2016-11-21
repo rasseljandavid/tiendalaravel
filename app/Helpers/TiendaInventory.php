@@ -11,11 +11,11 @@ class TiendaInventory {
 		$suppliers = $megaventory->getSuppliers();
 
         foreach($suppliers as $supplier) {
-            $newSupplier = new Supplier();
+            $newSupplier = Supplier::find($supplier->SupplierClientID);
             $newSupplier->id    = $supplier->SupplierClientID;
             $newSupplier->title = $supplier->SupplierClientComments;
             $newSupplier->slug  = $supplier->SupplierClientComments;
-            $newSupplier->update();
+            $newSupplier->save();
         }
         return;
 	}

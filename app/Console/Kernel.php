@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             \TiendaInventory::updateTiendaSuppliers();
             \TiendaInventory::updateTiendaProducts();
-        })->everyThirtyMinutes();
+        })->everyMinute();
 
         // Update the quantity of the products
         $schedule->call(function () {
