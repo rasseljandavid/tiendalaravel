@@ -1,8 +1,9 @@
 <div class="slideshow single-slider owl-carousel">
 
 	<div class="item"> 
+		<a href="/category/food-delivery">
 			<img class="img-responsive" src="image/slider/slide1.jpg" alt="Simple Solution to your grocery shopping." title="Simple Solution to your grocery shopping." />
-
+		</a>
 	</div>
 
     <div class="item"> 
