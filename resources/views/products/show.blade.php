@@ -42,7 +42,9 @@
                     @include('products._options', ['type'=>'vertical'])
                   </div>
                 </div>
-                
+                <div style="margin: 10px auto;">
+                    {{$product->body}}
+                </div>
                 <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                   <meta itemprop="ratingValue" content="0" />
                   <p><b>Rating: </b>
@@ -72,14 +74,13 @@
             <!--   <li><a href="#tab-specification" data-toggle="tab">Specification</a></li>
               <li><a href="#tab-review" data-toggle="tab">Reviews (2)</a></li> -->
             </ul>
-            <div class="tab-content">
+        <!--     <div class="tab-content">
               <div itemprop="description" id="tab-description" class="tab-pane active">
                 <div>
                   <p>
-                      {{$product->body}}
                   </p>
                 </div>
-              </div>
+              </div> -->
               <!-- <div id="tab-specification" class="tab-pane">
                 <div id="tab-specification" class="tab-pane">
                 <table class="table table-bordered">
