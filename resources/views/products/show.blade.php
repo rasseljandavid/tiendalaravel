@@ -69,11 +69,11 @@
               </div>
             </div>
             @if(!empty($product->body))
-            <ul class="nav nav-tabs"> 
+        <!--     <ul class="nav nav-tabs"> 
               <li class="active"><a href="#tab-description" data-toggle="tab">Description</a></li>
-            <!--   <li><a href="#tab-specification" data-toggle="tab">Specification</a></li>
-              <li><a href="#tab-review" data-toggle="tab">Reviews (2)</a></li> -->
-            </ul>
+              <li><a href="#tab-specification" data-toggle="tab">Specification</a></li>
+              <li><a href="#tab-review" data-toggle="tab">Reviews (2)</a></li>
+            </ul> -->
         <!--     <div class="tab-content">
               <div itemprop="description" id="tab-description" class="tab-pane active">
                 <div>
@@ -177,8 +177,9 @@
                     </div>
                   </div>
                 </form>
-              </div> -->
+              </div> 
             </div>
+            -->
             @endif
             <h3 class="subtitle">Customers Who Bought This Item Also Bought</h3>
             <div class="owl-carousel related_pro">
