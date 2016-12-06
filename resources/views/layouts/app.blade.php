@@ -21,6 +21,8 @@
 
 <!-- CSS Part Start-->
 <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/notify.css">
+<link rel="stylesheet" type="text/css" href="/css/prettify.css">
 <link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
 <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
@@ -308,7 +310,8 @@ window.smartsupp||(function(d) {
 <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/map.js"></script>
-
+<script type="text/javascript" src="/js/notify.js"></script>
+<script type="text/javascript" src="/js/prettify.js"></script>
 <script type="text/javascript" src="/js/jquery.easing-1.3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.dcjqaccordion.min.js"></script>
 <script type="text/javascript" src="/js/owl.carousel.min.js"></script>

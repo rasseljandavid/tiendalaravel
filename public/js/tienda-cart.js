@@ -49,7 +49,8 @@ $(document).ready(function(){
         // send here if quantity is changed
         if(qty == inputQty.val()){
           var bar = atc.children('#loading-btn');
-          bar.addClass('bar');
+         //bar.addClass('bar');
+
           var data = form.serialize();
           $.ajax({
             url  : form.attr('action'),
@@ -60,7 +61,7 @@ $(document).ready(function(){
             
             if(data.success == true){
               qtyHolder.val(inputQty.val());
-              console.log('successful');
+              $.notify("<span style='padding-left: 5px; padding-top: 10px; padding-bottom: 10px;; font-size: 1.1em;'>Successfully added to your cart! Click <a href='/cart/checkout' style='color: #333; text-decoration: underline;'>here</a> to checkout.</span>", {align:"right", verticalAlign:"top", color: "#ae242a", background: "#fedf15", icon: "shopping-cart", delay: 5000});
               loadMinicart();
             }else if(data.success == false){
               inputQty.val(qtyHolder.val());
@@ -72,6 +73,7 @@ $(document).ready(function(){
             
           }).fail(function (data){
             var errors = data.responseJSON;
+            $.notify("Something wrong happened! Please reload your page and try again.", {align:"right", verticalAlign:"top", type: "danger"});
             removebar(bar);
             console.log(data);
           });
