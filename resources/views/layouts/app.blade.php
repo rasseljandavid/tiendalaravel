@@ -317,6 +317,7 @@ window.smartsupp||(function(d) {
 <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/js/contact.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
+<script type="text/javascript" src="/js/jquery.jscroll.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {

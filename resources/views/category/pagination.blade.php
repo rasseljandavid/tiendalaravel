@@ -7,8 +7,10 @@
     @endforeach
   </div>
 </div>
-
-<div class="col-md-12">
+@if (!empty($products->toArray()['next_page_url']))
+  <a class="jscroll-next" href="/ajax/category?page={{$nextpage}}&category={{$slug}}" style="display: none;">Next page</a>
+@endif
+<!-- <div class="col-md-12">
   <div class="row">
     <div class="col-sm-6 text-left">
       {{$products->appends(Request::except('page'))->links()}}
@@ -16,5 +18,5 @@
     <div class="col-sm-6 text-right">Showing {{ $products->toArray()['from'] }} to {{ $products->toArray()['to'] }} of {{ $products->total() }} ({{ $products->currentPage() }} Pages)
     </div>
   </div>
-</div>
+</div> -->
 <script type="text/javascript" src="/js/tienda-cart.js"></script>

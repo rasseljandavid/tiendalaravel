@@ -107,7 +107,28 @@
           <br />
 
           <!-- Showing of Products per Category -->
-          <div class="row products-category">
+          <div class="row products-category scroll">
+            <div class="col-md-12">
+              <div class="row">
+                @foreach( $products as $product )
+                  <div class="product-layout product-list col-xs-12">
+                    @include('products.portrait', ['product'=>$product])
+                  </div>
+                @endforeach
+              </div>
+            </div>
+            @if (!empty($products->toArray()['next_page_url']))
+            <a class="jscroll-next" href="/ajax/category?page={{$nextpage}}&category={{$slug}}" style="display: none;">Next page</a>
+            @endif
+            <!-- <div class="col-md-12">
+              <div class="row">
+                <div class="col-sm-6 text-left">
+                  {{$products->appends(Request::except('page'))->links()}}
+                </div>
+                <div class="col-sm-6 text-right">Showing {{ $products->toArray()['from'] }} to {{ $products->toArray()['to'] }} of {{ $products->total() }} ({{ $products->currentPage() }} Pages)
+                </div>
+              </div>
+            </div>   -->        
           </div>
         </div>
         <!--Middle Part End -->
@@ -120,43 +141,53 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-        var category = '{{ $slug }}';
-        var page = window.location.hash.replace('#', '');
-        var perPage = $('#input-limit').val();
-        var sort = $('#input-sort').val();
+        // var category = '{{ $slug }}';
+        // var page = window.location.hash.replace('#', '');
+        // var perPage = $('#input-limit').val();
+        // var sort = $('#input-sort').val();
 
-        getProducts();
+        // getProducts();
 
-        $(document).on('click', '.pagination a', function (e) {
-            page = $(this).attr('href').split('&')[3];
-            getProducts();
-            e.preventDefault();
-        });
+        // $(document).on('click', '.pagination a', function (e) {
+        //     page = $(this).attr('href').split('&')[3];
+        //     getProducts();
+        //     e.preventDefault();
+        // });
 
-        $(document).on('change', '#input-limit', function(e) {
-            perPage = $(this).val();
-            getProducts();
-        });
+        // $(document).on('change', '#input-limit', function(e) {
+        //     perPage = $(this).val();
+        //     getProducts();
+        // });
 
-        $(document).on('change', '#input-sort', function(e) {
-            sort = $(this).val();
-            getProducts();
-        });
+        // $(document).on('change', '#input-sort', function(e) {
+        //     sort = $(this).val();
+        //     getProducts();
+        // });
 
-        function getProducts() {
-          $.ajax({
-              url : '/ajax/category?page=' + page.split('=')[1] + '&category='+ category + '&perpage=' + perPage + '&sort=' + sort,
-              dataType: 'json',
-          }).done(function (data) {
-              $('.row.products-category').html(data);
-              if(!$('#list-view').hasClass('selected')) {
-                $('#grid-view').trigger('click');
-              }
-              location.hash = page;
-          }).fail(function () {
-              alert('Products could not be loaded.');
-          });
+        // function getProducts() {
+        //   $.ajax({
+        //       url : '/ajax/category?page=' + page.split('=')[1] + '&category='+ category + '&perpage=' + perPage + '&sort=' + sort,
+        //       dataType: 'json',
+        //   }).done(function (data) {
+        //       $('.row.products-category').html(data);
+        //       if(!$('#list-view').hasClass('selected')) {
+        //         $('#grid-view').trigger('click');
+        //       }
+        //       location.hash = page;
+        //   }).fail(function () {
+        //       alert('Products could not be loaded.');
+        //   });
+        // }
+        trigger();  
+        function trigger() {
+          $('#grid-view').trigger('click');  
         }
+        $('.scroll').jscroll({
+          loadingHtml: '<img src="/image/progress.gif" alt="Loading" /> Loading...',
+          padding: 20,
+          nextSelector: 'a.jscroll-next:last',
+          callback: trigger,
+        });
     });
 
   </script>
