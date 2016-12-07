@@ -15,7 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->default(0);
+            $table->integer('user_id')->unsigned()->default(0); 
+            $table->integer('salesOrderNo')->unsigned()->default(0); 
             $table->string('comment', 255)->default('');
             $table->string('session', 255);
             $table->timestamp('purchased_at')->nullable();
