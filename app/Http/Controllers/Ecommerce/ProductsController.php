@@ -71,7 +71,10 @@ class ProductsController extends Controller
         $p = new product;
         $featured = [];
         $featured['bestseller'] = $p->getBestSellerProduct();
-        $featured['special'] = $p->getSpecialProduct();
+        $featured['featured'] = count($p->getFeaturedProduct()) > 0  ? $p->getFeaturedProduct()->random(5) : $p->getFeaturedProduct();
+
+
+
         $featured['relatedproducts'] = Product::all()->random(10);
         
         if(!$product){

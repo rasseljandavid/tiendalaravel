@@ -30,9 +30,9 @@
               @include('products.mini_portrait', ['product'=>$product])
             @endforeach
           </div>
-          <h3 class="subtitle">Specials</h3>
+          <h3 class="subtitle">Featured</h3>
           <div class="side-item">
-            @foreach( $featured['special'] as $product )
+            @foreach( $featured['featured'] as $product )
               @include('products.mini_portrait', ['product'=>$product])
             @endforeach
           </div>

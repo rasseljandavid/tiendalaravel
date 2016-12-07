@@ -124,8 +124,9 @@ class TiendaInventory {
 	public static function updateTiendaInventory() { 
 		$meg = new \Megaventory();
         $inv = $meg->getInventory();
+
         foreach($inv as $item) {
-            DB::update("UPDATE products SET quantity = $item->StockPhysicalTotal where id = {$item->productID}");
+            DB::update("UPDATE products SET quantity = $item->StockOnHandTotal where id = {$item->productID}");
         }
 	}
 }

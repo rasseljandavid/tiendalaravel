@@ -35,7 +35,7 @@ class CategoriesController extends Controller
         $p = new Product;
         $featured = [];
         $featured['bestseller'] = count($p->getBestSellerProduct()) > 0 ? $p->getBestSellerProduct()->random(5) : $p->getBestSellerProduct();
-        $featured['special'] = count($p->getSpecialProduct()) > 0  ? $p->getSpecialProduct()->random(5) : $p->getSpecialProduct();
+        $featured['featured'] = count($p->getFeaturedProduct()) > 0  ? $p->getFeaturedProduct()->random(5) : $p->getFeaturedProduct();
         $products = $category->getProductByCategory();
         $nextpage = substr($products->toArray()['next_page_url'] , -1);
         // return $products;

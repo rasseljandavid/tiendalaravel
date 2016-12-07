@@ -205,9 +205,9 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
             <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
           </div> -->
-          <h3 class="subtitle">Specials</h3>
+          <h3 class="subtitle">Featured</h3>
           <div class="side-item">
-            @foreach( $featured['special'] as $product )
+            @foreach( $featured['featured'] as $product )
               @include('products.mini_portrait', ['product'=>$product])
             @endforeach
           </div>

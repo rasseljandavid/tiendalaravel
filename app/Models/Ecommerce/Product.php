@@ -101,9 +101,6 @@ class Product extends Model
   public function getBestSellerProduct() {
   	return $this->where('is_bestSeller', true)->get();	
   }
-  public function getSpecialProduct() {
-  	return $this->where('is_special', true)->get();
-  }
   public function getLatestProduct() {
   	return $this->orderBy('created_at', 'DESC')->get();
   }

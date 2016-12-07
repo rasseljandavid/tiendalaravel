@@ -47,7 +47,6 @@ class HomeController extends Controller
         $featured['latest']    = $p->getLatestProduct()->take(10);
         $featured['featured']   = $p->getFeaturedProduct()->take(10);
         $featured['bestseller'] = $p->getBestSellerProduct()->take(10);
-        // $featured['special']    = $p->getSpecialProduct()->take(10);
 
         $suppliers = Supplier::all();
         
