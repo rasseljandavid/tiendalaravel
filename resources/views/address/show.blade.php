@@ -17,11 +17,11 @@
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  		<tr>
+			  		<!-- <tr>
 				      	<td>To</td>
 				      	<td>@if($shipping){{ $shipping->to }}@endif</td>
 				      	<td>@if($billing){{ $billing->to }}@endif</td>
-				    </tr>
+				    </tr> -->
 				    <tr>
 				      	<td>Address</td>
 				      	<td>@if($shipping){{ $shipping->address_one }}@endif</td>

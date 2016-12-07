@@ -31,8 +31,7 @@ Philippines<br>
           <div class="row">
             <div class="col-xs-3">
               <address>
-              <strong>Bill To:</strong><br>
-              {{ $order->billingAddress->to}}<br>
+              <strong>Billing Address:</strong><br>
               {{ $order->user->contact }}<br><br>
               {{ $order->billingAddress->address_one }}<br>
               {{ $order->billingAddress->city }} {{ $order->billingAddress->zipcode }},<br>
@@ -41,8 +40,7 @@ Philippines<br>
             </div>
             <div class="col-xs-4">
               <address>
-              <strong>Ship To:</strong><br>
-              {{ $order->shippingAddress->to }}<br>
+              <strong>Shipping Address:</strong><br>
               {{ $order->user->contact }}<br><br>
               {{ $order->shippingAddress->address_one }}<br>
               {{ $order->shippingAddress->city }} {{ $order->shippingAddress->zipcode }},<br>

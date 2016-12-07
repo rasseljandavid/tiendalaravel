@@ -174,10 +174,10 @@
                           <fieldset id="address" class="required">
                             <div class="shipping-address address-container">
                               <h4>Shipping Address</h4>
-                              <div class="form-group required">
+                              <!-- <div class="form-group required">
                                 <label for="input-ship-to" class="control-label">Ship To:</label>
                                 <input type="text" class="form-control" id="input-ship-to" placeholder="Full Name" value="{{old('to.ship')}}" name="to[ship]" required>
-                              </div>
+                              </div> -->
                               <div class="form-group required">
                                 <label for="input-payment-address-1" class="control-label">Street #, Village, Apartment Bldg.</label>
                                 <input type="text" class="form-control" id="input-payment-address-1" placeholder="Street #, Village, Apartment Bldg." value="{{old('address_one.ship')}}" name="address_one[ship]" required>
@@ -210,10 +210,10 @@
                             </div>
                             <div class="billing-address address-container">
                               <h4>Billing Address</h4>
-                              <div class="form-group required">
+                              <!-- <div class="form-group required">
                                 <label for="input-ship-to" class="control-label">Ship To:</label>
                                 <input type="text" class="form-control" id="input-ship-to" placeholder="Full Name" value="{{old('to.bill')}}" name="to[bill]">
-                              </div>
+                              </div> -->
                               <div class="form-group required">
                                 <label for="input-payment-address-1" class="control-label">Street #, Village, Apartment Bldg.</label>
                                 <input type="text" class="form-control" id="input-payment-address-1" placeholder="Street #, Village, Apartment Bldg." value="{{old('address_one.bill')}}" name="address_one[bill]">
@@ -400,8 +400,6 @@
     });
 
     @if( !Auth::check() )
-
-
       var checkout = $("#checkout-credentials");
       var registration = $("#checkout-credentials #registration");
       var returning = $("#checkout-credentials #returning");
@@ -426,7 +424,7 @@
                 $(".billing-address.address-container").slideDown(300);
               }
             });
-            
+
             @if(old('checkbox-same-address'))
               $('#checkbox-same-address').prop("checked", true);
             @else

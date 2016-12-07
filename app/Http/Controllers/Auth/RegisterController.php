@@ -61,7 +61,7 @@ class RegisterController extends Controller
                 'email'         => 'required|email|max:255|unique:users',
                 'password'      => 'required|min:6|confirmed',
                 'contact'       => 'required|numeric|min:9',
-                'to.ship'            => 'required|max:255',
+                // 'to.ship'            => 'required|max:255',
                 'address_one.ship'   => 'required|max:255',
                 'city.ship'          => 'required|max:255',
                 'zipcode.ship'       => 'required|max:255',
@@ -75,12 +75,12 @@ class RegisterController extends Controller
             'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:6|confirmed',
             'contact'       => 'required|numeric|min:9',
-            'to.ship'            => 'required|max:255',
+            // 'to.ship'            => 'required|max:255',
             'address_one.ship'   => 'required|max:255',
             'city.ship'          => 'required|max:255',
             'zipcode.ship'       => 'required|max:255',
             'country.ship'       => 'required|max:255',
-            'to.bill'            => 'required|max:255',
+            // 'to.bill'            => 'required|max:255',
             'address_one.bill'   => 'required|max:255',
             'city.bill'          => 'required|max:255',
             'zipcode.bill'       => 'required|max:255',
@@ -108,7 +108,8 @@ class RegisterController extends Controller
         // shipping
         $shipping = new  Address;
         $shipping->user_id = $user->id;
-        $shipping->to = $data['to']['ship'];
+        // $shipping->to = $data['to']['ship'];
+        $shipping->to = '';
         $shipping->address_one = $data['address_one']['ship'];
         $shipping->city = $data['city']['ship'];
         $shipping->zipcode = $data['zipcode']['ship'];
@@ -118,7 +119,8 @@ class RegisterController extends Controller
         // billing
         $billing = new  Address;
         $billing->user_id = $user->id;
-        $billing->to = (isset($data['checkbox-same-address']) ? $data['to']['ship'] : $data['to']['bill'] );
+        // $billing->to = (isset($data['checkbox-same-address']) ? $data['to']['ship'] : $data['to']['bill'] );
+        $billing->to = '';
         $billing->address_one = (isset($data['checkbox-same-address']) ? $data['address_one']['ship'] : $data['address_one']['bill'] );
         $billing->city = (isset($data['checkbox-same-address']) ? $data['city']['ship'] : $data['city']['bill'] );
         $billing->zipcode = (isset($data['checkbox-same-address']) ? $data['zipcode']['ship'] : $data['zipcode']['bill'] );

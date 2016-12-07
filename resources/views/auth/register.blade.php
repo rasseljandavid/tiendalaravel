@@ -59,12 +59,12 @@
               <legend>Your Address</legend>
               <div class="shipping-address address-container">
                 <h3>Shipping Address</h3>
-                <div class="form-group required">
+                <!-- <div class="form-group required">
                   <label for="input-ship-to" class="col-sm-2 control-label">Ship To:</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="input-ship-to" placeholder="Full Name" value="{{old('to.ship')}}" name="to[ship]">
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group required">
                   <label for="input-address-1" class="col-sm-2 control-label">Street #, Village, Apartment Bldg.</label>
                   <div class="col-sm-10">
@@ -108,12 +108,12 @@
 
               <div class="billing-address address-container">
                 <h3>Billing Address</h3>
-                <div class="form-group required">
+                <!-- <div class="form-group required">
                   <label for="input-bill-to" class="col-sm-2 control-label">Bill To:</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="input-bill-to" placeholder="Full Name" value="{{old('to.bill')}}" name="to[bill]">
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group required">
                   <label for="input-address-1" class="col-sm-2 control-label">Street #, Village, Apartment Bldg.</label>
                   <div class="col-sm-10">
@@ -216,8 +216,12 @@
       
       @if(old('checkbox-same-address'))
         $('#checkbox-same-address').prop("checked", true);
-      @else
+        console.log('Checked');
+      @elseif(!old('checkbox-same-address') && old('address_one.bill'))
         $('#checkbox-same-address').prop("checked", false);
+        console.log('not setted');
+      @else
+        $('#checkbox-same-address').prop("checked", true);
       @endif
 
       $('#checkbox-same-address').change();

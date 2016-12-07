@@ -18,10 +18,10 @@
 					  		</tr>
 					  	</thead>
 					  	<tbody>
-					  		<tr>
+					  		<!-- <tr>
 						      	<td>To</td>
 						      	<td><input type="text" id="input-ship-to" name="shipping_to" value="{{ $shipping->to or old('shipping_to') }}" class="form-control"></td>
-						    </tr>
+						    </tr> -->
 						    <tr>
 						      	<td>Address</td>
 						      	<td><input type="text" id="input-address-one" name="shipping_address_one" value="{{ $shipping->address_one or old('shipping_address_one') }}" class="form-control"></td>
@@ -65,10 +65,10 @@
 					  		</tr>
 					  	</thead>
 					  	<tbody>
-					  		<tr>
+					  		<!-- <tr>
 						      	<td>To</td>
 						      	<td><input type="text" id="input-ship-to" name="billing_to" value="{{ $billing->to or old('billing_to') }}" class="form-control"></td>
-						    </tr>
+						    </tr> -->
 						    <tr>
 						      	<td>Address</td>
 						      	<td><input type="text" id="input-address-one" name="billing_address_one" value="{{ $billing->address_one or old('billing_address_one') }}" class="form-control"></td>

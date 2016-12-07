@@ -34,7 +34,7 @@ class AddressesController extends Controller
 	  	$user = Auth::user();
 
 	    $this->validate($request, [
-	      	'shipping_to'						=> 'required|max:255',
+	      	// 'shipping_to'						=> 'required|max:255',
 	        'shipping_address_one'   => 'required|max:255',
 	        'shipping_city'          => 'required|max:255',
 	        'shipping_zipcode'       => 'required|max:255',
@@ -46,14 +46,16 @@ class AddressesController extends Controller
 	    ]);
 
 	    $shipping = $user->getShippingAddress();
-	    $shipping->to 				 = $request->shipping_to;
+	    // $shipping->to 				 = $request->shipping_to;
+	    $shipping->to 				 = '';
 	    $shipping->address_one = $request->shipping_address_one;
 	    $shipping->city        = $request->shipping_city;
 	    $shipping->zipcode     = $request->shipping_zipcode;
 
 
 	    $billing = $user->getBillingAddress();
-	    $billing->to 				  = $request->billing_to;
+	    // $billing->to 				  = $request->billing_to;
+	    $billing->to 				  = '';
 	    $billing->address_one = $request->billing_address_one;
 	    $billing->city        = $request->billing_city;
 	    $billing->zipcode     = $request->billing_zipcode;
