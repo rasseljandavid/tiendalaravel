@@ -8,7 +8,7 @@
   </div>
 </div>
 @if (!empty($products->toArray()['next_page_url']))
-  <a class="jscroll-next" href="/ajax/category?page={{$nextpage}}&category={{$slug}}" style="display: none;">Next page</a>
+  <a id="jscroll-next" href="/ajax/category?page={{$nextpage}}&category={{$slug}}" style="display: none;">Next page</a>
 @endif
 <!-- <div class="col-md-12">
   <div class="row">

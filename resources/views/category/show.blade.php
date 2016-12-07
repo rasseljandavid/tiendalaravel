@@ -74,10 +74,10 @@
                   <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>
                 </div>
                 <a href="/cart/compare" id="compare-total"><!-- Product Compare (0) --></a> </div>
-              <div class="col-sm-2 text-right">
+              <div class="col-sm-4 text-right">
                 <label class="control-label" for="input-sort">Sort By:</label>
               </div>
-              <div class="col-md-3 col-sm-2 text-right">
+              <div class="col-md-4 col-sm-3 text-right">
                 <select id="input-sort" class="form-control col-sm-3"">
                   <option value="rank_asc" selected="selected">Default</option>
                   <option value="title_asc">Name (A - Z)</option>
@@ -90,7 +90,7 @@
                   <option value="sku_desc">Model (Z - A)</option>
                 </select>
               </div>
-              <div class="col-sm-1 text-right">
+              <!-- <div class="col-sm-1 text-right">
                 <label class="control-label" for="input-limit">Show:</label>
               </div>
               <div class="col-sm-2 text-right">
@@ -101,7 +101,7 @@
                   <option value="75">75</option>
                   <option value="100">100</option>
                 </select>
-              </div>
+              </div> -->
             </div>
           </div>
           <br />
@@ -118,7 +118,7 @@
               </div>
             </div>
             @if (!empty($products->toArray()['next_page_url']))
-            <a class="jscroll-next" href="/ajax/category?page={{$nextpage}}&category={{$slug}}" style="display: none;">Next page</a>
+            <a id="jscroll-next" href="/ajax/category?page={{$nextpage}}&category={{$slug}}" style="display: none;">Next page</a>
             @endif
             <!-- <div class="col-md-12">
               <div class="row">
@@ -141,8 +141,7 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-        // var category = '{{ $slug }}';
-        // var page = window.location.hash.replace('#', '');
+        var category = '{{ $slug }}';
         // var perPage = $('#input-limit').val();
         // var sort = $('#input-sort').val();
 
@@ -159,33 +158,37 @@
         //     getProducts();
         // });
 
-        // $(document).on('change', '#input-sort', function(e) {
-        //     sort = $(this).val();
-        //     getProducts();
-        // });
+        $(document).on('change', '#input-sort', function(e) {
+            sort = $(this).val();
+            getProducts();
+        });
 
-        // function getProducts() {
-        //   $.ajax({
-        //       url : '/ajax/category?page=' + page.split('=')[1] + '&category='+ category + '&perpage=' + perPage + '&sort=' + sort,
-        //       dataType: 'json',
-        //   }).done(function (data) {
-        //       $('.row.products-category').html(data);
-        //       if(!$('#list-view').hasClass('selected')) {
-        //         $('#grid-view').trigger('click');
-        //       }
-        //       location.hash = page;
-        //   }).fail(function () {
-        //       alert('Products could not be loaded.');
-        //   });
-        // }
-        trigger();  
-        function trigger() {
-          $('#grid-view').trigger('click');  
+        function getProducts() {
+          $.ajax({
+              url : '/ajax/category?page=1&category='+ category +'&sort=' + sort +'&ajax_action=1',
+              dataType: 'json',
+          }).done(function (data) {
+              $('.row.products-category').html(data);
+              trigger();
+              $(window).bind('scroll');
+          }).fail(function () {
+              alert('Products could not be loaded.');
+          });
         }
+
+        trigger();
+
+        function trigger() {
+          if(!$('#list-view').hasClass('selected')) {
+            $('#grid-view').trigger('click'); 
+          } 
+        }
+
         $('.scroll').jscroll({
-          loadingHtml: '<img src="/image/progress.gif" alt="Loading" /> Loading...',
+          loadingHtml: '<div class="col-md-12 text-center""> <img  src="/image/progress.gif" alt="Loading" /></div>',
           padding: 20,
-          nextSelector: 'a.jscroll-next:last',
+          refresh: true,
+          nextSelector: 'a#jscroll-next:last',
           callback: trigger,
         });
     });

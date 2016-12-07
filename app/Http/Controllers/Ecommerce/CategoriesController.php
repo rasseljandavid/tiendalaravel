@@ -21,16 +21,16 @@ class CategoriesController extends Controller
         $this->middleware('admin', ['only'=> ['index']]);
     }
 
-	public function index(){
+    public function index(){
 
         $categories = Category::all();
 
-		return view('category.index', compact('categories'));
-	}
+        return view('category.index', compact('categories'));
+    }
 
     public function show( $slug ) {
 
-    	$category = Category::fromSlug($slug)->first();
+        $category = Category::fromSlug($slug)->first();
         $categories = Category::orderBy('rank')->get();
         $p = new Product;
         $featured = [];
@@ -47,13 +47,18 @@ class CategoriesController extends Controller
 
     public function loadProducts(Request $request) {
         $request = $request->all();
-        //$sort = explode('_', $request['sort']);
         $category = Category::fromSlug($request['category'])->first();
         //$products = $category->getProductByCategory($request['perpage'], $sort[0], $sort[1]);
-        $products = $category->getProductByCategory();
-        $nextpage = substr($products->toArray()['next_page_url'] , -1);
-
-        return View::make('category.pagination', array('products' => $products, 'nextpage' => $nextpage, 'slug'=>$request['category']));
+        if(isset($request['ajax_action'])) {
+            $sort = explode('_', $request['sort']);
+            $products = $category->getProductByCategory(20 ,$sort[0], $sort[1]);
+            $nextpage = substr($products->toArray()['next_page_url'] , -1);
+            return Response::json(View::make('category.pagination', array('products' => $products ,'nextpage' => $nextpage, 'slug'=>$request['category']))->render());
+        } else {
+            $products = $category->getProductByCategory();    
+            $nextpage = substr($products->toArray()['next_page_url'] , -1);
+            return View::make('category.pagination', array('products' => $products, 'nextpage' => $nextpage, 'slug'=>$request['category']));
+        }
     }
             
 }
