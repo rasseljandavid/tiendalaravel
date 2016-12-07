@@ -69,7 +69,7 @@
           <div class="product-filter" style="border: 0px; border-bottom: 5px solid #ffec6d; background: #ffffff; padding: 6px 5px; line-height: 25px; padding-top: 20px;">
             <div class="row">
               <div class="col-md-4 col-sm-5">
-                <div class="btn-group">
+                <div class="btn-group" style="visibility: hidden;">
                   <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i></button>
                   <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>
                 </div>
@@ -79,7 +79,7 @@
               </div>
               <div class="col-md-4 col-sm-3 text-right">
                 <select id="input-sort" class="form-control col-sm-3"">
-                  <option value="rank_asc" selected="selected">Default</option>
+                  <option value="rank_asc" selected="selected">Recommended</option>
                   <option value="title_asc">Name (A - Z)</option>
                   <option value="title_desc">Name (Z - A)</option>
                   <option value="salePrice_asc">Price (Low &gt; High)</option>
