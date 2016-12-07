@@ -76,6 +76,14 @@ class Order extends Model
             ]);
     }
 
+    public function scopeCancelled( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 4]
+            ]);
+    }
+
     
 	/*---------- RELATIONS ----------*/
 
