@@ -10,7 +10,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Order Number</th>
           <th>Date</th>
           <th>From</th>
           <th># of Items</th>
@@ -24,7 +24,7 @@
         @foreach($orders as $o)
           @if($o)
             <tr>
-              <td>{{ $o->id }}</td>
+              <td>{{ $o->salesOrderNo }}</td>
               <td>{{ $o->created_at->format('M d, Y') }}</td>
               <td>{{ $o->user->getFullname() }}</td>
               <td>{{ count($o->orderitems) }}</td>
