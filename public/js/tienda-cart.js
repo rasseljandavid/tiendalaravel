@@ -38,6 +38,7 @@ $(document).ready(function(){
     var atc = $(this);
     var send = false;
     var form = atc.find('.form-addtocart');
+    atc.find('#submit').unbind('click');
     atc.find('#submit').on('click', function(){
       var qtyHolder = atc.find('#quantity-holder');
       var inputQty = atc.find('#input-quantity');
