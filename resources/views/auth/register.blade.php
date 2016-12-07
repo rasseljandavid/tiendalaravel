@@ -216,10 +216,8 @@
       
       @if(old('checkbox-same-address'))
         $('#checkbox-same-address').prop("checked", true);
-        console.log('Checked');
       @elseif(!old('checkbox-same-address') && old('address_one.bill'))
         $('#checkbox-same-address').prop("checked", false);
-        console.log('not setted');
       @else
         $('#checkbox-same-address').prop("checked", true);
       @endif

@@ -427,8 +427,10 @@
 
             @if(old('checkbox-same-address'))
               $('#checkbox-same-address').prop("checked", true);
-            @else
+            @elseif(!old('checkbox-same-address') && old('address_one.bill'))
               $('#checkbox-same-address').prop("checked", false);
+            @else
+              $('#checkbox-same-address').prop("checked", true);
             @endif
             $('#checkbox-same-address').change();
 
