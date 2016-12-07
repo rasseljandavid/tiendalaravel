@@ -283,7 +283,7 @@ class Order extends Model
             $product = $oi->getProduct();
             $salesItem[] = array(
                     "SalesOrderRowProductSKU"=>$product->sku,
-                    "SalesOrderRowProductDescription"=>$product->body,
+                    "SalesOrderRowProductDescription"=>$product->title,
                     "SalesOrderRowQuantity"=>$oi->quantity,
                     "SalesOrderRowShippedQuantity"=>0,
                     "SalesOrderRowInvoicedQuantity"=>0,
