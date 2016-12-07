@@ -24,7 +24,7 @@
                 <ul class="list-unstyled description">
                   <li><b>Supplier:</b> <a href="{{ $product->supplier->slugLink() }}"><span itemprop="brand">{{ $product->supplier->title }}</span></a></li>
                   <li><b>Product Code:</b> <span itemprop="mpn">{{ $product->sku }}</span></li>
-                  <li><b>Reward Points:</b> {{ $product->rewardPoints }}</li>
+                  <li><b>Tienda Points:</b> {{ $product->rewardPoints }}</li>
                   <li><b>Available:</b> 
                     @if($product->quantity) {{ $product->quantity }}<!--  <span class="instock">In Stock </span> -->
                     @else <span class="nostock">Out of Stock </span>
