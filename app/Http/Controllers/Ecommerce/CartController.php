@@ -247,9 +247,6 @@ class CartController extends Controller
               
 
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
-         
-            $myOrder["SalesOrderStatus"] = 0;
-            $order->status = 1;
             $order->salesOrderNo = $myOrder['SalesOrderNo'];
             $order->update();
 

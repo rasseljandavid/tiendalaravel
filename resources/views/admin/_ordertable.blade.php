@@ -34,7 +34,7 @@
               <td>
                 <!-- Remove this if you need to, just make sure that no one can cancel a canceled order. -->
                 @if($o->status != 4)
-                <a href="/order/cancelorder/{{ $o->salesOrderNo }} ">Cancel Order</a>
+                <a href="/order/cancelorder/{{ $o->id }} ">Cancel Order</a>
                 @endif
               </td>
             </tr>

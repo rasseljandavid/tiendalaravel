@@ -134,16 +134,13 @@ class OrdersController extends Controller
     } 
 
 
-    public function cancelorder($salesOrderNo)
+    public function cancelorder(Order $order)
     {
         //Check if the sales order is emtpy  
-        if (empty($salesOrderNo)) {
-            flash('info', 'Sales Number doesn\'t exist');
+        if (empty($order)) {
+            flash('info', 'Order doesn\'t exist');
             return redirect('/');
         }
-
-        //Query the order using the sales order since it is unique
-        $order = Order::where('salesOrderNo', $salesOrderNo)->first();
 
         //Check if it is NOT either admin or the owner of the order, kick him if necessary
         if(!((Auth::user()->isAdmin() || ($order->user_id == Auth::user()->id)) && $order !=null) ){

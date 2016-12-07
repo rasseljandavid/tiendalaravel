@@ -24,7 +24,7 @@ class AdminController extends Controller
     	$received = Order::received()->orderBy('created_at', 'desc')->get();
     	$onProcess = Order::onProcess()->orderBy('created_at', 'desc')->get();
     	$onTransit = Order::onTransit()->orderBy('created_at', 'desc')->get();
-    	$shipped = Order::shipped()->orderBy('created_at', 'desc')->get();
+    	$shipped   = Order::shipped()->orderBy('created_at', 'desc')->get();
         $cancelled = Order::cancelled()->orderBy('created_at', 'desc')->get();
 
     	return view('admin.dashboard', compact('received', 'onProcess', 'onTransit', 'shipped', 'cancelled'));
