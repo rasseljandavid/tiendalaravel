@@ -133,5 +133,34 @@ class OrdersController extends Controller
         return view('orders.history', compact('orders'));
     } 
 
+
+    public function cancelorder($salesOrderNo)
+    {
+        //Check if the sales order is emtpy  
+        if (empty($salesOrderNo)) {
+            flash('info', 'Sales Number doesn\'t exist');
+            return redirect('/');
+        }
+
+        //Query the order using the sales order since it is unique
+        $order = Order::where('salesOrderNo', $salesOrderNo)->first();
+
+        //Check if it is NOT either admin or the owner of the order, kick him if necessary
+        if(!((Auth::user()->isAdmin() || ($order->user_id == Auth::user()->id)) && $order !=null) ){
+            flash('info', 'Not a chance, baby!');
+            return redirect('/');
+        }
         
+        // Create aa megaventory cancel api request and update the statuss
+        $megaventory = new \Megaventory();
+
+        if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
+            flash('danger', 'There is a problem, please try again!');
+            return redirect('/');
+        } 
+
+        $order->status = 4;
+        $order->update();
+        return redirect()->back();
+    }
 }

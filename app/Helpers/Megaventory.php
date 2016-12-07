@@ -59,6 +59,14 @@ class Megaventory {
 				], true);
 	}
 
+	public function cancelSalesOrder($salesOrderNo) {
+		return  $this->megaventoryRequest('SalesOrderCancel', [
+					'APIKEY' => $this->apikey, 
+					'mvSalesOrderNoToCancel'  => $salesOrderNo,
+					'mvInsertUpdateDeleteSourceApplication' => ''	
+				], true);
+	}
+
 	private function megaventoryRequest($apiMethod, $params = array(), $jsonRequest = false) {
 		//Insert the apikey
 		$params['APIKEY'] = $this->apikey;
@@ -105,13 +113,15 @@ class Megaventory {
 			case 'ProductCategoryGet':
 				return 'mvProductCategories';
 				break;
-			case 'SalesOrderUpdate':
-				return 'mvSalesOrder';
-				break;
 			case 'SupplierClientGet':
 				return 'mvSupplierClients';
 				break;
-
+			case 'SalesOrderUpdate':
+				return 'mvSalesOrder';
+				break;
+			case 'SalesOrderCancel':
+				return 'result';
+				break;
 		}
 	}
 

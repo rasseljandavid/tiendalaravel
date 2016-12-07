@@ -17,6 +17,7 @@
           <th>Total</th>
           <th>Shipping Fee</th>
           <th>Grand Total</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +31,12 @@
               <td>₱{{ $o->total }}</td>
               <td>₱{{ $o->shipping_fee }}</td>
               <td>₱{{ $o->grand_total }}</td>
+              <td>
+                <!-- Remove this if you need to, just make sure that no one can cancel a canceled order. -->
+                @if($o->status != 4)
+                <a href="/order/cancelorder/{{ $o->salesOrderNo }} ">Cancel Order</a>
+                @endif
+              </td>
             </tr>
           @endif
         @endforeach
