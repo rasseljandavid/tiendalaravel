@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
                 'cart.minicart',
                 'home.index',
                 'products.show',
+                'category.show',
                 'category.pagination',
                 'search.index',
             ], 
