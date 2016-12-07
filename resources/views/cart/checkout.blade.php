@@ -50,10 +50,10 @@
                         <div class="panel-body">
                           <table class="table">
                             <tbody>
-                              <tr>
+                              <!-- <tr>
                                 <td>Ship To:</td>
                                 <td>{{ $shipping->to }}</td>
-                              </tr>
+                              </tr> -->
                               <tr>
                                 <td>Street Address</td>
                                 <td>{{ $shipping->address_one }}</td>
@@ -81,10 +81,10 @@
                         <div class="panel-body">
                           <table class="table">
                             <tbody>
-                              <tr>
+                              <!-- <tr>
                                 <td>Bill To:</td>
                                 <td>{{ $billing->to }}</td>
-                              </tr>
+                              </tr> -->
                               <tr>
                                 <td>Street Address</td>
                                 <td>{{ $billing->address_one }}</td>
