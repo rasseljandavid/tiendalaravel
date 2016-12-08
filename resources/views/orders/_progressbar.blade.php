@@ -32,7 +32,7 @@
 
       </div>
 
-      @if($order->status_id < 4)
+      @if($order->status_id > 1 && $order->status_id < 4)
       <!-- if it didnt reach shipped display cancel button -->
       <div class="row btn-group">
         <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
