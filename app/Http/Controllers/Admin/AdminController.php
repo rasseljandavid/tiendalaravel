@@ -49,7 +49,7 @@ class AdminController extends Controller
         $ctrOnTransit = Order::onTransit()->orderBy('created_at', 'desc')->count();
         $ctrShipped = Order::shipped()->orderBy('created_at', 'desc')->count();
         $ctrCbc = count($cbc);
-        $ctrCba = count($cba);
+        $ctrCba = count($cba); 
 
     	return view('admin.dashboard', 
             compact('received', 'cbc',
