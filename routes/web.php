@@ -104,7 +104,7 @@ Route::get('pull', function () {
 //Add test auto dev
 Route::get('testpage', function (){
 
-	echo "This is a test again123.";
+	echo "This is a test again.";
 	exit();
 });
 		
