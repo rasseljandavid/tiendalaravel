@@ -428,7 +428,7 @@ class Order extends Model
     }
 
 
-    public function updateMegaventory(  ){
+    public static function updateMegaventory(  ){
         
         $orders = Order::newOrder()->get();
 

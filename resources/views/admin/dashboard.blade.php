@@ -17,17 +17,19 @@
 
           @include('admin._ordertable', ['orders'=>$received, 'new'=>$ctrReceived, 'title'=>'New Received Orders', 'class'=>'primary'])
 
+
+
+
+          @include('admin._ordertable', ['orders'=>$onProcess, 'new'=>$ctrOnProcess, 'title'=>'On Process', 'class'=>'success'])
+
+          @include('admin._ordertable', ['orders'=>$onTransit, 'new'=>$ctrOnTransit, 'title'=>'On Transit', 'class'=>'info'])
+
+          @include('admin._ordertable', ['orders'=>$shipped, 'new'=>$ctrShipped, 'title'=>'Shipped', 'class'=>'default'])
+
+          {{-- @include('admin._ordertable', ['orders'=>$cancelled, 'title'=>'Cancelled', 'class'=>'danger']) --}}
+
           @include('admin._ordertable', ['orders'=>$cbc, 'new'=>$ctrCbc, 'title'=>'Cancelled By Customer', 'class'=>'danger'])
 
-          
-
-          {{-- @include('admin._ordertable', ['orders'=>$onProcess, 'title'=>'On Process', 'class'=>'success'])
-
-          @include('admin._ordertable', ['orders'=>$onTransit, 'title'=>'On Transit', 'class'=>'info'])
-
-          @include('admin._ordertable', ['orders'=>$shipped, 'title'=>'Shipped', 'class'=>'default'])
-
-          @include('admin._ordertable', ['orders'=>$cancelled, 'title'=>'Cancelled', 'class'=>'danger']) --}}
 
       </div>
     </div>

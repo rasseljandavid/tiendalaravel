@@ -8,6 +8,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DB;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Supplier;
+use App\Models\Ecommerce\Order;
 
 class Kernel extends ConsoleKernel
 {
@@ -40,6 +41,11 @@ class Kernel extends ConsoleKernel
         // Update the quantity of the products
         $schedule->call(function () {
             \TiendaInventory::updateTiendaInventory();
+        })->everyMinute();
+
+        // Update new received order to megaventory
+        $schedule->call(function () {
+            Order::updateMegaventory();
         })->everyMinute();
     }
 

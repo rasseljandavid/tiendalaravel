@@ -23,10 +23,10 @@ class AdminController extends Controller
     public function dashboard(  ){
     	
     	$received = Order::received()->orderBy('created_at', 'desc')->get();
-    	// $onProcess = Order::onProcess()->orderBy('created_at', 'desc')->get();
-    	// $onTransit = Order::onTransit()->orderBy('created_at', 'desc')->get();
-    	// $shipped   = Order::shipped()->orderBy('created_at', 'desc')->get();
-        // $cancelled = Order::cancelled()->orderBy('created_at', 'desc')->get();
+    	$onProcess = Order::onProcess()->orderBy('created_at', 'desc')->get();
+    	$onTransit = Order::onTransit()->orderBy('created_at', 'desc')->get();
+    	$shipped   = Order::shipped()->orderBy('created_at', 'desc')->get();
+        $cancelled = Order::cancelled()->orderBy('created_at', 'desc')->get();
         $cancelled = Order::cancelled()->orderBy('created_at', 'desc')->get();
         $cbc = array();//cancelled by customer
         $cba = array();//cancelled by admin
@@ -45,14 +45,15 @@ class AdminController extends Controller
         unset($cancelled);
 
         $ctrReceived = (count($received) ? count($received) : 0 );
-        $ctrOnProcess = Order::onProcess()->orderBy('created_at', 'desc')->get()->count();
-        $ctrOnTransit = Order::onTransit()->orderBy('created_at', 'desc')->get()->count();
-        $ctrShipped = Order::shipped()->orderBy('created_at', 'desc')->get()->count();
+        $ctrOnProcess = count(Order::onProcess()->orderBy('created_at', 'desc')->get());
+        $ctrOnTransit = count(Order::onTransit()->orderBy('created_at', 'desc')->get());
+        $ctrShipped = count(Order::shipped()->orderBy('created_at', 'desc')->get());
         $ctrCbc = count($cbc);
         $ctrCba = count($cba); 
 
+
     	return view('admin.dashboard', 
-            compact('received', 'cbc',
+            compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc',
                     'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped'));
     }
 }
