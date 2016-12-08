@@ -65,8 +65,6 @@ class Status extends Model
     }
 
     public static function getOrderProgress( $status=null ){
-        if($status == null)
-            return 0;
 
         switch ($status) {
             case 0:

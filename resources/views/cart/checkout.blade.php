@@ -362,7 +362,7 @@
                           <textarea rows="4" class="form-control" id="confirm_comment" name="comment">{{$cart->comment}}</textarea>
                           <br>
                           <label class="control-label" for="confirm_agree">
-                            <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">
+                            <input type="checkbox" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree" required="required">
                             <span>I have read and agree to the <a class="agree" target="_blank" href="/terms-and-conditions"><b>Terms &amp; Conditions</b></a></span> </label>
                           <div class="buttons">
                             <div class="pull-left">

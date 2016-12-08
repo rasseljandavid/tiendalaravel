@@ -365,7 +365,7 @@ class Order extends Model
         $order->status = Status::asString('order', $order->status);
         $subject = 'Your order on Tienda.ph was received';
 
-        if($os == 0){
+        if($os == 0){// Note: we use 0 instead of 1 because we will send email before the megaventory updates
             $subject = 'Your order on Tienda.ph has been received';
         } else if($os == 2){
             $subject = 'Your order on Tienda.ph is now being process';
