@@ -72,13 +72,13 @@ class OrdersController extends Controller
         $order->load('orderitems');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
+        $order->progress = Status::getOrderProgress($order->status);
         $order->status = Status::asString('order', $order->status);
 
         $admin = array();
         $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
         $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
         $admin = (object)$admin;
-
 
         return view('orders.show', compact('order', 'admin'));
     }

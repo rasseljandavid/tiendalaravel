@@ -24,7 +24,7 @@
         @foreach($orders as $o)
           @if($o)
             <tr>
-              <td>{{ $o->salesOrderNo }}</td>
+              <td><a href="/order/{{$o->id}}">{{ $o->salesOrderNo }}</a></td>
               <td>{{ $o->created_at->format('M d, Y') }}</td>
               <td>{{ $o->user->getFullname() }}</td>
               <td>{{ count($o->orderitems) }}</td>

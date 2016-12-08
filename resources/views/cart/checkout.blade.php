@@ -359,7 +359,7 @@
                         <h4 class="panel-title"><i class="fa fa-pencil"></i> Add Comments About Your Order</h4>
                       </div>
                         <div class="panel-body">
-                          <textarea rows="4" class="form-control" id="confirm_comment" name="comment"></textarea>
+                          <textarea rows="4" class="form-control" id="confirm_comment" name="comment">{{$cart->comment}}</textarea>
                           <br>
                           <label class="control-label" for="confirm_agree">
                             <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">

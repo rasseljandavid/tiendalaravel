@@ -14,12 +14,14 @@ class Status extends Model
     				0 => 'active',
     				1 => 'inactive' 
     			],
-    		'order'		=> [
-    				0 => 'received',
-    				1 => 'processing',	
-    				2 => 'transit',		
-    				3 => 'shipped',	
-                    4 => 'canceled',		 
+    		'order'		=> [ // 0 wont show on admin new order
+    				0 => 'received',    // eto mga order na hindi pa na uupdate sa megaventory
+                    1 => 'received',     // eto ang pinaka received status natin, megaventory updated 
+    				2 => 'processing',	
+    				3 => 'transit',		
+    				4 => 'shipped',	
+                    5 => 'cancelled',
+                    6 => 'complete',
     			]
     	);
 
@@ -50,7 +52,7 @@ class Status extends Model
             case 'product':
                 return self::$type['product'][$index];
                 break;
-            
+            case 'order':
             default:
                 return self::$type['order'][$index];
                 break;
@@ -58,7 +60,29 @@ class Status extends Model
     }
 
     public function getStatus(  ){
-    	
+
     	return $this->type;
+    }
+
+    public static function getOrderProgress( $status=null ){
+        if($status == null)
+            return 0;
+
+        switch ($status) {
+            case 0:
+                return '15%';
+            case 1:
+                return '15%';
+            case 2:
+                return '38%';
+            case 3:
+                return '62%';
+            case 4:
+                return '85%';
+            case 6:
+                return '100%';    
+            default:
+                return 0;
+        }
     }
 }

@@ -16,6 +16,7 @@ use View;
 // models
 use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
+use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
 use Carbon\Carbon;
 use Megaventory;
@@ -61,6 +62,13 @@ class CartController extends Controller
         if($cart){
             $cart->compute();   
         }
+
+        if(!$cart->verifyQuantities()){
+            flash('danger', 'A certain quantity/quantities exceeds the current available quantity. Please update items');
+        }
+
+
+
     	return view('cart.show', compact('cart'));
     }
 
@@ -71,6 +79,11 @@ class CartController extends Controller
             flash('danger', 'You\'re cart is empty! Add an item to continue checkout');
             return redirect('/');
         }
+
+        if(!$cart->verifyQuantities()){
+            return redirect('/cart/show');
+        }
+
         $cart->compute();
     	return view('cart.checkout', compact('cart'));
     }
@@ -226,47 +239,54 @@ class CartController extends Controller
                 return redirect('/'); 
             }
         }
-
-
-
-
        
         $order = self::getCart(true);
         $order->comment = $request['comment'];
-        $order->purchased_at = Carbon::now();
+        $order->save();
         $order->compute();
 
-        if( $request['modeofpayment'] == 'paypal' ) {
-            return redirect()->route('getCheckout', [$order]);
+        if(!$order->verifyQuantities()){
+            return redirect('/cart/show');
         }
+
+        $order->purchased_at = Carbon::now();
+        $order->save();
+
+        // if( $request['modeofpayment'] == 'paypal' ) {
+        //     return redirect()->route('getCheckout', [$order]);
+        // }
+
+        if($order->emailInvoice()){
+            flash('success', 'You\'re order has been submitted');
+        }else{
+            flash('success', 'You\'re order has been submitted');
+        }
+
+        return redirect('/order/'.$order->id);
        
         // return $order->matchMegaventoryStructure();
-        $megaventory = new \Megaventory();
+        // $megaventory = new \Megaventory();
 
-        try{
-              
+        // try{
+            
+        //     $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
+        //     $order->salesOrderNo = $myOrder['SalesOrderNo'];
+        //     $order->update();
+        //     if($order->emailInvoice()){
+        //         flash('success', 'You\'re order has been submitted');
+        //     }else{
+        //         flash('success', 'You\'re order has been submitted');
+        //         // flash('success', 'You\'re order has been submitted.
+        //         //     Note: Failed Sending Email at '.Auth::user()->email);
+        //     }
 
-            $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
-            $order->salesOrderNo = $myOrder['SalesOrderNo'];
-            $order->update();
-
-          
-            if($order->emailInvoice()){
-                flash('success', 'You\'re order has been submitted');
-            }else{
-                flash('success', 'You\'re order has been submitted');
-                // flash('success', 'You\'re order has been submitted.
-                //     Note: Failed Sending Email at '.Auth::user()->email);
-            }
-
-            return redirect('/order/'.$order->id);
-            //save here
-        }catch(Exception $e){
-            flash('danger', 'An error has occured. Please submit the order again');
-            return redirect('/cart/checkout');
-        }
+        //     return redirect('/order/'.$order->id);
+        //     //save here
+        // }catch(Exception $e){
+        //     flash('danger', 'An error has occured. Please submit the order again');
+        //     return redirect('/cart/checkout');
+        // }
         
-        return $order;
     }   
 
     

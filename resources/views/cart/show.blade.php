@@ -19,6 +19,7 @@
                     <td class="text-center">Image</td>
                     <td class="text-left">Product Name</td>
                     <td class="text-left">Model</td>
+                    <td class="text-left">Available</td>
                     <td class="text-left">Quantity</td>
                     <td class="text-right">Unit Price</td>
                     <td class="text-right">Total</td>
@@ -28,11 +29,12 @@
                   @if($cart && count($cart->orderitems))
                     @foreach($cart->orderitems as $oi)
                         <?php $oiProd =  $oi->getProduct(); ?>
-                        <tr>
+                        <tr @if($oi->quantity > $oiProd->quantity) style="background-color:rgba(242,222,222, 0.8);" @endif >
                             <td class="text-center"><a href="{{$oiProd->slugLink()}}"><img style="max-width:50px;max-height:75px;width:100%;height:auto;" src="/image/product/{{ $oiProd->id.'.jpg' }}" alt="{{ $oiProd->title }}" title="{{ $oiProd->title }}" class="img-thumbnail" /></a></td>
                             <td class="text-left"><a href="{{$oiProd->slugLink()}}">{{$oiProd->title}}</a><br />
                               <small>{{$oiProd->reward}}</small></td>
                             <td class="text-left">{{$oiProd->sku}}</td>
+                            <td class="text-center">{{$oiProd->quantity}}</td>
                             <td class="text-left">
                                 <div class="input-group btn-block quantity">
                                 @include('cart._itemaction', ['cartpage'=>'show'])

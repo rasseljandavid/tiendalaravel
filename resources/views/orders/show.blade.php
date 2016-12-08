@@ -25,8 +25,10 @@ Mabalacat Pampanga,<br>
 Philippines<br>
 
         </address>
-        <hr>
         <br>
+
+        @include('orders._progressbar')
+        <hr>
         <div class="pd-25">
           <div class="row">
             <div class="col-xs-3">

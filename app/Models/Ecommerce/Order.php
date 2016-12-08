@@ -43,11 +43,19 @@ class Order extends Model
 
 	/*---------- SCOPES ----------*/
 
-    public function scopeReceived( $query ){
+     public function scopeNewOrder( $query ){
         
         $query->where([
                 ['purchased_at', '!=', 0 ],
                 ['status', '=', 0]
+            ]);
+    }
+
+    public function scopeReceived( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 1]
             ]);
     }
 
@@ -56,7 +64,7 @@ class Order extends Model
         
         $query->where([
                 ['purchased_at', '!=', 0 ],
-                ['status', '=', 1]
+                ['status', '=', 2]
             ]);
     }
 
@@ -64,7 +72,7 @@ class Order extends Model
         
         $query->where([
                 ['purchased_at', '!=', 0 ],
-                ['status', '=', 2]
+                ['status', '=', 3]
             ]);
     }
 
@@ -72,7 +80,7 @@ class Order extends Model
         
         $query->where([
                 ['purchased_at', '!=', 0 ],
-                ['status', '=', 3]
+                ['status', '=', 4]
             ]);
     }
 
@@ -80,10 +88,17 @@ class Order extends Model
         
         $query->where([
                 ['purchased_at', '!=', 0 ],
-                ['status', '=', 4]
+                ['status', '=', 5]
             ]);
     }
 
+    public function scopeCompleted( $query ){
+        
+        $query->where([
+                ['purchased_at', '!=', 0 ],
+                ['status', '=', 6]
+            ]);
+    }
     
 	/*---------- RELATIONS ----------*/
 
@@ -242,7 +257,7 @@ class Order extends Model
     }
 
     public function matchMegaventoryStructure(  ){
-        // "mvSalesOrder":{
+      // "mvSalesOrder":{
         //     "SalesOrderId":0,
         //     "SalesOrderNo":"String",
         //     "SalesOrderReferenceNo":"String",
@@ -350,14 +365,18 @@ class Order extends Model
         $order->status = Status::asString('order', $order->status);
         $subject = 'Your order on Tienda.ph was received';
 
-        if($os == 1){
+        if($os == 0){
+            $subject = 'Your order on Tienda.ph has been received';
+        } else if($os == 1){
             $subject = 'Your order on Tienda.ph is now being process';
         } elseif ($os == 2) {
             $subject = 'Your order on Tienda.ph is now being shipped';
         } elseif($os == 3 ) {
             $subject = 'Your order on Tienda.ph has been delivered';
-        }elseif ($os == 4 ) { 
+        } elseif ($os == 4 ) { 
             $subject = 'Your order on Tienda.ph is cancelled';
+        } elseif ($os == 5 ) { 
+            $subject = 'Your order on Tienda.ph has been completed';
         }
 
         $admin = array();
@@ -375,5 +394,41 @@ class Order extends Model
                         $message->to(Auth::user()->email);
                     }
             );   
-    }  
+    }
+
+    public function verifyQuantities( $order=null ){
+        
+        if(!$order){
+            $order = $this;
+        }
+        // $order->load('orderitems');
+
+        $ok = true;
+        foreach ($order->orderitems as $key => $oi) {
+            $prod = Product::select('quantity')->where('id', $oi->product_id)->first();
+            if($oi->quantity > $prod->quantity){
+                $ok = false;
+                break;
+            }
+        }
+        return $ok;
+    }
+
+
+    public function updateMegaventory(  ){
+        
+        $orders = Order::newOrder()->get();
+
+        $megaventory = new \Megaventory();
+
+        foreach ($orders as $o) {
+            $myOrder = (array)$megaventory->createSalesOrder($o->matchMegaventoryStructure());
+            $o->salesOrderNo = $myOrder['SalesOrderNo'];
+            $o->status = 1;
+            $o->update(); 
+        }
+
+        return $orders;
+    }
+
 }

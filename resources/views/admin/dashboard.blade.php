@@ -12,9 +12,9 @@
         <div class="col-sm-12"> <!-- col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
           <h1 class="page-header">Dashboard</h1>
 
-          @include('admin._ordertable', ['orders'=>$received, 'title'=>'New Orders', 'class'=>'success'])
+          @include('admin._ordertable', ['orders'=>$received, 'title'=>'New Received Orders', 'class'=>'primary'])
 
-          @include('admin._ordertable', ['orders'=>$onProcess, 'title'=>'On Process', 'class'=>'primary'])
+          @include('admin._ordertable', ['orders'=>$onProcess, 'title'=>'On Process', 'class'=>'success'])
 
           @include('admin._ordertable', ['orders'=>$onTransit, 'title'=>'On Transit', 'class'=>'info'])
 
