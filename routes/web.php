@@ -90,4 +90,13 @@ Route::get('/notfound', 'NotfoundController@index');
 Route::get('getCheckout/{order}', ['as'=>'getCheckout','uses'=>'PaypalController@getCheckout']);
 Route::get('getDone/{order}', ['as'=>'getDone','uses'=>'PaypalController@getDone']);
 Route::get('getCancel', ['as'=>'getCancel','uses'=>'PaypalController@getCancel']);
+
+
+//This will pull the dev site
+Route::post('pull', function () {
+	SSH::run([
+	    'cd /home/nextva5/tienda',
+	    'git pull origin master',
+	]);
+});
 		
