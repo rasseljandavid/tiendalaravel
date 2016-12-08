@@ -170,10 +170,10 @@ class OrdersController extends Controller
         if($request['status_id'] == 5) {
             $megaventory = new \Megaventory();
 
-            // if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
-            //     flash('danger', 'Failed updating inventory, please try again!');
-            //     return redirect('/');
-            // }
+            if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
+                flash('danger', 'Failed updating inventory, please try again!');
+                return redirect('/');
+            }
 
             $order->reason = (isset($request['reason']) ? $request['reason'] : 'not specified') ;
         }
