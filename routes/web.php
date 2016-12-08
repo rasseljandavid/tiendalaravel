@@ -104,7 +104,7 @@ Route::post('pull', function () {
 //Add test auto dev
 Route::get('testpage', function (){
 
-	echo "test";
+	echo "test2";
 	exit();
 });
 		
