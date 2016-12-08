@@ -178,7 +178,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Netshell\Paypal\PaypalServiceProvider::class,
-        Collective\Remote\RemoteServiceProvider::class,
 
     ],
 
@@ -228,7 +227,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Paypal' => Netshell\Paypal\Facades\Paypal::class,
-        'SSH' => Collective\Remote\RemoteFacade::class,
 
     ],
 

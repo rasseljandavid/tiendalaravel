@@ -9,8 +9,7 @@
         "laravel/framework": "5.3.*",
         "curl/curl": "^1.4",
         "phpmailer/phpmailer": "^5.2",
-        "netshell/paypal": "dev-master",
-        "laravelcollective/remote": "^5.3.0"
+        "netshell/paypal": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
