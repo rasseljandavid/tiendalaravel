@@ -6,8 +6,8 @@
       <!-- Breadcrumb Start-->
       <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i></a></li>
-        <li><a href="login.html">Account</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="/account">Account</a></li>
+        <li><a>Login</a></li>
       </ul>
       <!-- Breadcrumb End-->
       <div class="row">

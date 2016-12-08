@@ -17,6 +17,7 @@ class Orderitem extends Model
     		'order_id', 'quantity', 'price', 'product_id', 'title'
     	];
 
+    // protected $guarded = [ 'id' ];
     
 	/*---------- SET<>ATTRIBUTE ----------*/
 	/*---------- GET<>ATTRIBUTE ----------*/

@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 // models
+use App\Models\Ecommerce\OrderStatusChange;
 use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
 use App\Models\Address\Address;
+use App\User;
 
 class OrdersController extends Controller
 {
@@ -72,13 +74,25 @@ class OrdersController extends Controller
         $order->load('orderitems');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
-        $order->progress = Status::getOrderProgress($order->status);
+
+        // get progress state
+        if($order->status == 5){
+            $new_status = $order->getCancelledStatus();
+            $user = User::find($new_status->changed_by)->first();
+            $order->who_cancelled = ($order->user_id == Auth::user()->id ? 'you' : $user->getFullname() ) ;
+            $order->progress = Status::getOrderProgress($new_status->from_status);
+        }else{
+            $order->progress = Status::getOrderProgress($order->status);
+        }
+        
+        $order->status_id = $order->status;
         $order->status = Status::asString('order', $order->status);
 
         $admin = array();
         $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
         $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
         $admin = (object)$admin;
+
 
         return view('orders.show', compact('order', 'admin'));
     }
@@ -134,38 +148,42 @@ class OrdersController extends Controller
     } 
 
 
-    public function cancelorder(Request $request)
+    public function statuschange(Request $request)
     {
         //Check if the sales order is emtpy  
         $request = $request->all();
-        $order = Order::where('salesOrderNo', '=', $request['ordernumber'])->first();
-        
-            if (empty($order)) {
-                flash('info', 'Order doesn\'t exist');
-                return redirect('/');
-            }
 
-            //Check if it is NOT either admin or the owner of the order, kick him if necessary
-            if(!((Auth::user()->isAdmin() || ($order->user_id == Auth::user()->id)) && $order !=null) ){
-                flash('info', 'Not a chance, baby!');
-                return redirect('/');
-            }
+        // return $request;
+
+        $order = Order::find($request['id']);
+        if(!$order){
+            flash('danger', 'Order doesn\'t exists');
+            return redirect('/dashboard');
+        }else if($request['status_id'] == 5 && Auth::user()->id != $order->user_id && !Auth::user()->isAdmin()){
+            // check when cancelling order if the user is not the owner or if it is not an admin
+            return redirect('/');
+        }
+
             
-            // Create aa megaventory cancel api request and update the statuss
-        if($request['status_id'] == 4) {
+
+        // Create aa megaventory cancel api request and update the statuss
+        if($request['status_id'] == 5) {
             $megaventory = new \Megaventory();
 
-            if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
-                flash('danger', 'There is a problem, please try again!');
-                return redirect('/');
-            } 
+            // if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
+            //     flash('danger', 'Failed updating inventory, please try again!');
+            //     return redirect('/');
+            // }
 
-            $order->status = 4;
-            $order->update();
-        } else {
-            $order->status = $request['status_id'];
-            $order->update();
+            $order->reason = (isset($request['reason']) ? $request['reason'] : 'not specified') ;
         }
+
+        $from_status = $order->status;
+        $order->status = $request['status_id'];
+        $order->update();
+
+        OrderStatusChange::change($order,$from_status);
+        
         $order->emailInvoice();
         flash('success', 'Order Status updated');
         return redirect()->back();

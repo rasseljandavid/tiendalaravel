@@ -14,8 +14,8 @@
 <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
 <link rel="stylesheet" type="text/css" href="/css/owl.transitions.css" />
 <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
-<link rel="stylesheet" type="text/css" href="/css/stylesheet-skin2.css" />
-<link rel="stylesheet" type="text/css" href="/css/custom.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/css/stylesheet-skin2.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="/css/custom.css" /> -->
 <link rel="stylesheet" type="text/css" href="/css/helpers/flasher.css" />
 <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Droid+Sans' type='text/css'>
 <link rel="stylesheet" type="text/css" href="/css/tienda.css" />
@@ -65,8 +65,7 @@
       </div>
     </nav>
 
-    @include('helpers.flasher')
-    @include('errors.validation')
+
     @yield('content')
 
 </div>

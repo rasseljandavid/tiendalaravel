@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Mail;
 use Auth;
 // models
+use App\Models\Ecommerce\OrderStatusChange;
 use App\Models\Ecommerce\OrderItem;
 use App\Models\Address\Address;
 use App\User;
@@ -99,6 +100,7 @@ class Order extends Model
                 ['status', '=', 6]
             ]);
     }
+
     
 	/*---------- RELATIONS ----------*/
 
@@ -112,6 +114,10 @@ class Order extends Model
 
     public function orderstatus(  ){
         return $this->hasOne(OrderStatus::class);    
+    }
+
+    public function statuschanges(  ){
+        return $this->hasMany(OrderStatusChange::class);
     }
 
 
@@ -254,6 +260,13 @@ class Order extends Model
         $this->setTotalQuantity();
         unset($this->orderitems);
         return $this->totalQuantity;
+    }
+
+    public function getCancelledStatus(  ){
+        
+        $statuschange = OrderStatusChange::cancelled($this->id)->orderBy('created_at', 'desc')->first();
+
+        return $statuschange;
     }
 
     public function matchMegaventoryStructure(  ){

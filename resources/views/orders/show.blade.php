@@ -114,7 +114,18 @@ Philippines<br>
     </div>
 @endsection
 
-
+@section('script')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#confirm-cancel').click(function(){
+        if(confirm('Are you sure you want to cancel this order?')) {
+          var f = $('#cancel-order-form');
+          f.submit();
+        }
+      });
+    });
+  </script>
+@endsection
 
 
 
