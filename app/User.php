@@ -66,6 +66,11 @@ class User extends Authenticatable
         return $this->attributes['firstname'].' '.$this->attributes['lastname'];
     }
 
+    public function getContact(  ){
+        
+        return $this->attributes['contact'];
+    }
+
     public static function getUserId(){
         if(!Auth::check())
             return 0;

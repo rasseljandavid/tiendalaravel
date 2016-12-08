@@ -321,7 +321,7 @@ class Order extends Model
                 "SalesOrderContactPerson"=>$this->user->getFullname(),
                 "SalesOrderInventoryLocationID"=>0,
                 "SalesOrderComments"=>$this->comment,
-                "SalesOrderTags"=>"String",
+                "SalesOrderTags"=>"Contact: " . $this->user->getContact(),
                 "SalesOrderTotalQuantity"=>$this->totalQuantity,
                 "SalesOrderAmountSubtotalWithoutTaxAndDiscount"=>0.00,
                 "SalesOrderAmountShipping"=>$this->shipping_fee,
