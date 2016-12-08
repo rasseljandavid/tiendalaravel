@@ -45,9 +45,9 @@ class AdminController extends Controller
         unset($cancelled);
 
         $ctrReceived = (count($received) ? count($received) : 0 );
-        $ctrOnProcess = Order::onProcess()->orderBy('created_at', 'desc')->count();
-        $ctrOnTransit = Order::onTransit()->orderBy('created_at', 'desc')->count();
-        $ctrShipped = Order::shipped()->orderBy('created_at', 'desc')->count();
+        $ctrOnProcess = Order::onProcess()->orderBy('created_at', 'desc')->get()->count();
+        $ctrOnTransit = Order::onTransit()->orderBy('created_at', 'desc')->get()->count();
+        $ctrShipped = Order::shipped()->orderBy('created_at', 'desc')->get()->count();
         $ctrCbc = count($cbc);
         $ctrCba = count($cba); 
 
