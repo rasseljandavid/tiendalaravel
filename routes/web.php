@@ -93,7 +93,7 @@ Route::get('getCancel', ['as'=>'getCancel','uses'=>'PaypalController@getCancel']
 
 
 //This will pull the dev site
-Route::post('pull', function () {
+Route::get('pull', function () {
 	SSH::run([
 	    'cd /home/nextva5/tienda',
 	    'git pull origin master',
