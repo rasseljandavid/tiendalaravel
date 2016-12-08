@@ -367,15 +367,15 @@ class Order extends Model
 
         if($os == 0){
             $subject = 'Your order on Tienda.ph has been received';
-        } else if($os == 1){
+        } else if($os == 2){
             $subject = 'Your order on Tienda.ph is now being process';
-        } elseif ($os == 2) {
+        } elseif ($os == 3) {
             $subject = 'Your order on Tienda.ph is now being shipped';
-        } elseif($os == 3 ) {
+        } elseif($os == 4 ) {
             $subject = 'Your order on Tienda.ph has been delivered';
-        } elseif ($os == 4 ) { 
-            $subject = 'Your order on Tienda.ph is cancelled';
         } elseif ($os == 5 ) { 
+            $subject = 'Your order on Tienda.ph is cancelled';
+        } elseif ($os == 6 ) { 
             $subject = 'Your order on Tienda.ph has been completed';
         }
 
