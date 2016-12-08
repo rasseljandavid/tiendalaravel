@@ -86,7 +86,6 @@ class PaypalController extends Controller
       
             $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
             $myOrder["SalesOrderStatus"] = 0;
-            $order->status = 1;
             $order->comment = $order->comment . ' - paid from paypal';
             $order->update();
 
