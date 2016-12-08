@@ -343,11 +343,22 @@ class Order extends Model
         if(!$order){
             $order = $this;
         }
-
+        $os = $order->status;
         $order->load('orderitems');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
         $order->status = Status::asString('order', $order->status);
+        $subject = 'Your order on Tienda.ph was received';
+
+        if($os == 1){
+            $subject = 'Your order on Tienda.ph is now being process';
+        } elseif ($os == 2) {
+            $subject = 'Your order on Tienda.ph is now being shipped';
+        } elseif($os == 3 ) {
+            $subject = 'Your order on Tienda.ph has been delivered';
+        }elseif ($os == 4 ) { 
+            $subject = 'Your order on Tienda.ph is cancelled';
+        }
 
         $admin = array();
         $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
@@ -359,8 +370,8 @@ class Order extends Model
                      'order'=>$order,
                      'admin'=>$admin
                     ], 
-                    function ($message) {
-                        $message->subject("Your order on Tienda.ph was received");
+                    function ($message) use ($subject) {
+                        $message->subject($subject);
                         $message->to(Auth::user()->email);
                     }
             );   

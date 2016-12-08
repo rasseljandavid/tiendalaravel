@@ -56,6 +56,7 @@
                   <option value="0_{{ $o->salesOrderNo }}">Received</option>
                   <option value="1_{{ $o->salesOrderNo }}">Processing</option>
                   <option value="3_{{ $o->salesOrderNo }}">Shipped</option>
+                  <option value="4_{{ $o->salesOrderNo }}">Canceled</option>
                 </select>
                 @elseif ($o->status == 3)
                 <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"">

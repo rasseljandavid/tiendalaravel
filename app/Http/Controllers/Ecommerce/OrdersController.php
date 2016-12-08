@@ -166,6 +166,8 @@ class OrdersController extends Controller
             $order->status = $request['status_id'];
             $order->update();
         }
+        $order->emailInvoice();
+        flash('success', 'Order Status updated');
         return redirect()->back();
     }
 }
