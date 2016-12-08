@@ -50,7 +50,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
+           <!--  <li><a href="#">Settings</a></li> -->
             <li><a href="{{ url('/') }}">Home</a></li>
             <li><a><form id="logout-form" action="{{ url('/logout') }}" method="POST" >
                     {{ csrf_field() }}
@@ -58,9 +58,9 @@
                 </form></a>
             </li>
           </ul>
-          <form class="navbar-form navbar-right">
+         <!--  <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          </form> -->
         </div>
       </div>
     </nav>

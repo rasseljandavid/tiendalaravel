@@ -58,7 +58,7 @@ Route::post('/cart/preprocess', 'Ecommerce\CartController@preprocess');
 // Order
 Route::get('/order/history', 'Ecommerce\OrdersController@history');
 Route::get('/order/{id}', 'Ecommerce\OrdersController@show');
-Route::get('order/cancelorder/{order}', 'Ecommerce\OrdersController@cancelorder');
+Route::post('order/cancelorder/', 'Ecommerce\OrdersController@cancelorder');
 
 // Store Pages
 Route::get('/category', 'Ecommerce\CategoriesController@index');

@@ -34,8 +34,42 @@
               <td>
                 <!-- Remove this if you need to, just make sure that no one can cancel a canceled order. -->
                 <!-- the only order that we can cancel are the RECEIVE and ON PROCESS -->
-                @if($o->status <= 1)
-                <a href="/order/cancelorder/{{ $o->id }} ">Cancel Order</a>
+                @if($o->status == 0)
+                <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"">
+                  <option value="9" selected="">Select</option>
+                  <option value="1_{{ $o->salesOrderNo }}">Processing</option>
+                  <option value="2_{{ $o->salesOrderNo }}">Transit</option>
+                  <option value="3_{{ $o->salesOrderNo }}">Shipped</option>
+                  <option value="4_{{ $o->salesOrderNo }}">Canceled</option>
+                </select>
+                @elseif ($o->status == 1)
+                 <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"">
+                 <option value="9" selected>Select</option>
+                  <option value="0_{{ $o->salesOrderNo }}">Received</option>
+                  <option value="2_{{ $o->salesOrderNo }}">Transit</option>
+                  <option value="3_{{ $o->salesOrderNo }}">Shipped</option>
+                  <option value="4_{{ $o->salesOrderNo }}">Canceled</option>
+                </select>
+                @elseif ($o->status == 2)
+                 <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"">
+                 <option value="9" selected>Select</option>
+                  <option value="0_{{ $o->salesOrderNo }}">Received</option>
+                  <option value="1_{{ $o->salesOrderNo }}">Processing</option>
+                  <option value="3_{{ $o->salesOrderNo }}">Shipped</option>
+                </select>
+                @elseif ($o->status == 3)
+                <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"">
+                <option value="9" selected>Select</option>
+                  <option value="0_{{ $o->salesOrderNo }}">Received</option>
+                  <option value="1_{{ $o->salesOrderNo }}">Processing</option>
+                  <option value="2_{{ $o->salesOrderNo }}">Transit</option>
+                </select>
+                @elseif ($o->status == 4)
+                <!-- <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"">
+                <option value="9" selected>Select</option>
+                  <option value="0_{{ $o->salesOrderNo }}">Received</option>
+                  <option value="1_{{ $o->salesOrderNo }}">Processing</option>
+                </select> -->
                 @endif
               </td>
             </tr>

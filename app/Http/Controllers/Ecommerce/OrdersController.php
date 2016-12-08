@@ -134,30 +134,38 @@ class OrdersController extends Controller
     } 
 
 
-    public function cancelorder(Order $order)
+    public function cancelorder(Request $request)
     {
         //Check if the sales order is emtpy  
-        if (empty($order)) {
-            flash('info', 'Order doesn\'t exist');
-            return redirect('/');
-        }
-
-        //Check if it is NOT either admin or the owner of the order, kick him if necessary
-        if(!((Auth::user()->isAdmin() || ($order->user_id == Auth::user()->id)) && $order !=null) ){
-            flash('info', 'Not a chance, baby!');
-            return redirect('/');
-        }
+        $request = $request->all();
+        $order = Order::where('salesOrderNo', '=', $request['ordernumber'])->first();
         
-        // Create aa megaventory cancel api request and update the statuss
-        $megaventory = new \Megaventory();
+            if (empty($order)) {
+                flash('info', 'Order doesn\'t exist');
+                return redirect('/');
+            }
 
-        if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
-            flash('danger', 'There is a problem, please try again!');
-            return redirect('/');
-        } 
+            //Check if it is NOT either admin or the owner of the order, kick him if necessary
+            if(!((Auth::user()->isAdmin() || ($order->user_id == Auth::user()->id)) && $order !=null) ){
+                flash('info', 'Not a chance, baby!');
+                return redirect('/');
+            }
+            
+            // Create aa megaventory cancel api request and update the statuss
+        if($request['status_id'] == 4) {
+            $megaventory = new \Megaventory();
 
-        $order->status = 4;
-        $order->update();
+            if(!($megaventory->cancelSalesOrder($order->salesOrderNo))) {
+                flash('danger', 'There is a problem, please try again!');
+                return redirect('/');
+            } 
+
+            $order->status = 4;
+            $order->update();
+        } else {
+            $order->status = $request['status_id'];
+            $order->update();
+        }
         return redirect()->back();
     }
 }
