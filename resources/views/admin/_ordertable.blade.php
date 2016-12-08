@@ -2,10 +2,6 @@
   <div class="panel panel-{{$class}}">
     <!-- Default panel contents -->
     <div class="panel-heading">{{ $title }} @if(count($orders)) <span class="badge">{{count($orders)}}</span> @endif</div>
-    <div class="panel-body">
-      <!-- <p>Currently processing orders</p> -->
-    </div>
-
     <!-- Table -->
     <table class="table">
       <thead>
