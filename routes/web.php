@@ -99,4 +99,12 @@ Route::post('pull', function () {
 	    'git pull origin master',
 	]);
 });
+
+
+//Add test auto dev
+Route::get('testpage', function (){
+
+	echo "test";
+	exit();
+});
 		
