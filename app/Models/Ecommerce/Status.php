@@ -18,7 +18,8 @@ class Status extends Model
     				0 => 'received',
     				1 => 'processing',	
     				2 => 'transit',		
-    				3 => 'shipped'			 
+    				3 => 'shipped',	
+                    4 => 'canceled',		 
     			]
     	);
 
