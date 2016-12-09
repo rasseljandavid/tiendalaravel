@@ -243,9 +243,6 @@ class CartController extends Controller
        
         $order = self::getCart(true);
         $order->comment = $request['comment'];
-        return $order->user->firstname.' '.$order->user->lastname;
-        $sms = new SMSnotification();
-        return $sms->send($order->user->firstname.' '.$order->user->lastname);
         
         $order->save();
         $order->compute();
@@ -260,6 +257,8 @@ class CartController extends Controller
         // if( $request['modeofpayment'] == 'paypal' ) {
         //     return redirect()->route('getCheckout', [$order]);
         // }
+        $sms = new SMSnotification();
+        $sms->send($order->user->firstname.' '.$order->user->lastname);
         if($order->emailInvoice()){
             flash('success', 'You\'re order has been submitted');
         }else{
