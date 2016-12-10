@@ -55,7 +55,7 @@ class AdminController extends Controller
 
 
     	return view('admin.dashboard', 
-            compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc',
+            compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc', 'cba',
                     'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped'));
     }
 }
