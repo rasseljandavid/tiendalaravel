@@ -254,15 +254,21 @@ class CartController extends Controller
         $order->purchased_at = Carbon::now();
         $order->save();
 
-        // if( $request['modeofpayment'] == 'paypal' ) {
-        //     return redirect()->route('getCheckout', [$order]);
-        // }
-        $sms = new SMSnotification();
-        $sms->send($order->user->firstname.' '.$order->user->lastname);
-        if($order->emailInvoice()){
-            flash('success', 'You\'re order has been submitted');
-        }else{
-            flash('success', 'You\'re order has been submitted');
+        if( $request['modeofpayment'] == 'paypal' ) {
+            return redirect()->route('getCheckout', [$order]);
+        }
+
+
+        if(!config('app.env') == 'local'){
+
+            $sms = new SMSnotification();
+            $sms->send($order->user->firstname.' '.$order->user->lastname);
+            if($order->emailInvoice()){
+                flash('success', 'You\'re order has been submitted');
+            }else{
+                flash('success', 'You\'re order has been submitted');
+            }
+
         }
 
         return redirect('/order/'.$order->id);

@@ -25,16 +25,16 @@
             <span class="status">Shipped</span>
             <div class="icon"></div>
         </div>
-        <div class="image-order-status image-order-status-completed active img-circle">
+        <!-- <div class="image-order-status image-order-status-completed active img-circle">
             <span class="status">Completed</span>
             <div class="icon"></div>
-        </div>
+        </div> -->
 
       </div>
 
       @if($order->status_id > 0 && $order->status_id < 4)
       <!-- if it didnt reach shipped display cancel button -->
-      <div class="row btn-group">
+      <div class="btn-group">
         <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Cancel Order <span class="caret"></span>
         </button>
@@ -56,7 +56,7 @@
       @endif
 
       @if($order->status_id == 5)
-      <div class="row">
+      <div class="">
         <h5><span style="color:#f00;">This order has been cancelled by {{$order->who_cancelled}}</span></h5>
         <p>Reason: {{$order->reason}}</p>
       </div>

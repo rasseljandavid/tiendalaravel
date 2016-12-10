@@ -68,15 +68,15 @@ class Status extends Model
 
         switch ($status) {
             case 0:
-                return '15%';
+                return '20%';
             case 1:
-                return '15%';
+                return '20%';
             case 2:
-                return '38%';
+                return '50%';
             case 3:
-                return '62%';
+                return '80%';
             case 4:
-                return '85%';
+                return '100%';
             case 6:
                 return '100%';    
             default:
