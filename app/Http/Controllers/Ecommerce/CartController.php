@@ -18,9 +18,9 @@ use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
+use SMSnotification;
 use Carbon\Carbon;
 use Megaventory;
-use SMSnotification;
 use App\User;
 
 
@@ -251,18 +251,20 @@ class CartController extends Controller
             return redirect('/cart/show');
         }
 
-        $order->purchased_at = Carbon::now();
-        $order->save();
-
+    
         if( $request['modeofpayment'] == 'paypal' ) {
             return redirect()->route('getCheckout', [$order]);
         }
+
+        $order->purchased_at = Carbon::now();
+        $order->save();
 
 
         if(!config('app.env') == 'local'){
 
             $sms = new SMSnotification();
             $sms->send($order->user->firstname.' '.$order->user->lastname);
+
             if($order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
             }else{

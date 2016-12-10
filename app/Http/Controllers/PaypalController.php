@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Ecommerce\Order;
+use SMSnotification;
+use Carbon\Carbon;
 use App\User;
 use Paypal;
 
@@ -80,28 +82,46 @@ class PaypalController extends Controller
 
 
 
-	    $megaventory = new \Megaventory();
+        $order->purchased_at = Carbon::now();
+        $order->save();
 
-        try{
-      
-            $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
-            $myOrder["SalesOrderStatus"] = 0;
-            $order->comment = $order->comment . ' - paid from paypal';
-            $order->update();
+
+        if(!config('app.env') == 'local'){
+
+            $sms = new SMSnotification();
+            $sms->send($order->user->firstname.' '.$order->user->lastname);
 
             if($order->emailInvoice()){
-                flash('success', 'You\'re order has been submitted.');
+                flash('success', 'You\'re order has been submitted');
             }else{
-                flash('success', 'You\'re order has been submitted.');
-                // flash('success', 'You\'re order has been submitted.
-                //     Note: Failed Sending Email at '.Auth::user()->email);
+                flash('success', 'You\'re order has been submitted');
             }
-            return redirect('/order/'.$order->id);
-            //save here
-        } catch(Exception $e){
-            flash('danger', 'An error has occured. Please submit the order again');
-            return redirect('/cart/checkout');
+
         }
+
+        return redirect('/order/'.$order->id);
+
+	    // $megaventory = new \Megaventory();
+     //    try{
+      
+     //        $myOrder = (array)$megaventory->createSalesOrder($order->matchMegaventoryStructure());
+     //        $myOrder["SalesOrderStatus"] = 0;
+     //        $order->comment = $order->comment . ' - paid from paypal';
+     //        $order->update();
+
+     //        if($order->emailInvoice()){
+     //            flash('success', 'You\'re order has been submitted.');
+     //        }else{
+     //            flash('success', 'You\'re order has been submitted.');
+     //            // flash('success', 'You\'re order has been submitted.
+     //            //     Note: Failed Sending Email at '.Auth::user()->email);
+     //        }
+     //        return redirect('/order/'.$order->id);
+     //        //save here
+     //    } catch(Exception $e){
+     //        flash('danger', 'An error has occured. Please submit the order again');
+     //        return redirect('/cart/checkout');
+     //    }
 	}
 
 	public function getCancel()

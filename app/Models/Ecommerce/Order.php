@@ -379,6 +379,7 @@ class Order extends Model
         $subject = 'Your order on Tienda.ph was received';
 
         if($os == 0){// Note: we use 0 instead of 1 because we will send email before the megaventory updates
+            // Notice there is no 1 because 1 is also equivalent to received (updated from megaventory) we dont want to notify that changes
             $subject = 'Your order on Tienda.ph has been received';
         } else if($os == 2){
             $subject = 'Your order on Tienda.ph is now being process';
@@ -388,9 +389,9 @@ class Order extends Model
             $subject = 'Your order on Tienda.ph has been delivered';
         } elseif ($os == 5 ) { 
             $subject = 'Your order on Tienda.ph is cancelled';
-        } elseif ($os == 6 ) { 
-            $subject = 'Your order on Tienda.ph has been completed';
-        }
+        }// elseif ($os == 6 ) { 
+        //     $subject = 'Your order on Tienda.ph has been completed';
+        // }
 
         $admin = array();
         $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
