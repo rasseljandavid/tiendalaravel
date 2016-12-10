@@ -6,22 +6,22 @@
 
         <div class="order-status-timeline">
             <!-- class names: c0 c1 c2 c3 and c4 -->
-            <div class="order-status-timeline-completion c3" style="width:{{ $order->progress }}; @if($order->status_id==5) background-color:#f00; @endif"></div>
+            <div class="order-status-timeline-completion c3" style="width:{{ $order->progress }}; background-color: {{$order->status_color}};"></div>
         </div>
-
-        <div class="image-order-status image-order-status-new active img-circle">
+         
+        <div class="image-order-status image-order-status-new active img-circle" style="box-shadow: 0px 0px 10px 0px {{$order->status_color}};">
             <span class="status">Received</span>
             <div class="icon"></div>
         </div>
-        <div class="image-order-status image-order-status-active active img-circle">
+        <div class="image-order-status image-order-status-active active img-circle" style="box-shadow: 0px 0px 10px 0px {{$order->status_color}};">
             <span class="status">In progress</span>
             <div class="icon"></div>
         </div>
-        <div class="image-order-status image-order-status-intransit active img-circle">
+        <div class="image-order-status image-order-status-intransit active img-circle" style="box-shadow: 0px 0px 10px 0px {{$order->status_color}};">
             <span class="status">On Transit</span>
             <div class="icon"></div>
         </div>
-        <div class="image-order-status image-order-status-delivered active img-circle">
+        <div class="image-order-status image-order-status-delivered active img-circle" style="box-shadow: 0px 0px 10px 0px {{$order->status_color}};">
             <span class="status">Shipped</span>
             <div class="icon"></div>
         </div>

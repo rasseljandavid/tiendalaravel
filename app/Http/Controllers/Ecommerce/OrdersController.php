@@ -85,6 +85,13 @@ class OrdersController extends Controller
             $order->progress = Status::getOrderProgress($order->status);
         }
         
+        if($order->status==4)
+            $order->status_color = '#A8CD1B';//green
+        else if($order->status==5)
+            $order->status_color = '#DE1B1B';//red
+        else
+            $order->status_color = '#cf7400';//orange
+
         $order->status_id = $order->status;
         $order->status = Status::asString('order', $order->status);
 
