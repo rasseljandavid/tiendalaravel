@@ -86,7 +86,7 @@ class PaypalController extends Controller
         $order->save();
 
 
-        if(!config('app.env') == 'local'){
+        if(config('app.env') != 'local'){
 
             $sms = new SMSnotification();
             $sms->send($order->user->firstname.' '.$order->user->lastname);
@@ -94,7 +94,7 @@ class PaypalController extends Controller
             if($order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
             }else{
-                flash('success', 'You\'re order has been submitted');
+                flash('success', 'You\'re order has been submitted. Failed sending email, please make sure youre email correct/exists');
             }
 
         }
