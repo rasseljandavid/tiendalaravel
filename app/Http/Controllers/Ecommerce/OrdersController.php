@@ -78,8 +78,15 @@ class OrdersController extends Controller
         // get progress state
         if($order->status == 5){
             $new_status = $order->getCancelledStatus();
-            $other_user = User::find($order->user_id);
-            $order->who_cancelled = ($new_status->changed_by == Auth::user()->id ? 'you' : $other_user->getFullname() ) ;
+            $other_user = User::find($new_status->changed_by);
+
+            if($new_status->changed_by == Auth::user()->id && !Auth::user()->isAdmin() )
+                $order->who_cancelled = 'you';
+            else
+                $order->who_cancelled = $other_user->getFullname();
+                
+
+            // $order->who_cancelled = ($new_status->changed_by == Auth::user()->id ? 'you' : $other_user->getFullname() ) ;
             $order->progress = Status::getOrderProgress($new_status->from_status);
         }else{
             $order->progress = Status::getOrderProgress($order->status);
