@@ -273,6 +273,7 @@ class CartController extends Controller
             $sms = new SMSnotification();
             $sms->send($order->user->firstname.' '.$order->user->lastname);
 
+
             if($order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
             }else{
