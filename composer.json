@@ -29,8 +29,7 @@
             "app/Helpers/Megaventory.php",
             "app/Helpers/TiendaInventory.php",
             "app/Helpers/Slugger.php",
-            "app/Helpers/Flasher.php",
-            "app/Helpers/SMSnotification.php"
+            "app/Helpers/Flasher.php"
         ]
     },
     "autoload-dev": {
