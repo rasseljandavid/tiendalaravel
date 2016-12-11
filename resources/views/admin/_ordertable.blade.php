@@ -14,6 +14,7 @@
           <th>Shipping Fee</th>
           <th>Grand Total</th>
           <th>Action</th>
+          <th>Email</th>
         </tr>
       </thead>
       <tbody>
@@ -34,14 +35,14 @@
                 @if($o->status == 1 || $o->status == 2 || $o->status == 3)
                 <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"" data-order-id="{{$o->id}}">
                   <option selected="">Select</option>
-                  <option value="2">Processing</option>
-                  <option value="3">Transit</option>
+                  @if($o->status != 2 )<option value="2">Processing</option>@endif
+                  @if($o->status != 3 )<option value="3">Transit</option>@endif
                   <option value="4">Shipped</option>
                   <option value="5">Cancelled</option>
-                  <option value="6">COMPLETE</option>
                 </select>
                 @endif
               </td>
+              <td><a href="/order/email/{{$o->id}}">View Email</a></td>
             </tr>
           @endif
         @endforeach

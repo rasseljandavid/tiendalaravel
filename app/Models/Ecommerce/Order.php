@@ -11,6 +11,7 @@ use Auth;
 use App\Models\Ecommerce\OrderStatusChange;
 use App\Models\Ecommerce\OrderItem;
 use App\Models\Address\Address;
+use Carbon\Carbon;
 use App\User;
 
 class Order extends Model
@@ -375,6 +376,7 @@ class Order extends Model
         $order->load('orderitems');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
+        $order->status_id = $order->status;
         $order->status = Status::asString('order', $order->status);
         $subject = 'Your order on Tienda.ph was received';
 
@@ -389,6 +391,12 @@ class Order extends Model
             $subject = 'Your order on Tienda.ph has been delivered';
         } elseif ($os == 5 ) { 
             $subject = 'Your order on Tienda.ph is cancelled';
+            $new_status = $order->getCancelledStatus();
+            $other_user = User::find($new_status->changed_by);
+            if($new_status->changed_by == Auth::user()->id && !Auth::user()->isAdmin() )
+                $order->who_cancelled = 'you';
+            else
+                $order->who_cancelled = $other_user->getFullname();
         }// elseif ($os == 6 ) { 
         //     $subject = 'Your order on Tienda.ph has been completed';
         // }
@@ -415,11 +423,12 @@ class Order extends Model
         if(!$order){
             $order = $this;
         }
-        // $order->load('orderitems');
 
+        // $order->load('orderitems');
         $ok = true;
-        foreach ($order->orderitems as $key => $oi) {
-            $prod = Product::select('quantity')->where('id', $oi->product_id)->first();
+        foreach ($order->orderitems as $oi) {
+        //     $prod = Product::select('quantity')->where('id', $oi->product_id)->first();
+            $prod = Product::find($oi->product_id);
             if($oi->quantity > $prod->quantity){
                 $ok = false;
                 break;
@@ -445,4 +454,14 @@ class Order extends Model
         return $orders;
     }
 
+
+    public function formatDates( $date ){
+        $temp = Carbon::parse($date);
+        return $temp->format('M d Y, h:i A');
+    }
+
+    public function formatDatesPicker( $date ){
+        $temp = Carbon::createFromFormat('m/d/Y h:i A', $date);
+        return $temp->format('M d Y, h:i A');
+    }
 }

@@ -167,7 +167,8 @@ class OrdersController extends Controller
         //Check if the sales order is emtpy  
         $request = $request->all();
 
-        //return $request;
+
+        // return $request;
 
         //Estimated date delivery of order
         if(isset($request['estimateddelivery'])) {
@@ -200,6 +201,17 @@ class OrdersController extends Controller
             $order->reason = (isset($request['reason']) ? $request['reason'] : 'not specified') ;
         }
 
+        if($request['status_id'] == 4){
+            $order->shipment = $order->formatDatesPicker($request['shipment']);
+        }
+
+        if($request['status_id'] == 3){
+            $estimateddelivery = explode(' - ', $request['estimateddelivery']);
+            $order->estimate_delivery = $order->formatDatesPicker($estimateddelivery[0]).' to ' .$order->formatDatesPicker($estimateddelivery[1]);
+        }
+
+
+
         $from_status = $order->status;
         $order->status = $request['status_id'];
         $order->update();
@@ -209,5 +221,57 @@ class OrdersController extends Controller
         $order->emailInvoice();
         flash('success', 'Order Status updated');
         return redirect()->back();
+    }
+
+    // for debugging/development only
+    public function displayEmail( Order $order ){
+        
+
+        $os = $order->status;
+        $order->load('orderitems');
+        $order->shippingAddress = $order->user->getShippingAddress();
+        $order->billingAddress = $order->user->getBillingAddress();
+        $order->status_id = $order->status;
+        $order->status = Status::asString('order', $order->status);
+        $subject = 'Your order on Tienda.ph was received';
+
+        if($os == 0){// Note: we use 0 instead of 1 because we will send email before the megaventory updates
+            // Notice there is no 1 because 1 is also equivalent to received (updated from megaventory) we dont want to notify that changes
+            $subject = 'Your order on Tienda.ph has been received';
+        } else if($os == 2){
+            $subject = 'Your order on Tienda.ph is now being process';
+        } elseif ($os == 3) {
+            $subject = 'Your order on Tienda.ph is now being shipped';
+        } elseif($os == 4 ) {
+            $subject = 'Your order on Tienda.ph has been delivered';
+        } elseif ($os == 5 ) { 
+            $subject = 'Your order on Tienda.ph is cancelled';
+
+            $new_status = $order->getCancelledStatus();
+            $other_user = User::find($new_status->changed_by);
+            if($new_status->changed_by == Auth::user()->id && !Auth::user()->isAdmin() )
+                $order->who_cancelled = 'you';
+            else
+                $order->who_cancelled = $other_user->getFullname();
+        }// elseif ($os == 6 ) { 
+        //     $subject = 'Your order on Tienda.ph has been completed';
+        // }
+
+        $admin = array();
+        $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
+        $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
+        $admin = (object)$admin;
+        
+        return view('emails.invoice', compact('order','admin'));
+        // return Mail::send( 'emails.invoice', 
+        //             [
+        //              'order'=>$order,
+        //              'admin'=>$admin
+        //             ], 
+        //             function ($message) use ($subject) {
+        //                 $message->subject($subject);
+        //                 $message->to(Auth::user()->email);
+        //             }
+        //     );   
     }
 }

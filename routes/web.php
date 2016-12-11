@@ -56,8 +56,9 @@ Route::get('/cart/combine', 'Ecommerce\CartController@combine')->middleware('aut
 Route::post('/cart/preprocess', 'Ecommerce\CartController@preprocess');
 
 // Order
+Route::get('/order/email/{order}', 'Ecommerce\OrdersController@displayEmail')->middleware('admin');
 Route::get('/order/history', 'Ecommerce\OrdersController@history');
-Route::post('order/statuschange', 'Ecommerce\OrdersController@statuschange');
+Route::post('/order/statuschange', 'Ecommerce\OrdersController@statuschange');
 Route::get('/order/{id}', 'Ecommerce\OrdersController@show');
 
 // Store Pages

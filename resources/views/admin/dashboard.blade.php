@@ -57,6 +57,32 @@
             </div>
           </div>
 
+           <div class="modal fade" id="delivered-at" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Date and Time Delivery of Shipment</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                      <div class="input-group ">
+                          <input type="text" class="form-control" name="datetime" id="datetime" value="{{ $today }}">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                          </span>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="confirm" data-dismiss="modal">Confirm</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
       </div>
     </div>
 
@@ -79,6 +105,12 @@
                     //console.log(sel.text(), status[0], order_id, $('#daterange').val());
                     submitForm(sel.text(), status[0], order_id, $('#daterange').val());
                   });
+                } else if(sel.text() == 'Shipped') {
+                  $('#delivered-at').modal('show');
+                  $('#delivered-at').modal().one('click','#confirm', function() {
+                    //console.log(sel.text(), status[0], order_id, $('#daterange').val());
+                    submitForm(sel.text(), status[0], order_id, $('#datetime').val());
+                  });
                 } else {
                   //console.log(sel.text(), status[0], order_id);
                   submitForm(sel.text(), status[0], order_id);
@@ -90,6 +122,11 @@
           if(selected == 'Transit') {
             msg += ' and set estimated date and time delivery to ' + estimateddelivery;
           }
+
+          if(selected == 'Shipped') {
+            msg += ' and set shipment date at ' + estimateddelivery;
+          }
+
           if(confirm('Are you sure you want to update this order status to '+ selected + '?' + msg)) {
                   var f = document.createElement('form');
                   f.action = '/order/statuschange';
@@ -116,6 +153,12 @@
                     date.value= estimateddelivery;
                     f.appendChild(date);
                   }
+                  if(selected == 'Shipped') {
+                    date.type='hidden';
+                    date.name='shipment';
+                    date.value= estimateddelivery;
+                    f.appendChild(date);
+                  }
                   document.body.appendChild(f);
                   f.submit();
                 }
@@ -124,6 +167,14 @@
         $('input[name="daterange"]').daterangepicker({
             timePicker: true,
             timePickerIncrement: 1,
+            locale: {
+                format: 'MM/DD/YYYY h:mm A'
+            }
+        });
+
+        $('input[name="datetime"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: 1,
             locale: {
                 format: 'MM/DD/YYYY h:mm A'
             }

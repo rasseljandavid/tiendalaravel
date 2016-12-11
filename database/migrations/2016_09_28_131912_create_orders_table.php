@@ -26,6 +26,8 @@ class CreateOrdersTable extends Migration
             $table->double('shipping_fee')->default(50.00);
             $table->double('grand_total')->default(0);
             $table->integer('status')->default(0);
+            $table->string('estimate_delivery', 255)->default('');
+            $table->string('shipment', 255)->default('');
             $table->string('reason', 255)->default('');
             $table->timestamps();
         });

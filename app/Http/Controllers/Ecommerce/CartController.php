@@ -60,6 +60,11 @@ class CartController extends Controller
 
     public function show() {
         $cart = self::getCart(true);
+
+        if($cart==null){
+            $cart = self::getCart();
+        }
+
         if($cart){
             $cart->compute();   
         }
@@ -67,8 +72,6 @@ class CartController extends Controller
         if(!$cart->verifyQuantities()){
             flash('danger', 'A certain quantity/quantities exceeds the current available quantity. Please update items');
         }
-
-
 
     	return view('cart.show', compact('cart'));
     }
@@ -118,13 +121,18 @@ class CartController extends Controller
         
         $product = Product::find($request['product_id']);
 
+        if(!$product){
+            // flash('warning', 'Product doesn\'t exists. Please try again!');
+            return Response::json(['success'=>false,'quantity'=>$request['cart_item_quantity']]);
+        }
+
         // check product quantity
         if($request['cart_item_quantity'] > $product->quantity){
             // flash('warning', 'Insufficient stock for '.$product->title);
-            if(isset($request['cartpage']) && $request['cartpage'] == 'show'){
-                flash('warning', 'Insufficient stock for '.$product->title);
-                return redirect('/cart/show');
-            }
+            // if(isset($request['cartpage']) && $request['cartpage'] == 'show'){
+            //     flash('warning', 'Insufficient stock for '.$product->title);
+            //     return redirect('/cart/show');
+            // }
             return Response::json(['success'=>false]);
         }
 

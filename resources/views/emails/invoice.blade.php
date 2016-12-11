@@ -10,7 +10,7 @@
                        Order #
                     </th>
                     <th style="border:1px solid #DEDEDE; text-align: left; vertical-align: top;">
-                       Order Date
+                       Date Ordered
                     </th>
                     <th style="border:1px solid #DEDEDE; text-align: left; vertical-align: top;">
                        Order Status
@@ -27,7 +27,7 @@
                          {{$order->id}}
                     </td>
                     <td style="border:1px solid #DEDEDE;">
-                        {{$order->purchased_at}}
+                        {{$order->formatDates($order->purchased_at)}}
                     </td>
                     <td style="border:1px solid #DEDEDE;">
                         
@@ -36,6 +36,64 @@
                 </tr>
             </tbody>
         </table>
+
+        @if($order->status_id == 3)
+        <table class="payment-info" style="margin-bottom:1em;" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="background:none repeat scroll 0 0 #CDCDCD;">
+                    <th colspan="3" style="border:1px solid #DEDEDE; text-align: left; vertical-align: top; width: 30%;">
+                        Delivery Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
+                        You're order will arrive from {{$order->estimate_delivery}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @endif
+
+        @if($order->status_id == 4)
+        <table class="payment-info" style="margin-bottom:1em;" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="background:none repeat scroll 0 0 #CDCDCD;">
+                    <th colspan="3" style="border:1px solid #DEDEDE; text-align: left; vertical-align: top; width: 30%;">
+                        Delivery Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
+                        You're order arrived at {{$order->shipment}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @endif
+
+        @if($order->status_id == 5)
+        <table class="payment-info" style="margin-bottom:1em;" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="background:none repeat scroll 0 0 #CDCDCD;">
+                    <th colspan="3" style="border:1px solid #DEDEDE; text-align: left; vertical-align: top; width: 30%;">
+                        Status Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border:1px solid #DEDEDE; text-align:left; vertical-align:top; padding:0.5em;">
+                        <span color="#ae242a">You're order has been cancelled</span> by {{$order->who_cancelled}}<br>
+                        Reason: {{$order->reason}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @endif
 
         <table class="payment-info" style="margin-bottom:1em;" width="100%" border="0" cellspacing="0" cellpadding="0">
             <thead>

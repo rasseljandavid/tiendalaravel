@@ -12,7 +12,7 @@
             </tr>
             <tr>
               <td>{{$order->id}}</td>
-              <td>{{$order->purchased_at}}</td>
+              <td>{{$order->formatDates($order->purchased_at)}}</td>
             </tr>
           </tbody></table>
         </div>
@@ -28,6 +28,16 @@ Philippines<br>
         <br>
 
         @include('orders._progressbar')
+
+        @if($order->status_id==3)
+        <div class="row text-center">
+          <h4>Your order will be delivered from {{$order->estimate_delivery}}</h4>
+        </div>
+        @elseif($order->status_id==4)
+        <div class="row text-center">
+          <h4>Your order has been delivered at {{$order->shipment}}</h4>
+        </div>
+        @endif
         <hr>
         <div class="pd-25">
           <div class="row">
