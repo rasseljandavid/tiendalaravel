@@ -10,7 +10,7 @@ class SMSnotification {
 	public function __construct() {
 		$this->apikey = 'MNARD506884_5P2XL';
 		$this->url = "https://www.itexmo.com/php_api/api.php";
-		$this->number = '';
+		$this->number = '09359372676';
 	}
 
 	public function send($name){
