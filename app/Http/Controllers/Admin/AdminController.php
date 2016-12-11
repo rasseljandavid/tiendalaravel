@@ -49,13 +49,15 @@ class AdminController extends Controller
         $ctrOnTransit = Order::onTransit()->count();
         $ctrShipped   = Order::shipped()->count();
         $ctrCbc = count($cbc);
-        $ctrCba = count($cba); 
+        $ctrCba = count($cba);
+        $today = date('m/d/Y g:i A', strtotime("now"));
+        $todaythirtymins = date('m/d/Y g:i A', strtotime("+30 minutes"));
 
         
 
 
     	return view('admin.dashboard', 
             compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc', 'cba',
-                    'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped'));
+                    'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped','today','todaythirtymins'));
     }
 }

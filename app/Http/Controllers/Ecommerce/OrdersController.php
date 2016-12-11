@@ -167,7 +167,15 @@ class OrdersController extends Controller
         //Check if the sales order is emtpy  
         $request = $request->all();
 
-        // return $request;
+        //return $request;
+
+        //Estimated date delivery of order
+        if(isset($request['estimateddelivery'])) {
+            $date = explode('-', $request['estimateddelivery']);
+            $startdate = trim(strtotime($date[0]));
+            $enddate   = trim(strtotime($date[1]));
+            //date('m/d/Y g:i A', trim(strtotime($date[0])));
+        }
 
         $order = Order::find($request['id']);
         if(!$order){

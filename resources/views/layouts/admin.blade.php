@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="/css/tienda.css" />
 <link rel="stylesheet" type="text/css" href="/css/loader.css" />
 <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+<link rel="stylesheet" type="text/css" href="/css/daterangepicker.css" />
 <!-- CSS Part End-->
 </head>
 <body>
@@ -76,6 +77,8 @@
 <script type="text/javascript" src="/js/jquery.dcjqaccordion.min.js"></script>
 <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
+<script type="text/javascript" src="/js/datetimepicker/moment.min.js"></script>
+<script type="text/javascript" src="/js/datetimepicker/daterangepicker.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     // add the csrf_token to all ajax request
