@@ -78,7 +78,9 @@ class ProductsController extends Controller
         $featured['relatedproducts'] = Product::all()->random(10);
         
         if(!$product){
-            return 'product do not exists';
+            flash('warning', 'Product currently doesn\'t avialable. PLease delete from cart.');
+            return redirect('/cart/show');
+            // return 'product do not exists';
         }
 
         // return $product;
