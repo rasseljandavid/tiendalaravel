@@ -429,6 +429,10 @@ class Order extends Model
         foreach ($order->orderitems as $oi) {
         //     $prod = Product::select('quantity')->where('id', $oi->product_id)->first();
             $prod = Product::find($oi->product_id);
+            if(!$prod){
+                $ok = false;
+                break;
+            }
             if($oi->quantity > $prod->quantity){
                 $ok = false;
                 break;
