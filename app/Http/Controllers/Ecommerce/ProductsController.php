@@ -79,7 +79,7 @@ class ProductsController extends Controller
         
         if(!$product){
             flash('warning', 'Product currently doesn\'t avialable. PLease delete from cart.');
-            return redirect('/cart/show');
+            return redirect('/');
             // return 'product do not exists';
         }
 
