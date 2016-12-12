@@ -250,8 +250,12 @@ class CartController extends Controller
         }
        
         $order = self::getCart(true);
+        if($order==null){
+            return redirect('/cart/checkout');
+        }
+
+
         $order->comment = $request['comment'];
-        
         $order->save();
         $order->compute();
 
@@ -270,7 +274,7 @@ class CartController extends Controller
 
         if(config('app.env') != 'local'){
 
-            $sms = new SMSnotification();
+            $sms = new \SMSnotification();
             $sms->send($order->user->firstname.' '.$order->user->lastname);
 
 
