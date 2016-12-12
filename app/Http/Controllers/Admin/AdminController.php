@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Models\Ecommerce\Order;
 use App\Models\Admin\Admin;
 use App\User;
+use Carbon\Carbon;
 
 
 class AdminController extends Controller
@@ -50,14 +51,13 @@ class AdminController extends Controller
         $ctrShipped   = Order::shipped()->count();
         $ctrCbc = count($cbc);
         $ctrCba = count($cba);
-        $today = date('m/d/Y g:i A', strtotime("now"));
-        $todaythirtymins = date('m/d/Y g:i A', strtotime("+30 minutes"));
-
+        $now = Carbon::now()->format('m/d/Y g:i A');
+        $tom = Carbon::tomorrow()->format('m/d/Y g:i A');
         
 
 
     	return view('admin.dashboard', 
             compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc', 'cba',
-                    'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped','today','todaythirtymins'));
+                    'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped','now','tom'));
     }
 }
