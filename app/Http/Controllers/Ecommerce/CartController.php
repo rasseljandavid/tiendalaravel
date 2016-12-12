@@ -61,8 +61,7 @@ class CartController extends Controller
         $cart = self::getCart(true);
 
         if($cart==null){
-            $cart = new Order();
-            $cart->makeCart();
+            return redirect('/');
         }
 
         if($cart){
