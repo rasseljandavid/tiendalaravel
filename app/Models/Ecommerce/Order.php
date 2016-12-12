@@ -449,6 +449,11 @@ class Order extends Model
             $o->salesOrderNo = $myOrder['SalesOrderNo'];
             $o->status = 1;
             $o->update(); 
+
+            $sms = new \SMSnotification();
+            $sms->send($o->user->firstname.' '.$o->user->lastname);
+
+
         }
 
         return $orders;
