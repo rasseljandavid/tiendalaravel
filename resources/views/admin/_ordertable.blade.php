@@ -32,7 +32,7 @@
                 <!-- Remove this if you need to, just make sure that no one can cancel a canceled order. -->
                 <!-- the only order that we can cancel are the RECEIVE and ON PROCESS -->
                 <!-- added ON TRANSIT on order that can be cancelled -->
-                @if($o->status == 1 || $o->status == 2 || $o->status == 3)
+                {{-- @if($o->status == 1 || $o->status == 2 || $o->status == 3) --}}
                 <select id="order_status_{{ $o->status }}" class="form-control col-sm-3"" data-order-id="{{$o->id}}">
                   <option selected="">Select</option>
                   @if($o->status != 2 )<option value="2">Processing</option>@endif
@@ -40,7 +40,7 @@
                   <option value="4">Shipped</option>
                   <option value="5">Cancelled</option>
                 </select>
-                @endif
+                {{-- @endif --}}
               </td>
               <td><a href="/order/email/{{$o->id}}">View Email</a></td>
             </tr>

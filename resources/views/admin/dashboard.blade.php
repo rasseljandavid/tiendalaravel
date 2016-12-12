@@ -29,7 +29,7 @@
 
           @include('admin._ordertable', ['orders'=>$cbc, 'new'=>$ctrCbc, 'title'=>'Cancelled By Customer', 'class'=>'danger'])
 
-          {{-- @include('admin._ordertable', ['orders'=>$cba, 'new'=>$ctrCba, 'title'=>'Cancelled By Administrator', 'class'=>'danger']) --}}
+          @include('admin._ordertable', ['orders'=>$cba, 'new'=>$ctrCba, 'title'=>'Cancelled By Administrator', 'class'=>'danger'])
 
           <div class="modal fade" id="EstimatedDelivery" role="dialog" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog">
@@ -93,7 +93,7 @@
 @section('script')
  <script type="text/javascript">
     $(document).ready(function() {
-        $(document).on('change', '#order_status_1, #order_status_2, #order_status_3', function(e) {
+        $(document).on('change', '#order_status_1, #order_status_2, #order_status_3, #order_status_4', function(e) {
               var sel = $(this).find('option:selected');
               var status = sel.val();
               var order_id = $(this).data('order-id');
