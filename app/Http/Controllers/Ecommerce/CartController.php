@@ -277,7 +277,7 @@ class CartController extends Controller
             if($order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
             }else{
-                flash('success', 'You\'re order has been submitted. Failed sending email, please make sure youre email correct/exists');
+                flash('success', 'You\'re order has been submitted. Failed sending email, please make sure your email is correct/exists');
             }
 
         }
