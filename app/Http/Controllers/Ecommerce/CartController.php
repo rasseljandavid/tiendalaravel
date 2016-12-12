@@ -61,6 +61,7 @@ class CartController extends Controller
         $cart = self::getCart(true);
 
         if($cart==null){
+            flash('danger', 'You\'re cart is empty! Add an item to view cart');
             return redirect('/');
         }
 
@@ -250,6 +251,7 @@ class CartController extends Controller
        
         $order = self::getCart(true);
         if($order==null){
+            flash('danger', 'You\'re cart is empty! Add an item to continue checkout');
             return redirect('/cart/checkout');
         }
 
