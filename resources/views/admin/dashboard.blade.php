@@ -42,7 +42,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                       <div class="input-group ">
-                          <input type="text" class="form-control" name="daterange" id="daterange" value="{{ $today }} - {{ $todaythirtymins }}">
+                          <input type="text" class="form-control" name="daterange" id="daterange" value="{{ $now }} - {{ $tom }}">
                           <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
                           </span>
@@ -68,7 +68,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                       <div class="input-group ">
-                          <input type="text" class="form-control" name="datetime" id="datetime" value="{{ $today }}">
+                          <input type="text" class="form-control" name="datetime" id="datetime" value="{{ $now }}">
                           <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
                           </span>
