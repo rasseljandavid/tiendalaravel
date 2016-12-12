@@ -274,7 +274,7 @@ class CartController extends Controller
         if(config('app.env') != 'local'){
 
 
-            if($order->emailInvoice()){
+            if(!$order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');
             }else{
                 flash('success', 'You\'re order has been submitted. Failed sending email, please make sure your email is correct/exists');

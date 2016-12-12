@@ -218,7 +218,7 @@ class OrdersController extends Controller
 
         OrderStatusChange::change($order,$from_status);
         
-        if($order->emailInvoice()){
+        if(!$order->emailInvoice()){
             flash('success', 'Order Status updated');
         }else{
             flash('success', 'Order Status updated. Failed sending email!');
