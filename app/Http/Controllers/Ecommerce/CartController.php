@@ -18,7 +18,6 @@ use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
-use SMSnotification;
 use Carbon\Carbon;
 use Megaventory;
 use App\User;
@@ -270,7 +269,7 @@ class CartController extends Controller
 
         if(config('app.env') != 'local'){
 
-            $sms = new SMSnotification();
+            $sms = new \SMSnotification();
             $sms->send($order->user->firstname.' '.$order->user->lastname);
 
 
