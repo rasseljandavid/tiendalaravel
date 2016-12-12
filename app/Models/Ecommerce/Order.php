@@ -451,7 +451,10 @@ class Order extends Model
             $o->update(); 
 
             $sms = new \SMSnotification();
-            $sms->send($o->user->firstname.' '.$o->user->lastname);
+            // i put it to if so that no error will occur if failed
+            if($sms->send($o->user->firstname.' '.$o->user->lastname)){
+                //do nothing
+            }
 
 
         }
