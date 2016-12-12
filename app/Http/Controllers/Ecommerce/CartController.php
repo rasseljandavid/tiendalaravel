@@ -69,7 +69,7 @@ class CartController extends Controller
             $cart->compute();   
         }
 
-        if(!$cart->verifyQuantities()){
+        if(!$cart->verifyQuantities($cart)){
             flash('danger', 'A certain quantity/quantities exceeds the current available quantity. Please update items');
         }
 
@@ -84,7 +84,7 @@ class CartController extends Controller
             return redirect('/');
         }
 
-        if(!$cart->verifyQuantities()){
+        if(!$cart->verifyQuantities($cart)){
             return redirect('/cart/show');
         }
 
@@ -260,7 +260,7 @@ class CartController extends Controller
         $order->save();
         $order->compute();
 
-        if(!$order->verifyQuantities()){
+        if(!$order->verifyQuantities($order)){
             return redirect('/cart/show');
         }
 
