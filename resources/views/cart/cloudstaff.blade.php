@@ -130,7 +130,7 @@ window.smartsupp||(function(d) {
           <hr />
           <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Chicken Cordon Bleu" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2811.jpg" alt="Chicken Cordon Bleu" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -149,7 +149,7 @@ window.smartsupp||(function(d) {
             </div>
 
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Morcon & Salad" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2812.jpg" alt="Morcon & Salad" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -171,7 +171,7 @@ window.smartsupp||(function(d) {
 
            <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Crab Stick Temaki" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2810.jpg" alt="Crab Stick Temaki" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -212,7 +212,7 @@ window.smartsupp||(function(d) {
 
            <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Kimchi" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2813.jpg" alt="Kimchi" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
