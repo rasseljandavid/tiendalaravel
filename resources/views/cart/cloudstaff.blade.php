@@ -117,14 +117,14 @@ window.smartsupp||(function(d) {
     
     <!-- Main Menu End-->
   </div>
-  <div id="container" style="padding-top: 100px;">
+  <div id="container" style="padding-top: 80px;">
         @include('helpers.flasher')
         @include('errors.validation')
         <!-- @yield('content') -->
 
       <div class="container">
 
-          <div class="row visible-lg-block">
+          <div class="row">
             <img src="/image/infographic.jpg" alt="how to order" class="img-responsive" style="margin:auto; " />
           </div>
           <hr />
