@@ -35,6 +35,8 @@
 <link rel="stylesheet" type="text/css" href="/css/tienda.css" />
 <link rel="stylesheet" type="text/css" href="/css/loader.css" />
 <link rel="stylesheet" type="text/css" href="/css/mobile.css" />
+
+<link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
 <!-- CSS Part End-->
 <!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
@@ -93,7 +95,7 @@ window.smartsupp||(function(d) {
           </div>
           <!-- Logo End -->
           <!-- Mini Cart Start-->
-          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right" id="minicart-container">
+          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right visible-desktop" id="minicart-container">
                 <!--  <form class="form-inline">
   <div class="form-group">
     <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter your name here">
@@ -235,9 +237,10 @@ window.smartsupp||(function(d) {
           <hr>
      <div class="row">
 
-        <form class="form-inline" style=" font-size: 2em; display: block;text-align: center;">
+        <form class="form-inline" style=" font-size: 2em; display: block;text-align: center;" id="companyOrder">
+          {{ csrf_field() }}
           <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Enter your name here">
+            <input type="text" class="form-control" required name="name" placeholder="Enter your name here">
           </div>
           <div class="form-group">
             <select class="form-control" name="branch">
@@ -247,6 +250,9 @@ window.smartsupp||(function(d) {
               <option value="Living Rock 2">Living Rock 2</option>
             </select>
           </div>
+          
+           <input type="hidden" name="orders" id="order-hidden" value="" />
+          
           <button type="submit" class="btn btn-primary">Order</button>
         </form>
      </div>
@@ -386,6 +392,7 @@ window.smartsupp||(function(d) {
 <script type="text/javascript" src="/js/custom.js"></script>
 <script type="text/javascript" src="/js/jquery.jscroll.min.js"></script>
 <script type="text/javascript" src="/js/jquery.imgcheckbox.js"></script>
+<script src="/js/sweetalert.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -394,6 +401,61 @@ window.smartsupp||(function(d) {
           // Do something fantastic!
         }
     });
+
+    $('#companyOrder').on('submit', function(e) {
+
+
+
+        var $form = $(this);
+        var $submitButton = $form.find('btn');
+        // prevent native submit
+        e.preventDefault();
+
+        var orders = [];
+
+        $( ".imgChked" ).each(function( index ) {
+          orders.push( $(this).find('img').attr('alt') );
+        });
+
+        console.log(JSON.stringify(orders));
+
+        $("#order-hidden").val(JSON.stringify(orders));
+
+        if(orders.length < 1) {
+            swal({
+              title: "Error!",
+              text: "You forgot to select your meal.",
+              type: "error",
+              confirmButtonText: "Cool"
+            });
+        }
+
+        // //submit the form
+        $form.ajaxSubmit({
+            url: '/cart/companyOrder',
+            type: 'post',
+            dataType: 'json',
+            success: function(response, status, xhr, form) {
+                swal("Good job!", "We will prepare your food now.", "success");
+
+                setTimeout(function(){
+                    location.href = "/cloudstaff"
+                  }, 5000);
+            },
+            error: function(response) {
+               
+                swal({
+                  title: "Error!",
+                  text: "Something went wrong, try again!",
+                  type: "error",
+                  confirmButtonText: "Cool"
+                });
+            }
+        });
+        return false;
+    });
+
+    
 
     $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
         options.async = true;

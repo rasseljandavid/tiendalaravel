@@ -18,6 +18,7 @@ use App\Models\Ecommerce\OrderItem;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
+use App\companyOrder;
 use Carbon\Carbon;
 use Megaventory;
 use App\User;
@@ -315,5 +316,14 @@ class CartController extends Controller
         return view('cart.cloudstaff');
     }
 
-    
+    public function companyOrder(Request $request ) {
+
+        $companyOrder = new companyOrder();
+        $companyOrder->name = $request['name'];
+        $companyOrder->branch = $request['branch'];
+        $companyOrder->orders = $request['orders'];
+        $returnVal = $companyOrder->save();
+
+        return response()->json($returnVal, 200);
+    }
 }
