@@ -240,10 +240,10 @@ window.smartsupp||(function(d) {
         <form class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
           <div class="form-group">
-            <input type="text" class="form-control" required name="name" placeholder="Enter your name here">
+            <input type="text" class="form-control" required name="name" placeholder="Enter your name here" style="height: 44px; width: 180px;">
           </div>
           <div class="form-group">
-            <select class="form-control" name="branch">
+            <select class="form-control" name="branch" style="height: 44px;">
               <option value="SM City Clark">SM City Clark</option>
               <option value="New Street">New Street</option>
               <option value="Living Rock 1">Living Rock 1</option>
@@ -253,7 +253,7 @@ window.smartsupp||(function(d) {
           
            <input type="hidden" name="orders" id="order-hidden" value="" />
           
-          <button type="submit" class="btn btn-primary">Order</button>
+          <button type="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
      </div>
 
