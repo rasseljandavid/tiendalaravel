@@ -44,4 +44,12 @@ return [
         'key' => env('MEGAVENTORY_API')
     ],
 
+    'smsapikey' => [
+        'key' => env('SMS_APIKEY')
+    ],
+
+    'smscpnumber' => [
+        'number' => env('SMS_CP_NUMBER')
+    ],
+
 ];

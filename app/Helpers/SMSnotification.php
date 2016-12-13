@@ -8,9 +8,9 @@ class SMSnotification {
 	
 
 	public function __construct() {
-		$this->apikey = 'MNARD506884_5P2XL';
+		$this->apikey = config('services.smsapikey.key');
 		$this->url = "https://www.itexmo.com/php_api/api.php";
-		$this->number = '09359372676';
+		$this->number = config('services.smscpnumber.number');;
 	}
 
 	public function send($name){
