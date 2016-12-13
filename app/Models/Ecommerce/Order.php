@@ -373,7 +373,7 @@ class Order extends Model
             $order = $this;
         }
         $os = $order->status;
-        $order->load('orderitems');
+        $order->load('orderitems', 'user');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
         $order->status_id = $order->status;
@@ -413,7 +413,7 @@ class Order extends Model
                     ], 
                     function ($message) use ($subject) {
                         $message->subject($subject);
-                        $message->to(Auth::user()->email);
+                        $message->to($order->user->email);
                     }
             );   
     }
