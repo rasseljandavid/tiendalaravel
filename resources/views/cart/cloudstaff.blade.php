@@ -428,6 +428,8 @@ window.smartsupp||(function(d) {
               type: "error",
               confirmButtonText: "Cool"
             });
+
+            return false;
         }
 
         // //submit the form
