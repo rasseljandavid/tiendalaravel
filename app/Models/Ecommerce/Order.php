@@ -373,7 +373,7 @@ class Order extends Model
             $order = $this;
         }
         $os = $order->status;
-        $order->load('orderitems', 'user');
+        $order->load('orderitems');
         $order->shippingAddress = $order->user->getShippingAddress();
         $order->billingAddress = $order->user->getBillingAddress();
         $order->status_id = $order->status;
@@ -400,7 +400,7 @@ class Order extends Model
         }// elseif ($os == 6 ) { 
         //     $subject = 'Your order on Tienda.ph has been completed';
         // }
-
+        $customer = User::find($order->user_id);
         $admin = array();
         $admin['shippingAddress'] = Address::where('user_id', 0)->shipping()->first();
         $admin['billingAddress'] = Address::where('user_id', 0)->billing()->first();
@@ -411,9 +411,9 @@ class Order extends Model
                      'order'=>$order,
                      'admin'=>$admin
                     ], 
-                    function ($message) use ($subject) {
+                    function ($message) use ($subject,$customer) {
                         $message->subject($subject);
-                        $message->to($order->user->email);
+                        $message->to($customer->email);
                     }
             );   
     }
