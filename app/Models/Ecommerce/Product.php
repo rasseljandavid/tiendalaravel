@@ -104,8 +104,15 @@ class Product extends Model
   public function getLatestProduct() {
   	return $this->orderBy('created_at', 'DESC')->get();
   }
-    		
-    		
+  public function getFeaturedProductRandom($limit = 5) {
+  	return $this->where('is_featured', true)->inRandomOrder()->limit($limit)->get();
+  }
+  public function getBestSellerProductRandom($limit = 5) {
+  	return $this->where('is_bestSeller', true)->inRandomOrder()->limit($limit)->get();	
+  }
+  public function getLatestProductRandom($limit = 5) {
+  	return $this->orderBy('created_at', 'DESC')->inRandomOrder()->limit($limit)->get();
+  } 		
     		
 
 

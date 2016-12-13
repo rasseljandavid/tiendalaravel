@@ -34,8 +34,8 @@ class CategoriesController extends Controller
         $categories = Category::orderBy('rank')->get();
         $p = new Product;
         $featured = [];
-        $featured['bestseller'] = count($p->getBestSellerProduct()) > 0 ? $p->getBestSellerProduct()->random(5) : $p->getBestSellerProduct();
-        $featured['featured'] = count($p->getFeaturedProduct()) > 0  ? $p->getFeaturedProduct()->random(5) : $p->getFeaturedProduct();
+        $featured['bestseller'] = $p->getBestSellerProductRandom();
+        $featured['featured'] = $p->getFeaturedProductRandom();
         $products = $category->getProductByCategory();
         $nextpage = substr($products->toArray()['next_page_url'] , -1);
         // return $products;
