@@ -121,6 +121,11 @@ window.smartsupp||(function(d) {
         <!-- @yield('content') -->
 
       <div class="container">
+
+          <div class="row visible-desktop">
+            <img src="/image/infographic.jpg" alt="how to order" class="img-responsive" style="margin:auto; " />
+          </div>
+          <hr />
           <div class="row">
             <div class="col-md-6 col-sm-12">
                 <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Chicken Cordon Bleu" />
