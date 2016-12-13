@@ -256,7 +256,7 @@ window.smartsupp||(function(d) {
           <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
 
-        <p style="text-align: center; margin: 20px auto 10px; font-size: 1.5em;">For bulk orders, please message us on Skype at <i class="fa fa-skype" aria-hidden="true"></i> tienda.food</p>
+        <p style="text-align: center; margin: 20px auto 10px; font-size: 1.5em;">For bulk orders, please message us on Skype at <i class="fa fa-skype" aria-hidden="true"></i> hello@tienda.ph</p>
      </div>
 
 
