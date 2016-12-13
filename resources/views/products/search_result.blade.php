@@ -22,7 +22,7 @@
         </p>
         <!-- <p class="price"> $122.00 <span class="price-tax">Ex Tax: $100.00</span> </p> -->
       </div>
-      <p>Qty: {{$product->quantity}}</p>
+      <p>Available Stocks: {{$product->quantity}}</p>
     <div class="rating"> 
       <?php $rate = $product->rating ?>
       @for( $i=1 ; $i <= 5; $i++)
