@@ -92,3 +92,6 @@ Route::get('getCheckout/{order}', ['as'=>'getCheckout','uses'=>'PaypalController
 Route::get('getDone/{order}', ['as'=>'getDone','uses'=>'PaypalController@getDone']);
 Route::get('getCancel', ['as'=>'getCancel','uses'=>'PaypalController@getCancel']);
 		
+//Hard coded for now
+Route::get('/cloudstaff', 'Ecommerce\CartController@cloudstaff');
+Route::post('/cart/companyOrder', 'Ecommerce\CartController@companyOrder');
