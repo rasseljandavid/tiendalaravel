@@ -50,66 +50,20 @@ window.smartsupp||(function(d) {
 
 
 <style type="text/css">
-    ul {
-  list-style-type: none;
+.order-steps .circle-no { width:28px;line-height:1.4;color:#fff;float:left;margin-bottom:0;border-radius:49%;font-size:20px;background-color:#ae242a;text-align:center }
+.keep-simple {font-family:open_sanssemibold}
+.step-text {font-family:open_sansbold;font-size:16px;line-height:2}
+
+.pointer1,.pointer2,.pointer3{width:75px;position:absolute;right:-25px}
+.pointer1,.pointer3{top:-18px}
+.pointer2{top:25px;transform:rotateX(180deg);-webkit-transform:rotateX(180deg)}
+
+.pointer3{right:-65px}
+
+.greentext {
+    color: #2c982c;
 }
 
-li {
-  display: inline-block;
-}
-
-input[type="checkbox"][id^="cb"] {
-  display: none;
-}
-
-label {
-  border: 1px solid #fff;
-  padding: 10px;
-  display: block;
-  position: relative;
-  margin: 10px;
-  cursor: pointer;
-}
-
-label:before {
-  background-color: white;
-  color: white;
-  content: " ";
-  display: block;
-  border-radius: 50%;
-  border: 1px solid grey;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 28px;
-  transition-duration: 0.4s;
-  transform: scale(0);
-}
-
-label img {
-  width: 180px;
-  transition-duration: 0.2s;
-  transform-origin: 50% 50%;
-}
-
-:checked + label {
-  border-color: #ddd;
-}
-
-:checked + label:before {
-  content: "✓";
-  background-color: grey;
-  transform: scale(1);
-}
-
-:checked + label img {
-  transform: scale(0.9);
-  box-shadow: 0 0 5px #333;
-  z-index: -1;
-}
   </style>
 
 
@@ -127,161 +81,82 @@ label img {
     }, 0);
   </script> -->
 <div class="wrapper-wide">
-  <div id="header">
-    <!-- Top Bar Start-->
-    <nav id="top" class="htop">
-      <div class="container">
-        <div class="row"> <span class="drop-icon visible-sm visible-xs"><i class="fa fa-align-justify"></i></span>
-          <div class="pull-left flip left-top">
-            <div class="links">
-              <ul>
-                <!-- <li class="mobile"><a href="tel:+639258166813"><img style="height: 16px; position: relative; top: 3px;" src="/image/socialicons/viber-icon.png" /> +63 9258166813</a></li>
-                <li class="email"><a href="mailto:hello@tienda.ph"><i class="fa fa-envelope"></i>hello@tienda.ph</a></li> -->
-                <li class="email"><a href="{{ url('/contact-us') }}"><i class="fa fa-envelope"></i>Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div id="top-links" class="nav pull-right flip">
-            <ul>
-              @if(Auth::check() && Auth::user()->isAdmin())
-              <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-              <li>
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-                <a href="{{ url('/logout') }}"
-                    onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-              </li>
-              @elseif(Auth::user())
-              <li><a href="{{ url('/account') }}">{{ Auth::user()->getFullname() }}</a></li>
-              <li>
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-                <a href="{{ url('/logout') }}"
-                    onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-              </li>
-              @else
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-              @endif
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <div id="header" class="navbar-fixed-top" style="position: fixed;">
     <!-- Top Bar End-->
     <!-- Header Start-->
-    <header class="header-row">
+    <header class="header-row" style="padding-top: 5px; padding-bottom: 5px;">
       <div class="container">
         <div class="table-container">
           <!-- Logo Start -->
           <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-            <div id="logo"><a href="/"><img class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda - Online Grocery & Delivery in Pampanga" /></a></div>
+            <div id="logo"><a href="/"><img style="height: 60px;" class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda - Online Grocery & Delivery in Pampanga" /></a></div>
           </div>
           <!-- Logo End -->
           <!-- Mini Cart Start-->
-          <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12" id="minicart-container">
-            @include('cart.minicart')
+          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right" id="minicart-container">
+                <!--  <form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter your name here">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+<img style="height: 60px; margin: auto;" class="img-responsive" src="/image/cloudstaff-logo.png"  />
+
+
           </div>
-          <!-- Mini Cart End-->
-          <!-- Search Start-->
-          <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
-            @include('search._input')
-          </div>
-          <!-- Search End-->
         </div>
       </div>
     </header>
     <!-- Header End-->
     <!-- Main Menu Start-->
     
-      <nav id="menu" class="navbar">
-        <div class="navbar-header"> <span class="visible-xs visible-sm"> Menu <b></b></span></div>
-        <div class="container">
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-            <li><a class="home_link" title="Home" href="/">Home</a></li>
-            
-            @foreach($menus as $menu) 
-              <li><a title="{{ $menu['title'] }}" href="/category/{{ $menu['slug'] }}">{{ $menu['title'] }}</a></li>
-            @endforeach
-            <li class="dropdown"><a href="#">More</a>
-                  <div class="dropdown-menu">
-                    <ul>
-                      @foreach($moremenus as $more) 
-                        <li>
-                          <a title="{{ $more['title'] }}" href="/category/{{ $more['slug'] }}">
-                            {{ $more['title'] }}
-                          </a>
-                        </li>
-                      @endforeach
-                    </ul>
-                  </div>
-                </li>
-
-            <li class="custom-link-right"><a href="/cart/checkout"> Checkout Now!</a></li>
-          </ul>
-        </div>
-        </div>
-      </nav>
+   
     
     <!-- Main Menu End-->
   </div>
-  <div id="container">
+  <div id="container" style="padding-top: 100px;">
         @include('helpers.flasher')
         @include('errors.validation')
         <!-- @yield('content') -->
 
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1 class="title">Cloudstaff Workforce</h1>
-          </div>
-          
-
           <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Crab Stick Temaki" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Chicken Cordon Bleu" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
     font-weight: bold;
     padding-left: 20px;">
-                        Crab Stick Temaki
+                        Chicken Cordon Bleu
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P59.00
+                        P89.00
                     </p>
                 </div>
 
                 <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A healthy meal for people who are always on the go. This Japanese food is wrapped in nori, which is a nutritious seaweed product. Inside you will savor a mixed delight of mango, cucumber, carrot, and lettuce with rice.
+                  Bringing a French classic to everyone's meal. Ham and cheese wrapped delicately in a finely prepared chicken rolled in breading, this meal will surprise you with each bite as it reveals the glazed soft flavore hidden from within. A perfect source of protein.
                 </p>
             </div>
 
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Crab Stick Temaki" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Morcon & Salad" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
     font-weight: bold;
     padding-left: 20px;">
-                        Crab Stick Temaki
+                        Morcon & Salad
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P59.00
+                        P89.00
                     </p>
                 </div>
 
                 <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A healthy meal for people who are always on the go. This Japanese food is wrapped in nori, which is a nutritious seaweed product. Inside you will savor a mixed delight of mango, cucumber, carrot, and lettuce with rice.
+                  This different take on morcon will flood your mouth with the most delicious taste a food can give. It's tender ground pork riddled with different vegetables steamed under low heat for hours will definitely fill your belly with happiness.
                 </p>
             </div>
 
@@ -308,21 +183,21 @@ label img {
             </div>
 
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Crab Stick Temaki" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Maki Rolls 8pcs" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
     font-weight: bold;
     padding-left: 20px;">
-                        Crab Stick Temaki
+                        Maki Rolls 8pcs
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P59.00
+                        P89.00
                     </p>
                 </div>
 
                 <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A healthy meal for people who are always on the go. This Japanese food is wrapped in nori, which is a nutritious seaweed product. Inside you will savor a mixed delight of mango, cucumber, carrot, and lettuce with rice.
+                  A traditional Japanese food with a hint of Filipino taste. Maki with fresh cucumber and mango bundled with crab meat, wrapped in glistening Japanese rice and rolled in healthy nori, made of nutritious seaweed. Perfect for people who are shying away from red meat.
                 </p>
             </div>
 
@@ -330,44 +205,48 @@ label img {
 
            <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Crab Stick Temaki" />
+                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Kimchi" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
     font-weight: bold;
     padding-left: 20px;">
-                        Crab Stick Temaki
+                        Kimchi
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P59.00
+                        P70.00
                     </p>
                 </div>
 
                 <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A healthy meal for people who are always on the go. This Japanese food is wrapped in nori, which is a nutritious seaweed product. Inside you will savor a mixed delight of mango, cucumber, carrot, and lettuce with rice.
+                  Order 60 grams of kimchi in Angeles City through Tienda and savor the taste of this traditional Korean side dish that many Filipinos enjoy with their meals. Made from fresh ingredients and seasonings imported from South Korea, this delectable side dish will surely make your day more "hotter".
                 </p>
             </div>
 
-            <div class="col-md-6 col-sm-12">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Crab Stick Temaki" />
-                <div class="row">
-                    <h2 class="col-xs-6" style="    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;">
-                        Crab Stick Temaki
-                    </h2>
-                    <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P59.00
-                    </p>
-                </div>
-
-                <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A healthy meal for people who are always on the go. This Japanese food is wrapped in nori, which is a nutritious seaweed product. Inside you will savor a mixed delight of mango, cucumber, carrot, and lettuce with rice.
-                </p>
-            </div>
+           
 
           </div>
+
+          <hr>
+     <div class="row">
+
+        <form class="form-inline" style=" font-size: 2em; display: block;text-align: center;">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Enter your name here">
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="branch">
+              <option value="SM City Clark">SM City Clark</option>
+              <option value="New Street">New Street</option>
+              <option value="Living Rock 1">Living Rock 1</option>
+              <option value="Living Rock 2">Living Rock 2</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Order</button>
+        </form>
+     </div>
+
+
      </div>
 
         <!-- end content -->
@@ -458,6 +337,8 @@ label img {
     </div>
     <div id="back-top"><a data-toggle="tooltip" title="Back to Top" href="javascript:void(0)" class="backtotop"><i class="fa fa-chevron-up"></i></a></div>
   </footer>
+
+
   <!--Footer End-->
   <!-- Twitter Side Block Start --><!-- 
   <div id="twitter_footer" class="twit-right sort-order-1">
