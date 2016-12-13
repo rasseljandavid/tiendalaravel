@@ -253,7 +253,7 @@ window.smartsupp||(function(d) {
           
            <input type="hidden" name="orders" id="order-hidden" value="" />
           
-          <button type="submit" class="btn btn-primary btn-lg">Order</button>
+          <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
      </div>
 
@@ -404,7 +404,7 @@ window.smartsupp||(function(d) {
 
     $('#companyOrder').on('submit', function(e) {
 
-
+       $("#submit").attr("disabled", "disabled");
 
         var $form = $(this);
         var $submitButton = $form.find('btn');
