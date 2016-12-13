@@ -95,7 +95,7 @@ window.smartsupp||(function(d) {
           </div>
           <!-- Logo End -->
           <!-- Mini Cart Start-->
-          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right visible-desktop" id="minicart-container">
+          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right visible-lg-block" id="minicart-container">
                 <!--  <form class="form-inline">
   <div class="form-group">
     <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter your name here">
@@ -124,7 +124,7 @@ window.smartsupp||(function(d) {
 
       <div class="container">
 
-          <div class="row visible-desktop">
+          <div class="row visible-lg-block">
             <img src="/image/infographic.jpg" alt="how to order" class="img-responsive" style="margin:auto; " />
           </div>
           <hr />
