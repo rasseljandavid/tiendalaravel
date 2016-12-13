@@ -237,7 +237,7 @@ window.smartsupp||(function(d) {
           <hr>
      <div class="row">
 
-        <form class="form-inline" style=" font-size: 2em; display: block;text-align: center;" id="companyOrder">
+        <form class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
           <div class="form-group">
             <input type="text" class="form-control" required name="name" placeholder="Enter your name here">
