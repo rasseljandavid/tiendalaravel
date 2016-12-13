@@ -311,5 +311,9 @@ class CartController extends Controller
         
     }   
 
+    public function cloudstaff() {
+        return view('cart.cloudstaff');
+    }
+
     
 }
