@@ -9,8 +9,9 @@ use App\Http\Requests;
 // models
 use App\Models\Ecommerce\Order;
 use App\Models\Admin\Admin;
-use App\User;
+use App\companyOrder;
 use Carbon\Carbon;
+use App\User;
 
 
 class AdminController extends Controller
@@ -29,6 +30,9 @@ class AdminController extends Controller
     	$shipped   = Order::shipped()->orderBy('created_at', 'desc')->get();
         $cancelled = Order::cancelled()->orderBy('created_at', 'desc')->get();
         $cancelled = Order::cancelled()->orderBy('created_at', 'desc')->get();
+        $companyOrders = companyOrder::orderBy('id','desc')->get();
+
+
         $cbc = array();//cancelled by customer
         $cba = array();//cancelled by admin
         foreach ($cancelled as $key => $order) {
@@ -51,13 +55,15 @@ class AdminController extends Controller
         $ctrShipped   = Order::shipped()->count();
         $ctrCbc = count($cbc);
         $ctrCba = count($cba);
+        $ctrCompany = count($companyOrders);
         $now = Carbon::now()->format('m/d/Y g:i A');
         $tom = Carbon::tomorrow()->format('m/d/Y g:i A');
         
 
 
     	return view('admin.dashboard', 
-            compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc', 'cba',
-                    'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped','now','tom'));
+            compact('received', 'onProcess', 'onTransit', 'shipped', 'cbc', 'cba', 'companyOrders',
+                    'ctrReceived', 'ctrCbc', 'ctrCba', 'ctrOnProcess', 'ctrOnTransit', 'ctrShipped', 'ctrCompany',
+                    'now','tom'));
     }
 }

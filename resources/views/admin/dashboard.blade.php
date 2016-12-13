@@ -17,7 +17,7 @@
           @include('admin._ordertable', ['orders'=>$received, 'new'=>$ctrReceived, 'title'=>'New Received Orders', 'class'=>'primary'])
 
 
-
+          @include('admin._companyOrders', ['orders'=>$companyOrders, 'new'=>$ctrCompany, 'title'=>'Company Orders', 'class'=>'default'])
 
           @include('admin._ordertable', ['orders'=>$onProcess, 'new'=>$ctrOnProcess, 'title'=>'On Process', 'class'=>'success'])
 
