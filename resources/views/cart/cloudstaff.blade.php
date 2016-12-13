@@ -240,7 +240,7 @@ window.smartsupp||(function(d) {
         <form class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
           <div class="form-group">
-            <input type="text" class="form-control" required name="name" placeholder="Enter your name here" style="height: 44px; width: 180px;">
+            <input type="text" class="form-control" required name="name" placeholder="Enter your name here" style="height: 44px;">
           </div>
           <div class="form-group">
             <select class="form-control" name="branch" style="height: 44px;">
