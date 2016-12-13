@@ -15,7 +15,7 @@
         {{ $product->price }}
       @endif
     </p>
-    <p>Qty: {{$product->quantity}}</p>
+    <p>Available Stocks: {{$product->quantity}}</p>
     <div class="rating"> 
       <?php $rate = $product->rating ?>
       @for( $i=1 ; $i <= 5; $i++)
