@@ -312,6 +312,16 @@ window.smartsupp||(function(d) {
           <div class="form-group">
             <input type="text" class="form-control" required name="name" placeholder="Enter your name here" style="height: 44px;">
           </div>
+
+          <div class="form-group">
+            <select class="form-control" name="deliverytime" style="height: 44px;">
+              <option value="11AM">11AM</option>
+              <option value="1PM"> 1PM </option>
+              <option value="3PM"> 3PM </option>
+              <option value="5PM"> 5PM </option>
+            </select>
+          </div>
+
           <div class="form-group">
             <select class="form-control" name="branch" style="height: 44px;">
               <option value="SM City Clark">SM City Clark</option>
@@ -603,6 +613,8 @@ $('.input-number').change(function() {
               confirmButtonText: "Cool"
             });
 
+            $("#submit").removeAttr("disabled");
+
             return false;
         }
 
@@ -612,7 +624,7 @@ $('.input-number').change(function() {
             type: 'post',
             dataType: 'json',
             success: function(response, status, xhr, form) {
-                swal("Good job!", "We will prepare your food now.", "success");
+                swal("Good job!", "Your food is now being prepared.  If you have questions, don't hesitate to call us at ‎(045) 308-5345.", "success");
 
                 setTimeout(function(){
                     location.href = "/cloudstaff"
