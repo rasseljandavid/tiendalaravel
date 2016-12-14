@@ -129,7 +129,7 @@ window.smartsupp||(function(d) {
           </div>
           <hr />
           <div class="row">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2811.jpg" alt="Chicken Cordon Bleu" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
@@ -139,7 +139,7 @@ window.smartsupp||(function(d) {
                         Chicken Cordon Bleu
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P89.00
+                        P<span class="item-price">89.00</span>
                     </p>
                 </div>
 
@@ -148,7 +148,7 @@ window.smartsupp||(function(d) {
                 </p>
             </div>
 
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2812.jpg" alt="Morcon & Salad" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
@@ -158,7 +158,7 @@ window.smartsupp||(function(d) {
                         Morcon & Salad
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P89.00
+                        P<span class="item-price">89.00</span>
                     </p>
                 </div>
 
@@ -170,7 +170,7 @@ window.smartsupp||(function(d) {
           </div>
 
            <div class="row">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2810.jpg" alt="Crab Stick Temaki" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
@@ -180,7 +180,7 @@ window.smartsupp||(function(d) {
                         Crab Stick Temaki
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P59.00
+                        P<span class="item-price">59.00</span>
                     </p>
                 </div>
 
@@ -189,7 +189,7 @@ window.smartsupp||(function(d) {
                 </p>
             </div>
 
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Maki Rolls 8pcs" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
@@ -199,7 +199,7 @@ window.smartsupp||(function(d) {
                         Maki Rolls 8pcs
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P89.00
+                        P<span class="item-price">89.00</span>
                     </p>
                 </div>
 
@@ -211,7 +211,7 @@ window.smartsupp||(function(d) {
           </div>
 
            <div class="row">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2813.jpg" alt="Kimchi" />
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
@@ -221,7 +221,7 @@ window.smartsupp||(function(d) {
                         Kimchi
                     </h2>
                     <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P70.00
+                        P<span class="item-price">70.00</span>
                     </p>
                 </div>
 
@@ -236,6 +236,7 @@ window.smartsupp||(function(d) {
 
           <hr>
      <div class="row">
+      <p style="text-align: center; margin: 20px auto 10px; font-size: 1.5em; font-weight: bold;">Total: P<span id="order-total">0.00</span></p>
 
         <form class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
@@ -256,7 +257,7 @@ window.smartsupp||(function(d) {
           <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
 
-        <p style="text-align: center; margin: 20px auto 10px; font-size: 1.5em;">For bulk orders, please message us on Skype at <i class="fa fa-skype" aria-hidden="true"></i> hello@tienda.ph</p>
+        <p style="font-style: italic; text-align:  center; margin: 20px auto 10px; font-size: 1.5em; color: #999;">For bulk orders, please message us on Skype at <i class="fa fa-skype" aria-hidden="true"></i> hello@tienda.ph</p>
      </div>
 
 
@@ -399,10 +400,22 @@ window.smartsupp||(function(d) {
   $(document).ready(function(){
 
     $("img.checkbox").imgCheckbox({
-        onload: function(){
-          // Do something fantastic!
+        onclick: function(){
+           calculateTotal();
         }
     });
+
+
+    function calculateTotal() {
+       
+        var total = 0;
+        $( ".imgChked" ).each(function( index ) {
+
+           total += parseFloat($(this).parents('.product').find('.item-price').text() );
+           
+        });
+        $("#order-total").text(total.toFixed(2));
+    }
 
     $('#companyOrder').on('submit', function(e) {
 
