@@ -273,9 +273,7 @@ class CartController extends Controller
         $order->purchased_at = Carbon::now();
         $order->save();
 
-
         if(config('app.env') != 'local'){
-
 
             if(!$order->emailInvoice()){
                 flash('success', 'You\'re order has been submitted');

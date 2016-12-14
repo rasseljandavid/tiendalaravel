@@ -454,13 +454,14 @@ class Order extends Model
             $o->status = 1;
             $o->update(); 
 
-            $sms = new \SMSnotification();
-            // i put it to if so that no error will occur if failed
-            if($sms->send($o->user->firstname.' '.$o->user->lastname)){
-                //do nothing
-            }
+            // $sms = new \SMSnotification();
+            // // i put it to if so that no error will occur if failed
+            // if($sms->send($o->user->firstname.' '.$o->user->lastname)){
+            //     //do nothing
+            // }
 
-
+            $chikka = new \Chikka();
+            return $chikka->sendMsg($o->user->getFullname().'. Order# '.$o->salesOrderNo);
         }
 
         return $orders;

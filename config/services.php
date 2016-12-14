@@ -52,4 +52,10 @@ return [
         'number' => env('SMS_CP_NUMBER')
     ],
 
+    'chikka' => [
+        'id' => env('CHIKKA_API_ID'),
+        'key' => env('CHIKKA_API_KEY'),
+        'number' => env('CHIKKA_CP_NUMBER'),
+        'shortcode' => env('CHIKKA_SHORTCODE')
+    ],
 ];
