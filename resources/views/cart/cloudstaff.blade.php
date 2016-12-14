@@ -94,19 +94,7 @@ window.smartsupp||(function(d) {
             <div id="logo"><a href="/"><img style="height: 60px;" class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda - Online Grocery & Delivery in Pampanga" /></a></div>
           </div>
           <!-- Logo End -->
-          <!-- Mini Cart Start-->
-          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right visible-lg-block" id="minicart-container">
-                <!--  <form class="form-inline">
-  <div class="form-group">
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter your name here">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form> -->
-
-<img style="height: 60px; margin: auto;" class="img-responsive" src="/image/cloudstaff-logo.png"  />
-
-
-          </div>
+        
         </div>
       </div>
     </header>
