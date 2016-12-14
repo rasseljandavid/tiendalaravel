@@ -69,7 +69,7 @@ class Chikka{
     {
         $query_string .= '&'.$key.'='.$frow;
     }
-		// return $data;
+		// return $data; 
 		// $post = http_build_query($data);
 
 		try{
