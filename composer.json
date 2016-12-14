@@ -30,7 +30,8 @@
             "app/Helpers/TiendaInventory.php",
             "app/Helpers/Slugger.php",
             "app/Helpers/Flasher.php",
-            "app/Helpers/SMSnotification.php"
+            "app/Helpers/SMSnotification.php",
+            "app/Helpers/Chikka.php"
         ]
     },
     "autoload-dev": {
