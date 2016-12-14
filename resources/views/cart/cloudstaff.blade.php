@@ -52,20 +52,19 @@ window.smartsupp||(function(d) {
 
 
 <style type="text/css">
-.order-steps .circle-no { width:28px;line-height:1.4;color:#fff;float:left;margin-bottom:0;border-radius:49%;font-size:20px;background-color:#ae242a;text-align:center }
-.keep-simple {font-family:open_sanssemibold}
-.step-text {font-family:open_sansbold;font-size:16px;line-height:2}
 
-.pointer1,.pointer2,.pointer3{width:75px;position:absolute;right:-25px}
-.pointer1,.pointer3{top:-18px}
-.pointer2{top:25px;transform:rotateX(180deg);-webkit-transform:rotateX(180deg)}
-
-.pointer3{right:-65px}
-
-.greentext {
-    color: #2c982c;
+.add-minus-bar {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 0px;
 }
 
+.add-minus-bar .input-number {
+    height: 32px;
+    text-align: center;
+    font-size: 20px;
+}
   </style>
 
 
@@ -90,11 +89,24 @@ window.smartsupp||(function(d) {
       <div class="container">
         <div class="table-container">
           <!-- Logo Start -->
-          <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
+          <div class="col-table-cell col-xs-6 inner">
             <div id="logo"><a href="/"><img style="height: 60px;" class="img-responsive" src="/image/logo.png" title="Tienda" alt="Tienda - Online Grocery & Delivery in Pampanga" /></a></div>
           </div>
           <!-- Logo End -->
-        
+          <!-- Mini Cart Start-->
+          <div class="col-table-cell col-xs-6 pull-right" id="minicart-container">
+                <!--  <form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter your name here">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+              
+      <p style="text-align: right; margin: 20px auto 10px; font-size: 2em; font-weight: bold; color: #ae242a">Total: P<span id="order-total">0.00</span></p>
+
+
+          </div>
         </div>
       </div>
     </header>
@@ -119,6 +131,20 @@ window.smartsupp||(function(d) {
           <div class="row">
             <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2811.jpg" alt="Chicken Cordon Bleu" />
+                <div class="input-group add-minus-bar">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2811">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="item_2811" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2811">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
+
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -134,10 +160,27 @@ window.smartsupp||(function(d) {
                 <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
                   Bringing a French classic to everyone's meal. Ham and cheese wrapped delicately in a finely prepared chicken rolled in breading, this meal will surprise you with each bite as it reveals the glazed soft flavore hidden from within. A perfect source of protein.
                 </p>
+
+
+
             </div>
 
             <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2812.jpg" alt="Morcon & Salad" />
+                <div class="input-group add-minus-bar">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2812">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="item_2812" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2812">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
+                
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -160,6 +203,19 @@ window.smartsupp||(function(d) {
            <div class="row">
             <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2810.jpg" alt="Crab Stick Temaki" />
+                <div class="input-group add-minus-bar">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2810">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="item_2810" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2810">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -179,6 +235,19 @@ window.smartsupp||(function(d) {
 
             <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Maki Rolls 8pcs" />
+                <div class="input-group add-minus-bar">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2823">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="item_2823" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2823">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -201,6 +270,19 @@ window.smartsupp||(function(d) {
            <div class="row">
             <div class="col-md-6 col-sm-12 product">
                 <img class="checkbox img-responsive" src="/image/product/featured/2813.jpg" alt="Kimchi" />
+                <div class="input-group add-minus-bar">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2813">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="item_2813" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2813">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
                 <div class="row">
                     <h2 class="col-xs-6" style="    margin-top: 0;
     font-size: 20px;
@@ -224,7 +306,6 @@ window.smartsupp||(function(d) {
 
           <hr>
      <div class="row">
-      <p style="text-align: center; margin: 20px auto 10px; font-size: 1.5em; font-weight: bold;">Total: P<span id="order-total">0.00</span></p>
 
         <form class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
@@ -387,21 +468,106 @@ window.smartsupp||(function(d) {
 <script type="text/javascript">
   $(document).ready(function(){
 
-    $("img.checkbox").imgCheckbox({
-        onclick: function(){
-           calculateTotal();
+    // $("img.checkbox").imgCheckbox({
+    //     onclick: function(){
+    //        calculateTotal();
+    //     }
+    // });
+
+    $('.btn-number').click(function(e){
+        e.preventDefault();
+        
+        fieldName = $(this).attr('data-field');
+        type      = $(this).attr('data-type');
+        var input = $("input[name='"+fieldName+"']");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            if(type == 'minus') {
+                
+                if(currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                } 
+                if(parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+
+            } else if(type == 'plus') {
+
+                if(currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if(parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+
+            }
+        } else {
+            input.val(0);
         }
+        calculateTotal();
+    });
+    $('.input-number').focusin(function(){
+       $(this).data('oldValue', $(this).val());
+    });
+$('.input-number').change(function() {
+    
+    minValue =  parseInt($(this).attr('min'));
+    maxValue =  parseInt($(this).attr('max'));
+    valueCurrent = parseInt($(this).val());
+    
+    name = $(this).attr('name');
+    if(valueCurrent >= minValue) {
+        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+    } else {
+        alert('Sorry, the minimum value was reached');
+        $(this).val($(this).data('oldValue'));
+    }
+    if(valueCurrent <= maxValue) {
+        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+    } else {
+        alert('Sorry, the maximum value was reached');
+        $(this).val($(this).data('oldValue'));
+    }
+    
+});
+    $(".input-number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+             // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) || 
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+
+        
+    });
+
+    $(".input-number").keyup(function (e) {
+
+
+        if( $(this).val() == "" ) {
+            $(this).val("0");
+        }
+        calculateTotal();
     });
 
 
     function calculateTotal() {
        
         var total = 0;
-        $( ".imgChked" ).each(function( index ) {
+        $( ".product .input-number" ).each(function( index ) {
 
-           total += parseFloat($(this).parents('.product').find('.item-price').text() );
+
+           total += parseFloat($(this).parents('.product').find('.item-price').text() ) * parseInt($(this).val());
            
         });
+
         $("#order-total").text(total.toFixed(2));
     }
 
@@ -416,8 +582,13 @@ window.smartsupp||(function(d) {
 
         var orders = [];
 
-        $( ".imgChked" ).each(function( index ) {
-          orders.push( $(this).find('img').attr('alt') );
+        $( ".product .input-number" ).each(function( index ) {
+
+          if($(this).val() > 0) {
+              var order_text = $(this).val() + ' of ' + $(this).parents('.product').find('img').attr('alt');
+              orders.push( order_text );
+          }
+
         });
 
         console.log(JSON.stringify(orders));
