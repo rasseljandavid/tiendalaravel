@@ -15,6 +15,7 @@ use View;
 
 // models
 use App\Models\Ecommerce\OrderItem;
+use App\Models\Ecommerce\Category;
 use App\Models\Ecommerce\Product;
 use App\Models\Ecommerce\Status;
 use App\Models\Ecommerce\Order;
@@ -313,13 +314,16 @@ class CartController extends Controller
     }   
 
     public function cloudstaff() {
-        return view('cart.cloudstaff');
+
+        $category = Category::fromSlug("food-delivery")->first();
+        $products = $category->getProductByCategory();
+        return view('cart.cloudstaff', compact('products'));
     }
 
     public function companyOrder(Request $request ) {
 
         $companyOrder = new companyOrder();
-        $companyOrder->name = $request['name'];
+        $companyOrder->name = $request['name']. ' / ' . $request['mobile'];
         $companyOrder->branch = $request['branch'] . ' / ' . $request['deliverytime'];
         $companyOrder->orders = $request['orders'];
         
