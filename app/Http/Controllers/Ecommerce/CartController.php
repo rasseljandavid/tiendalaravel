@@ -318,8 +318,9 @@ class CartController extends Controller
 
         $companyOrder = new companyOrder();
         $companyOrder->name = $request['name'];
-        $companyOrder->branch = $request['branch'];
+        $companyOrder->branch = $request['branch'] . ' / ' . $request['deliverytime'];
         $companyOrder->orders = $request['orders'];
+        
         $returnVal = $companyOrder->save();
 
         return response()->json($returnVal, 200);
