@@ -16,7 +16,7 @@
         @foreach($orders as $o)
           @if($o)
             <tr>
-              <td>>{{ $o->id }}</td>
+              <td>{{ $o->id }}</td>
               <td>{{ $o->name}}</td>
               <td>{{ $o->branch }}</td>
               <td>{{ $o->orders }}</td>
