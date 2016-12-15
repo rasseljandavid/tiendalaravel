@@ -17,8 +17,8 @@
           
           @include('admin._ordertable', ['orders'=>$received, 'all'=>$ctr->received, 'olink'=>'received', 'title'=>'New Orders', 'class'=>'primary'])
 
-          @include('admin._companyOrders', ['orders'=>$companyOrders, 'new'=>$ctrCompany, 'title'=>'Company Orders', 'class'=>'default'])
-          
+          @include('admin._companyOrders', ['orders'=>$companyOrders, 'new'=>$ctr->company, 'title'=>'Company Orders', 'class'=>'default'])
+
           @include('admin._ordertable', ['orders'=>$cbu, 'all'=>$ctr->cbu, 'olink'=>'cancelled-by-user', 'title'=>'Cancelled By User', 'class'=>'danger'])
 
           @include('admin._ordertable', ['orders'=>$cba, 'all'=>$ctr->cba, 'olink'=>'cancelled-by-admin', 'title'=>'Cancelled By Admin', 'class'=>'default'])
