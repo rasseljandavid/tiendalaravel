@@ -65,8 +65,30 @@ window.smartsupp||(function(d) {
     text-align: center;
     font-size: 20px;
 }
-  </style>
 
+.grandtotal {
+
+  text-align: right; margin: 20px auto 10px; font-size: 2em; font-weight: bold; color: #ae242a
+
+}
+
+
+.product-title {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.product-price {
+  padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;
+}
+
+.product-body {
+  padding-left: 5px; padding-right: 5px;
+}
+
+  </style>
 
 </head>
 <body onunload="">
@@ -103,7 +125,7 @@ window.smartsupp||(function(d) {
 </form> -->
 
               
-      <p style="text-align: right; margin: 20px auto 10px; font-size: 2em; font-weight: bold; color: #ae242a">Total: P<span id="order-total">0.00</span></p>
+      <p class='grandtotal'>Total: P<span id="order-total">0.00</span></p>
 
 
           </div>
@@ -129,176 +151,43 @@ window.smartsupp||(function(d) {
           </div>
           <hr />
           <div class="row">
-            <div class="col-md-6 col-sm-12 product">
-                <img class="checkbox img-responsive" src="/image/product/featured/2811.jpg" alt="Chicken Cordon Bleu" />
+
+            @foreach($products as $product)
+                <div class="col-md-6 col-sm-12 product">
+                <img class="checkbox img-responsive" src="/image/product/featured/{{$product->id}}.jpg" alt="{{$product->title}}" />
                 <div class="input-group add-minus-bar">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2811">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_{{$product->id}}">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
-                    <input type="text" name="item_2811" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
+                    <input type="text" name="item_{{$product->id}}" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2811">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_{{$product->id}}">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
                 </div>
 
                 <div class="row">
-                    <h2 class="col-xs-6" style="    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;">
-                        Chicken Cordon Bleu
+                    <h2 class="col-xs-6 product-title">
+                        {{$product->title}}
                     </h2>
-                    <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P<span class="item-price">89.00</span>
+                    <p class="col-xs-6 product-price price">
+                        P<span class="item-price">{{$product->salePrice}}</span>
                     </p>
                 </div>
 
-                <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  Bringing a French classic to everyone's meal. Ham and cheese wrapped delicately in a finely prepared chicken rolled in breading, this meal will surprise you with each bite as it reveals the glazed soft flavore hidden from within. A perfect source of protein.
+                <p class="col-md-12 product-body">
+                  {{$product->body}}
                 </p>
 
 
 
             </div>
 
-            <div class="col-md-6 col-sm-12 product">
-                <img class="checkbox img-responsive" src="/image/product/featured/2812.jpg" alt="Morcon & Salad" />
-                <div class="input-group add-minus-bar">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2812">
-                            <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="item_2812" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2812">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                
-                <div class="row">
-                    <h2 class="col-xs-6" style="    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;">
-                        Morcon & Salad
-                    </h2>
-                    <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P<span class="item-price">89.00</span>
-                    </p>
-                </div>
 
-                <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  This different take on morcon will flood your mouth with the most delicious taste a food can give. It's tender ground pork riddled with different vegetables steamed under low heat for hours will definitely fill your belly with happiness.
-                </p>
-            </div>
-
-          </div>
-
-           <div class="row">
-            <div class="col-md-6 col-sm-12 product">
-                <img class="checkbox img-responsive" src="/image/product/featured/2810.jpg" alt="Crab Stick Temaki" />
-                <div class="input-group add-minus-bar">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2810">
-                            <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="item_2810" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2810">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                <div class="row">
-                    <h2 class="col-xs-6" style="    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;">
-                        Crab Stick Temaki
-                    </h2>
-                    <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P<span class="item-price">59.00</span>
-                    </p>
-                </div>
-
-                <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A healthy meal for people who are always on the go. This Japanese food is wrapped in nori, which is a nutritious seaweed product. Inside you will savor a mixed delight of mango, cucumber, carrot, and lettuce with rice.
-                </p>
-            </div>
-
-            <div class="col-md-6 col-sm-12 product">
-                <img class="checkbox img-responsive" src="/image/product/featured/2823.jpg" alt="Maki Rolls 8pcs" />
-                <div class="input-group add-minus-bar">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2823">
-                            <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="item_2823" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2823">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                <div class="row">
-                    <h2 class="col-xs-6" style="    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;">
-                        Maki Rolls 8pcs
-                    </h2>
-                    <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P<span class="item-price">89.00</span>
-                    </p>
-                </div>
-
-                <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  A traditional Japanese food with a hint of Filipino taste. Maki with fresh cucumber and mango bundled with crab meat, wrapped in glistening Japanese rice and rolled in healthy nori, made of nutritious seaweed. Perfect for people who are shying away from red meat.
-                </p>
-            </div>
-
-          </div>
-
-           <div class="row">
-            <div class="col-md-6 col-sm-12 product">
-                <img class="checkbox img-responsive" src="/image/product/featured/2813.jpg" alt="Kimchi" />
-                <div class="input-group add-minus-bar">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="item_2813">
-                            <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="item_2813" class="form-control input-number" value="0" min="0" max="999" maxlength=3>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item_2813">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                <div class="row">
-                    <h2 class="col-xs-6" style="    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;">
-                        Kimchi
-                    </h2>
-                    <p class="col-xs-6 price" style="padding-right: 25px; text-align: right; font-size: 20px; font-weight: bold;">
-                        P<span class="item-price">70.00</span>
-                    </p>
-                </div>
-
-                <p class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
-                  Order 60 grams of kimchi in Angeles City through Tienda and savor the taste of this traditional Korean side dish that many Filipinos enjoy with their meals. Made from fresh ingredients and seasonings imported from South Korea, this delectable side dish will surely make your day more "hotter".
-                </p>
-            </div>
+            @endforeach
 
            
 
@@ -311,7 +200,11 @@ window.smartsupp||(function(d) {
         <form onkeypress="return event.keyCode != 13;" class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
           <div class="form-group">
-            <input type="text" class="form-control" required name="name" placeholder="Enter your name here" style="height: 44px;">
+            <input type="text" class="form-control" required name="name" placeholder="Name" style="height: 44px;">
+          </div>
+
+           <div class="form-group">
+            <input type="text" class="form-control" name="mobile" placeholder="Mobile number" style="height: 44px;">
           </div>
 
           <div class="form-group">
@@ -337,7 +230,7 @@ window.smartsupp||(function(d) {
           <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
 
-        <p style="font-style: italic; text-align:  center; margin: 20px auto 10px; font-size: 1.5em; color: #999;">For bulk orders, please message us on Skype at <i class="fa fa-skype" aria-hidden="true"></i> hello@tienda.ph</p>
+        <p style="font-style: italic; text-align:  center; margin: 20px auto 10px; font-size: 1.5em; color: #999;">For bulk orders of 50 and up, please message us on Skype at <i class="fa fa-skype" aria-hidden="true"></i>hello@tienda.ph</p>
      </div>
 
 
