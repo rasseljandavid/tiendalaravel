@@ -489,7 +489,7 @@ $('.input-number').change(function() {
         $( ".product .input-number" ).each(function( index ) {
 
           if($(this).val() > 0) {
-              var order_text = $(this).val() + ' of ' + $(this).parents('.product').find('img').attr('alt');
+              var order_text = $(this).val() + ' ' + $(this).parents('.product').find('img').attr('alt');
               orders.push( order_text );
               orders_str += order_text + "<br />";
           }

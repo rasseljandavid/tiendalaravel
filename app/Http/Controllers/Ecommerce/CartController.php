@@ -342,6 +342,7 @@ class CartController extends Controller
 
     public function companyOrder(Request $request ) {
 
+        
         $companyOrder = new companyOrder();
 
         $companyOrder->name = $request['name'];
@@ -349,15 +350,21 @@ class CartController extends Controller
         $companyOrder->company = $request['company'];
         $companyOrder->branch = $request['branch'];
         $companyOrder->deliverydate = $request['deliverytime'];
-        $companyOrder->orders = $request['orders'];
+
+        $orders = json_decode($_POST['orders']);
+        $order_txt = implode(", ", $orders);
+        $companyOrder->orders = $order_txt;
 
         $returnVal = $companyOrder->save();
 
         if(strlen(trim($request['mobile'])) == 11) {
+            $name = explode(" ", $request['name']);
+
 
             $chikkaAPI = new \ChikkaSMS();
             $messageID = md5(microtime().'abc3');// do not delete.. we need it to be unique
-            $text = 'We received your order # ' . date('ymd') . $companyOrder->id . ' and it will be processed on time. If you have questions or suggestions, please call 045-308-5345 or add us on Skype: hello@tienda.ph. Thanks for choosing Tienda!';
+            $text = "Hi {$name[0]}! We received your order of {$order_txt} and it will be delivered on {$request['deliverytime']}. If you have questions or suggestions, please call ‎‎‎045-308-5345 or add us on Skype: hello@tienda.ph. Thanks for choosing Tienda!";
+
             $number = $request['mobile'];
             $number = '63'. substr($number, 1);//remove 0
             $response = $chikkaAPI->sendText($messageID, $number, $text);
