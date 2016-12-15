@@ -337,6 +337,12 @@ class CartController extends Controller
             $number = $request['mobile'];
             $number = '63'. substr($number, 1);//remove 0
             $response = $chikkaAPI->sendText($messageID, $number, $text);
+
+            //Alert to rina
+            $messageID = md5(microtime().'abc34');// do not delete.. we need it to be unique
+            $text = 'This is a notification that someone ordered in Tienda Food Delivery from Cloudstaff at ' . $request['deliverytime'];
+            $number = '639258166813';
+            $response = $chikkaAPI->sendText($messageID, $number, $text);
         }
 
         return response()->json($returnVal, 200);
