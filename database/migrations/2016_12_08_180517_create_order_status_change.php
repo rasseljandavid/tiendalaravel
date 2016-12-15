@@ -31,6 +31,6 @@ class CreateOrderStatusChange extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_status_change');
+        Schema::dropIfExists('order_status_changes');
     }
 }
