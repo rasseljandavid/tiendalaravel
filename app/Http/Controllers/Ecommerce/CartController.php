@@ -350,7 +350,7 @@ class CartController extends Controller
         $companyOrder->company = $request['company'];
         $companyOrder->branch = $request['branch'];
         $companyOrder->deliverydate = $request['deliverytime'];
-
+        $companyOrder->total = $request['total'];
         $orders = json_decode($_POST['orders']);
         $order_txt = implode(", ", $orders);
         $companyOrder->orders = $order_txt;
@@ -359,11 +359,12 @@ class CartController extends Controller
 
         if(strlen(trim($request['mobile'])) == 11) {
             $name = explode(" ", $request['name']);
+            $total = "P" . number_format($request['total'], 2);
 
 
             $chikkaAPI = new \ChikkaSMS();
             $messageID = md5(microtime().'abc3');// do not delete.. we need it to be unique
-            $text = "Hi {$name[0]}! We received your order of {$order_txt} and it will be delivered on {$request['deliverytime']}. If you have questions or suggestions, please call (045) 308-5345 or add us on Skype: hello@tienda.ph. Thanks for choosing Tienda!";
+            $text = "Hi {$name[0]}! We received your order of {$order_txt} and it will be delivered on {$request['deliverytime']}. Total is: {$total} If you have questions or suggestions, please call (045) 308-5345 or add us on Skype: hello@tienda.ph. Thanks for choosing Tienda!";
 
             $number = $request['mobile'];
             $number = '63'. substr($number, 1);//remove 0

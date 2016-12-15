@@ -12,7 +12,10 @@
           <th>Company</th>
           <th>Branch</th>
           <th>Orders</th>
+          <th>Total</th>
           <th>Delivery Date</th>
+
+          
         </tr>
       </thead>
       <tbody>
@@ -25,6 +28,7 @@
               <td>{{ $o->company}}</td>
               <td>{{ $o->branch }}</td>
               <td>{{ $o->orders }}</td>
+              <td>P{{ number_format($o->total, 2) }}</td>
               <td>{{ $o->deliverydate }}</td>
             </tr>
           @endif

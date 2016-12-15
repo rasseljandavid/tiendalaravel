@@ -226,6 +226,7 @@ window.smartsupp||(function(d) {
 
           <input type="hidden" id="ccompany" name="company" value="Cloudstaff" />
           <input type="hidden" name="orders" id="order-hidden" />
+          <input type="hidden" name="total" id="total-hidden" />
           <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
 
@@ -497,6 +498,7 @@ $('.input-number').change(function() {
         });
 
         $("#order-hidden").val(JSON.stringify(orders));
+        $("#total-hidden").val($("#order-total").text());
 
         if(orders.length < 1) {
             swal({

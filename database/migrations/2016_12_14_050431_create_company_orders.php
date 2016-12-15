@@ -20,6 +20,7 @@ class CreateCompanyOrders extends Migration
             $table->string('company');
             $table->string('branch');
             $table->text('orders');
+            $table->double('total', 10, 4)->default(0);
             $table->string('deliverydate');
             $table->timestamps();
         });
