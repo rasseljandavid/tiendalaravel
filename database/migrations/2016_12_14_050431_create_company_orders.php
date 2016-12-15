@@ -16,8 +16,11 @@ class CreateCompanyOrders extends Migration
         Schema::create('companyOrders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('mobile')->nullable();
+            $table->string('company');
             $table->string('branch');
             $table->text('orders');
+            $table->string('deliverydate');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateCompanyOrders extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_status_change');
+        Schema::dropIfExists('companyOrders');
     }
 }
