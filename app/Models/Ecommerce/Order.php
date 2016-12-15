@@ -456,6 +456,11 @@ class Order extends Model
             $o->status = 1;
             $o->update(); 
 
+            $messageID = md5(microtime().'abc1');
+            $text = 'New Order in Tienda.ph from '.$o->user->getFullname().' Order# '.$o->salesOrderNo;
+            $number = '639258166813';
+            $response = $chikkaAPI->sendText($messageID, $number, $text);
+
             // $sms = new \SMSnotification();
             // // i put it to if so that no error will occur if failed
             // if($sms->send($o->user->firstname.' '.$o->user->lastname)){
