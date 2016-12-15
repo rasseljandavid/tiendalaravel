@@ -315,7 +315,7 @@ class CartController extends Controller
     public function cloudstaff() {
 
         //Slots of available delivery
-        $slots = ["5" => "5AM", "11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
+        $slots = ["11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
 
         //Get the current time
         $now =  Carbon::now();
