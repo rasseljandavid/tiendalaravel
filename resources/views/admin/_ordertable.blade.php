@@ -2,7 +2,7 @@
   <div class="panel panel-{{$class}}">
     <!-- Default panel contents -->
     <div class="panel-heading">{{ $title }}
-      <a href="/all-orders/received" class="pull-right" style="color:black;">view all <span class="badge">{{$all}}</span></a>
+      <a href="/orders-{{$olink}}" class="pull-right" style="color:black;">view all <span class="badge">{{$all}}</span></a>
     </div>
     <!-- Table -->
     <table class="table">

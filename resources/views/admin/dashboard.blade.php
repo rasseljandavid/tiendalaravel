@@ -15,23 +15,14 @@
           @include('errors.validation')
           
           
-          @include('admin._ordertable', ['orders'=>$received, 'all'=>$ctr->received, 'title'=>'New Orders', 'class'=>'primary'])
+          @include('admin._ordertable', ['orders'=>$received, 'all'=>$ctr->received, 'olink'=>'received', 'title'=>'New Orders', 'class'=>'primary'])
 
-          @include('admin._ordertable', ['orders'=>$cbu, 'all'=>$ctr->cbu, 'title'=>'Cancelled By Customer', 'class'=>'danger'])
+          @include('admin._ordertable', ['orders'=>$cbu, 'all'=>$ctr->cbu, 'olink'=>'cancelled-by-user', 'title'=>'Cancelled By User', 'class'=>'danger'])
 
-          @include('admin._ordertable', ['orders'=>$cba, 'all'=>$ctr->cba, 'title'=>'Cancelled By Admin', 'class'=>'default'])
+          @include('admin._ordertable', ['orders'=>$cba, 'all'=>$ctr->cba, 'olink'=>'cancelled-by-admin', 'title'=>'Cancelled By Admin', 'class'=>'default'])
 
           {{--
           @include('admin._companyOrders', ['orders'=>$companyOrders, 'new'=>$ctrCompany, 'title'=>'Company Orders', 'class'=>'default'])
-
-          @include('admin._ordertable', ['orders'=>$onProcess, 'new'=>$ctrOnProcess, 'title'=>'On Process', 'class'=>'success'])
-
-          @include('admin._ordertable', ['orders'=>$onTransit, 'new'=>$ctrOnTransit, 'title'=>'On Transit', 'class'=>'info'])
-
-          @include('admin._ordertable', ['orders'=>$shipped, 'new'=>$ctrShipped, 'title'=>'Shipped', 'class'=>'default'])
-
-          @include('admin._ordertable', ['orders'=>$cba, 'new'=>$ctrCba, 'title'=>'Cancelled By Administrator', 'class'=>'danger'])
-
           --}}
 
           <!-- modals -->
