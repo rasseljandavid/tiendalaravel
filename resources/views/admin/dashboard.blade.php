@@ -21,9 +21,8 @@
 
           @include('admin._ordertable', ['orders'=>$cba, 'all'=>$ctr->cba, 'olink'=>'cancelled-by-admin', 'title'=>'Cancelled By Admin', 'class'=>'default'])
 
-          {{--
           @include('admin._companyOrders', ['orders'=>$companyOrders, 'new'=>$ctrCompany, 'title'=>'Company Orders', 'class'=>'default'])
-          --}}
+
 
           <!-- modals -->
           <div class="modal fade" id="EstimatedDelivery" role="dialog" data-backdrop="static" data-keyboard="false">
