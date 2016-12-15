@@ -52,4 +52,19 @@ class HomeController extends Controller
         
         return view('home.index', compact('featured', 'categories', 'suppliers'));
     }
+
+    // this is a chikka callback function if we implement chikka notification 
+    public function chikka(Request $request){
+
+        $chikkaAPI = new ChikkaSMS();
+        if ($chikkaAPI->receiveNotifications() === null) {
+                header("HTTP/1.1 400 Error");
+                echo "Message has not been processed.";
+            }
+        else{
+            echo "Message has been successfully processed.";
+        }
+        var_dump($chikkaAPI->receiveNotifications());
+            
+    }
 }

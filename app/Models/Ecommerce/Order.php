@@ -447,6 +447,8 @@ class Order extends Model
         $orders = Order::newOrder()->get();
 
         $megaventory = new \Megaventory();
+        $chikkaAPI = new \ChikkaSMS();
+
 
         foreach ($orders as $o) {
             $myOrder = (array)$megaventory->createSalesOrder($o->matchMegaventoryStructure());
@@ -460,8 +462,25 @@ class Order extends Model
             //     //do nothing
             // }
 
-            $chikka = new \Chikka();
-            return $chikka->sendMsg($o->user->getFullname().'. Order# '.$o->salesOrderNo);
+            // send to logistic
+            $messageID = md5(microtime().'abc1');
+            $text = 'New Order in Tienda.ph from '.$o->user->getFullname().' Order# '.$o->salesOrderNo;
+            $number = config('services.chikka.logistic');
+            $response = $chikkaAPI->sendText($messageID, $number, $text);
+            
+            // send to resto
+            $messageID = md5(microtime().'abc2');// do not delete.. we need it to be unique
+            $number = config('services.chikka.resto');
+            $response = $chikkaAPI->sendText($messageID, $number, $text);
+
+            // send to user/customer
+            $messageID = md5(microtime().'abc3');// do not delete.. we need it to be unique
+            $text = 'Your Order in Tienda.ph has been received with ORDER# '.$o->salesOrderNo;
+            $number = $o->user->contact;
+            if(strlen($number) == 11)
+                $number = '63'. substr($number, 1);//remove 0
+            $response = $chikkaAPI->sendText($messageID, $number, $text);
+
         }
 
         return $orders;

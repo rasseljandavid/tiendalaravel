@@ -270,6 +270,7 @@ class CartController extends Controller
             return redirect()->route('getCheckout', [$order]);
         }
 
+        
         $order->purchased_at = Carbon::now();
         $order->save();
 
@@ -318,9 +319,8 @@ class CartController extends Controller
 
         $companyOrder = new companyOrder();
         $companyOrder->name = $request['name'];
-        $companyOrder->branch = $request['branch'] . ' / ' . $request['deliverytime'];
+        $companyOrder->branch = $request['branch'];
         $companyOrder->orders = $request['orders'];
-        
         $returnVal = $companyOrder->save();
 
         return response()->json($returnVal, 200);

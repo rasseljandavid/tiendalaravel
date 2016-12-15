@@ -25,6 +25,9 @@ Route::get('/faq', 'PagesController@faq');
 Route::get('/contact-us', 'PagesController@contact');
 Route::get('/sitemap', 'PagesController@sitemap');
 
+// Chikka CAllback url
+Route::post('/chikka', 'HomeController@chikka');
+
 // Admin
 Route::get('/dashboard', 'Admin\AdminController@dashboard');
 

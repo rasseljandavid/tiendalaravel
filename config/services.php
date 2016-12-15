@@ -55,7 +55,8 @@ return [
     'chikka' => [
         'id' => env('CHIKKA_API_ID'),
         'key' => env('CHIKKA_API_KEY'),
-        'number' => env('CHIKKA_CP_NUMBER'),
+        'resto' => env('CHIKKA_RESTO_NUMBER'),
+        'logistic' => env('CHIKKA_LOGISTIC_NUMBER'),
         'shortcode' => env('CHIKKA_SHORTCODE')
     ],
 ];
