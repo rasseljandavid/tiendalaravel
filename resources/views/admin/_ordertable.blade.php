@@ -1,12 +1,14 @@
 <div class="col-md-12">
   <div class="panel panel-{{$class}}">
     <!-- Default panel contents -->
-    <div class="panel-heading">{{ $title }} <span class="badge">@if($new) {{$new}} @endif</span></div>
+    <div class="panel-heading">{{ $title }}
+      <a href="/all-orders/received" class="pull-right" style="color:black;">view all <span class="badge">{{$all}}</span></a>
+    </div>
     <!-- Table -->
     <table class="table">
       <thead>
         <tr>
-          <th>Order Number</th>
+          <th>Order #</th>
           <th>Date</th>
           <th>From</th>
           <th># of Items</th>
@@ -18,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($orders as $o)
+        @foreach($orders as $key=>$o)
           @if($o)
             <tr>
               <td><a href="/order/{{$o->id}}">{{ $o->salesOrderNo }}</a></td>
@@ -44,6 +46,9 @@
               </td>
               <td><a href="/order/email/{{$o->id}}">View Email</a></td>
             </tr>
+          @endif
+          @if($key==4)
+            @break
           @endif
         @endforeach
       </tbody>

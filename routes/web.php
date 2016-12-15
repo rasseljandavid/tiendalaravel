@@ -30,6 +30,8 @@ Route::post('/chikka', 'HomeController@chikka');
 
 // Admin
 Route::get('/dashboard', 'Admin\AdminController@dashboard');
+Route::get('/orders-{status}', 'Admin\AdminController@orders');
+
 
 // Account
 Route::get('/account', 'UsersController@show');

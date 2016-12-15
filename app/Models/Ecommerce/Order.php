@@ -121,6 +121,18 @@ class Order extends Model
         return $this->hasMany(OrderStatusChange::class);
     }
 
+    public function cancelledByAdmin(){
+        return $this->hasOne(OrderStatusChange::class)
+                    ->where('changed_by', Auth::user()->id)
+                    ->latest();
+    }
+
+    public function cancelledByUser(){
+        return $this->hasOne(OrderStatusChange::class)
+                    ->where('changed_by', '!=', Auth::user()->id)
+                    ->latest();
+    }
+
 
 	/*---------- CUSTOM METHODS ----------*/
 
