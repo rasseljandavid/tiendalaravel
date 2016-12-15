@@ -10,6 +10,7 @@
           <th>Name</th>
           <th>Branch</th>
           <th>Orders</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,7 @@
               <td>{{ $o->name}}</td>
               <td>{{ $o->branch }}</td>
               <td>{{ $o->orders }}</td>
+              <td>{{ Carbon\Carbon::parse($o->created_at)->format('M d, Y') }}</td>
             </tr>
           @endif
         @endforeach
