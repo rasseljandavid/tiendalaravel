@@ -461,7 +461,7 @@ class Order extends Model
             // if($sms->send($o->user->firstname.' '.$o->user->lastname)){
             //     //do nothing
             // }
-
+/*
             // send to logistic
             $messageID = md5(microtime().'abc1');
             $text = 'New Order in Tienda.ph from '.$o->user->getFullname().' Order# '.$o->salesOrderNo;
@@ -480,7 +480,7 @@ class Order extends Model
             if(strlen($number) == 11)
                 $number = '63'. substr($number, 1);//remove 0
             $response = $chikkaAPI->sendText($messageID, $number, $text);
-
+*/
         }
 
         return $orders;

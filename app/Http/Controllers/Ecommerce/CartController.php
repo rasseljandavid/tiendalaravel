@@ -329,6 +329,16 @@ class CartController extends Controller
         $companyOrder->orders = $request['orders'];
         $returnVal = $companyOrder->save();
 
+        if(strlen(trim($request['mobile'])) == 11) {
+
+            $chikkaAPI = new \ChikkaSMS();
+            $messageID = md5(microtime().'abc3');// do not delete.. we need it to be unique
+            $text = 'We received your order # ' . date('ymd') . $companyOrder->id . ' and it will be processed on time. If you have questions or suggestions, please call 045-308-5345 or add us on Skype: hello@tienda.ph. Thanks for choosing Tienda!';
+            $number = $request['mobile'];
+            $number = '63'. substr($number, 1);//remove 0
+            $response = $chikkaAPI->sendText($messageID, $number, $text);
+        }
+
         return response()->json($returnVal, 200);
     }
 }

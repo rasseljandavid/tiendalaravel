@@ -204,7 +204,7 @@ window.smartsupp||(function(d) {
           </div>
 
            <div class="form-group">
-            <input type="text" class="form-control" name="mobile" placeholder="Mobile number" style="height: 44px;">
+            <input type="text" maxlength="11" class="form-control" name="mobile" placeholder="Mobile Number" style="height: 44px;">
           </div>
 
           <div class="form-group">
@@ -532,6 +532,7 @@ $('.input-number').change(function() {
                   type: "error",
                   confirmButtonText: "Cool"
                 });
+                $("#submit").removeAttr("disabled");
             }
         });
         return false;
