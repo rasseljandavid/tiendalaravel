@@ -516,6 +516,7 @@ $('.input-number').change(function() {
         html    += "<tr><th><strong>Company: </strong></th><td>" + $("#ccompany").val() + ' / ' +$("#cbranch").val() + '</td></tr>';
         html    += "<tr><th><strong>Order(s): </strong></th><td>" + orders_str + '</td></tr>';
         
+        html    += "<tr><th><strong>Total: </strong></th><td>P" + $("#order-total").text() + '</td></tr>';
         html    += "<tr><th><strong>Delivery: </strong></th><td>" + $("#cdeliverytime").val() + '</td></tr>';
         html    += '</tbody></table></div>'
         swal({
