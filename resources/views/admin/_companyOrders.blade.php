@@ -8,9 +8,11 @@
         <tr>
           <th>Order Id</th>
           <th>Name</th>
+          <th>Mobile</th>
+          <th>Company</th>
           <th>Branch</th>
           <th>Orders</th>
-          <th>Date</th>
+          <th>Delivery Date</th>
         </tr>
       </thead>
       <tbody>
@@ -19,9 +21,11 @@
             <tr>
               <td>{{ $o->id }}</td>
               <td>{{ $o->name}}</td>
+              <td>{{ $o->mobile}}</td>
+              <td>{{ $o->company}}</td>
               <td>{{ $o->branch }}</td>
               <td>{{ $o->orders }}</td>
-              <td>{{ Carbon\Carbon::parse($o->created_at)->format('M d, Y') }}</td>
+              <td>{{ $o->deliverydate }}</td>
             </tr>
           @endif
         @endforeach

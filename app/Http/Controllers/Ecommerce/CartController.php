@@ -314,19 +314,43 @@ class CartController extends Controller
 
     public function cloudstaff() {
 
+        //Slots of available delivery
+        $slots = ["5" => "5AM", "11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
+
+        //Get the current time
+        $now =  Carbon::now();
+        //For current day slot
+        foreach($slots as $key => $slot) {
+            //if the time now is more than the 15mins of the current slot use the current day
+            if ($now->diffInMinutes(Carbon::createFromTime($key,0,0), false) > 50) {
+                $deliverydates[Carbon::createFromTime($key,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key,0,0)->toDayDateTimeString('D');
+            }
+        }
+        //For next day slots
+        foreach($slots as $key => $slot) {
+            if(Carbon::tomorrow()->format('D') == "Sun") {
+               $deliverydates[Carbon::createFromTime($key + 48,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key + 48,0,0)->toDayDateTimeString('D');
+            } else {
+                $deliverydates[Carbon::createFromTime($key + 24,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key + 24,0,0)->toDayDateTimeString('D');
+            }
+        }
+
         $category = Category::fromSlug("food-delivery")->first();
         $products = $category->getProductByCategory();
-        return view('cart.cloudstaff', compact('products'));
+        return view('cart.cloudstaff', compact('products', 'deliverydates'));
     }
 
     public function companyOrder(Request $request ) {
 
         $companyOrder = new companyOrder();
 
-        $companyOrder->name = $request['name']. ' / ' . $request['mobile'];
-        $companyOrder->branch = $request['branch'] . ' / ' . $request['deliverytime'];
-
+        $companyOrder->name = $request['name'];
+        $companyOrder->mobile = $request['mobile'];
+        $companyOrder->company = $request['company'];
+        $companyOrder->branch = $request['branch'];
+        $companyOrder->deliverydate = $request['deliverytime'];
         $companyOrder->orders = $request['orders'];
+
         $returnVal = $companyOrder->save();
 
         if(strlen(trim($request['mobile'])) == 11) {

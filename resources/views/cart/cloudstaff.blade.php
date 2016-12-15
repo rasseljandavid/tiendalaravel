@@ -200,33 +200,32 @@ window.smartsupp||(function(d) {
         <form onkeypress="return event.keyCode != 13;" class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
           <div class="form-group">
-            <input type="text" class="form-control" required name="name" placeholder="Name" style="height: 44px;">
+            <input type="text" class="form-control" required name="name" id="cname" placeholder="Name" style="height: 44px;">
           </div>
 
            <div class="form-group">
-            <input type="text" maxlength="11" class="form-control" name="mobile" placeholder="Mobile Number" style="height: 44px;">
+            <input type="text" maxlength="11" class="form-control" name="mobile" id="cmobile" placeholder="Mobile Number" style="height: 44px;">
           </div>
 
           <div class="form-group">
-            <select class="form-control" name="deliverytime" style="height: 44px;">
-              <option value="11AM">11AM</option>
-              <option value="1PM"> 1PM </option>
-              <option value="3PM"> 3PM </option>
-              <option value="5PM"> 5PM </option>
+            <select class="form-control" id="cdeliverytime" name="deliverytime" style="height: 44px;">
+                @foreach($deliverydates as $key => $item) 
+                    <option value="{{$key}}"> {{$item}} </option>
+                @endforeach 
             </select>
           </div>
 
           <div class="form-group">
-            <select class="form-control" name="branch" style="height: 44px;">
+            <select class="form-control" id="cbranch" name="branch" style="height: 44px;">
               <option value="SM City Clark">SM City Clark</option>
               <option value="New Street">New Street</option>
               <option value="Living Rock 1">Living Rock 1</option>
               <option value="Living Rock 2">Living Rock 2</option>
             </select>
           </div>
-          
-           <input type="hidden" name="orders" id="order-hidden" value="" />
-          
+
+          <input type="hidden" id="ccompany" name="company" value="Cloudstaff" />
+          <input type="hidden" name="orders" id="order-hidden" />
           <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
 
@@ -485,17 +484,17 @@ $('.input-number').change(function() {
         e.preventDefault();
 
         var orders = [];
+        var orders_str = '';
 
         $( ".product .input-number" ).each(function( index ) {
 
           if($(this).val() > 0) {
               var order_text = $(this).val() + ' of ' + $(this).parents('.product').find('img').attr('alt');
               orders.push( order_text );
+              orders_str += order_text + "<br />";
           }
 
         });
-
-        console.log(JSON.stringify(orders));
 
         $("#order-hidden").val(JSON.stringify(orders));
 
@@ -511,31 +510,55 @@ $('.input-number').change(function() {
 
             return false;
         }
+        var html = '<div class="table-responsive"><table class="table" style="text-align: left"><tbody>';
+        html    += "<tr><th><strong>Name: </strong></th><td>" + $("#cname").val() + '</td></tr>';
+        html    += "<tr><th><strong>Mobile: </strong></th><td>" + $("#cmobile").val() + '</td></tr>';
+        html    += "<tr><th><strong>Company: </strong></th><td>" + $("#ccompany").val() + ' / ' +$("#cbranch").val() + '</td></tr>';
+        html    += "<tr><th><strong>Order(s): </strong></th><td>" + orders_str + '</td></tr>';
+        
+        html    += "<tr><th><strong>Delivery: </strong></th><td>" + $("#cdeliverytime").val() + '</td></tr>';
+        html    += '</tbody></table></div>'
+        swal({
+          title: "Please Confirm Details",
+          text: html,
+          customClass: "confirm_details",
+          html: true,
+          showCancelButton: true,
+          confirmButtonText: "Looks Good!",
+          closeOnConfirm: false
+        }, function(isConfirm){
+            if (isConfirm) {
+            // //submit the form
+            $form.ajaxSubmit({
+                url: '/cart/companyOrder',
+                type: 'post',
+                dataType: 'json',
+                success: function(response, status, xhr, form) {
+                    swal({
+                      title: "Good job!", 
+                      text: "Your food is now being prepared.  If you have questions, don't hesitate to call us at ‎(045) 308-5345.", 
+                      type: "success",
+                      allowEscapeKey: false
 
-        // //submit the form
-        $form.ajaxSubmit({
-            url: '/cart/companyOrder',
-            type: 'post',
-            dataType: 'json',
-            success: function(response, status, xhr, form) {
-                swal("Good job!", "Your food is now being prepared.  If you have questions, don't hesitate to call us at ‎(045) 308-5345.", "success");
-
-                setTimeout(function(){
-                    location.href = "/cloudstaff"
-                  }, 5000);
-            },
-            error: function(response) {
-               
-                swal({
-                  title: "Error!",
-                  text: "Something went wrong, try again!",
-                  type: "error",
-                  confirmButtonText: "Cool"
-                });
-                $("#submit").removeAttr("disabled");
-            }
+                    }, function () {
+                       location.href = "/cloudstaff"
+                    });
+                },
+                error: function(response) {
+                   
+                    swal({
+                      title: "Error!",
+                      text: "Something went wrong, try again!",
+                      type: "error",
+                      confirmButtonText: "Cool"
+                    });
+                    $("#submit").removeAttr("disabled");
+                }
+            });
+          } else {  
+             $("#submit").removeAttr("disabled");
+          }
         });
-        return false;
     });
 
     
