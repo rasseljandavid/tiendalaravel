@@ -58,36 +58,36 @@ class AdminController extends Controller
         $title = '';$class = '';
         switch (strtolower($status)) {
             case 'received':
-                $orders = Order::received()->orderBy('created_at', 'desc')->paginate(5);
+                $orders = Order::received()->orderBy('created_at', 'desc')->paginate(15);
                 $title = 'New Received Orders';
                 $class = 'primary';
                 break;
             case 'on-process':
-                $orders = Order::onProcess()->orderBy('created_at', 'desc')->paginate(5);
+                $orders = Order::onProcess()->orderBy('created_at', 'desc')->paginate(15);
                 $title = 'On Process';
                 $class = 'success';
                 break;
             case 'on-transit':
-                $orders = Order::onTransit()->orderBy('created_at', 'desc')->paginate(5);
+                $orders = Order::onTransit()->orderBy('created_at', 'desc')->paginate(15);
                 $title = 'On Transit';
                 $class = 'info';
                 break;
             case 'shipped':
-                $orders = Order::shipped()->orderBy('created_at', 'desc')->paginate(5);
+                $orders = Order::shipped()->orderBy('created_at', 'desc')->paginate(15);
                 $title = 'Shipped';
                 $class = 'default';
                 break;
             case 'cancelled-by-user':
                 $orders = Order::cancelled()
                                 ->has('cancelledByUser')
-                                ->orderBy('created_at', 'desc')->paginate(5); 
+                                ->orderBy('created_at', 'desc')->paginate(15); 
                 $title = 'Cancelled by User';
                 $class = 'danger';
                 break;
             case 'cancelled-by-admin':
                 $orders = Order::cancelled()
                                 ->has('cancelledByAdmin')
-                                ->orderBy('created_at', 'desc')->paginate(5);
+                                ->orderBy('created_at', 'desc')->paginate(15);
                 $title = 'Cancelled by Admin';
                 $class = 'default';
                 break;
