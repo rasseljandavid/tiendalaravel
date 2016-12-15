@@ -539,7 +539,7 @@ $('.input-number').change(function() {
                 success: function(response, status, xhr, form) {
                     swal({
                       title: "Good job!", 
-                      text: "Your food is now being prepared.  If you have questions, don't hesitate to call us at ‎(045) 308-5345.", 
+                      text: "Your order is now being processed.  If you have questions, don't hesitate to call us at ‎(045) 308-5345.", 
                       type: "success",
                       allowEscapeKey: false
 
