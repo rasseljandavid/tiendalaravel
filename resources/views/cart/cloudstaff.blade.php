@@ -513,13 +513,13 @@ $('.input-number').change(function() {
             return false;
         }
         var html = '<div class="table-responsive"><table class="table" style="text-align: left"><tbody>';
-        html    += "<tr><th class='hidden-sm'><strong>Name: </strong></th><td>" + $("#cname").val() + '</td></tr>';
-        html    += "<tr><th class='hidden-sm'><strong>Mobile: </strong></th><td>" + $("#cmobile").val() + '</td></tr>';
-        html    += "<tr><th class='hidden-sm'><strong>Company: </strong></th><td>" + $("#ccompany").val() + ' / ' +$("#cbranch").val() + '</td></tr>';
-        html    += "<tr><th class='hidden-sm'><strong>Order(s): </strong></th><td>" + orders_str + '</td></tr>';
+        html    += "<tr><th class='hidden-sm hidden-xs'><strong>Name: </strong></th><td>" + $("#cname").val() + '</td></tr>';
+        html    += "<tr><th class='hidden-sm hidden-xs'><strong>Mobile: </strong></th><td>" + $("#cmobile").val() + '</td></tr>';
+        html    += "<tr><th class='hidden-sm hidden-xs'><strong>Company: </strong></th><td>" + $("#ccompany").val() + ' / ' +$("#cbranch").val() + '</td></tr>';
+        html    += "<tr><th class='hidden-sm hidden-xs'><strong>Order(s): </strong></th><td>" + orders_str + '</td></tr>';
         
-        html    += "<tr><th class='hidden-sm'><strong>Total: </strong></th><td>P" + $("#order-total").text() + '</td></tr>';
-        html    += "<tr><th class='hidden-sm'><strong>Delivery: </strong></th><td>" + $("#cdeliverytime").val() + '</td></tr>';
+        html    += "<tr><th class='hidden-sm hidden-xs'><strong>Total: </strong></th><td>P" + $("#order-total").text() + '</td></tr>';
+        html    += "<tr><th class='hidden-sm hidden-xs'><strong>Delivery: </strong></th><td>" + $("#cdeliverytime").val() + '</td></tr>';
         html    += '</tbody></table></div>'
         swal({
           title: "Please Confirm Details",
