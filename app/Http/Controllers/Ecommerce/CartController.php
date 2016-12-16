@@ -312,6 +312,34 @@ class CartController extends Controller
         
     }   
 
+    public function zappatto() {
+
+        //Slots of available delivery
+        $slots = ["11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
+
+        //Get the current time
+        $now =  Carbon::now();
+        //For current day slot
+        foreach($slots as $key => $slot) {
+            //if the time now is more than the 15mins of the current slot use the current day
+            if ($now->diffInMinutes(Carbon::createFromTime($key,0,0), false) > 50) {
+                $deliverydates[Carbon::createFromTime($key,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key,0,0)->toDayDateTimeString('D');
+            }
+        }
+        //For next day slots
+        foreach($slots as $key => $slot) {
+            if(Carbon::tomorrow()->format('D') == "Sun") {
+               $deliverydates[Carbon::createFromTime($key + 48,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key + 48,0,0)->toDayDateTimeString('D');
+            } else {
+                $deliverydates[Carbon::createFromTime($key + 24,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key + 24,0,0)->toDayDateTimeString('D');
+            }
+        }
+
+        $category = Category::fromSlug("food-delivery")->first();
+        $products = $category->getProductByCategory();
+        return view('cart.zappatto', compact('products', 'deliverydates'));
+    }
+
     public function cloudstaff() {
 
         //Slots of available delivery
