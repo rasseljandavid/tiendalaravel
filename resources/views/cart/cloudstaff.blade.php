@@ -536,10 +536,12 @@ $('.input-number').change(function() {
           customClass: "confirm_details",
           html: true,
           showCancelButton: true,
+          showLoaderOnConfirm: true,
           confirmButtonText: "Looks Good!",
           closeOnConfirm: false
         }, function(isConfirm){
             if (isConfirm) {
+          //  $(".sa-confirm-button-container button.confirm").attr("disabled", "disabled"); 
             // //submit the form
             $form.ajaxSubmit({
                 url: '/cart/companyOrder',
