@@ -344,7 +344,7 @@ class CartController extends Controller
 
         
         $companyOrder = new companyOrder();
-
+        $request['mobile'] = str_replace("-", "", $request['mobile']);
         $companyOrder->name = $request['name'];
         $companyOrder->mobile = $request['mobile'];
         $companyOrder->company = $request['company'];

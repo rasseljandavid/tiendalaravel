@@ -211,7 +211,7 @@ window.smartsupp||(function(d) {
           </div>
 
            <div class="form-group">
-            <input type="text" maxlength="11" class="form-control" name="mobile" id="cmobile" placeholder="Mobile Number" style="height: 44px;">
+            <input type="text" class="form-control" name="mobile" id="cmobile" placeholder="Mobile Number" style="height: 44px;">
           </div>
 
           <div class="form-group">
@@ -376,6 +376,8 @@ window.smartsupp||(function(d) {
 <script type="text/javascript" src="/js/jquery.jscroll.min.js"></script>
 <script type="text/javascript" src="/js/jquery.imgcheckbox.js"></script>
 <script src="/js/sweetalert.min.js"></script>
+
+<script src="/js/mask.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -384,6 +386,8 @@ window.smartsupp||(function(d) {
     //        calculateTotal();
     //     }
     // });
+
+    $("#cmobile").mask("9999-999-9999");
 
     $('.btn-number').click(function(e){
         e.preventDefault();
