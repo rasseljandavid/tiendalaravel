@@ -87,6 +87,9 @@ window.smartsupp||(function(d) {
 .product-body {
   padding-left: 5px; padding-right: 5px;
 }
+@media (max-width: 767px) {
+  .confirm_details h2 {display: none}
+}
 
   </style>
 
