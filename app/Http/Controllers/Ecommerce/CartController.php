@@ -357,12 +357,14 @@ class CartController extends Controller
 
         $returnVal = $companyOrder->save();
 
+        $chikkaAPI = new \ChikkaSMS();
+
         if(strlen(trim($request['mobile'])) == 11) {
             $name = explode(" ", $request['name']);
             $total = "P" . number_format($request['total'], 2);
 
 
-            $chikkaAPI = new \ChikkaSMS();
+            
             $messageID = md5(microtime().'abc3');// do not delete.. we need it to be unique
             $text = "Hi {$name[0]}! We received your order of {$order_txt} and it will be delivered on {$request['deliverytime']}. Total is: {$total}. If you have questions or suggestions, please call (045) 308-5345 or add us on Skype: hello@tienda.ph. Thanks for choosing Tienda!";
 
@@ -370,12 +372,14 @@ class CartController extends Controller
             $number = '63'. substr($number, 1);//remove 0
             $response = $chikkaAPI->sendText($messageID, $number, $text);
 
-            //Alert to rina
-            $messageID = md5(microtime().'abc34');// do not delete.. we need it to be unique
-            $text = 'This is a notification that someone ordered in Tienda Food Delivery from Cloudstaff at ' . $request['deliverytime'];
-            $number = '639258166813';
-            $response = $chikkaAPI->sendText($messageID, $number, $text);
+           
         }
+
+        //Alert to rina
+        $messageID = md5(microtime().'abc34');// do not delete.. we need it to be unique
+        $text = 'This is a notification that someone ordered in Tienda Food Delivery from Cloudstaff at ' . $request['deliverytime'];
+        $number = '639258166813';
+        $response = $chikkaAPI->sendText($messageID, $number, $text);
 
         return response()->json($returnVal, 200);
     }
