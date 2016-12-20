@@ -356,6 +356,24 @@
                   <div class="col-sm-12">
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-truck" aria-hidden="true"></i> Choose Delivery Slot </h4>
+                      </div>
+                       <div class="panel-body">
+                          <div class="form-group">
+                            <select required="" class="form-control" id="cdeliverytime" name="deliverytime" style="height: 44px;">
+                              <option value=""></option>
+                                @foreach($deliverydates as $key => $item) 
+                                    <option value="{{$key}}"> {{$item}} </option>
+                                @endforeach 
+                            </select>
+                          </div>
+                       </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
                         <h4 class="panel-title"><i class="fa fa-pencil"></i> Add Comments About Your Order</h4>
                       </div>
                         <div class="panel-body">

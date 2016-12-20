@@ -91,7 +91,30 @@ class CartController extends Controller
         }
 
         $cart->compute();
-    	return view('cart.checkout', compact('cart'));
+
+        //Slots of available delivery
+        $slots = ["11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
+
+        //Get the current time
+        $now =  Carbon::now();
+        //For current day slot
+        foreach($slots as $key => $slot) {
+            //if the time now is more than the 15mins of the current slot use the current day
+            if ($now->diffInMinutes(Carbon::createFromTime($key,0,0), false) > 50) {
+                $deliverydates[Carbon::createFromTime($key,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key,0,0)->toDayDateTimeString('D');
+            }
+        }
+        //For next day slots
+        foreach($slots as $key => $slot) {
+            if(Carbon::tomorrow()->format('D') == "Sun") {
+               $deliverydates[Carbon::createFromTime($key + 48,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key + 48,0,0)->toDayDateTimeString('D');
+            } else {
+                $deliverydates[Carbon::createFromTime($key + 24,0,0)->toDayDateTimeString('D')] = Carbon::createFromTime($key + 24,0,0)->toDayDateTimeString('D');
+            }
+        }
+
+
+    	return view('cart.checkout', compact('cart', 'deliverydates'));
     }
 
     public function loadMinicart(){
@@ -258,7 +281,7 @@ class CartController extends Controller
         }
 
 
-        $order->comment = $request['comment'];
+        $order->comment = $request['comment'] . ' : Delivery date: ' . $request['deliverytime'];
         $order->save();
         $order->compute();
 
@@ -314,6 +337,9 @@ class CartController extends Controller
 
     public function zappatto() {
 
+        $company  = ['name' => 'Zappatto', 'redirect' => '/zappatto'];
+        $branches = ['Marlin Avenue, Balibago Angeles City'];
+
         //Slots of available delivery
         $slots = ["11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
 
@@ -337,11 +363,15 @@ class CartController extends Controller
 
         $category = Category::fromSlug("food-delivery")->first();
         $products = $category->getProductByCategory();
-        return view('cart.zappatto', compact('products', 'deliverydates'));
+        return view('companies.show', compact('products', 'deliverydates', 'company', 'branches'));
     }
 
     public function cloudstaff() {
 
+        $company  = ['name' => 'Cloudstaff', 'redirect' => '/cloudstaff'];
+        $branches = ['SM City Clark', 'New Street', 'Living Rock 1', 'Living Rock 2'];
+
+
         //Slots of available delivery
         $slots = ["11" => "11AM" , "13" => "1PM" , "15" => "3PM" , "17" => "5PM" ];
 
@@ -365,7 +395,7 @@ class CartController extends Controller
 
         $category = Category::fromSlug("food-delivery")->first();
         $products = $category->getProductByCategory();
-        return view('cart.cloudstaff', compact('products', 'deliverydates'));
+        return view('companies.show_source()', compact('products', 'deliverydates', 'company', 'branches'));
     }
 
     public function companyOrder(Request $request ) {

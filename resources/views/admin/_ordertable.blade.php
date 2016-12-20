@@ -15,6 +15,7 @@
           <th>Total</th>
           <th>Shipping Fee</th>
           <th>Grand Total</th>
+          <th>Note</th>
           <th>Action</th>
           <th>Email</th>
         </tr>
@@ -30,6 +31,8 @@
               <td>₱{{ $o->total }}</td>
               <td>₱{{ $o->shipping_fee }}</td>
               <td>₱{{ $o->grand_total }}</td>
+
+              <td>{{ $o->comment }}</td>
               <td>
                 <!-- Remove this if you need to, just make sure that no one can cancel a canceled order. -->
                 <!-- the only order that we can cancel are the RECEIVE and ON PROCESS -->

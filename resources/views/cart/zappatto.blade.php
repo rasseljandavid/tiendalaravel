@@ -64,6 +64,19 @@
             <input type="text" class="form-control" name="mobile" id="cmobile" placeholder="Mobile Number" style="height: 44px;">
           </div>
 
+          
+          @if(count($branches) > 1)
+          <div class="form-group">
+            <select class="form-control" id="cbranch" name="branch" style="height: 44px;">
+              @foreach($branches as $branch)
+                <option value="{{$branch}}">{{$branch}}</option>
+              @endforeach
+            </select>
+          </div>
+          @else
+              <input type="hidden" id="cbranch" name="branch" value="{{$branches[0]}}" />
+          @endif
+
           <div class="form-group">
             <select class="form-control" id="cdeliverytime" name="deliverytime" style="height: 44px;">
                 @foreach($deliverydates as $key => $item) 
@@ -71,11 +84,13 @@
                 @endforeach 
             </select>
           </div>
-          <input type="hidden" id="ccompany" name="company" value="Zappatto" />
-          <input type="hidden" id="cbranch" name="branch" value="Marlin Avenue, Balibago Angeles City" />
+
+
+          <input type="hidden" id="ccompany" name="company" value="{{$company['name']}}" />
+          <input type="hidden" id="redirect-hidden" name="redirect-hidden" value="{{$company['redirect']}}" />
+
           <input type="hidden" name="orders" id="order-hidden" />
           <input type="hidden" name="total" id="total-hidden" />
-          <input type="hidden" name="/zappatto" id="redirect-hidden" />
           <button type="submit" id="submit" class="btn btn-primary btn-lg">Order</button>
         </form>
 
@@ -85,4 +100,5 @@
 
      </div>
 
-  @endsection
+      
+      @endsection
