@@ -395,7 +395,7 @@ class CartController extends Controller
 
         $category = Category::fromSlug("food-delivery")->first();
         $products = $category->getProductByCategory();
-        return view('companies.show_source()', compact('products', 'deliverydates', 'company', 'branches'));
+        return view('companies.show', compact('products', 'deliverydates', 'company', 'branches'));
     }
 
     public function companyOrder(Request $request ) {
