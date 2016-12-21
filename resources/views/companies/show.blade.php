@@ -57,22 +57,34 @@
         <form onkeypress="return event.keyCode != 13;" class="form-inline" style=" font-size: 2em; display: block;text-align: center; margin-left: 10px; margin-right: 10px;" id="companyOrder">
           {{ csrf_field() }}
           <div class="form-group">
-            <input type="text" class="form-control" required name="name" id="cname" placeholder="Name" style="height: 44px;">
+            @if(empty($cookies['name']))
+              <input type="text" class="form-control" required name="name" id="cname" placeholder="Name" style="height: 44px;">
+            @else
+              <input type="hidden" name="name" id="cname" value="{{ $cookies['name'] }}" />
+            @endif
           </div>
 
            <div class="form-group">
+            @if(empty($cookies['mobile']))
             <input type="text" class="form-control" name="mobile" id="cmobile" placeholder="Mobile Number" style="height: 44px;">
+            @else
+              <input type="hidden" name="mobile" id="cmobile" value="{{ $cookies['mobile'] }}" />
+            @endif
           </div>
 
           
           @if(count($branches) > 1)
-          <div class="form-group">
-            <select class="form-control" id="cbranch" name="branch" style="height: 44px;">
-              @foreach($branches as $branch)
-                <option value="{{$branch}}">{{$branch}}</option>
-              @endforeach
-            </select>
-          </div>
+            @if(empty($cookies['branch']))
+            <div class="form-group">
+              <select class="form-control" id="cbranch" name="branch" style="height: 44px;">
+                @foreach($branches as $branch)
+                  <option value="{{$branch}}">{{$branch}}</option>
+                @endforeach
+              </select>
+            </div>
+            @else
+                <input type="hidden" name="branch" id="cbranch" value="{{ $cookies['branch'] }}" />
+            @endif
           @else
               <input type="hidden" id="cbranch" name="branch" value="{{$branches[0]}}" />
           @endif

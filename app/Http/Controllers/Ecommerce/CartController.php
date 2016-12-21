@@ -12,6 +12,7 @@ use Response;
 use Redirect;
 use Auth;
 use View;
+use Illuminate\Cookie\CookieJar;
 
 // models
 use App\Models\Ecommerce\OrderItem;
@@ -366,7 +367,12 @@ class CartController extends Controller
         return view('companies.show', compact('products', 'deliverydates', 'company', 'branches'));
     }
 
-    public function cloudstaff() {
+    public function cloudstaff(Request $request) {
+        $cookies = [];
+        $cookies['name']    = $request->cookie('name');
+        $cookies['mobile']  = $request->cookie('mobile');
+        $cookies['branch']  = $request->cookie('branch');
+
 
         $company  = ['name' => 'Cloudstaff', 'redirect' => '/cloudstaff'];
         $branches = ['SM City Clark', 'New Street', 'Living Rock 1', 'Living Rock 2'];
@@ -395,10 +401,10 @@ class CartController extends Controller
 
         $category = Category::fromSlug("food-delivery")->first();
         $products = $category->getProductByCategory();
-        return view('companies.show', compact('products', 'deliverydates', 'company', 'branches'));
+        return view('companies.show', compact('products', 'deliverydates', 'company', 'branches', 'cookies'));
     }
 
-    public function companyOrder(Request $request ) {
+    public function companyOrder(Request $request, CookieJar $cookieJar ) {
 
         
         $companyOrder = new companyOrder();
@@ -416,11 +422,15 @@ class CartController extends Controller
         $returnVal = $companyOrder->save();
 
         $chikkaAPI = new \ChikkaSMS();
+        //save in cookie
 
+         // Cookie::make('name', $companyOrder->name, 60); 
+         //  Cookie::make('mobile', $companyOrder->mobile, 60); 
+         //   Cookie::make('branch',  $companyOrder->branch, 60); 
 
             $name = explode(" ", $request['name']);
             $total = "P" . number_format($request['total'], 2);
-
+           
         if(strlen(trim($request['mobile'])) == 11) {
             
             $messageID = md5(microtime().'abc3');// do not delete.. we need it to be unique
@@ -443,6 +453,12 @@ class CartController extends Controller
         $number = config('services.chikka.chef');
         $response = $chikkaAPI->sendText($messageID, $number, $text);
 
+        $cookieJar->queue(cookie('branch',  $companyOrder->branch, 45000));
+        $cookieJar->queue(cookie('name',  $companyOrder->name, 45000));
+
+        if(!empty($companyOrder->mobile)) {
+            $cookieJar->queue(cookie('mobile',  $companyOrder->mobile, 45000));
+        }
         return response()->json($returnVal, 200);
     }
 }
