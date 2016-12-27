@@ -7,3 +7,6 @@ Homestead.yaml
 .env
 *.DS_Store*
 /public/image
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
